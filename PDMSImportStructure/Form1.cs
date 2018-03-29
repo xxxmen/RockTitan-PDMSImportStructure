@@ -44,7 +44,16 @@ namespace PDMSImportStructure
             using (StreamReader sr = new StreamReader(MDTfile))
             {
                 string content = sr.ReadToEnd();
-                ReadMDT.readMDT(MDTfile, content);
+                ReadMDT.ReadMDTfile(content, out List<string> IDs, out string label2Text);
+
+                label2.Text = label2Text;
+
+                listBox1.Items.Clear();
+                int i = 1;
+                foreach (var item in IDs)
+                {
+                    listBox1.Items.Add(i++ + " " + item);
+                }
 
                 //listBox1.Items.Clear();
                 //listBox1.Items.Add(i++ + sep + ID + sep + MaterialCode + sep + SectionCode + sep + StartX + sep + StartY + sep + StartZ + sep + EndX + sep + EndY + sep + EndZ + sep + Grid);
