@@ -38,8 +38,8 @@ namespace PDMSImportStructure
             int i = 1;
             foreach (Match match in matchcontentMDLData)
             {
-                //string ID = match.Groups["ID"].Value;
-                //IDs.Add(ID);
+                IDs.Add(match.Groups["ID"].Value);
+
                 PropertiesList.Add(new PropertiesData {
                     ID = match.Groups["ID"].Value,
                     MaterialCode = match.Groups["MT"].Value,
@@ -52,7 +52,6 @@ namespace PDMSImportStructure
                     EndZ = double.Parse(match.Groups["End_Z"].Value),
                     Grid = match.Groups["Grid"].Value
                 });
-
 
                 //string MaterialCode = match.Groups["MT"].Value;
                 //string SectionCode = match.Groups["SEC"].Value;
@@ -73,28 +72,51 @@ namespace PDMSImportStructure
             int j = 1;
             foreach (Match match in matchcontentPhyMembData)
             {
-                string compID = match.Groups["compID"].Value; //比對ID使用
-                string NodeS = match.Groups["Node_Start"].Value; //重複暫不使用
-                string NodeE = match.Groups["Node_End"].Value; //重複暫不使用
-                string Type = match.Groups["TP"].Value;
-                string SP = match.Groups["SP"].Value;
-                double IT = double.Parse(match.Groups["IT"].Value); //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
-                string MT = match.Groups["MT"].Value; //重複暫不使用
-                string CP = match.Groups["CP"].Value; // 1~10
-                string Reflect = match.Groups["Reflect"].Value; // Y/N
-                double OvX = double.Parse(match.Groups["OvX"].Value);
-                double OvY = double.Parse(match.Groups["OvY"].Value);
-                double OvZ = double.Parse(match.Groups["OvZ"].Value);
-                string ReleaseS = match.Groups["Release_Start"].Value;
-                string ReleaseSNo = match.Groups["Release_Start_NO"].Value;
-                string ReleaseE = match.Groups["Release_End"].Value;
-                string ReleaseENo = match.Groups["Release_End_NO"].Value;
-                double SR = double.Parse(match.Groups["SR"].Value); //stress ratio, no use for PDMS
-                string Section = match.Groups["Section"].Value;
+                PropertiesList.Add(new PropertiesData
+                {
+                    compID = match.Groups["compID"].Value, //比對ID使用
+                    NodeS = match.Groups["Node_Start"].Value, //重複暫不使用
+                    NodeE = match.Groups["Node_End"].Value, //重複暫不使用
+                    Type = match.Groups["TP"].Value,
+                    SP = match.Groups["SP"].Value,
+                    IT = double.Parse(match.Groups["IT"].Value), //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
+                    MT = match.Groups["MT"].Value, //重複暫不使用
+                    CP = match.Groups["CP"].Value, // 1~10
+                    Reflect = match.Groups["Reflect"].Value, // Y/N
+                    OvX = double.Parse(match.Groups["OvX"].Value),
+                    OvY = double.Parse(match.Groups["OvY"].Value),
+                    OvZ = double.Parse(match.Groups["OvZ"].Value),
+                    ReleaseS = match.Groups["Release_Start"].Value,
+                    ReleaseSNo = match.Groups["Release_Start_NO"].Value,
+                    ReleaseE = match.Groups["Release_End"].Value,
+                    ReleaseENo = match.Groups["Release_End_NO"].Value,
+                    SR = double.Parse(match.Groups["SR"].Value), //stress ratio, no use for PDMS
+                    Section = match.Groups["Section"].Value
+                });
 
-                string listBox2Text = (j++ + sep + compID + sep + Type + sep + SP + sep
-                    + IT + sep + CP + sep + Reflect + sep + OvX + sep + OvY + sep + OvZ + sep
-                    + ReleaseS + sep + ReleaseSNo + sep + ReleaseE + sep + ReleaseENo + sep + Section);
+
+                //string compID = match.Groups["compID"].Value; //比對ID使用
+                //string NodeS = match.Groups["Node_Start"].Value; //重複暫不使用
+                //string NodeE = match.Groups["Node_End"].Value; //重複暫不使用
+                //string Type = match.Groups["TP"].Value;
+                //string SP = match.Groups["SP"].Value;
+                //double IT = double.Parse(match.Groups["IT"].Value); //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
+                //string MT = match.Groups["MT"].Value; //重複暫不使用
+                //string CP = match.Groups["CP"].Value; // 1~10
+                //string Reflect = match.Groups["Reflect"].Value; // Y/N
+                //double OvX = double.Parse(match.Groups["OvX"].Value);
+                //double OvY = double.Parse(match.Groups["OvY"].Value);
+                //double OvZ = double.Parse(match.Groups["OvZ"].Value);
+                //string ReleaseS = match.Groups["Release_Start"].Value;
+                //string ReleaseSNo = match.Groups["Release_Start_NO"].Value;
+                //string ReleaseE = match.Groups["Release_End"].Value;
+                //string ReleaseENo = match.Groups["Release_End_NO"].Value;
+                //double SR = double.Parse(match.Groups["SR"].Value); //stress ratio, no use for PDMS
+                //string Section = match.Groups["Section"].Value;
+
+                //string listBox2Text = (j++ + sep + compID + sep + Type + sep + SP + sep
+                //    + IT + sep + CP + sep + Reflect + sep + OvX + sep + OvY + sep + OvZ + sep
+                //    + ReleaseS + sep + ReleaseSNo + sep + ReleaseE + sep + ReleaseENo + sep + Section);
             }
             var rgxPhy = new Regex(patternPhyMembData);
             string label3Text = "Number of matches(PhyMemb Data) : " + rgxPhy.Matches(content).Count.ToString();

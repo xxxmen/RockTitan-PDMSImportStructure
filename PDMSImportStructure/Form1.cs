@@ -48,11 +48,19 @@ namespace PDMSImportStructure
 
                 label2.Text = label2Text;
 
+                //listBox1.Items.Clear();
+                //int i = 1;
+                //foreach (var item in IDs)
+                //{
+                //    listBox1.Items.Add(i++ + " " + item);
+                //}
+
                 listBox1.Items.Clear();
-                int i = 1;
-                foreach (var item in IDs)
+                int i = 0;
+                foreach (var item in ReadMDT.PropertiesList)
                 {
-                    listBox1.Items.Add(i++ + " " + item);
+                    listBox1.Items.Add(i + 1 + " " + item.ID);
+                    i++;
                 }
 
                 //listBox1.Items.Clear();
