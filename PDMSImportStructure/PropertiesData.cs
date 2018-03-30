@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDMSImportStructure
 {
-    public class PropertiesData
+    public struct MajorProperties
     {
         public string ID { get; set; }
         public string MaterialCode { get; set; }
@@ -18,8 +18,11 @@ namespace PDMSImportStructure
         public double EndY { get; set; }
         public double EndZ { get; set; }
         public string Grid { get; set; }
+    }
 
-        public string compID { get; set; } //比對ID使用
+    public struct MinorProperties
+    {
+        public string CompID { get; set; } //比對ID使用
         public string NodeS { get; set; } //重複暫不使用
         public string NodeE { get; set; } //重複暫不使用
         public string Type { get; set; }
@@ -37,15 +40,24 @@ namespace PDMSImportStructure
         public string ReleaseENo { get; set; }
         public double SR { get; set; } //stress ratio, no use for PDMS
         public string Section { get; set; }
+    }
 
+    public struct MaterialList
+    {
         public string MatItemNo { get; set; }
         public string MatCode { get; set; }
         public string MatGrade { get; set; }
+    }
 
+    public struct MaterialTypeList
+    {
         public string MatCodeNo { get; set; }
         public string Material { get; set; }
+    }
 
+    public struct SectionList
+    {
         public string SectionItemNo { get; set; } //重複暫不使用
-        public string compSection { get; set; } //重複暫不使用
+        public string CompSection { get; set; } //重複暫不使用
     }
 }

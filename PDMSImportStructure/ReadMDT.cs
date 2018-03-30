@@ -12,9 +12,11 @@ namespace PDMSImportStructure
 {
     public class ReadMDT
     {
-        public static List<PropertiesData> PropertiesList = new List<PropertiesData>();
+        public static List<MajorProperties> PropertiesList = new List<MajorProperties>();
+        public static List<MinorProperties> MinorPropertiesList = new List<MinorProperties>();
+        public static List<string> IDs = new List<string>();
 
-        public static void ReadMDTfile(string content, out List<string> IDs, out string label2Text)
+        public static void ReadMDTfile(string content)
         {
             var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
             var matchcontentMDLData = Regex.Matches(content, patternMDLData);
@@ -33,14 +35,13 @@ namespace PDMSImportStructure
 
             string sep = "  ";
 
-            IDs = new List<string>();
-
             int i = 1;
             foreach (Match match in matchcontentMDLData)
             {
                 IDs.Add(match.Groups["ID"].Value);
 
-                PropertiesList.Add(new PropertiesData {
+                PropertiesList.Add(new MajorProperties
+                {
                     ID = match.Groups["ID"].Value,
                     MaterialCode = match.Groups["MT"].Value,
                     SectionCode = match.Groups["SEC"].Value,
@@ -66,15 +67,15 @@ namespace PDMSImportStructure
                 //string listBox1Text = (i++ + sep + ID + sep + MaterialCode + sep + SectionCode + sep + StartX + sep + StartY + sep + StartZ + sep + EndX + sep + EndY + sep + EndZ + sep + Grid);
             }
             var rgxMDL = new Regex(patternMDLData);
-            label2Text = "Number of matches(MDL Data) : " + rgxMDL.Matches(content).Count.ToString();
+            string label2Text = "Number of matches(MDL Data) : " + rgxMDL.Matches(content).Count.ToString();
 
 
             int j = 1;
             foreach (Match match in matchcontentPhyMembData)
             {
-                PropertiesList.Add(new PropertiesData
+                MinorPropertiesList.Add(new MinorProperties
                 {
-                    compID = match.Groups["compID"].Value, //比對ID使用
+                    CompID = match.Groups["compID"].Value, //比對ID使用
                     NodeS = match.Groups["Node_Start"].Value, //重複暫不使用
                     NodeE = match.Groups["Node_End"].Value, //重複暫不使用
                     Type = match.Groups["TP"].Value,
@@ -95,7 +96,7 @@ namespace PDMSImportStructure
                 });
 
 
-                //string compID = match.Groups["compID"].Value; //比對ID使用
+                //string CompID = match.Groups["compID"].Value; //比對ID使用
                 //string NodeS = match.Groups["Node_Start"].Value; //重複暫不使用
                 //string NodeE = match.Groups["Node_End"].Value; //重複暫不使用
                 //string Type = match.Groups["TP"].Value;
@@ -155,9 +156,9 @@ namespace PDMSImportStructure
             foreach (Match match in matchcontentSectionData)
             {
                 string SectionItemNo = match.Groups["SectionItemNo"].Value; //重複暫不使用
-                string compSection = match.Groups["compSection"].Value; //重複暫不使用
+                string CompSection = match.Groups["compSection"].Value; //重複暫不使用
 
-                string[,] ArrSecList = new string[,] { { SectionItemNo, compSection } };
+                string[,] ArrSecList = new string[,] { { SectionItemNo, CompSection } };
 
                 string listBox5Text = (m++ + sep + ArrSecList[0, 0] + sep + ArrSecList[0, 1]);
             }

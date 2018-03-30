@@ -44,9 +44,7 @@ namespace PDMSImportStructure
             using (StreamReader sr = new StreamReader(MDTfile))
             {
                 string content = sr.ReadToEnd();
-                ReadMDT.ReadMDTfile(content, out List<string> IDs, out string label2Text);
-
-                label2.Text = label2Text;
+                ReadMDT.ReadMDTfile(content);
 
                 //listBox1.Items.Clear();
                 //int i = 1;
@@ -107,8 +105,10 @@ namespace PDMSImportStructure
         {
             //FolderBrowserDialog path = new FolderBrowserDialog();
             //path.ShowDialog();
-            OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*";
+            OpenFileDialog file = new OpenFileDialog
+            {
+                Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*"
+            };
             file.ShowDialog();
             this.textBox1.Text = file.FileName;
         }
