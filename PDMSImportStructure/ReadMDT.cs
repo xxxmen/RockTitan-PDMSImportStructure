@@ -12,16 +12,20 @@ namespace PDMSImportStructure
 {
     public class ReadMDT
     {
-        public static List<MajorProperties> PropertiesList = new List<MajorProperties>();
-        public static List<MinorProperties> MinorPropertiesList = new List<MinorProperties>();
+        public static List<MajorProperties> MajorPropertiesList = new List<MajorProperties>();
+        //public static List<MinorProperties> MinorPropertiesList = new List<MinorProperties>();
         public static List<string> IDs = new List<string>();
 
-        public static void ReadMDTfile(string content)
+        public static void ReadMDTfile(string content, out string label2Text)
         {
-            var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
+            var patternMDLData = @"((?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?)" +
+                @"|" +
+                @"((?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*))";
+
+            //var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
             var matchcontentMDLData = Regex.Matches(content, patternMDLData);
 
-            var patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
+            var patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
             var matchcontentPhyMembData = Regex.Matches(content, patternPhyMembData);
 
             var patternMatData = @"(?<MatItemNo>\d+)\s+:\s+(?<MatCode>\d+)\s+(?<MatGrade>[A-Z]+[0-9A-Z]*)";
@@ -35,23 +39,74 @@ namespace PDMSImportStructure
 
             string sep = "  ";
 
+            var t1 = matchcontentPhyMembData.GetEnumerator();
+
             int i = 1;
             foreach (Match match in matchcontentMDLData)
             {
                 IDs.Add(match.Groups["ID"].Value);
 
-                PropertiesList.Add(new MajorProperties
+                MajorPropertiesList.Add(new MajorProperties
                 {
                     ID = match.Groups["ID"].Value,
                     MaterialCode = match.Groups["MT"].Value,
                     SectionCode = match.Groups["SEC"].Value,
-                    StartX = double.Parse(match.Groups["Start_X"].Value),
-                    StartY = double.Parse(match.Groups["Start_Y"].Value),
-                    StartZ = double.Parse(match.Groups["Start_Z"].Value),
-                    EndX = double.Parse(match.Groups["End_X"].Value),
-                    EndY = double.Parse(match.Groups["End_Y"].Value),
-                    EndZ = double.Parse(match.Groups["End_Z"].Value),
-                    Grid = match.Groups["Grid"].Value
+                    StartX = match.Groups["Start_X"].Value,
+                    StartY = match.Groups["Start_Y"].Value,
+                    StartZ = match.Groups["Start_Z"].Value,
+                    EndX = match.Groups["End_X"].Value,
+                    EndY = match.Groups["End_Y"].Value,
+                    EndZ = match.Groups["End_Z"].Value,
+                    Grid = match.Groups["Grid"].Value,
+
+                    CompID = match.Groups["compID"].Value, //比對ID使用
+                    NodeS = match.Groups["Node_Start"].Value, //重複暫不使用
+                    NodeE = match.Groups["Node_End"].Value, //重複暫不使用
+                    Type = match.Groups["TP"].Value,
+                    SP = match.Groups["SP"].Value,
+                    IT = match.Groups["IT"].Value, //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
+                    MAT = match.Groups["MAT"].Value, //重複暫不使用
+                    CP = match.Groups["CP"].Value, // 1~10
+                    Reflect = match.Groups["Reflect"].Value, // Y/N
+                    OvX = match.Groups["OvX"].Value,
+                    OvY = match.Groups["OvY"].Value,
+                    OvZ = match.Groups["OvZ"].Value,
+                    ReleaseS = match.Groups["Release_Start"].Value,
+                    ReleaseSNo = match.Groups["Release_Start_NO"].Value,
+                    ReleaseE = match.Groups["Release_End"].Value,
+                    ReleaseENo = match.Groups["Release_End_NO"].Value,
+                    SR = match.Groups["SR"].Value, //stress ratio, no use for PDMS
+                    Section = match.Groups["Section"].Value
+                    
+                    //ID = match.Groups["ID"].Value,
+                    //MaterialCode = match.Groups["MT"].Value,
+                    //SectionCode = match.Groups["SEC"].Value,
+                    //StartX = Convert.ToDouble(match.Groups["Start_X"].Value),
+                    //StartY = Convert.ToDouble(match.Groups["Start_Y"].Value),
+                    //StartZ = Convert.ToDouble(match.Groups["Start_Z"].Value),
+                    //EndX = Convert.ToDouble(match.Groups["End_X"].Value),
+                    //EndY = Convert.ToDouble(match.Groups["End_Y"].Value),
+                    //EndZ = Convert.ToDouble(match.Groups["End_Z"].Value),
+                    //Grid = match.Groups["Grid"].Value,
+
+                    //CompID = match.Groups["compID"].Value, //比對ID使用
+                    //NodeS = match.Groups["Node_Start"].Value, //重複暫不使用
+                    //NodeE = match.Groups["Node_End"].Value, //重複暫不使用
+                    //Type = match.Groups["TP"].Value,
+                    //SP = match.Groups["SP"].Value,
+                    //IT = Convert.ToDouble(match.Groups["IT"].Value), //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
+                    //MAT = match.Groups["MAT"].Value, //重複暫不使用
+                    //CP = match.Groups["CP"].Value, // 1~10
+                    //Reflect = match.Groups["Reflect"].Value, // Y/N
+                    //OvX = Convert.ToDouble(match.Groups["OvX"].Value),
+                    //OvY = Convert.ToDouble(match.Groups["OvY"].Value),
+                    //OvZ = Convert.ToDouble(match.Groups["OvZ"].Value),
+                    //ReleaseS = match.Groups["Release_Start"].Value,
+                    //ReleaseSNo = match.Groups["Release_Start_NO"].Value,
+                    //ReleaseE = match.Groups["Release_End"].Value,
+                    //ReleaseENo = match.Groups["Release_End_NO"].Value,
+                    //SR = Convert.ToDouble(match.Groups["SR"].Value), //stress ratio, no use for PDMS
+                    //Section = match.Groups["Section"].Value
                 });
 
                 //string MaterialCode = match.Groups["MT"].Value;
@@ -67,33 +122,33 @@ namespace PDMSImportStructure
                 //string listBox1Text = (i++ + sep + ID + sep + MaterialCode + sep + SectionCode + sep + StartX + sep + StartY + sep + StartZ + sep + EndX + sep + EndY + sep + EndZ + sep + Grid);
             }
             var rgxMDL = new Regex(patternMDLData);
-            string label2Text = "Number of matches(MDL Data) : " + rgxMDL.Matches(content).Count.ToString();
+            label2Text = "Number of matches(MDL Data) : " + rgxMDL.Matches(content).Count.ToString();
 
 
             int j = 1;
             foreach (Match match in matchcontentPhyMembData)
             {
-                MinorPropertiesList.Add(new MinorProperties
-                {
-                    CompID = match.Groups["compID"].Value, //比對ID使用
-                    NodeS = match.Groups["Node_Start"].Value, //重複暫不使用
-                    NodeE = match.Groups["Node_End"].Value, //重複暫不使用
-                    Type = match.Groups["TP"].Value,
-                    SP = match.Groups["SP"].Value,
-                    IT = double.Parse(match.Groups["IT"].Value), //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
-                    MT = match.Groups["MT"].Value, //重複暫不使用
-                    CP = match.Groups["CP"].Value, // 1~10
-                    Reflect = match.Groups["Reflect"].Value, // Y/N
-                    OvX = double.Parse(match.Groups["OvX"].Value),
-                    OvY = double.Parse(match.Groups["OvY"].Value),
-                    OvZ = double.Parse(match.Groups["OvZ"].Value),
-                    ReleaseS = match.Groups["Release_Start"].Value,
-                    ReleaseSNo = match.Groups["Release_Start_NO"].Value,
-                    ReleaseE = match.Groups["Release_End"].Value,
-                    ReleaseENo = match.Groups["Release_End_NO"].Value,
-                    SR = double.Parse(match.Groups["SR"].Value), //stress ratio, no use for PDMS
-                    Section = match.Groups["Section"].Value
-                });
+                //MinorPropertiesList.Add(new MinorProperties
+                //{
+                //    CompID = match.Groups["compID"].Value, //比對ID使用
+                //    NodeS = match.Groups["Node_Start"].Value, //重複暫不使用
+                //    NodeE = match.Groups["Node_End"].Value, //重複暫不使用
+                //    Type = match.Groups["TP"].Value,
+                //    SP = match.Groups["SP"].Value,
+                //    IT = double.Parse(match.Groups["IT"].Value), //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
+                //    MAT = match.Groups["MAT"].Value, //重複暫不使用
+                //    CP = match.Groups["CP"].Value, // 1~10
+                //    Reflect = match.Groups["Reflect"].Value, // Y/N
+                //    OvX = double.Parse(match.Groups["OvX"].Value),
+                //    OvY = double.Parse(match.Groups["OvY"].Value),
+                //    OvZ = double.Parse(match.Groups["OvZ"].Value),
+                //    ReleaseS = match.Groups["Release_Start"].Value,
+                //    ReleaseSNo = match.Groups["Release_Start_NO"].Value,
+                //    ReleaseE = match.Groups["Release_End"].Value,
+                //    ReleaseENo = match.Groups["Release_End_NO"].Value,
+                //    SR = double.Parse(match.Groups["SR"].Value), //stress ratio, no use for PDMS
+                //    Section = match.Groups["Section"].Value
+                //});
 
 
                 //string CompID = match.Groups["compID"].Value; //比對ID使用
@@ -102,7 +157,7 @@ namespace PDMSImportStructure
                 //string Type = match.Groups["TP"].Value;
                 //string SP = match.Groups["SP"].Value;
                 //double IT = double.Parse(match.Groups["IT"].Value); //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
-                //string MT = match.Groups["MT"].Value; //重複暫不使用
+                //string MAT = match.Groups["MT"].Value; //重複暫不使用
                 //string CP = match.Groups["CP"].Value; // 1~10
                 //string Reflect = match.Groups["Reflect"].Value; // Y/N
                 //double OvX = double.Parse(match.Groups["OvX"].Value);

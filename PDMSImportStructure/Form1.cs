@@ -24,7 +24,7 @@ namespace PDMSImportStructure
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnConvert_Click(object sender, EventArgs e)
         {
             GetStart();
         }
@@ -44,7 +44,7 @@ namespace PDMSImportStructure
             using (StreamReader sr = new StreamReader(MDTfile))
             {
                 string content = sr.ReadToEnd();
-                ReadMDT.ReadMDTfile(content);
+                ReadMDT.ReadMDTfile(content, out string label2Text);
 
                 //listBox1.Items.Clear();
                 //int i = 1;
@@ -53,9 +53,11 @@ namespace PDMSImportStructure
                 //    listBox1.Items.Add(i++ + " " + item);
                 //}
 
+                label2.Text = "Number of matches(MDL Data) : " + label2Text;
+
                 listBox1.Items.Clear();
                 int i = 0;
-                foreach (var item in ReadMDT.PropertiesList)
+                foreach (var item in ReadMDT.MajorPropertiesList)
                 {
                     listBox1.Items.Add(i + 1 + " " + item.ID);
                     i++;
@@ -63,7 +65,7 @@ namespace PDMSImportStructure
 
                 //listBox1.Items.Clear();
                 //listBox1.Items.Add(i++ + sep + ID + sep + MaterialCode + sep + SectionCode + sep + StartX + sep + StartY + sep + StartZ + sep + EndX + sep + EndY + sep + EndZ + sep + Grid);
-                //label2.Text = "Number of matches(MDL Data) : " + rgxMDL.Matches(content).Count.ToString();
+                //label2.Text = "Number of matches(MDL Data) : " + label2Text;
 
                 //listBox2.Items.Clear();
                 //listBox2.Items.Add(j++ + sep + compID + sep + Type + sep + SP + sep

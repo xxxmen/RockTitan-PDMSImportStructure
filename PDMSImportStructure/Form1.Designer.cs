@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnConvert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.SelectFileBtn = new System.Windows.Forms.Button();
+            this.BtnSelectFile = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,17 +43,18 @@
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnCloseForm1 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
-            // button1
+            // BtnConvert
             // 
-            this.button1.Location = new System.Drawing.Point(12, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 28);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Convert";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnConvert.Location = new System.Drawing.Point(12, 32);
+            this.BtnConvert.Name = "BtnConvert";
+            this.BtnConvert.Size = new System.Drawing.Size(80, 28);
+            this.BtnConvert.TabIndex = 0;
+            this.BtnConvert.Text = "Convert";
+            this.BtnConvert.UseVisualStyleBackColor = true;
+            this.BtnConvert.Click += new System.EventHandler(this.BtnConvert_Click);
             // 
             // label1
             // 
@@ -93,18 +94,18 @@
             this.listBox2.ItemHeight = 12;
             this.listBox2.Location = new System.Drawing.Point(564, 66);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(495, 436);
+            this.listBox2.Size = new System.Drawing.Size(572, 436);
             this.listBox2.TabIndex = 4;
             // 
-            // SelectFileBtn
+            // BtnSelectFile
             // 
-            this.SelectFileBtn.Location = new System.Drawing.Point(670, 6);
-            this.SelectFileBtn.Name = "SelectFileBtn";
-            this.SelectFileBtn.Size = new System.Drawing.Size(25, 21);
-            this.SelectFileBtn.TabIndex = 5;
-            this.SelectFileBtn.Text = "...";
-            this.SelectFileBtn.UseVisualStyleBackColor = true;
-            this.SelectFileBtn.Click += new System.EventHandler(this.SelectFileBtn_Click);
+            this.BtnSelectFile.Location = new System.Drawing.Point(670, 6);
+            this.BtnSelectFile.Name = "BtnSelectFile";
+            this.BtnSelectFile.Size = new System.Drawing.Size(25, 21);
+            this.BtnSelectFile.TabIndex = 5;
+            this.BtnSelectFile.Text = "...";
+            this.BtnSelectFile.UseVisualStyleBackColor = true;
+            this.BtnSelectFile.Click += new System.EventHandler(this.SelectFileBtn_Click);
             // 
             // listBox3
             // 
@@ -180,7 +181,8 @@
             // 
             // BtnCloseForm1
             // 
-            this.BtnCloseForm1.Location = new System.Drawing.Point(979, 764);
+            this.BtnCloseForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCloseForm1.Location = new System.Drawing.Point(1056, 814);
             this.BtnCloseForm1.Name = "BtnCloseForm1";
             this.BtnCloseForm1.Size = new System.Drawing.Size(80, 28);
             this.BtnCloseForm1.TabIndex = 14;
@@ -188,11 +190,20 @@
             this.BtnCloseForm1.UseVisualStyleBackColor = true;
             this.BtnCloseForm1.Click += new System.EventHandler(this.Close_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressBar1.Location = new System.Drawing.Point(12, 819);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(652, 23);
+            this.progressBar1.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 803);
+            this.ClientSize = new System.Drawing.Size(1148, 854);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.BtnCloseForm1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBox5);
@@ -202,12 +213,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.SelectFileBtn);
+            this.Controls.Add(this.BtnSelectFile);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnConvert);
             this.Name = "Form1";
             this.Text = "PDMS Import Structure V1.0";
             this.ResumeLayout(false);
@@ -217,12 +228,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnConvert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button SelectFileBtn;
+        private System.Windows.Forms.Button BtnSelectFile;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Label label2;
@@ -232,6 +243,7 @@
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BtnCloseForm1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
