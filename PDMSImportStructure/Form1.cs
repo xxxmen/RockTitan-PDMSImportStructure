@@ -18,7 +18,6 @@ namespace PDMSImportStructure
         public static ReadMDTs MatchList = new ReadMDTs();
         List<string> IDList = new List<string>();
 
-
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +33,7 @@ namespace PDMSImportStructure
             string MDTfile = textBox1.Text;
             if (File.Exists(MDTfile) != true | MDTfile.Contains(".MDT") != true)
             {
-                MessageBox.Show("No MDT file selected.");
+                MessageBox.Show("No MDT file selected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -44,25 +43,23 @@ namespace PDMSImportStructure
             using (StreamReader sr = new StreamReader(MDTfile))
             {
                 string content = sr.ReadToEnd();
-                ReadMDT.ReadMDTfile(content, out string label2Text);
+                ReadMDT.ReadMDTfile(content, out string Message);
 
-                //listBox1.Items.Clear();
-                //int i = 1;
-                //foreach (var item in IDs)
-                //{
-                //    listBox1.Items.Add(i++ + " " + item);
-                //}
-
-                label2.Text = "Number of matches(MDL Data) : " + label2Text;
-
-                listBox1.Items.Clear();
-                int i = 0;
-                foreach (var item in ReadMDT.MajorPropertiesList)
+                if (Message.ToUpper().Contains("ERROR"))
                 {
-                    listBox1.Items.Add(i + 1 + " " + item.ID);
-                    i++;
+                    MessageBox.Show(Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
+                else
+                {
+                    label2.Text = "Number of matches(MDL Data) : " + ReadMDT.PropertiesList.Count.ToString();
+                    listBox1.Items.Clear();
+                    int i = 1;
+                    foreach (var item in ReadMDT.PropertiesList)
+                    {
+                        listBox1.Items.Add(i++ + " " + item.ID + " " + item.Section);
+                    }
+                }
+                
                 //listBox1.Items.Clear();
                 //listBox1.Items.Add(i++ + sep + ID + sep + MaterialCode + sep + SectionCode + sep + StartX + sep + StartY + sep + StartZ + sep + EndX + sep + EndY + sep + EndZ + sep + Grid);
                 //label2.Text = "Number of matches(MDL Data) : " + label2Text;
@@ -89,19 +86,6 @@ namespace PDMSImportStructure
             }
         }
 
-        private void CartesianToPolar_Degrees(double x, double y, out double angle, out double magnitude)
-        {
-            angle = Math.Atan2(x, y) * 180.0 / Math.PI;
-            if (angle < 0) angle += 360;
-            magnitude = Math.Sqrt(x * x + y * y);
-        }
-
-        private void PolarToCartesian_Degrees(double angle, double magnitude, out double x, out double y)
-        {
-            double radians = angle * Math.PI / 180.0;
-            x = Math.Sin(radians) * magnitude;
-            y = Math.Cos(radians) * magnitude;
-        }
 
         private void SelectFileBtn_Click(object sender, EventArgs e)
         {
