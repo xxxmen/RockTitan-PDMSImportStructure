@@ -26,6 +26,12 @@ namespace PDMSImportStructure
         private void BtnConvert_Click(object sender, EventArgs e)
         {
             GetStart();
+
+            ReadMDT.MatCodeList.Clear();
+            ReadMDT.MaterialList.Clear();
+            ReadMDT.MaterialGradeList.Clear();
+            ReadMDT.SectionList.Clear();
+            ReadMDT.PropertiesList.Clear();
         }
 
         public void GetStart()
@@ -48,39 +54,33 @@ namespace PDMSImportStructure
                 if (Message.ToUpper().Contains("ERROR"))
                 {
                     MessageBox.Show(Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    label2.Text = "Number of matches(MDL Data) : " + ReadMDT.PropertiesList.Count.ToString();
-                    listBox1.Items.Clear();
-                    int i = 1;
-                    foreach (var item in ReadMDT.PropertiesList)
-                    {
-                        listBox1.Items.Add(i++ + " " + item.ID + " " + item.Section);
-                    }
+                    return;
                 }
                 
-                //listBox1.Items.Clear();
-                //listBox1.Items.Add(i++ + sep + ID + sep + MaterialCode + sep + SectionCode + sep + StartX + sep + StartY + sep + StartZ + sep + EndX + sep + EndY + sep + EndZ + sep + Grid);
-                //label2.Text = "Number of matches(MDL Data) : " + label2Text;
+                int i = 1;
+                listBox1.Items.Clear();
+                foreach (var item in ReadMDT.PropertiesList)
+                {
+                    listBox1.Items.Add(i++ + " " + item.ID + " " + item.Section);
+                    //dataGridView1.Rows.Add();
+                }
+                label2.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
 
-                //listBox2.Items.Clear();
-                //listBox2.Items.Add(j++ + sep + compID + sep + Type + sep + SP + sep
-                //        + IT + sep + CP + sep + Reflect + sep + OvX + sep + OvY + sep + OvZ + sep
-                //        + ReleaseS + sep + ReleaseSNo + sep + ReleaseE + sep + ReleaseENo + sep + Section);
-                //label3.Text = "Number of matches(PhyMemb Data) : " + rgxPhy.Matches(content).Count.ToString();
+                int j = 1;
+                listBox3.Items.Clear();
+                foreach (var item in ReadMDT.SectionList)
+                {
+                    listBox3.Items.Add(j++ + " " + item);
+                }
+                label4.Text = "Number of used section : " + ReadMDT.SectionList.Count.ToString();
 
-                //label4.Text = "Number of matches(Material Data) : " + rgxMat.Matches(content).Count.ToString();
-                //listBox3.Items.Clear();
-                //listBox3.Items.Add(k++ + sep + ArrMat[0, 0] + sep + ArrMat[0, 1] + sep + ArrMat[0, 2]);
-
-                //listBox4.Items.Clear();
-                //listBox4.Items.Add(l++ + sep + ArrMatType[0, 0] + sep + ArrMatType[0, 1]);
-                //label5.Text = "Number of matches(Material Code List) : " + rgxMatCode.Matches(content).Count.ToString();
-
-                //listBox5.Items.Clear();
-                //listBox5.Items.Add(m++ + sep + ArrSecList[0, 0] + sep + ArrSecList[0, 1]);
-                //label6.Text = "Number of matches(Section Data) : " + rgxSec.Matches(content).Count.ToString();
+                int k = 1;
+                listBox4.Items.Clear();
+                foreach (var item in ReadMDT.MaterialGradeList)
+                {
+                    listBox4.Items.Add(k++ + " " + item);
+                }
+                label5.Text = "Number of used material grade : " + ReadMDT.MaterialGradeList.Count.ToString();
 
                 sr.Close();
             }

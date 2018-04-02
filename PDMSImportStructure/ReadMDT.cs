@@ -41,7 +41,7 @@ namespace PDMSImportStructure
 
             foreach (Match match in MatCodeData)
             {
-                string MatCodeNo = match.Groups["MatCodeNo"].Value;
+                string MatCodeNo = match.Groups["MatCodeNo"].Value; //未使用, 目前用陣列索引, 非對照
                 string Material = match.Groups["Material"].Value;
 
                 MatCodeList.Add(Material);
@@ -49,11 +49,11 @@ namespace PDMSImportStructure
 
             foreach (Match match in MatData)
             {
-                string MatItemNo = match.Groups["MatItemNo"].Value;
+                string MatItemNo = match.Groups["MatItemNo"].Value; //未使用, 目前用陣列索引, 非對照
                 string MatCode = match.Groups["MatCode"].Value;
                 string MatGrade = match.Groups["MatGrade"].Value;
 
-                MaterialList.Add(MatCode);
+                MaterialList.Add(MatCodeList[Convert.ToInt32(MatCode)].ToString());
                 MaterialGradeList.Add(MatGrade);
 
                 //string[,] ArrMat = new string[,] { { MatItemNo, MatCode, MatGrade } };
@@ -68,7 +68,7 @@ namespace PDMSImportStructure
                 //    CompSection = match.Groups["compSection"].Value //重複暫不使用
                 //});
 
-                string SectionItemNo = match.Groups["SectionItemNo"].Value; //重複暫不使用
+                string SectionItemNo = match.Groups["SectionItemNo"].Value; //重複暫不使用, 未使用, 目前用陣列索引, 非對照
                 string CompSection = match.Groups["compSection"].Value; //重複暫不使用
 
                 SectionList.Add(CompSection);
@@ -88,6 +88,11 @@ namespace PDMSImportStructure
                 if (MDLData[i].Groups["ID"].Value != PhyMembData[i].Groups["compID"].Value)
                 {
                     Message = string.Format("ERROR! Member ID ({1} - {2}) doesn't match, please check member data and quantity. (count : {0})", (i + 1).ToString(), MDLData[i].Groups["ID"].Value, PhyMembData[i].Groups["compID"].Value);
+                    break;
+                }
+                else if (SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1] != PhyMembData[i].Groups["Section"].Value)
+                {
+                    Message = string.Format("ERROR! Member section ({1} - {2}) doesn't match, please check member data. (count : {0})", (i + 1).ToString(), SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1], PhyMembData[i].Groups["Section"].Value);
                     break;
                 }
 
@@ -123,13 +128,12 @@ namespace PDMSImportStructure
                     SR = Convert.ToDouble(PhyMembData[i].Groups["SR"].Value), //stress ratio, no use for PDMS
                     Section = PhyMembData[i].Groups["Section"].Value,
                     //
-                    CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1],
-                    //Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MatCodeNo"].Value) - 1], //TODO
-                    MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1],
+                    CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1], //比對Section使用
+                    Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1],
+                    MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1]
                 });
             }
         }
-
     }
 
     public class ReadMDTs : ObservableCollection<ReadMDT>

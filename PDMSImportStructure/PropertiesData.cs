@@ -38,7 +38,7 @@ namespace PDMSImportStructure
         public double SR { get; set; } //stress ratio, no use for PDMS
         public string Section { get; set; }
 
-        public string CompSection { get; set; } //重複暫不使用
+        public string CompSection { get; set; } //比對Section使用
         public string Material { get; set; }
         public string MaterialGrade { get; set; }
     }
