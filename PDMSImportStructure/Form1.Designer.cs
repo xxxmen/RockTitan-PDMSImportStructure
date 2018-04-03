@@ -29,55 +29,56 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnConvert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.BtnSelectFile = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.BtnCloseForm1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ovXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ovYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ovZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.releaseSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.releaseEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sectionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialGradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CountNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reflect = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OvX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OvY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OvZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReleaseS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReleaseE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnConvert
             // 
             this.BtnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnConvert.Location = new System.Drawing.Point(1050, 615);
+            this.BtnConvert.Location = new System.Drawing.Point(806, 667);
             this.BtnConvert.Name = "BtnConvert";
-            this.BtnConvert.Size = new System.Drawing.Size(80, 28);
+            this.BtnConvert.Size = new System.Drawing.Size(80, 30);
             this.BtnConvert.TabIndex = 0;
             this.BtnConvert.Text = "Convert";
             this.BtnConvert.UseVisualStyleBackColor = true;
@@ -86,9 +87,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 12);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Input File :";
             // 
@@ -96,39 +97,17 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(74, 8);
+            this.textBox1.Location = new System.Drawing.Point(74, 9);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(590, 22);
+            this.textBox1.Size = new System.Drawing.Size(590, 20);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "C:\\Users\\RockTitan\\Desktop\\C# Practice\\MDT test\\CIMAS-CV-141-14R001.MDT";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(12, 66);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(140, 244);
-            this.listBox1.TabIndex = 3;
-            // 
-            // listBox2
-            // 
-            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.HorizontalScrollbar = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(172, 66);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(152, 244);
-            this.listBox2.TabIndex = 4;
+            this.textBox1.Text = "C:\\Users\\56116\\Desktop\\4A案發生過問題模型\\PR-11\\20180302\\PR-11\\PR-11.MDT";
             // 
             // BtnSelectFile
             // 
-            this.BtnSelectFile.Location = new System.Drawing.Point(670, 8);
+            this.BtnSelectFile.Location = new System.Drawing.Point(670, 7);
             this.BtnSelectFile.Name = "BtnSelectFile";
-            this.BtnSelectFile.Size = new System.Drawing.Size(25, 21);
+            this.BtnSelectFile.Size = new System.Drawing.Size(25, 23);
             this.BtnSelectFile.TabIndex = 5;
             this.BtnSelectFile.Text = "...";
             this.BtnSelectFile.UseVisualStyleBackColor = true;
@@ -137,81 +116,52 @@
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 12;
-            this.listBox3.Location = new System.Drawing.Point(12, 339);
+            this.listBox3.Location = new System.Drawing.Point(12, 499);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(196, 244);
+            this.listBox3.Size = new System.Drawing.Size(189, 147);
             this.listBox3.TabIndex = 6;
             // 
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 12;
-            this.listBox4.Location = new System.Drawing.Point(231, 339);
+            this.listBox4.Location = new System.Drawing.Point(231, 499);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(201, 244);
+            this.listBox4.Size = new System.Drawing.Size(194, 147);
             this.listBox4.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 313);
+            this.label2.Location = new System.Drawing.Point(9, 472);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(8, 12);
+            this.label2.Size = new System.Drawing.Size(10, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = " ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(170, 313);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(8, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = " ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 586);
+            this.label4.Location = new System.Drawing.Point(12, 649);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(8, 12);
+            this.label4.Size = new System.Drawing.Size(10, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = " ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(229, 586);
+            this.label5.Location = new System.Drawing.Point(228, 649);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(8, 12);
+            this.label5.Size = new System.Drawing.Size(10, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = " ";
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.ItemHeight = 12;
-            this.listBox5.Location = new System.Drawing.Point(458, 339);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(189, 244);
-            this.listBox5.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(456, 586);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(8, 12);
-            this.label6.TabIndex = 13;
-            this.label6.Text = " ";
             // 
             // BtnCloseForm1
             // 
             this.BtnCloseForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCloseForm1.Location = new System.Drawing.Point(1136, 615);
+            this.BtnCloseForm1.Location = new System.Drawing.Point(892, 667);
             this.BtnCloseForm1.Name = "BtnCloseForm1";
-            this.BtnCloseForm1.Size = new System.Drawing.Size(80, 28);
+            this.BtnCloseForm1.Size = new System.Drawing.Size(80, 30);
             this.BtnCloseForm1.TabIndex = 14;
             this.BtnCloseForm1.Text = "Close";
             this.BtnCloseForm1.UseVisualStyleBackColor = true;
@@ -220,9 +170,9 @@
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressBar1.Location = new System.Drawing.Point(14, 620);
+            this.progressBar1.Location = new System.Drawing.Point(12, 671);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(652, 23);
+            this.progressBar1.Size = new System.Drawing.Size(652, 25);
             this.progressBar1.TabIndex = 15;
             // 
             // dataGridView1
@@ -230,220 +180,298 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.startXDataGridViewTextBoxColumn,
-            this.startYDataGridViewTextBoxColumn,
-            this.startZDataGridViewTextBoxColumn,
-            this.endXDataGridViewTextBoxColumn,
-            this.endYDataGridViewTextBoxColumn,
-            this.endZDataGridViewTextBoxColumn,
-            this.gridDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn,
-            this.sPDataGridViewTextBoxColumn,
-            this.iTDataGridViewTextBoxColumn,
-            this.cPDataGridViewTextBoxColumn,
-            this.reflectDataGridViewTextBoxColumn,
-            this.ovXDataGridViewTextBoxColumn,
-            this.ovYDataGridViewTextBoxColumn,
-            this.ovZDataGridViewTextBoxColumn,
-            this.releaseSDataGridViewTextBoxColumn,
-            this.releaseEDataGridViewTextBoxColumn,
-            this.sectionDataGridViewTextBoxColumn,
-            this.materialDataGridViewTextBoxColumn,
-            this.materialGradeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataBindings.Add(new System.Windows.Forms.Binding("DataSource", this.majorPropertiesBindingSource, "ID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "Null"));
-            this.dataGridView1.DataSource = this.majorPropertiesBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(670, 66);
+            this.CountNo,
+            this.ID,
+            this.Section,
+            this.Material,
+            this.MaterialGrade,
+            this.StartX,
+            this.StartY,
+            this.StartZ,
+            this.EndX,
+            this.EndY,
+            this.EndZ,
+            this.Type,
+            this.SP,
+            this.IT,
+            this.CP,
+            this.Reflect,
+            this.OvX,
+            this.OvY,
+            this.OvZ,
+            this.ReleaseS,
+            this.ReleaseE,
+            this.Grid});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 42);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(542, 517);
+            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.Size = new System.Drawing.Size(959, 427);
             this.dataGridView1.TabIndex = 16;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.Width = 42;
-            // 
-            // startXDataGridViewTextBoxColumn
-            // 
-            this.startXDataGridViewTextBoxColumn.DataPropertyName = "StartX";
-            this.startXDataGridViewTextBoxColumn.HeaderText = "StartX";
-            this.startXDataGridViewTextBoxColumn.Name = "startXDataGridViewTextBoxColumn";
-            this.startXDataGridViewTextBoxColumn.Width = 59;
-            // 
-            // startYDataGridViewTextBoxColumn
-            // 
-            this.startYDataGridViewTextBoxColumn.DataPropertyName = "StartY";
-            this.startYDataGridViewTextBoxColumn.HeaderText = "StartY";
-            this.startYDataGridViewTextBoxColumn.Name = "startYDataGridViewTextBoxColumn";
-            this.startYDataGridViewTextBoxColumn.Width = 59;
-            // 
-            // startZDataGridViewTextBoxColumn
-            // 
-            this.startZDataGridViewTextBoxColumn.DataPropertyName = "StartZ";
-            this.startZDataGridViewTextBoxColumn.HeaderText = "StartZ";
-            this.startZDataGridViewTextBoxColumn.Name = "startZDataGridViewTextBoxColumn";
-            this.startZDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // endXDataGridViewTextBoxColumn
-            // 
-            this.endXDataGridViewTextBoxColumn.DataPropertyName = "EndX";
-            this.endXDataGridViewTextBoxColumn.HeaderText = "EndX";
-            this.endXDataGridViewTextBoxColumn.Name = "endXDataGridViewTextBoxColumn";
-            this.endXDataGridViewTextBoxColumn.Width = 57;
-            // 
-            // endYDataGridViewTextBoxColumn
-            // 
-            this.endYDataGridViewTextBoxColumn.DataPropertyName = "EndY";
-            this.endYDataGridViewTextBoxColumn.HeaderText = "EndY";
-            this.endYDataGridViewTextBoxColumn.Name = "endYDataGridViewTextBoxColumn";
-            this.endYDataGridViewTextBoxColumn.Width = 57;
-            // 
-            // endZDataGridViewTextBoxColumn
-            // 
-            this.endZDataGridViewTextBoxColumn.DataPropertyName = "EndZ";
-            this.endZDataGridViewTextBoxColumn.HeaderText = "EndZ";
-            this.endZDataGridViewTextBoxColumn.Name = "endZDataGridViewTextBoxColumn";
-            this.endZDataGridViewTextBoxColumn.Width = 56;
-            // 
-            // gridDataGridViewTextBoxColumn
-            // 
-            this.gridDataGridViewTextBoxColumn.DataPropertyName = "Grid";
-            this.gridDataGridViewTextBoxColumn.HeaderText = "Grid";
-            this.gridDataGridViewTextBoxColumn.Name = "gridDataGridViewTextBoxColumn";
-            this.gridDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.Width = 54;
-            // 
-            // sPDataGridViewTextBoxColumn
-            // 
-            this.sPDataGridViewTextBoxColumn.DataPropertyName = "SP";
-            this.sPDataGridViewTextBoxColumn.HeaderText = "SP";
-            this.sPDataGridViewTextBoxColumn.Name = "sPDataGridViewTextBoxColumn";
-            this.sPDataGridViewTextBoxColumn.Width = 42;
-            // 
-            // iTDataGridViewTextBoxColumn
-            // 
-            this.iTDataGridViewTextBoxColumn.DataPropertyName = "IT";
-            this.iTDataGridViewTextBoxColumn.HeaderText = "IT";
-            this.iTDataGridViewTextBoxColumn.Name = "iTDataGridViewTextBoxColumn";
-            this.iTDataGridViewTextBoxColumn.Width = 41;
-            // 
-            // cPDataGridViewTextBoxColumn
-            // 
-            this.cPDataGridViewTextBoxColumn.DataPropertyName = "CP";
-            this.cPDataGridViewTextBoxColumn.HeaderText = "CP";
-            this.cPDataGridViewTextBoxColumn.Name = "cPDataGridViewTextBoxColumn";
-            this.cPDataGridViewTextBoxColumn.Width = 44;
-            // 
-            // reflectDataGridViewTextBoxColumn
-            // 
-            this.reflectDataGridViewTextBoxColumn.DataPropertyName = "Reflect";
-            this.reflectDataGridViewTextBoxColumn.HeaderText = "Reflect";
-            this.reflectDataGridViewTextBoxColumn.Name = "reflectDataGridViewTextBoxColumn";
-            this.reflectDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // ovXDataGridViewTextBoxColumn
-            // 
-            this.ovXDataGridViewTextBoxColumn.DataPropertyName = "OvX";
-            this.ovXDataGridViewTextBoxColumn.HeaderText = "OvX";
-            this.ovXDataGridViewTextBoxColumn.Name = "ovXDataGridViewTextBoxColumn";
-            this.ovXDataGridViewTextBoxColumn.Width = 52;
-            // 
-            // ovYDataGridViewTextBoxColumn
-            // 
-            this.ovYDataGridViewTextBoxColumn.DataPropertyName = "OvY";
-            this.ovYDataGridViewTextBoxColumn.HeaderText = "OvY";
-            this.ovYDataGridViewTextBoxColumn.Name = "ovYDataGridViewTextBoxColumn";
-            this.ovYDataGridViewTextBoxColumn.Width = 52;
-            // 
-            // ovZDataGridViewTextBoxColumn
-            // 
-            this.ovZDataGridViewTextBoxColumn.DataPropertyName = "OvZ";
-            this.ovZDataGridViewTextBoxColumn.HeaderText = "OvZ";
-            this.ovZDataGridViewTextBoxColumn.Name = "ovZDataGridViewTextBoxColumn";
-            this.ovZDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // releaseSDataGridViewTextBoxColumn
-            // 
-            this.releaseSDataGridViewTextBoxColumn.DataPropertyName = "ReleaseS";
-            this.releaseSDataGridViewTextBoxColumn.HeaderText = "ReleaseS";
-            this.releaseSDataGridViewTextBoxColumn.Name = "releaseSDataGridViewTextBoxColumn";
-            this.releaseSDataGridViewTextBoxColumn.Width = 71;
-            // 
-            // releaseEDataGridViewTextBoxColumn
-            // 
-            this.releaseEDataGridViewTextBoxColumn.DataPropertyName = "ReleaseE";
-            this.releaseEDataGridViewTextBoxColumn.HeaderText = "ReleaseE";
-            this.releaseEDataGridViewTextBoxColumn.Name = "releaseEDataGridViewTextBoxColumn";
-            this.releaseEDataGridViewTextBoxColumn.Width = 72;
-            // 
-            // sectionDataGridViewTextBoxColumn
-            // 
-            this.sectionDataGridViewTextBoxColumn.DataPropertyName = "Section";
-            this.sectionDataGridViewTextBoxColumn.HeaderText = "Section";
-            this.sectionDataGridViewTextBoxColumn.Name = "sectionDataGridViewTextBoxColumn";
-            this.sectionDataGridViewTextBoxColumn.Width = 64;
-            // 
-            // materialDataGridViewTextBoxColumn
-            // 
-            this.materialDataGridViewTextBoxColumn.DataPropertyName = "Material";
-            this.materialDataGridViewTextBoxColumn.HeaderText = "Material";
-            this.materialDataGridViewTextBoxColumn.Name = "materialDataGridViewTextBoxColumn";
-            this.materialDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // materialGradeDataGridViewTextBoxColumn
-            // 
-            this.materialGradeDataGridViewTextBoxColumn.DataPropertyName = "MaterialGrade";
-            this.materialGradeDataGridViewTextBoxColumn.HeaderText = "MaterialGrade";
-            this.materialGradeDataGridViewTextBoxColumn.Name = "materialGradeDataGridViewTextBoxColumn";
-            this.materialGradeDataGridViewTextBoxColumn.Width = 96;
             // 
             // majorPropertiesBindingSource
             // 
             this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
             // 
+            // CountNo
+            // 
+            this.CountNo.FillWeight = 40F;
+            this.CountNo.HeaderText = "Count No.";
+            this.CountNo.MinimumWidth = 40;
+            this.CountNo.Name = "CountNo";
+            this.CountNo.ReadOnly = true;
+            this.CountNo.Width = 40;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.FillWeight = 40F;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 50;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
+            // 
+            // Section
+            // 
+            this.Section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Section.FillWeight = 60F;
+            this.Section.HeaderText = "Section";
+            this.Section.MinimumWidth = 60;
+            this.Section.Name = "Section";
+            this.Section.ReadOnly = true;
+            this.Section.Width = 68;
+            // 
+            // Material
+            // 
+            this.Material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Material.FillWeight = 50F;
+            this.Material.HeaderText = "Material";
+            this.Material.MinimumWidth = 50;
+            this.Material.Name = "Material";
+            this.Material.ReadOnly = true;
+            this.Material.Width = 50;
+            // 
+            // MaterialGrade
+            // 
+            this.MaterialGrade.FillWeight = 45F;
+            this.MaterialGrade.HeaderText = "Grade";
+            this.MaterialGrade.MinimumWidth = 45;
+            this.MaterialGrade.Name = "MaterialGrade";
+            this.MaterialGrade.ReadOnly = true;
+            this.MaterialGrade.Width = 45;
+            // 
+            // StartX
+            // 
+            this.StartX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StartX.FillWeight = 40F;
+            this.StartX.HeaderText = "StartX";
+            this.StartX.MinimumWidth = 40;
+            this.StartX.Name = "StartX";
+            this.StartX.ReadOnly = true;
+            this.StartX.Width = 61;
+            // 
+            // StartY
+            // 
+            this.StartY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StartY.FillWeight = 40F;
+            this.StartY.HeaderText = "StartY";
+            this.StartY.MinimumWidth = 40;
+            this.StartY.Name = "StartY";
+            this.StartY.ReadOnly = true;
+            this.StartY.Width = 61;
+            // 
+            // StartZ
+            // 
+            this.StartZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StartZ.FillWeight = 40F;
+            this.StartZ.HeaderText = "StartZ";
+            this.StartZ.MinimumWidth = 40;
+            this.StartZ.Name = "StartZ";
+            this.StartZ.ReadOnly = true;
+            this.StartZ.Width = 61;
+            // 
+            // EndX
+            // 
+            this.EndX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EndX.FillWeight = 40F;
+            this.EndX.HeaderText = "EndX";
+            this.EndX.MinimumWidth = 40;
+            this.EndX.Name = "EndX";
+            this.EndX.ReadOnly = true;
+            this.EndX.Width = 58;
+            // 
+            // EndY
+            // 
+            this.EndY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EndY.FillWeight = 40F;
+            this.EndY.HeaderText = "EndY";
+            this.EndY.MinimumWidth = 40;
+            this.EndY.Name = "EndY";
+            this.EndY.ReadOnly = true;
+            this.EndY.Width = 58;
+            // 
+            // EndZ
+            // 
+            this.EndZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EndZ.FillWeight = 40F;
+            this.EndZ.HeaderText = "EndZ";
+            this.EndZ.MinimumWidth = 40;
+            this.EndZ.Name = "EndZ";
+            this.EndZ.ReadOnly = true;
+            this.EndZ.Width = 58;
+            // 
+            // Type
+            // 
+            this.Type.FillWeight = 30F;
+            this.Type.HeaderText = "Type";
+            this.Type.MinimumWidth = 38;
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Width = 38;
+            // 
+            // SP
+            // 
+            this.SP.FillWeight = 30F;
+            this.SP.HeaderText = "SP";
+            this.SP.MinimumWidth = 30;
+            this.SP.Name = "SP";
+            this.SP.ReadOnly = true;
+            this.SP.Width = 30;
+            // 
+            // IT
+            // 
+            this.IT.FillWeight = 30F;
+            this.IT.HeaderText = "IT";
+            this.IT.MinimumWidth = 30;
+            this.IT.Name = "IT";
+            this.IT.ReadOnly = true;
+            this.IT.Width = 30;
+            // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.MinimumWidth = 30;
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            this.CP.Width = 30;
+            // 
+            // Reflect
+            // 
+            this.Reflect.HeaderText = "Reflect";
+            this.Reflect.MinimumWidth = 47;
+            this.Reflect.Name = "Reflect";
+            this.Reflect.ReadOnly = true;
+            this.Reflect.Width = 47;
+            // 
+            // OvX
+            // 
+            this.OvX.FillWeight = 30F;
+            this.OvX.HeaderText = "OvX";
+            this.OvX.MinimumWidth = 35;
+            this.OvX.Name = "OvX";
+            this.OvX.ReadOnly = true;
+            this.OvX.Width = 35;
+            // 
+            // OvY
+            // 
+            this.OvY.FillWeight = 30F;
+            this.OvY.HeaderText = "OvY";
+            this.OvY.MinimumWidth = 35;
+            this.OvY.Name = "OvY";
+            this.OvY.ReadOnly = true;
+            this.OvY.Width = 35;
+            // 
+            // OvZ
+            // 
+            this.OvZ.FillWeight = 30F;
+            this.OvZ.HeaderText = "OvZ";
+            this.OvZ.MinimumWidth = 35;
+            this.OvZ.Name = "OvZ";
+            this.OvZ.ReadOnly = true;
+            this.OvZ.Width = 35;
+            // 
+            // ReleaseS
+            // 
+            this.ReleaseS.FillWeight = 50F;
+            this.ReleaseS.HeaderText = "Release Start";
+            this.ReleaseS.MinimumWidth = 50;
+            this.ReleaseS.Name = "ReleaseS";
+            this.ReleaseS.ReadOnly = true;
+            this.ReleaseS.Width = 50;
+            // 
+            // ReleaseE
+            // 
+            this.ReleaseE.FillWeight = 50F;
+            this.ReleaseE.HeaderText = "Release End";
+            this.ReleaseE.MinimumWidth = 50;
+            this.ReleaseE.Name = "ReleaseE";
+            this.ReleaseE.ReadOnly = true;
+            this.ReleaseE.Width = 50;
+            // 
+            // Grid
+            // 
+            this.Grid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Grid.FillWeight = 50F;
+            this.Grid.HeaderText = "Grid";
+            this.Grid.Name = "Grid";
+            this.Grid.ReadOnly = true;
+            this.Grid.Width = 51;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 655);
+            this.ClientSize = new System.Drawing.Size(984, 711);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.BtnCloseForm1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.BtnSelectFile);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnConvert);
+            this.MinimumSize = new System.Drawing.Size(1000, 750);
             this.Name = "Form1";
             this.Text = "PDMS Import Structure V1.0";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -455,42 +483,39 @@
         private System.Windows.Forms.Button BtnConvert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button BtnSelectFile;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBox5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BtnCloseForm1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource majorPropertiesBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startXDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startZDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endXDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endZDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iTDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reflectDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ovXDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ovYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ovZDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn releaseSDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn releaseEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sectionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn materialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn materialGradeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource PropertiesBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CountNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialGrade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reflect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OvX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OvY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OvZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReleaseS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReleaseE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grid;
     }
 }
 

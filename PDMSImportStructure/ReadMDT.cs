@@ -17,8 +17,9 @@ namespace PDMSImportStructure
         public static List<string> MaterialGradeList = new List<string>();
         //public static List<SectionList> SectionList = new List<SectionList>();
         public static List<string> SectionList = new List<string>();
-        public static List<MajorProperties> PropertiesList = new List<MajorProperties>();
-        
+        public static IList<MajorProperties> PropertiesList = new List<MajorProperties>();
+
+        public MajorProperties aaa = new MajorProperties();
 
         public static void ReadMDTfile(string content, out string Message)
         {
@@ -41,7 +42,7 @@ namespace PDMSImportStructure
 
             foreach (Match match in MatCodeData)
             {
-                string MatCodeNo = match.Groups["MatCodeNo"].Value; //未使用, 目前用陣列索引, 非對照
+                string MatCodeNo = match.Groups["MatCodeNo"].Value; //未使用, 目前用索引子查找, 非對照
                 string Material = match.Groups["Material"].Value;
 
                 MatCodeList.Add(Material);
@@ -49,7 +50,7 @@ namespace PDMSImportStructure
 
             foreach (Match match in MatData)
             {
-                string MatItemNo = match.Groups["MatItemNo"].Value; //未使用, 目前用陣列索引, 非對照
+                string MatItemNo = match.Groups["MatItemNo"].Value; //未使用, 目前用索引子查找, 非對照
                 string MatCode = match.Groups["MatCode"].Value;
                 string MatGrade = match.Groups["MatGrade"].Value;
 
@@ -59,17 +60,17 @@ namespace PDMSImportStructure
                 //string[,] ArrMat = new string[,] { { MatItemNo, MatCode, MatGrade } };
                 //string listBox3Text = (ArrMat[0, 0] + "  " + ArrMat[0, 1] + "  " + ArrMat[0, 2]);
             }
-            
+
             foreach (Match match in SectionData)
             {
                 //SectionList.Add(new SectionList
                 //{
-                //    SectionItemNo = match.Groups["SectionItemNo"].Value, //重複暫不使用
-                //    CompSection = match.Groups["compSection"].Value //重複暫不使用
+                //    SectionItemNo = match.Groups["SectionItemNo"].Value,
+                //    CompSection = match.Groups["compSection"].Value
                 //});
 
-                string SectionItemNo = match.Groups["SectionItemNo"].Value; //重複暫不使用, 未使用, 目前用陣列索引, 非對照
-                string CompSection = match.Groups["compSection"].Value; //重複暫不使用
+                string SectionItemNo = match.Groups["SectionItemNo"].Value; //重複暫不使用, 未使用, 目前用索引子查找, 非對照
+                string CompSection = match.Groups["compSection"].Value; //比對Section使用
 
                 SectionList.Add(CompSection);
 
@@ -85,59 +86,90 @@ namespace PDMSImportStructure
 
             for (int i = 0; i < MDLData.Count; i++)
             {
-                if (MDLData[i].Groups["ID"].Value != PhyMembData[i].Groups["compID"].Value)
+                //MDL Data properties
+                string ID = MDLData[i].Groups["ID"].Value;
+                string MaterialCode = MDLData[i].Groups["MT"].Value;
+                string SectionCode = MDLData[i].Groups["SEC"].Value;
+                double StartX = Convert.ToDouble(MDLData[i].Groups["Start_X"].Value);
+                double StartY = Convert.ToDouble(MDLData[i].Groups["Start_Y"].Value);
+                double StartZ = Convert.ToDouble(MDLData[i].Groups["Start_Z"].Value);
+                double EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value);
+                double EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value);
+                double EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value);
+                string Grid = MDLData[i].Groups["Grid"].Value;
+                //Phy Memb Data properties
+                string CompID = PhyMembData[i].Groups["compID"].Value; //比對ID使用
+                string NodeS = PhyMembData[i].Groups["Node_Start"].Value; //重複暫不使用
+                string NodeE = PhyMembData[i].Groups["Node_End"].Value; //重複暫不使用
+                string Type = PhyMembData[i].Groups["TP"].Value;
+                string SP = PhyMembData[i].Groups["SP"].Value;
+                double IT = Convert.ToDouble(PhyMembData[i].Groups["IT"].Value); //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
+                string MAT = PhyMembData[i].Groups["MAT"].Value; //重複暫不使用
+                string CP = PhyMembData[i].Groups["CP"].Value; // 1~10
+                string Reflect = PhyMembData[i].Groups["Reflect"].Value; // Y/N
+                double OvX = Convert.ToDouble(PhyMembData[i].Groups["OvX"].Value);
+                double OvY = Convert.ToDouble(PhyMembData[i].Groups["OvY"].Value);
+                double OvZ = Convert.ToDouble(PhyMembData[i].Groups["OvZ"].Value);
+                string ReleaseS = PhyMembData[i].Groups["Release_Start"].Value;
+                string ReleaseSNo = PhyMembData[i].Groups["Release_Start_NO"].Value;
+                string ReleaseE = PhyMembData[i].Groups["Release_End"].Value;
+                string ReleaseENo = PhyMembData[i].Groups["Release_End_NO"].Value;
+                double SR = Convert.ToDouble(PhyMembData[i].Groups["SR"].Value); //stress ratio; no use for PDMS
+                string Section = PhyMembData[i].Groups["Section"].Value;
+                //additional properties
+                string CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1]; //比對Section使用
+                string Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
+                string MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
+
+                if (ID != CompID)
                 {
-                    Message = string.Format("ERROR! Member ID ({1} - {2}) doesn't match, please check member data and quantity. (count : {0})", (i + 1).ToString(), MDLData[i].Groups["ID"].Value, PhyMembData[i].Groups["compID"].Value);
+                    Message = string.Format("ERROR! Member ID ({1} - {2}) doesn't match, please check member data and quantity. (count : {0})", (i + 1).ToString(), ID, CompID);
                     break;
                 }
-                else if (SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1] != PhyMembData[i].Groups["Section"].Value)
+                else if (CompSection != Section)
                 {
-                    Message = string.Format("ERROR! Member section ({1} - {2}) doesn't match, please check member data. (count : {0})", (i + 1).ToString(), SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1], PhyMembData[i].Groups["Section"].Value);
+                    Message = string.Format("ERROR! Member section ({1} - {2}) doesn't match, please check member data. (count : {0})", (i + 1).ToString(), CompSection, Section);
                     break;
                 }
 
                 PropertiesList.Add(new MajorProperties
                 {
-                    ID = MDLData[i].Groups["ID"].Value,
-                    MaterialCode = MDLData[i].Groups["MT"].Value,
-                    SectionCode = MDLData[i].Groups["SEC"].Value,
-                    StartX = Convert.ToDouble(MDLData[i].Groups["Start_X"].Value),
-                    StartY = Convert.ToDouble(MDLData[i].Groups["Start_Y"].Value),
-                    StartZ = Convert.ToDouble(MDLData[i].Groups["Start_Z"].Value),
-                    EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value),
-                    EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value),
-                    EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value),
-                    Grid = MDLData[i].Groups["Grid"].Value,
                     //
-                    CompID = PhyMembData[i].Groups["compID"].Value, //比對ID使用
-                    NodeS = PhyMembData[i].Groups["Node_Start"].Value, //重複暫不使用
-                    NodeE = PhyMembData[i].Groups["Node_End"].Value, //重複暫不使用
-                    Type = PhyMembData[i].Groups["TP"].Value,
-                    SP = PhyMembData[i].Groups["SP"].Value,
-                    IT = Convert.ToDouble(PhyMembData[i].Groups["IT"].Value), //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
-                    MAT = PhyMembData[i].Groups["MAT"].Value, //重複暫不使用
-                    CP = PhyMembData[i].Groups["CP"].Value, // 1~10
-                    Reflect = PhyMembData[i].Groups["Reflect"].Value, // Y/N
-                    OvX = Convert.ToDouble(PhyMembData[i].Groups["OvX"].Value),
-                    OvY = Convert.ToDouble(PhyMembData[i].Groups["OvY"].Value),
-                    OvZ = Convert.ToDouble(PhyMembData[i].Groups["OvZ"].Value),
-                    ReleaseS = PhyMembData[i].Groups["Release_Start"].Value,
-                    ReleaseSNo = PhyMembData[i].Groups["Release_Start_NO"].Value,
-                    ReleaseE = PhyMembData[i].Groups["Release_End"].Value,
-                    ReleaseENo = PhyMembData[i].Groups["Release_End_NO"].Value,
-                    SR = Convert.ToDouble(PhyMembData[i].Groups["SR"].Value), //stress ratio, no use for PDMS
-                    Section = PhyMembData[i].Groups["Section"].Value,
+                    ID = ID,
+                    MaterialCode = MaterialCode,
+                    SectionCode = SectionCode,
+                    StartX = StartX,
+                    StartY = StartY,
+                    StartZ = StartZ,
+                    EndX = EndX,
+                    EndY = EndY,
+                    EndZ = EndZ,
+                    Grid = Grid,
                     //
-                    CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1], //比對Section使用
-                    Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1],
-                    MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1]
+                    CompID = CompID,
+                    NodeS = NodeS,
+                    NodeE = NodeE,
+                    Type = Type,
+                    SP = SP,
+                    IT = IT,
+                    MAT = MAT,
+                    CP = CP,
+                    Reflect = Reflect,
+                    OvX = OvX,
+                    OvY = OvY,
+                    OvZ = OvZ,
+                    ReleaseS = ReleaseS,
+                    ReleaseSNo = ReleaseSNo,
+                    ReleaseE = ReleaseE,
+                    ReleaseENo = ReleaseENo,
+                    SR = SR,
+                    Section = Section,
+                    //
+                    CompSection = CompSection,
+                    Material = Material,
+                    MaterialGrade = MaterialGrade
                 });
             }
         }
-    }
-
-    public class ReadMDTs : ObservableCollection<ReadMDT>
-    {
-
     }
 }

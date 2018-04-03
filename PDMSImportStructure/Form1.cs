@@ -9,15 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace PDMSImportStructure
 {
     public partial class Form1 : Form
     {
-        public static ReadMDTs MatchList = new ReadMDTs();
-        List<string> IDList = new List<string>();
-
         public Form1()
         {
             InitializeComponent();
@@ -46,6 +42,8 @@ namespace PDMSImportStructure
             string MDTfilePath = Path.GetDirectoryName(MDTfile);
             string MDTfileName = Path.GetFileName(MDTfile);
 
+            BindingSource bs = new BindingSource(); //實體化BindingSource類別為bs物件
+
             using (StreamReader sr = new StreamReader(MDTfile))
             {
                 string content = sr.ReadToEnd();
@@ -56,29 +54,60 @@ namespace PDMSImportStructure
                     MessageBox.Show(Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                //TODO
+                bs.DataSource = ReadMDT.PropertiesList;
                 
+
                 int i = 1;
-                listBox1.Items.Clear();
+                //int j = 0;
+                dataGridView1.Rows.Clear();
                 foreach (var item in ReadMDT.PropertiesList)
                 {
-                    listBox1.Items.Add(i++ + " " + item.ID + " " + item.Section);
+                    dataGridView1.Rows.Add(
+                        i,
+                        item.ID,
+                        item.Section,
+                        item.Material,
+                        item.MaterialGrade,
+                        item.StartX,
+                        item.StartY,
+                        item.StartZ,
+                        item.EndX,
+                        item.EndY,
+                        item.EndZ,
+                        item.Type,
+                        item.SP,
+                        item.IT,
+                        item.CP,
+                        item.Reflect,
+                        item.OvX,
+                        item.OvY,
+                        item.OvZ,
+                        item.ReleaseS,
+                        item.ReleaseE,
+                        item.Grid
+                        );
                     //dataGridView1.Rows.Add();
+                    //DataGridViewCell cell = dataGridView1.Rows[i - 1].Cells[0];
+                    //cell.Value = item.ID;
+                    i++;
                 }
                 label2.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
 
-                int j = 1;
+                int k = 1;
                 listBox3.Items.Clear();
                 foreach (var item in ReadMDT.SectionList)
                 {
-                    listBox3.Items.Add(j++ + " " + item);
+                    listBox3.Items.Add(k++ + " " + item);
                 }
                 label4.Text = "Number of used section : " + ReadMDT.SectionList.Count.ToString();
 
-                int k = 1;
+                int l = 1;
                 listBox4.Items.Clear();
                 foreach (var item in ReadMDT.MaterialGradeList)
                 {
-                    listBox4.Items.Add(k++ + " " + item);
+                    listBox4.Items.Add(l++ + " " + item);
                 }
                 label5.Text = "Number of used material grade : " + ReadMDT.MaterialGradeList.Count.ToString();
 
