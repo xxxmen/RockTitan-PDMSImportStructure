@@ -1,0 +1,199 @@
+
+mm dist
+var !list COLL ALL  with ( NAME EQ '/PR-11/MAINFRAME' ) for $!!CE
+!size = !list.size()
+if(!size eq 1) then
+/PR-11/MAINFRAME
+!cename = !!CE.Name
+  var !list COLL ALL(FITT) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete FITT
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete SCTN
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(SBFR) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete SBFR
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(FRMW) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete FRMW
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(STRU) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete STRU
+enddo
+!list.clear()
+savework
+$!cename
+delete ZONE
+savework
+endif
+NEW ZONE  /PR-11/MAINFRAME
+    PURP STL
+$*    steel_col_el                  300.000  :   18
+      NEW STRU  /PR-11/STL_FRAME/EL300.000
+                 PURP CSTL
+      NEW FRMW  /PR-11/S_EL300.000/ELEVIEW
+                 PURP SELE
+      NEW SBFR  /PR-11/S_EL300.000/COLUMN
+                 PURP COLN
+        NEW SCTN /PR-11/STL_COL_I/G_#511631
+          POSS  E10670.00      N18230.00      U300.00         POSE  E10670.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'G-I   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#511916
+          POSS  E10670.00      N24230.00      U300.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'H-I   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512023
+          POSS  E4230.00      N18230.00      U300.00         POSE  E4230.00      N18230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'G-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512025
+          POSS  E4230.00      N24230.00      U300.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'H-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512046
+          POSS  E-5470.00      N18230.00      U300.00         POSE  E-5470.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'G-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512048
+          POSS  E-5470.00      N24230.00      U300.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'H-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512357
+          POSS  E4230.00      N31480.00      U300.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'J-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512359
+          POSS  E-5470.00      N31480.00      U300.00         POSE  E-5470.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'J-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512383
+          POSS  E4230.00      N38730.00      U300.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'K-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512385
+          POSS  E-5470.00      N38730.00      U300.00         POSE  E-5470.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'K-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512407
+          POSS  E4230.00      N47630.00      U300.00         POSE  E4230.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'L-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512409
+          POSS  E-5470.00      N47630.00      U300.00         POSE  E-5470.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'L-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512478
+          POSS  E4230.00      N53630.00      U300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'M-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512480
+          POSS  E-5470.00      N53630.00      U300.00         POSE  E-5470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'M-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512584
+          POSS  E12930.00      N47630.00      U300.00         POSE  E12930.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'L-13  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#512586
+          POSS  E12930.00      N53630.00      U300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'M-13  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#538056
+          POSS  E120.00      N31480.00      U6000.00         POSE  E120.00      N31480.00      U8594.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'J-S6  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#576096
+          POSS  E30.00      N18230.00      U300.00         POSE  E30.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'G-21  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#576126
+          POSS  E30.00      N24230.00      U300.00         POSE  E30.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'H-21  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_I/G_#1063522
+          POSS  E-1720.00      N53630.00      U9000.00         POSE  E-1720.00      N53630.00      U12944.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'COLUMN'  DESC  'M-20180208'
+          CTYS FIX    CTYE FIX
+        END
+
+      END
+     END
+    END
+/PR-11/MAINFRAME
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !pos = !!CE.pos
+  !pos.east = NINT(!pos.east)
+  !pos.north = NINT(!pos.north)
+  !!CE.pos = !pos
+enddo
+
+/PR-11/MAINFRAME
+var !list COLL ALL(SCTN) with (func eq 'BEAM' or func eq 'BRACE') for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !gamma = !!CE.ori.gamma
+  -- less than 45 degree wrt n-axis
+  if(ABS(SIN(!gamma)) lt 0.7) then
+    drnstart n
+    drnend n
+  endif
+enddo
+

@@ -43,6 +43,7 @@ namespace PDMSImportStructure
         public string CompSection { get; set; } //比對Section使用
         public string Material { get; set; }
         public string MaterialGrade { get; set; }
+        public double MemberLength { get; set; }
     }
 
     //public struct MinorProperties

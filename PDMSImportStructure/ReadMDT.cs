@@ -17,12 +17,17 @@ namespace PDMSImportStructure
         public static List<string> MaterialGradeList = new List<string>();
         //public static List<SectionList> SectionList = new List<SectionList>();
         public static List<string> SectionList = new List<string>();
-        public static IList<MajorProperties> PropertiesList = new List<MajorProperties>();
+        public static List<MajorProperties> PropertiesList = new List<MajorProperties>();
 
-        public MajorProperties aaa = new MajorProperties();
-
-        public static void ReadMDTfile(string content, out string Message)
+        public static void ReadMDTfile(string MDTfile, out string Message)
         {
+            string content = string.Empty;
+            using (StreamReader sr = new StreamReader(MDTfile))
+            {
+                content = sr.ReadToEnd();
+                sr.Close();
+            }
+
             var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
             var MDLData = Regex.Matches(content, patternMDLData);
 
@@ -96,7 +101,7 @@ namespace PDMSImportStructure
                 double EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value);
                 double EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value);
                 double EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value);
-                string Grid = MDLData[i].Groups["Grid"].Value;
+                string Grid = MDLData[i].Groups["Grid"].Value.Replace("\r\n", ""); //Replace去掉換行符號
                 //Phy Memb Data properties
                 string CompID = PhyMembData[i].Groups["compID"].Value; //比對ID使用
                 string NodeS = PhyMembData[i].Groups["Node_Start"].Value; //重複暫不使用
@@ -120,6 +125,7 @@ namespace PDMSImportStructure
                 string CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1]; //比對Section使用
                 string Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
                 string MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
+                double MemberLength = Math.Round(Math.Sqrt(Math.Pow(EndX - StartX, 2) + Math.Pow(EndY - StartY, 2) + Math.Pow(EndZ - StartZ, 2)), 2);
 
                 if (ID != CompID)
                 {
@@ -167,7 +173,8 @@ namespace PDMSImportStructure
                     //
                     CompSection = CompSection,
                     Material = Material,
-                    MaterialGrade = MaterialGrade
+                    MaterialGrade = MaterialGrade,
+                    MemberLength = MemberLength
                 });
             }
         }
