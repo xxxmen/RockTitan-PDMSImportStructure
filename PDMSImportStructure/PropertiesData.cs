@@ -44,6 +44,9 @@ namespace PDMSImportStructure
         public string Material { get; set; }
         public string MaterialGrade { get; set; }
         public double MemberLength { get; set; }
+        public string ConnTypeS { get; set; }
+        public string ConnTypeE { get; set; }
+        public string SectionHeader { get; set; }
     }
 
     //public struct MinorProperties

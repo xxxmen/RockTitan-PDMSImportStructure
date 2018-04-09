@@ -78,7 +78,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\BindingSourceClass.datasource" />
     <None Include="Properties\DataSources\MajorProperties.datasource" />
     <None Include="Properties\DataSources\ReadMDT.datasource" />
     <None Include="Properties\Settings.settings">

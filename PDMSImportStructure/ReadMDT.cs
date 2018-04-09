@@ -126,7 +126,15 @@ namespace PDMSImportStructure
                 string Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
                 string MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
                 double MemberLength = Math.Round(Math.Sqrt(Math.Pow(EndX - StartX, 2) + Math.Pow(EndY - StartY, 2) + Math.Pow(EndZ - StartZ, 2)), 2);
+                string ConnTypeS = "HING";
+                if (ReleaseS == "------") { ConnTypeS = "FIX"; } else if (ReleaseS == "RRRRRR") { ConnTypeS = "FREE"; }
+                string ConnTypeE = "HING";
+                if (ReleaseE == "------") { ConnTypeE = "FIX"; } else if (ReleaseE == "RRRRRR") { ConnTypeE = "FREE"; }
+                var patternSectionHeader = @"(?<SecHead>[A-Z]*[2]*[A-Z]+)(?<T1>[0-9\.\/\-]+[ABCDEM]?)(?<D1>[Xx\*])?(?<T2>[0-9\.\/\-]+[ABCDEM]?)?(?<D2>[Xx\*])?(?<T3>[0-9\.\/\-]+[ABCDEM]?)?(?<D3>[Xx\*])?(?<T4>[0-9\.\/\-]+[ABCM]?)?(?<T5>[DPTW]+[0-9]*)?";
+                var MatSection = Regex.Match(Section, patternSectionHeader);
+                string SectionHeader = MatSection.Groups["SecHead"].Value;
 
+                //check data
                 if (ID != CompID)
                 {
                     Message = string.Format("ERROR! Member ID ({1} - {2}) doesn't match, please check member data and quantity. (count : {0})", (i + 1).ToString(), ID, CompID);
@@ -174,7 +182,10 @@ namespace PDMSImportStructure
                     CompSection = CompSection,
                     Material = Material,
                     MaterialGrade = MaterialGrade,
-                    MemberLength = MemberLength
+                    MemberLength = MemberLength,
+                    ConnTypeS = ConnTypeS,
+                    ConnTypeE = ConnTypeE,
+                    SectionHeader = SectionHeader
                 });
             }
         }

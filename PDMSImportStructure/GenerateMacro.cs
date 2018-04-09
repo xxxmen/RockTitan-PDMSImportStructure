@@ -117,7 +117,7 @@ namespace PDMSImportStructure
             //string projectBaseInfo = ori + pos;
             //string signature = string.Format("\ndesc \'REVIT_UID:{0}_STR-{2} OWNER:{1}\'\n", mainframePrefix, this.context.client.user.ID, partNo);
 
-            string MACcontentCOL = string.Empty;
+            string MACcontentCOLMemb = string.Empty;
             foreach (var item in ReadMDT.PropertiesList)
             {
                 if (item.Type == "C")
@@ -126,16 +126,14 @@ namespace PDMSImportStructure
                         string.Format("        NEW SCTN /{0}/STL_COL_{2}/#{1}", mainframePrefix, item.ID, item.Grid),
                         string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", item.StartX.ToString("f2"), item.StartY.ToString("f2"), item.StartZ.ToString("f2"), item.EndX.ToString("f2"), item.EndY.ToString("f2"), item.EndZ.ToString("f2")),
                         string.Format("          SPRE  SPCO  /CTCV-SPEC/{0}         JUSL  {1}    BANG   {2}  FUNC  'COLUMN'  DESC  '{3}'", item.Section, "NA", item.IT.ToString("f2"), item.Grid),
-                        "          CTYS FIX    CTYE FIX",
+                        string.Format("          CTYS {0}    CTYE {1}", item.ConnTypeS, item.ConnTypeE),
                         "        END\n"
                     };
-                    MACcontentCOL += string.Join("\n", colstrArray);
+                    MACcontentCOLMemb += string.Join("\n", colstrArray);
                 }
             }
 
-            string[] MACcontentArray = {
-                string.Format("NEW ZONE  /{0}/MAINFRAME", mainframePrefix),
-                "    PURP STL",
+            string[] MACcontentCOLArray = {
                 "$*    steel_col_el                  300.000  :   18",
                 "      NEW STRU  /PR-11/STL_FRAME/EL300.000",
                 "                 PURP CSTL",
@@ -143,13 +141,20 @@ namespace PDMSImportStructure
                 "                 PURP SELE",
                 "      NEW SBFR  /PR-11/S_EL300.000/COLUMN",
                 "                 PURP COLN",
-                MACcontentCOL,
-                "      END",
+                MACcontentCOLMemb + "      END",
                 "     END",
-                "    END"
+                "    END\n"
             };
+            string MACcontentCOL = string.Join("\n", MACcontentCOLArray);
 
+
+            string[] MACcontentArray = {
+                string.Format("NEW ZONE  /{0}/MAINFRAME", mainframePrefix),
+                "    PURP STL",
+                MACcontentCOL
+            };
             string MACcontent = string.Join("\n", MACcontentArray);
+
 
             using (StreamWriter sw = new StreamWriter(Form1.MDTfilePath + ((Form1.MDTfilePath == null) || (Form1.MDTfilePath == "") ? "" : @"\") + Form1.MDTfileNameWOExt + ".MAC"))
             {
