@@ -1,0 +1,6 @@
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\BindingCollection\bin\Debug\BindingCollection.dll
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\BindingCollection\bin\Debug\BindingCollection.pdb
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\BindingCollection\obj\Debug\SortableBindingList.csprojResolveAssemblyReference.cache
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\BindingCollection\obj\Debug\SortableBindingList.csproj.CoreCompileInputs.cache
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\BindingCollection\obj\Debug\BindingCollection.dll
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\BindingCollection\obj\Debug\BindingCollection.pdb

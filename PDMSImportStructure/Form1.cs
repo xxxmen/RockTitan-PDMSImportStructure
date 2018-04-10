@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
+using SortableBindingList;
 
 namespace PDMSImportStructure
 {
@@ -53,7 +54,14 @@ namespace PDMSImportStructure
             //majorPropertiesDataGridView.Rows.Clear(); //Binding時無法清除
             //majorPropertiesDataGridView.Rows.Add(i);
             majorPropertiesDataGridView.DataSource = null; //清除前一次DataGridView中資料
-            majorPropertiesDataGridView.DataSource = ReadMDT.PropertiesList;
+            //為了解決無法排序問題, 重做BindingCollection物件
+            BindingCollection<MajorProperties> objList = new BindingCollection<MajorProperties>();
+            foreach (MajorProperties item in ReadMDT.PropertiesList)
+            {
+                objList.Add(item);
+            }
+            majorPropertiesDataGridView.DataSource = objList; //填入List資料
+            //以迴圈方式一筆一筆填入資料, 效能差, 用上述替代
             //foreach (var item in ReadMDT.PropertiesList)
             //{
             //    dataGridView1.Rows.Add(

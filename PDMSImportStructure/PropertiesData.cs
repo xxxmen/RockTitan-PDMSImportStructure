@@ -48,6 +48,8 @@ namespace PDMSImportStructure
         public string ConnTypeS { get; set; }
         public string ConnTypeE { get; set; }
         public string SectionType { get; set; }
+        public int strCompHashCode { get; set; }
+        public string JUSLINE { get; set; }
     }
 
     //public struct MinorProperties

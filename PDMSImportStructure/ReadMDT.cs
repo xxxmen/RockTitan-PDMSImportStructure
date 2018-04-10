@@ -96,6 +96,7 @@ namespace PDMSImportStructure
             PropertiesList.Clear();
             for (int i = 0; i < MDLData.Count; i++)
             {
+                int countNo = i + 1;
                 //MDL Data properties
                 string ID = MDLData[i].Groups["ID"].Value;
                 string MaterialCode = MDLData[i].Groups["MT"].Value;
@@ -151,14 +152,14 @@ namespace PDMSImportStructure
                 }
                 //依照斷面名稱頭判斷Type
                 string SectionType = string.Empty;
-                if (SectionHeader == "H" || SectionHeader == "HE" || SectionHeader == "HEA" 
-                    || SectionHeader == "HEB" || SectionHeader == "HM" || SectionHeader == "HN" 
-                    || SectionHeader == "HP" || SectionHeader == "HSA" || SectionHeader == "HSH" 
-                    || SectionHeader == "HW" || SectionHeader == "I" || SectionHeader == "IPE" 
-                    || SectionHeader == "IPN" || SectionHeader == "ISHB" || SectionHeader == "ISJB" 
-                    || SectionHeader == "ISLB" || SectionHeader == "ISMB" || SectionHeader == "ISWB" 
-                    || SectionHeader == "M" || SectionHeader == "S" || SectionHeader == "UB" 
-                    || SectionHeader == "UBP" || SectionHeader == "UC" || SectionHeader == "UI" 
+                if (SectionHeader == "H" || SectionHeader == "HE" || SectionHeader == "HEA"
+                    || SectionHeader == "HEB" || SectionHeader == "HM" || SectionHeader == "HN"
+                    || SectionHeader == "HP" || SectionHeader == "HSA" || SectionHeader == "HSH"
+                    || SectionHeader == "HW" || SectionHeader == "I" || SectionHeader == "IPE"
+                    || SectionHeader == "IPN" || SectionHeader == "ISHB" || SectionHeader == "ISJB"
+                    || SectionHeader == "ISLB" || SectionHeader == "ISMB" || SectionHeader == "ISWB"
+                    || SectionHeader == "M" || SectionHeader == "S" || SectionHeader == "UB"
+                    || SectionHeader == "UBP" || SectionHeader == "UC" || SectionHeader == "UI"
                     || SectionHeader == "W" || SectionHeader == "WF")
                 {
                     SectionType = "H";
@@ -171,9 +172,9 @@ namespace PDMSImportStructure
                 {
                     SectionType = "RC-BOX-FB-SB";
                 }
-                else if (SectionHeader == "C" || SectionHeader == "ISJC" || SectionHeader == "ISLC" 
-                    || SectionHeader == "ISMC" || SectionHeader == "LC" || SectionHeader == "LPC" 
-                    || SectionHeader == "MC" || SectionHeader == "PFC" || SectionHeader == "RSC" 
+                else if (SectionHeader == "C" || SectionHeader == "ISJC" || SectionHeader == "ISLC"
+                    || SectionHeader == "ISMC" || SectionHeader == "LC" || SectionHeader == "LPC"
+                    || SectionHeader == "MC" || SectionHeader == "PFC" || SectionHeader == "RSC"
                     || SectionHeader == "U" || SectionHeader == "UPN")
                 {
                     SectionType = "C";
@@ -182,9 +183,9 @@ namespace PDMSImportStructure
                 {
                     SectionType = "2C";
                 }
-                else if (SectionHeader == "ISHT" || SectionHeader == "ISJT" || SectionHeader == "ISLT" 
-                    || SectionHeader == "ISMBT" || SectionHeader == "ISNT" || SectionHeader == "ISST" 
-                    || SectionHeader == "T" || SectionHeader == "TM" || SectionHeader == "TN" || SectionHeader == "TW" 
+                else if (SectionHeader == "ISHT" || SectionHeader == "ISJT" || SectionHeader == "ISLT"
+                    || SectionHeader == "ISMBT" || SectionHeader == "ISNT" || SectionHeader == "ISST"
+                    || SectionHeader == "T" || SectionHeader == "TM" || SectionHeader == "TN" || SectionHeader == "TW"
                     || SectionHeader == "UBT" || SectionHeader == "UCT" || SectionHeader == "WT")
                 {
                     SectionType = "T";
@@ -221,24 +222,202 @@ namespace PDMSImportStructure
                 {
                     SectionType = "RCD";
                 }
+                //JUSLINE / JUSL - Justification Line
+                string JUSLINE = string.Empty;
+                if (SectionType == "H" || SectionType == "BH" || SectionType == "T") //Generic Type: BEAM, TEE
+                {
+                    if (CP == "1") { JUSLINE = "LBOS"; }
+                    else if (CP == "2") { JUSLINE = "BOS"; }
+                    else if (CP == "3") { JUSLINE = "RBOS"; }
+                    else if (CP == "4") { JUSLINE = "NALO"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "NARO"; }
+                    else if (CP == "7") { JUSLINE = "LTOS"; }
+                    else if (CP == "8") { JUSLINE = "TOS"; }
+                    else if (CP == "9") { JUSLINE = "RTOS"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "XH") //Generic Type: BEAM, TEE
+                {
+                    if (CP == "1") { JUSLINE = "LBOS"; }
+                    else if (CP == "2") { JUSLINE = "BOS"; }
+                    else if (CP == "3") { JUSLINE = "RBOS"; }
+                    else if (CP == "4") { JUSLINE = "NALO"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "NARO"; }
+                    else if (CP == "7") { JUSLINE = "LTOS"; }
+                    else if (CP == "8") { JUSLINE = "TOS"; }
+                    else if (CP == "9") { JUSLINE = "RTOS"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "2T") //Generic Type: BEAM, TEE
+                {
+                    if (CP == "1") { JUSLINE = "LBOS"; }
+                    else if (CP == "2") { JUSLINE = "BOS"; }
+                    else if (CP == "3") { JUSLINE = "RBOS"; }
+                    else if (CP == "4") { JUSLINE = "NALO"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "NARO"; }
+                    else if (CP == "7") { JUSLINE = "LTOS"; }
+                    else if (CP == "8") { JUSLINE = "TOS"; }
+                    else if (CP == "9") { JUSLINE = "RTOS"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "RC-BOX-FB-SB") //Generic Type: BOX
+                {
+                    if (CP == "1") { JUSLINE = "LBOS"; }
+                    else if (CP == "2") { JUSLINE = "BOS"; }
+                    else if (CP == "3") { JUSLINE = "RBOS"; }
+                    else if (CP == "4") { JUSLINE = "LEFT"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "RIGH"; }
+                    else if (CP == "7") { JUSLINE = "LTOS"; }
+                    else if (CP == "8") { JUSLINE = "TOS"; }
+                    else if (CP == "9") { JUSLINE = "RTOS"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "C") //Generic Type: BSC, DINU //很亂待確認
+                {
+                    if (CP == "1") { JUSLINE = "LBOC"; }
+                    else if (CP == "2") { JUSLINE = "BOC"; }
+                    else if (CP == "3") { JUSLINE = "RBOC"; }
+                    else if (CP == "4") { JUSLINE = "FOC"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "ROC"; }
+                    else if (CP == "7") { JUSLINE = "LTOC"; }
+                    else if (CP == "8") { JUSLINE = "TOC"; }
+                    else if (CP == "9") { JUSLINE = "RTOC"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
 
+                    //check C orientation
+                    //if (CP == "1") { JUSLINE = "LTOC"; }
+                    //else if (CP == "2") { JUSLINE = "TOC"; }
+                    //else if (CP == "3") { JUSLINE = "RTOC"; }
+                    //else if (CP == "4") { JUSLINE = "FOC"; }
+                    //else if (CP == "5") { JUSLINE = "NA"; }
+                    //else if (CP == "6") { JUSLINE = "ROC"; }
+                    //else if (CP == "7") { JUSLINE = "LBOC"; }
+                    //else if (CP == "8") { JUSLINE = "BOC"; }
+                    //else if (CP == "9") { JUSLINE = "RBOC"; }
+                    //else if (CP == "10") { JUSLINE = "NA"; }
+                    //else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "L") //Generic Type: ANG //很亂待確認
+                {
+                    if (CP == "1") { JUSLINE = "TOAX"; }
+                    else if (CP == "2") { JUSLINE = "NAT"; }
+                    else if (CP == "3") { JUSLINE = "RTTA"; }
+                    else if (CP == "4") { JUSLINE = "NAL"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "NA"; }
+                    else if (CP == "7") { JUSLINE = "LBOA"; }
+                    else if (CP == "8") { JUSLINE = "NA"; }
+                    else if (CP == "9") { JUSLINE = "NA"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+
+                    //check L orientation
+                    //if (CP == "1") { JUSLINE = "LBOA"; }
+                    //else if (CP == "2") { JUSLINE = "NAB"; }
+                    //else if (CP == "3") { JUSLINE = "RBOA"; }
+                    //else if (CP == "4") { JUSLINE = "NAL"; }
+                    //else if (CP == "5") { JUSLINE = "NA"; }
+                    //else if (CP == "6") { JUSLINE = "NAR"; }
+                    //else if (CP == "7") { JUSLINE = "TOAX"; }
+                    //else if (CP == "8") { JUSLINE = "NAT"; }
+                    //else if (CP == "9") { JUSLINE = "RTTA"; }
+                    //else if (CP == "10") { JUSLINE = "NA"; }
+                    //else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "PIPE" || SectionType == "TUBE" || SectionType == "RB" || SectionType == "RCD") //Generic Type: TUBE
+                {
+                    if (CP == "1") { JUSLINE = "PP"; }
+                    else if (CP == "2") { JUSLINE = "SS"; }
+                    else if (CP == "3") { JUSLINE = "VV"; }
+                    else if (CP == "4") { JUSLINE = "MM"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "AA"; }
+                    else if (CP == "7") { JUSLINE = "JJ"; }
+                    else if (CP == "8") { JUSLINE = "GG"; }
+                    else if (CP == "9") { JUSLINE = "DD"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "2C") //Generic Type: BSC, DINU (4, 5, 6對NA) //很亂待確認
+                {
+                    if (CP == "1") { JUSLINE = "LBOC"; }
+                    else if (CP == "2") { JUSLINE = "BOC"; }
+                    else if (CP == "3") { JUSLINE = "RBOC"; }
+                    else if (CP == "4") { JUSLINE = "NA"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "NA"; }
+                    else if (CP == "7") { JUSLINE = "LTOC"; }
+                    else if (CP == "8") { JUSLINE = "TOC"; }
+                    else if (CP == "9") { JUSLINE = "RTOC"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+                }
+                else if (SectionType == "2L") //Generic Type: ANG //很亂待確認
+                {
+                    if (CP == "1") { JUSLINE = "RTTA"; }
+                    else if (CP == "2") { JUSLINE = "NAT"; }
+                    else if (CP == "3") { JUSLINE = "TOAY"; }
+                    else if (CP == "4") { JUSLINE = "NA"; }
+                    else if (CP == "5") { JUSLINE = "NA"; }
+                    else if (CP == "6") { JUSLINE = "NA"; }
+                    else if (CP == "7") { JUSLINE = "LBOA"; }
+                    else if (CP == "8") { JUSLINE = "NA"; }
+                    else if (CP == "9") { JUSLINE = "NA"; }
+                    else if (CP == "10") { JUSLINE = "NA"; }
+                    else { JUSLINE = "NA"; }
+
+                    //check L orientation
+                    //if (CP == "1") { JUSLINE = "LBOA"; }
+                    //else if (CP == "2") { JUSLINE = "NAB"; }
+                    //else if (CP == "3") { JUSLINE = "RBOA"; }
+                    //else if (CP == "4") { JUSLINE = "NAL"; }
+                    //else if (CP == "5") { JUSLINE = "NA"; }
+                    //else if (CP == "6") { JUSLINE = "NAR"; }
+                    //else if (CP == "7") { JUSLINE = "TOAX"; }
+                    //else if (CP == "8") { JUSLINE = "NAT"; }
+                    //else if (CP == "9") { JUSLINE = "RTTA"; }
+                    //else if (CP == "10") { JUSLINE = "NA"; }
+                    //else { JUSLINE = "NA"; }
+                }
+
+
+                //TODO:未完整
+                int strCompHashCode = (ID + StartX.ToString() + StartY.ToString() + StartZ.ToString() 
+                    + EndX.ToString() + EndY.ToString() + EndZ.ToString() + Grid + IT.ToString() 
+                    + CP + Reflect + OvX.ToString() + OvY.ToString() + OvZ.ToString() + ReleaseS + ReleaseE 
+                    + Section + Material + MaterialGrade).GetHashCode();
 
                 //check data
                 if (ID != CompID)
                 {
-                    Message = string.Format("ERROR! Member ID ({1} - {2}) doesn't match, please check member data and quantity. (count : {0})", (i + 1).ToString(), ID, CompID);
+                    Message = string.Format("ERROR! Member ID ({1} - {2}) doesn't match, please check member data and quantity. (count : {0})", countNo.ToString(), ID, CompID);
                     break;
                 }
                 else if (CompSection != Section)
                 {
-                    Message = string.Format("ERROR! Member section ({1} - {2}) doesn't match, please check member data. (count : {0})", (i + 1).ToString(), CompSection, Section);
+                    Message = string.Format("ERROR! Member section ({1} - {2}) doesn't match, please check member data. (count : {0})", countNo.ToString(), CompSection, Section);
+                    break;
+                }
+                else if (Section == null || Section == string.Empty )
+                {
+                    Message = string.Format("ERROR! Member section ({1} - {2}) string is empty, please check member data. (count : {0})", countNo.ToString(), CompSection, Section);
                     break;
                 }
 
                 //將資料寫入List
                 PropertiesList.Add(new MajorProperties
                 {
-                    countNo = i + 1,
+                    countNo = countNo,
                     //
                     ID = ID,
                     MaterialCode = MaterialCode,
@@ -276,7 +455,9 @@ namespace PDMSImportStructure
                     MemberLength = MemberLength,
                     ConnTypeS = ConnTypeS,
                     ConnTypeE = ConnTypeE,
-                    SectionType = SectionType
+                    SectionType = SectionType,
+                    JUSLINE = JUSLINE,
+                    strCompHashCode = strCompHashCode
                 });
             }
         }
