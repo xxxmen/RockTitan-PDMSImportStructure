@@ -20,8 +20,8 @@ namespace PDMSImportStructure
         private void Form2_Load(object sender, EventArgs e)
         {
             var i = 1;
-            //dataGridView2.Rows.Add(i);
-            //dataGridView2.DataSource = ReadMDT.PropertiesList;
+            //majorPropertiesDataGridView.Rows.Add(i);
+            majorPropertiesDataGridView.DataSource= ReadMDT.PropertiesList;
             i++;
         }
     }

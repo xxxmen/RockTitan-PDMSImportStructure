@@ -8,6 +8,7 @@ namespace PDMSImportStructure
 {
     public struct MajorProperties
     {
+        public int countNo { get; set; }
         //MDL Data properties
         public string ID { get; set; }
         //public string ID { get { return ID; } set { ID = value; } }
@@ -46,7 +47,7 @@ namespace PDMSImportStructure
         public double MemberLength { get; set; }
         public string ConnTypeS { get; set; }
         public string ConnTypeE { get; set; }
-        public string SectionHeader { get; set; }
+        public string SectionType { get; set; }
     }
 
     //public struct MinorProperties

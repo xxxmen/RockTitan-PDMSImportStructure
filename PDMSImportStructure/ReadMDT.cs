@@ -45,6 +45,7 @@ namespace PDMSImportStructure
 
             Message = "";
 
+            MatCodeList.Clear();
             foreach (Match match in MatCodeData)
             {
                 string MatCodeNo = match.Groups["MatCodeNo"].Value; //未使用, 目前用索引子查找, 非對照
@@ -53,6 +54,8 @@ namespace PDMSImportStructure
                 MatCodeList.Add(Material);
             }
 
+            MaterialList.Clear();
+            MaterialGradeList.Clear();
             foreach (Match match in MatData)
             {
                 string MatItemNo = match.Groups["MatItemNo"].Value; //未使用, 目前用索引子查找, 非對照
@@ -66,6 +69,7 @@ namespace PDMSImportStructure
                 //string listBox3Text = (ArrMat[0, 0] + "  " + ArrMat[0, 1] + "  " + ArrMat[0, 2]);
             }
 
+            SectionList.Clear();
             foreach (Match match in SectionData)
             {
                 //SectionList.Add(new SectionList
@@ -89,6 +93,7 @@ namespace PDMSImportStructure
                 return;
             }
 
+            PropertiesList.Clear();
             for (int i = 0; i < MDLData.Count; i++)
             {
                 //MDL Data properties
@@ -130,15 +135,93 @@ namespace PDMSImportStructure
                 if (ReleaseS == "------") { ConnTypeS = "FIX"; } else if (ReleaseS == "RRRRRR") { ConnTypeS = "FREE"; }
                 string ConnTypeE = "HING";
                 if (ReleaseE == "------") { ConnTypeE = "FIX"; } else if (ReleaseE == "RRRRRR") { ConnTypeE = "FREE"; }
+                //取得斷面名稱頭
                 //var patternSectionHeader = @"(?<SecHead>[A-Z]*[2]*[A-Z]+)(?<T1>[0-9\.\/\-]+[ABCDEM]?)(?<D1>[Xx\*])?(?<T2>[0-9\.\/\-]+[ABCDEM]?)?(?<D2>[Xx\*])?(?<T3>[0-9\.\/\-]+[ABCDEM]?)?(?<D3>[Xx\*])?(?<T4>[0-9\.\/\-]+[ABCM]?)?(?<T5>[DPTW]+[0-9]*)?";
                 var patternSectionHeader = @"(?<SecHead>[OXBHDCUPNISTWMLJEFR]*[2]?[WFMCLTRSAHNUBRPDIEOX]+)(?<T1>[0-9\.\/\-]+[ABCDEM]?)(?<D1>[Xx\*])?(?<T2>[0-9\.\/\-]+[ABCDEM]?)?(?<D2>[Xx\*])?(?<T3>[0-9\.\/\-]+[ABCDEM]?)?(?<D3>[Xx\*])?(?<T4>[0-9\.\/\-]+[ABCM]?)?(?<T5>[DPTW]+[0-9]*)?";
                 var MatSection = Regex.Match(Section, patternSectionHeader);
                 string SectionHeader = MatSection.Groups["SecHead"].Value;
-                string SectionType = string.Empty;
-                if (SectionHeader == "H" || SectionHeader == "BH")
+                //修正RegularExpressions Pattern讀取斷面名稱頭資料限制
+                if (SectionHeader == "L2X")
                 {
-
+                    SectionHeader = "L";
                 }
+                else if (SectionHeader == "WT2X")
+                {
+                    SectionHeader = "WT";
+                }
+                //依照斷面名稱頭判斷Type
+                string SectionType = string.Empty;
+                if (SectionHeader == "H" || SectionHeader == "HE" || SectionHeader == "HEA" 
+                    || SectionHeader == "HEB" || SectionHeader == "HM" || SectionHeader == "HN" 
+                    || SectionHeader == "HP" || SectionHeader == "HSA" || SectionHeader == "HSH" 
+                    || SectionHeader == "HW" || SectionHeader == "I" || SectionHeader == "IPE" 
+                    || SectionHeader == "IPN" || SectionHeader == "ISHB" || SectionHeader == "ISJB" 
+                    || SectionHeader == "ISLB" || SectionHeader == "ISMB" || SectionHeader == "ISWB" 
+                    || SectionHeader == "M" || SectionHeader == "S" || SectionHeader == "UB" 
+                    || SectionHeader == "UBP" || SectionHeader == "UC" || SectionHeader == "UI" 
+                    || SectionHeader == "W" || SectionHeader == "WF")
+                {
+                    SectionType = "H";
+                }
+                else if (SectionHeader == "BDC" || SectionHeader == "BH")
+                {
+                    SectionType = "BH";
+                }
+                else if (SectionHeader == "BOX" || SectionHeader == "FB" || SectionHeader == "SB" || SectionHeader == "RC")
+                {
+                    SectionType = "RC-BOX-FB-SB";
+                }
+                else if (SectionHeader == "C" || SectionHeader == "ISJC" || SectionHeader == "ISLC" 
+                    || SectionHeader == "ISMC" || SectionHeader == "LC" || SectionHeader == "LPC" 
+                    || SectionHeader == "MC" || SectionHeader == "PFC" || SectionHeader == "RSC" 
+                    || SectionHeader == "U" || SectionHeader == "UPN")
+                {
+                    SectionType = "C";
+                }
+                else if (SectionHeader == "2C" || SectionHeader == "2MC" || SectionHeader == "2UPN" || SectionHeader == "ISM2C")
+                {
+                    SectionType = "2C";
+                }
+                else if (SectionHeader == "ISHT" || SectionHeader == "ISJT" || SectionHeader == "ISLT" 
+                    || SectionHeader == "ISMBT" || SectionHeader == "ISNT" || SectionHeader == "ISST" 
+                    || SectionHeader == "T" || SectionHeader == "TM" || SectionHeader == "TN" || SectionHeader == "TW" 
+                    || SectionHeader == "UBT" || SectionHeader == "UCT" || SectionHeader == "WT")
+                {
+                    SectionType = "T";
+                }
+                else if (SectionHeader == "2T")
+                {
+                    SectionType = "2T";
+                }
+                else if (SectionHeader == "ISA" || SectionHeader == "L" || SectionHeader == "RSA")
+                {
+                    SectionType = "L";
+                }
+                else if (SectionHeader == "2L" || SectionHeader == "2LC" || SectionHeader == "2RSA" || SectionHeader == "LL" || SectionHeader == "SL")
+                {
+                    SectionType = "2L";
+                }
+                else if (SectionHeader == "XH")
+                {
+                    SectionType = "XH";
+                }
+                else if (SectionHeader == "O" || SectionHeader == "PIP" || SectionHeader == "PIPE" || SectionHeader == "RCP")
+                {
+                    SectionType = "PIPE";
+                }
+                else if (SectionHeader == "TTUB" || SectionHeader == "TUB" || SectionHeader == "TUBE")
+                {
+                    SectionType = "TUBE";
+                }
+                else if (SectionHeader == "RB")
+                {
+                    SectionType = "RB";
+                }
+                else if (SectionHeader == "RCD")
+                {
+                    SectionType = "RCD";
+                }
+
 
                 //check data
                 if (ID != CompID)
@@ -152,8 +235,10 @@ namespace PDMSImportStructure
                     break;
                 }
 
+                //將資料寫入List
                 PropertiesList.Add(new MajorProperties
                 {
+                    countNo = i + 1,
                     //
                     ID = ID,
                     MaterialCode = MaterialCode,
@@ -191,7 +276,7 @@ namespace PDMSImportStructure
                     MemberLength = MemberLength,
                     ConnTypeS = ConnTypeS,
                     ConnTypeE = ConnTypeE,
-                    SectionHeader = SectionHeader
+                    SectionType = SectionType
                 });
             }
         }

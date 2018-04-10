@@ -26,12 +26,6 @@ namespace PDMSImportStructure
 
         private void BtnConvert_Click(object sender, EventArgs e)
         {
-            ReadMDT.MatCodeList.Clear();
-            ReadMDT.MaterialList.Clear();
-            ReadMDT.MaterialGradeList.Clear();
-            ReadMDT.SectionList.Clear();
-            ReadMDT.PropertiesList.Clear();
-
             GetStart();
             GenerateMacro.GenerateMacrofile();
         }
@@ -56,41 +50,41 @@ namespace PDMSImportStructure
                 return;
             }
 
-            int i = 1;
-            //int j = 0;
-            dataGridView1.Rows.Clear();
-            foreach (var item in ReadMDT.PropertiesList)
-            {
-                dataGridView1.Rows.Add(
-                    i,
-                    item.ID,
-                    item.Section,
-                    item.Material,
-                    item.MaterialGrade,
-                    item.MemberLength,
-                    item.StartX,
-                    item.StartY,
-                    item.StartZ,
-                    item.EndX,
-                    item.EndY,
-                    item.EndZ,
-                    item.Type,
-                    item.SP,
-                    item.IT,
-                    item.CP,
-                    item.Reflect,
-                    item.OvX,
-                    item.OvY,
-                    item.OvZ,
-                    item.ReleaseS,
-                    item.ReleaseE,
-                    item.Grid
-                    );
-                //dataGridView1.Rows.Add();
-                //DataGridViewCell cell = dataGridView1.Rows[i - 1].Cells[0];
-                //cell.Value = item.ID;
-                i++;
-            }
+            //majorPropertiesDataGridView.Rows.Clear(); //Binding時無法清除
+            //majorPropertiesDataGridView.Rows.Add(i);
+            majorPropertiesDataGridView.DataSource = null; //清除前一次DataGridView中資料
+            majorPropertiesDataGridView.DataSource = ReadMDT.PropertiesList;
+            //foreach (var item in ReadMDT.PropertiesList)
+            //{
+            //    dataGridView1.Rows.Add(
+            //        item.countNo,
+            //        item.ID,
+            //        item.Section,
+            //        item.Material,
+            //        item.MaterialGrade,
+            //        item.MemberLength,
+            //        item.StartX,
+            //        item.StartY,
+            //        item.StartZ,
+            //        item.EndX,
+            //        item.EndY,
+            //        item.EndZ,
+            //        item.Type,
+            //        item.SP,
+            //        item.IT,
+            //        item.CP,
+            //        item.Reflect,
+            //        item.OvX,
+            //        item.OvY,
+            //        item.OvZ,
+            //        item.ReleaseS,
+            //        item.ReleaseE,
+            //        item.Grid
+            //        );
+            //    //dataGridView1.Rows.Add();
+            //    //DataGridViewCell cell = dataGridView1.Rows[i - 1].Cells[0];
+            //    //cell.Value = item.ID;
+            //}
             label2.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
 
             int k = 1;
@@ -110,8 +104,8 @@ namespace PDMSImportStructure
             label5.Text = "Number of used material grade : " + ReadMDT.MaterialGradeList.Count.ToString();
 
             //TODO
-            Form2 form2 = new Form2();
-            form2.Show();
+            //Form2 form2 = new Form2();
+            //form2.Show();
         }
 
 
