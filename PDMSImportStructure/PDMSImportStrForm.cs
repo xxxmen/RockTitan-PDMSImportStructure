@@ -13,9 +13,9 @@ using SortableBindingList;
 
 namespace PDMSImportStructure
 {
-    public partial class Form1 : Form
+    public partial class PDMSImportStrForm : Form
     {
-        public Form1()
+        public PDMSImportStrForm()
         {
             InitializeComponent();
         }

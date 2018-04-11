@@ -34,7 +34,7 @@ namespace PDMSImportStructure
             var patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
             var PhyMembData = Regex.Matches(content, patternPhyMembData);
 
-            var patternMatData = @"(?<MatItemNo>\d+)\s+:\s+(?<MatCode>\d+)\s+(?<MatGrade>[A-Z]+[0-9A-Z]*)";
+            var patternMatData = @"(?<MatItemNo>\d+)\s+:\s+(?<MatCode>\d+)\s(?<MatGrade>[A-Za-z]*[0-9A-Za-z]*)";
             var MatData = Regex.Matches(content, patternMatData);
 
             var patternMatCodeList = @"\s(?<MatCodeNo>\d+):(?<Material>[A-Za-z]+)[,)]";
@@ -280,7 +280,7 @@ namespace PDMSImportStructure
                     else if (CP == "10") { JUSLINE = "NA"; }
                     else { JUSLINE = "NA"; }
                 }
-                else if (SectionType == "C") //Generic Type: BSC, DINU //很亂待確認
+                else if (SectionType == "C") //Generic Type: BSC, DINU //TODO:很亂待確認
                 {
                     if (CP == "1") { JUSLINE = "LBOC"; }
                     else if (CP == "2") { JUSLINE = "BOC"; }
@@ -307,7 +307,7 @@ namespace PDMSImportStructure
                     //else if (CP == "10") { JUSLINE = "NA"; }
                     //else { JUSLINE = "NA"; }
                 }
-                else if (SectionType == "L") //Generic Type: ANG //很亂待確認
+                else if (SectionType == "L") //Generic Type: ANG //TODO:很亂待確認
                 {
                     if (CP == "1") { JUSLINE = "TOAX"; }
                     else if (CP == "2") { JUSLINE = "NAT"; }
@@ -348,7 +348,7 @@ namespace PDMSImportStructure
                     else if (CP == "10") { JUSLINE = "NA"; }
                     else { JUSLINE = "NA"; }
                 }
-                else if (SectionType == "2C") //Generic Type: BSC, DINU (4, 5, 6對NA) //很亂待確認
+                else if (SectionType == "2C") //Generic Type: BSC, DINU (4, 5, 6對NA) //TODO:很亂待確認
                 {
                     if (CP == "1") { JUSLINE = "LBOC"; }
                     else if (CP == "2") { JUSLINE = "BOC"; }
@@ -362,7 +362,7 @@ namespace PDMSImportStructure
                     else if (CP == "10") { JUSLINE = "NA"; }
                     else { JUSLINE = "NA"; }
                 }
-                else if (SectionType == "2L") //Generic Type: ANG //很亂待確認
+                else if (SectionType == "2L") //Generic Type: ANG //TODO:很亂待確認
                 {
                     if (CP == "1") { JUSLINE = "RTTA"; }
                     else if (CP == "2") { JUSLINE = "NAT"; }
@@ -389,13 +389,43 @@ namespace PDMSImportStructure
                     //else if (CP == "10") { JUSLINE = "NA"; }
                     //else { JUSLINE = "NA"; }
                 }
+                //Function (Type)
+                string Function = string.Empty;
+                if (Type == "C") { Function = "Column"; }
+                else if (Type == "S") { Function = "Slanted Column(Post)"; }
+                else if (Type == "GD") { Function = "Girder"; }
+                else if (Type == "JS") { Function = "Joist"; }
+                else if (Type == "B") { Function = "Beam"; }
+                else if (Type == "PL") { Function = "Purlin"; }
+                else if (Type == "HB") { Function = "Horizontal Bracing"; }
+                else if (Type == "VB") { Function = "Vertical Bracing"; }
+                else { Function = "Other"; }
+                //Beta Angle (Cross-Section Rotation)
+                double Bangle = 0.0;
+                if ((OvX == 0 && OvY == 0 && OvZ != 0) || (OvX == 0 && OvY != 0 && OvZ == 0) || (OvX != 0 && OvY == 0 && OvZ == 0))
+                {
+                    Bangle = 0.0;
+                }
+                else if (OvX == 0)
+                {
+                    Bangle = Math.Round(Math.Atan(OvY / OvZ) * 180 / Math.PI, 2);
+                }
+                else if (OvY == 0)
+                {
+                    Bangle = Math.Round(Math.Atan(OvX / OvZ) * 180 / Math.PI, 2);
+                }
+                else if (OvZ == 0)
+                {
+                    Bangle = Math.Round(Math.Atan(OvX / OvY) * 180 / Math.PI, 2);
+                }
 
-
-                //TODO:未完整
+                //TODO:未確認完整
+                //將所有PDMS桿件屬性轉為字串並組合後轉為HashCode, 用於比對是否需更新
                 int strCompHashCode = (ID + StartX.ToString() + StartY.ToString() + StartZ.ToString() 
-                    + EndX.ToString() + EndY.ToString() + EndZ.ToString() + Grid + IT.ToString() 
-                    + CP + Reflect + OvX.ToString() + OvY.ToString() + OvZ.ToString() + ReleaseS + ReleaseE 
-                    + Section + Material + MaterialGrade).GetHashCode();
+                    + EndX.ToString() + EndY.ToString() + EndZ.ToString() + Grid 
+                    + Reflect + OvX.ToString() + OvY.ToString() + OvZ.ToString() 
+                    + Section + Material + MaterialGrade + ConnTypeS + ConnTypeE 
+                    + JUSLINE + Function + Bangle.ToString()).GetHashCode();
 
                 //check data
                 if (ID != CompID)
@@ -457,6 +487,8 @@ namespace PDMSImportStructure
                     ConnTypeE = ConnTypeE,
                     SectionType = SectionType,
                     JUSLINE = JUSLINE,
+                    Function = Function,
+                    Bangle = Bangle,
                     strCompHashCode = strCompHashCode
                 });
             }
