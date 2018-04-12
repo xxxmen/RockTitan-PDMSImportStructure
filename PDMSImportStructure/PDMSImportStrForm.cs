@@ -25,15 +25,14 @@ namespace PDMSImportStructure
         public static string MDTfileName = string.Empty;
         public static string MDTfileNameWOExt = string.Empty;
 
-        private void BtnConvert_Click(object sender, EventArgs e)
+        private void BtnLoadData_Click(object sender, EventArgs e)
         {
             GetStart();
-            GenerateMacro.GenerateMacrofile();
         }
 
         public void GetStart()
         {
-            MDTfile = textBox1.Text;
+            MDTfile = filePathtextBox.Text;
             MDTfilePath = Path.GetDirectoryName(MDTfile);
             MDTfileName = Path.GetFileName(MDTfile);
             MDTfileNameWOExt = Path.GetFileNameWithoutExtension(MDTfile);
@@ -61,10 +60,10 @@ namespace PDMSImportStructure
                 objList.Add(item);
             }
             majorPropertiesDataGridView.DataSource = objList; //填入List資料
-            //以迴圈方式一筆一筆填入資料, 效能差, 用上述替代
+            //以迴圈方式一筆一筆填入資料效能差, 已用上述替代
             //foreach (var item in ReadMDT.PropertiesList)
             //{
-            //    dataGridView1.Rows.Add(
+            //    majorPropertiesDataGridView.Rows.Add(
             //        item.countNo,
             //        item.ID,
             //        item.Section,
@@ -116,7 +115,6 @@ namespace PDMSImportStructure
             //form2.Show();
         }
 
-
         private void SelectFileBtn_Click(object sender, EventArgs e)
         {
             //FolderBrowserDialog path = new FolderBrowserDialog();
@@ -126,7 +124,16 @@ namespace PDMSImportStructure
                 Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*"
             };
             file.ShowDialog();
-            this.textBox1.Text = file.FileName;
+            this.filePathtextBox.Text = file.FileName;
+        }
+
+        private void BtnViewFile_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", Path.GetDirectoryName(filePathtextBox.Text));
+        }
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            GenerateMacro.GenerateMacrofile();
         }
 
         private void Close_Click(object sender, EventArgs e)

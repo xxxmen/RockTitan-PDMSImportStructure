@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareCardinalPoint.cs" />
+    <Compile Include="ConvertOrientationVector.cs" />
     <Compile Include="PDMSImportStrForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,8 +86,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BindingCollection\SortableBindingList.csproj">
-      <Project>{e33fbfe5-77da-475f-84f9-b3b87ccddaa2}</Project>
+    <ProjectReference Include="..\SortableBindingList\SortableBindingList.csproj">
+      <Project>{c37fbfc7-497f-4012-ab52-49f4f0698391}</Project>
       <Name>SortableBindingList</Name>
     </ProjectReference>
   </ItemGroup>

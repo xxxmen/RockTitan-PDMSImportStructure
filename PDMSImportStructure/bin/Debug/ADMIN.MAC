@@ -1,0 +1,2339 @@
+
+mm dist
+var !list COLL ALL  with ( NAME EQ '/ADMIN/MAINFRAME' ) for $!!CE
+!size = !list.size()
+if(!size eq 1) then
+/ADMIN/MAINFRAME
+!cename = !!CE.Name
+  var !list COLL ALL(FITT) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete FITT
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete SCTN
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(SBFR) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete SBFR
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(FRMW) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete FRMW
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(STRU) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete STRU
+enddo
+!list.clear()
+savework
+$!cename
+delete ZONE
+savework
+endif
+NEW ZONE  /ADMIN/MAINFRAME
+    PURP STL
+$*    steel_col_el                  300.000  :   18
+      NEW STRU  /PR-11/STL_FRAME/EL300.000
+                 PURP CSTL
+      NEW FRMW  /PR-11/S_EL300.000/ELEVIEW
+                 PURP SELE
+      NEW SBFR  /PR-11/S_EL300.000/COLUMN
+                 PURP COLN
+        NEW SCTN /ADMIN/STL_COL_A-1/#357268
+          POSS  E0.00      N0.00      U-1300.00         POSE  E0.00      N0.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'A-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_B-1/#357271
+          POSS  E0.00      N6000.00      U-1300.00         POSE  E0.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'B-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_C-1/#357274
+          POSS  E0.00      N12000.00      U-1300.00         POSE  E0.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'C-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_D-1/#357277
+          POSS  E0.00      N18000.00      U-1300.00         POSE  E0.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'D-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_A-2/#357416
+          POSS  E7000.00      N0.00      U-1300.00         POSE  E7000.00      N0.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'A-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_A-3/#357419
+          POSS  E12000.00      N0.00      U-1300.00         POSE  E12000.00      N0.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'A-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_A-4/#357422
+          POSS  E17000.00      N0.00      U-1300.00         POSE  E17000.00      N0.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'A-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_A-5/#357425
+          POSS  E24000.00      N0.00      U-1300.00         POSE  E24000.00      N0.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'A-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_B-5/#357497
+          POSS  E24000.00      N6000.00      U-1300.00         POSE  E24000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'B-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_C-5/#357500
+          POSS  E24000.00      N12000.00      U-1300.00         POSE  E24000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'C-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_D-5/#357503
+          POSS  E24000.00      N18000.00      U-1300.00         POSE  E24000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'D-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_B-2/#357941
+          POSS  E7000.00      N6000.00      U-1300.00         POSE  E7000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'B-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_C-2/#357944
+          POSS  E7000.00      N12000.00      U-1300.00         POSE  E7000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'C-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_D-2/#357947
+          POSS  E7000.00      N18000.00      U-1300.00         POSE  E7000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'D-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_B-3/#357950
+          POSS  E12000.00      N6000.00      U-1300.00         POSE  E12000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'B-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_C-3/#357953
+          POSS  E12000.00      N12000.00      U-1300.00         POSE  E12000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'C-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_B-4/#357959
+          POSS  E17000.00      N6000.00      U-1300.00         POSE  E17000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'B-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_C-4/#357962
+          POSS  E17000.00      N12000.00      U-1300.00         POSE  E17000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'C-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_D-4/#357965
+          POSS  E17000.00      N18000.00      U-1300.00         POSE  E17000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'D-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_E-1/#358394
+          POSS  E0.00      N24000.00      U-1300.00         POSE  E0.00      N24000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'E-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_F-1/#358397
+          POSS  E0.00      N30000.00      U-1300.00         POSE  E0.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'F-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_G-1/#358400
+          POSS  E0.00      N36000.00      U-1300.00         POSE  E0.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'G-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_H-1/#358403
+          POSS  E0.00      N44000.00      U-1300.00         POSE  E0.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'H-1   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_E-2/#358406
+          POSS  E7000.00      N24000.00      U-1300.00         POSE  E7000.00      N24000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'E-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_F-2/#358409
+          POSS  E7000.00      N30000.00      U-1300.00         POSE  E7000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'F-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_G-2/#358412
+          POSS  E7000.00      N36000.00      U-1300.00         POSE  E7000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'G-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_H-2/#358415
+          POSS  E7000.00      N44000.00      U-1300.00         POSE  E7000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'H-2   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_E-3/#358418
+          POSS  E12000.00      N24000.00      U-1300.00         POSE  E12000.00      N24000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'E-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_F-3/#358421
+          POSS  E12000.00      N30000.00      U-1300.00         POSE  E12000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'F-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_G-3/#358424
+          POSS  E12000.00      N36000.00      U-1300.00         POSE  E12000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'G-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_H-3/#358427
+          POSS  E12000.00      N44000.00      U-1300.00         POSE  E12000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'H-3   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_E-4/#358430
+          POSS  E17000.00      N24000.00      U-1300.00         POSE  E17000.00      N24000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'E-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_F-4/#358433
+          POSS  E17000.00      N30000.00      U-1300.00         POSE  E17000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'F-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_G-4/#358436
+          POSS  E17000.00      N36000.00      U-1300.00         POSE  E17000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'G-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_H-4/#358439
+          POSS  E17000.00      N44000.00      U-1300.00         POSE  E17000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'H-4   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_E-5/#358442
+          POSS  E24000.00      N24000.00      U-1300.00         POSE  E24000.00      N24000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'E-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_F-5/#358445
+          POSS  E24000.00      N30000.00      U-1300.00         POSE  E24000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'F-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_G-5/#358448
+          POSS  E24000.00      N36000.00      U-1300.00         POSE  E24000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'G-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_H-5/#358451
+          POSS  E24000.00      N44000.00      U-1300.00         POSE  E24000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC600X600         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'H-5   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358922
+          POSS  E0.00      N0.00      U0.00         POSE  E0.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358926
+          POSS  E0.00      N6000.00      U0.00         POSE  E0.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358929
+          POSS  E0.00      N12000.00      U0.00         POSE  E0.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358932
+          POSS  E0.00      N18000.00      U0.00         POSE  E0.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358935
+          POSS  E0.00      N24000.00      U0.00         POSE  E0.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358938
+          POSS  E0.00      N30000.00      U0.00         POSE  E0.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358941
+          POSS  E0.00      N36000.00      U0.00         POSE  E0.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358945
+          POSS  E0.00      N0.00      U0.00         POSE  E7000.00      N0.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358949
+          POSS  E7000.00      N0.00      U0.00         POSE  E12000.00      N0.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358953
+          POSS  E12000.00      N0.00      U0.00         POSE  E17000.00      N0.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358956
+          POSS  E17000.00      N0.00      U0.00         POSE  E24000.00      N0.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358959
+          POSS  E7000.00      N0.00      U0.00         POSE  E7000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358962
+          POSS  E7000.00      N6000.00      U0.00         POSE  E7000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358965
+          POSS  E7000.00      N12000.00      U0.00         POSE  E7000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358968
+          POSS  E7000.00      N18000.00      U0.00         POSE  E7000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358971
+          POSS  E7000.00      N24000.00      U0.00         POSE  E7000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358974
+          POSS  E7000.00      N30000.00      U0.00         POSE  E7000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358977
+          POSS  E7000.00      N36000.00      U0.00         POSE  E7000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358980
+          POSS  E12000.00      N0.00      U0.00         POSE  E12000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358983
+          POSS  E12000.00      N6000.00      U0.00         POSE  E12000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358986
+          POSS  E12000.00      N12000.00      U0.00         POSE  E12000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358990
+          POSS  E12000.00      N24000.00      U0.00         POSE  E12000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358993
+          POSS  E12000.00      N30000.00      U0.00         POSE  E12000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358996
+          POSS  E12000.00      N36000.00      U0.00         POSE  E12000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#358999
+          POSS  E17000.00      N0.00      U0.00         POSE  E17000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359002
+          POSS  E17000.00      N6000.00      U0.00         POSE  E17000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359005
+          POSS  E17000.00      N12000.00      U0.00         POSE  E17000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359008
+          POSS  E17000.00      N18000.00      U0.00         POSE  E17000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359011
+          POSS  E17000.00      N24000.00      U0.00         POSE  E17000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359014
+          POSS  E17000.00      N30000.00      U0.00         POSE  E17000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359017
+          POSS  E17000.00      N36000.00      U0.00         POSE  E17000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359020
+          POSS  E24000.00      N0.00      U0.00         POSE  E24000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359023
+          POSS  E24000.00      N6000.00      U0.00         POSE  E24000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359026
+          POSS  E24000.00      N12000.00      U0.00         POSE  E24000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359029
+          POSS  E24000.00      N18000.00      U0.00         POSE  E24000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359032
+          POSS  E24000.00      N24000.00      U0.00         POSE  E24000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359035
+          POSS  E24000.00      N30000.00      U0.00         POSE  E24000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359038
+          POSS  E24000.00      N36000.00      U0.00         POSE  E24000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359041
+          POSS  E0.00      N6000.00      U0.00         POSE  E7000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359044
+          POSS  E7000.00      N6000.00      U0.00         POSE  E12000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359047
+          POSS  E12000.00      N6000.00      U0.00         POSE  E17000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359050
+          POSS  E17000.00      N6000.00      U0.00         POSE  E24000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359053
+          POSS  E0.00      N12000.00      U0.00         POSE  E7000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359056
+          POSS  E7000.00      N12000.00      U0.00         POSE  E12000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359059
+          POSS  E12000.00      N12000.00      U0.00         POSE  E17000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359062
+          POSS  E17000.00      N12000.00      U0.00         POSE  E24000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359065
+          POSS  E0.00      N18000.00      U0.00         POSE  E7000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359068
+          POSS  E7000.00      N18000.00      U0.00         POSE  E17000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359072
+          POSS  E17000.00      N18000.00      U0.00         POSE  E24000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359075
+          POSS  E0.00      N24000.00      U0.00         POSE  E7000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359078
+          POSS  E7000.00      N24000.00      U0.00         POSE  E12000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359081
+          POSS  E12000.00      N24000.00      U0.00         POSE  E17000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359084
+          POSS  E17000.00      N24000.00      U0.00         POSE  E24000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359087
+          POSS  E0.00      N30000.00      U0.00         POSE  E7000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359090
+          POSS  E7000.00      N30000.00      U0.00         POSE  E12000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359093
+          POSS  E12000.00      N30000.00      U0.00         POSE  E17000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359096
+          POSS  E17000.00      N30000.00      U0.00         POSE  E24000.00      N30000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359099
+          POSS  E0.00      N36000.00      U0.00         POSE  E7000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359102
+          POSS  E7000.00      N36000.00      U0.00         POSE  E12000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359105
+          POSS  E12000.00      N36000.00      U0.00         POSE  E17000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359108
+          POSS  E17000.00      N36000.00      U0.00         POSE  E24000.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359111
+          POSS  E0.00      N44000.00      U0.00         POSE  E7000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359114
+          POSS  E7000.00      N44000.00      U0.00         POSE  E12000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359117
+          POSS  E12000.00      N44000.00      U0.00         POSE  E17000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359120
+          POSS  E17000.00      N44000.00      U0.00         POSE  E24000.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#359123
+          POSS  E12000.00      N18000.00      U0.00         POSE  E12000.00      N24000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS FIX    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360098
+          POSS  E0.00      N3000.00      U0.00         POSE  E7000.00      N3000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360360
+          POSS  E7000.00      N3900.00      U0.00         POSE  E12000.00      N3900.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360445
+          POSS  E12000.00      N3000.00      U0.00         POSE  E17000.00      N3000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360500
+          POSS  E17000.00      N3000.00      U0.00         POSE  E24000.00      N3000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360629
+          POSS  E19490.00      N0.00      U0.00         POSE  E19490.00      N3000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360794
+          POSS  E5000.00      N3000.00      U0.00         POSE  E5000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360817
+          POSS  E5000.00      N6000.00      U0.00         POSE  E5000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360904
+          POSS  E5000.00      N8925.00      U0.00         POSE  E7000.00      N8925.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360929
+          POSS  E7000.00      N8925.00      U0.00         POSE  E12000.00      N8925.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#360999
+          POSS  E14000.00      N3000.00      U0.00         POSE  E14000.00      N6000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#361021
+          POSS  E14000.00      N6000.00      U0.00         POSE  E14000.00      N12000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#361041
+          POSS  E14000.00      N12000.00      U0.00         POSE  E14000.00      N18000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#361787
+          POSS  E0.00      N41000.00      U0.00         POSE  E7000.00      N41000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#361933
+          POSS  E3000.00      N36000.00      U0.00         POSE  E3000.00      N41000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362110
+          POSS  E4625.00      N41000.00      U0.00         POSE  E4625.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X450         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362178
+          POSS  E0.00      N39900.00      U0.00         POSE  E3000.00      N39900.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362904
+          POSS  E0.00      N0.00      U4500.00         POSE  E0.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362908
+          POSS  E0.00      N6000.00      U4500.00         POSE  E0.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362911
+          POSS  E0.00      N12000.00      U4500.00         POSE  E0.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362914
+          POSS  E0.00      N18000.00      U4500.00         POSE  E0.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362917
+          POSS  E0.00      N24000.00      U4500.00         POSE  E0.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362920
+          POSS  E0.00      N30000.00      U4500.00         POSE  E0.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362923
+          POSS  E0.00      N36000.00      U4500.00         POSE  E0.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362927
+          POSS  E0.00      N0.00      U4500.00         POSE  E7000.00      N0.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362931
+          POSS  E7000.00      N0.00      U4500.00         POSE  E12000.00      N0.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362935
+          POSS  E12000.00      N0.00      U4500.00         POSE  E17000.00      N0.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362938
+          POSS  E17000.00      N0.00      U4500.00         POSE  E24000.00      N0.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362941
+          POSS  E7000.00      N0.00      U4500.00         POSE  E7000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362944
+          POSS  E7000.00      N6000.00      U4500.00         POSE  E7000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362947
+          POSS  E7000.00      N12000.00      U4500.00         POSE  E7000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362950
+          POSS  E7000.00      N18000.00      U4500.00         POSE  E7000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362953
+          POSS  E7000.00      N24000.00      U4500.00         POSE  E7000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362956
+          POSS  E7000.00      N30000.00      U4500.00         POSE  E7000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362959
+          POSS  E7000.00      N36000.00      U4500.00         POSE  E7000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362962
+          POSS  E12000.00      N0.00      U4500.00         POSE  E12000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362965
+          POSS  E12000.00      N6000.00      U4500.00         POSE  E12000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362968
+          POSS  E12000.00      N12000.00      U4500.00         POSE  E12000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362972
+          POSS  E12000.00      N24000.00      U4500.00         POSE  E12000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362975
+          POSS  E12000.00      N30000.00      U4500.00         POSE  E12000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362978
+          POSS  E12000.00      N36000.00      U4500.00         POSE  E12000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362981
+          POSS  E17000.00      N0.00      U4500.00         POSE  E17000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362984
+          POSS  E17000.00      N6000.00      U4500.00         POSE  E17000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362987
+          POSS  E17000.00      N12000.00      U4500.00         POSE  E17000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362990
+          POSS  E17000.00      N18000.00      U4500.00         POSE  E17000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362993
+          POSS  E17000.00      N24000.00      U4500.00         POSE  E17000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362996
+          POSS  E17000.00      N30000.00      U4500.00         POSE  E17000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#362999
+          POSS  E17000.00      N36000.00      U4500.00         POSE  E17000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363002
+          POSS  E24000.00      N0.00      U4500.00         POSE  E24000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363005
+          POSS  E24000.00      N6000.00      U4500.00         POSE  E24000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363008
+          POSS  E24000.00      N12000.00      U4500.00         POSE  E24000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363011
+          POSS  E24000.00      N18000.00      U4500.00         POSE  E24000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363014
+          POSS  E24000.00      N24000.00      U4500.00         POSE  E24000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363017
+          POSS  E24000.00      N30000.00      U4500.00         POSE  E24000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363020
+          POSS  E24000.00      N36000.00      U4500.00         POSE  E24000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363023
+          POSS  E0.00      N6000.00      U4500.00         POSE  E7000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363026
+          POSS  E7000.00      N6000.00      U4500.00         POSE  E12000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363029
+          POSS  E12000.00      N6000.00      U4500.00         POSE  E17000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363032
+          POSS  E17000.00      N6000.00      U4500.00         POSE  E24000.00      N6000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363035
+          POSS  E0.00      N12000.00      U4500.00         POSE  E7000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363038
+          POSS  E7000.00      N12000.00      U4500.00         POSE  E12000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363041
+          POSS  E12000.00      N12000.00      U4500.00         POSE  E17000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363044
+          POSS  E17000.00      N12000.00      U4500.00         POSE  E24000.00      N12000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363047
+          POSS  E0.00      N18000.00      U4500.00         POSE  E7000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363050
+          POSS  E7000.00      N18000.00      U4500.00         POSE  E17000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363054
+          POSS  E17000.00      N18000.00      U4500.00         POSE  E24000.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363057
+          POSS  E0.00      N24000.00      U4500.00         POSE  E7000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363060
+          POSS  E7000.00      N24000.00      U4500.00         POSE  E12000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363063
+          POSS  E12000.00      N24000.00      U4500.00         POSE  E17000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363066
+          POSS  E17000.00      N24000.00      U4500.00         POSE  E24000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363069
+          POSS  E0.00      N30000.00      U4500.00         POSE  E7000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363072
+          POSS  E7000.00      N30000.00      U4500.00         POSE  E12000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363075
+          POSS  E12000.00      N30000.00      U4500.00         POSE  E17000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363078
+          POSS  E17000.00      N30000.00      U4500.00         POSE  E24000.00      N30000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363081
+          POSS  E0.00      N36000.00      U4500.00         POSE  E7000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363084
+          POSS  E7000.00      N36000.00      U4500.00         POSE  E12000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363087
+          POSS  E12000.00      N36000.00      U4500.00         POSE  E17000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363090
+          POSS  E17000.00      N36000.00      U4500.00         POSE  E24000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363093
+          POSS  E0.00      N44000.00      U4500.00         POSE  E7000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363096
+          POSS  E7000.00      N44000.00      U4500.00         POSE  E12000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363099
+          POSS  E12000.00      N44000.00      U4500.00         POSE  E17000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363102
+          POSS  E17000.00      N44000.00      U4500.00         POSE  E24000.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363105
+          POSS  E12000.00      N18000.00      U4500.00         POSE  E12000.00      N24000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS FIX    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363329
+          POSS  E0.00      N0.00      U9750.00         POSE  E0.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363331
+          POSS  E0.00      N6000.00      U9750.00         POSE  E0.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363333
+          POSS  E0.00      N12000.00      U9750.00         POSE  E0.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363335
+          POSS  E0.00      N18000.00      U9750.00         POSE  E0.00      N24000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363337
+          POSS  E0.00      N24000.00      U10950.00         POSE  E0.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363339
+          POSS  E0.00      N30000.00      U10950.00         POSE  E0.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363341
+          POSS  E0.00      N36000.00      U10950.00         POSE  E0.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363343
+          POSS  E0.00      N0.00      U9750.00         POSE  E7000.00      N0.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363345
+          POSS  E7000.00      N0.00      U9750.00         POSE  E12000.00      N0.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363347
+          POSS  E12000.00      N0.00      U9750.00         POSE  E17000.00      N0.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363349
+          POSS  E17000.00      N0.00      U9750.00         POSE  E24000.00      N0.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363351
+          POSS  E7000.00      N0.00      U9750.00         POSE  E7000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363353
+          POSS  E7000.00      N6000.00      U9750.00         POSE  E7000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363355
+          POSS  E7000.00      N12000.00      U9750.00         POSE  E7000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363357
+          POSS  E7000.00      N18000.00      U9750.00         POSE  E7000.00      N24000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363359
+          POSS  E7000.00      N24000.00      U10950.00         POSE  E7000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363361
+          POSS  E7000.00      N30000.00      U10950.00         POSE  E7000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363363
+          POSS  E7000.00      N36000.00      U10950.00         POSE  E7000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363365
+          POSS  E12000.00      N0.00      U9750.00         POSE  E12000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363367
+          POSS  E12000.00      N6000.00      U9750.00         POSE  E12000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363369
+          POSS  E12000.00      N24000.00      U10950.00         POSE  E12000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363371
+          POSS  E12000.00      N30000.00      U10950.00         POSE  E12000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363373
+          POSS  E12000.00      N36000.00      U10950.00         POSE  E12000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363375
+          POSS  E17000.00      N0.00      U9750.00         POSE  E17000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363377
+          POSS  E17000.00      N6000.00      U9750.00         POSE  E17000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363379
+          POSS  E17000.00      N12000.00      U9750.00         POSE  E17000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363381
+          POSS  E17000.00      N18000.00      U9750.00         POSE  E17000.00      N24000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363383
+          POSS  E17000.00      N24000.00      U10950.00         POSE  E17000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363385
+          POSS  E17000.00      N30000.00      U10950.00         POSE  E17000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363387
+          POSS  E17000.00      N36000.00      U10950.00         POSE  E17000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363389
+          POSS  E24000.00      N0.00      U9750.00         POSE  E24000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363391
+          POSS  E24000.00      N6000.00      U9750.00         POSE  E24000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363393
+          POSS  E24000.00      N12000.00      U9750.00         POSE  E24000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363395
+          POSS  E24000.00      N18000.00      U9750.00         POSE  E24000.00      N24000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363397
+          POSS  E24000.00      N24000.00      U10950.00         POSE  E24000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363399
+          POSS  E24000.00      N30000.00      U10950.00         POSE  E24000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363401
+          POSS  E24000.00      N36000.00      U10950.00         POSE  E24000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363403
+          POSS  E0.00      N6000.00      U9750.00         POSE  E7000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363405
+          POSS  E7000.00      N6000.00      U9750.00         POSE  E12000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363407
+          POSS  E12000.00      N6000.00      U9750.00         POSE  E17000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363409
+          POSS  E17000.00      N6000.00      U9750.00         POSE  E24000.00      N6000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363411
+          POSS  E0.00      N12000.00      U9750.00         POSE  E7000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363413
+          POSS  E7000.00      N12000.00      U9750.00         POSE  E12000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363415
+          POSS  E12000.00      N12000.00      U9750.00         POSE  E17000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363417
+          POSS  E17000.00      N12000.00      U9750.00         POSE  E24000.00      N12000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363419
+          POSS  E0.00      N18000.00      U9750.00         POSE  E7000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363421
+          POSS  E7000.00      N18000.00      U9750.00         POSE  E17000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363423
+          POSS  E17000.00      N18000.00      U9750.00         POSE  E24000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363425
+          POSS  E0.00      N24000.00      U10950.00         POSE  E7000.00      N24000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X1500         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363427
+          POSS  E7000.00      N24000.00      U10950.00         POSE  E12000.00      N24000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X1500         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363429
+          POSS  E12000.00      N24000.00      U10950.00         POSE  E17000.00      N24000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X1500         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363431
+          POSS  E17000.00      N24000.00      U10950.00         POSE  E24000.00      N24000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X1500         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363433
+          POSS  E0.00      N30000.00      U10950.00         POSE  E7000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363435
+          POSS  E7000.00      N30000.00      U10950.00         POSE  E12000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363437
+          POSS  E12000.00      N30000.00      U10950.00         POSE  E17000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363439
+          POSS  E17000.00      N30000.00      U10950.00         POSE  E24000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363441
+          POSS  E0.00      N36000.00      U10950.00         POSE  E7000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363443
+          POSS  E7000.00      N36000.00      U10950.00         POSE  E12000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363445
+          POSS  E12000.00      N36000.00      U10950.00         POSE  E17000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363447
+          POSS  E17000.00      N36000.00      U10950.00         POSE  E24000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363449
+          POSS  E0.00      N44000.00      U10950.00         POSE  E7000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363451
+          POSS  E7000.00      N44000.00      U10950.00         POSE  E12000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363453
+          POSS  E12000.00      N44000.00      U10950.00         POSE  E17000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363455
+          POSS  E17000.00      N44000.00      U10950.00         POSE  E24000.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363457
+          POSS  E12000.00      N18000.00      U9750.00         POSE  E12000.00      N24000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS FIX    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363569
+          POSS  E0.00      N3000.00      U4500.00         POSE  E7000.00      N3000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363588
+          POSS  E7000.00      N3000.00      U4500.00         POSE  E12000.00      N3000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363604
+          POSS  E12000.00      N3000.00      U4500.00         POSE  E17000.00      N3000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363619
+          POSS  E17000.00      N3000.00      U4500.00         POSE  E24000.00      N3000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363673
+          POSS  E0.00      N8925.00      U4500.00         POSE  E7000.00      N8925.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363697
+          POSS  E7000.00      N8925.00      U4500.00         POSE  E12000.00      N8925.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363719
+          POSS  E12000.00      N8925.00      U4500.00         POSE  E17000.00      N8925.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363739
+          POSS  E17000.00      N8925.00      U4500.00         POSE  E24000.00      N8925.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363846
+          POSS  E0.00      N15000.00      U4500.00         POSE  E7000.00      N15000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363866
+          POSS  E7000.00      N15000.00      U4500.00         POSE  E12000.00      N15000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363886
+          POSS  E12000.00      N15000.00      U4500.00         POSE  E17000.00      N15000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363906
+          POSS  E17000.00      N15000.00      U4500.00         POSE  E24000.00      N15000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363938
+          POSS  E0.00      N21000.00      U4500.00         POSE  E7000.00      N21000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363955
+          POSS  E7000.00      N21000.00      U4500.00         POSE  E12000.00      N21000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363970
+          POSS  E12000.00      N21000.00      U4500.00         POSE  E17000.00      N21000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#363985
+          POSS  E17000.00      N21000.00      U4500.00         POSE  E24000.00      N21000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364000
+          POSS  E0.00      N27000.00      U4500.00         POSE  E7000.00      N27000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364017
+          POSS  E7000.00      N27000.00      U4500.00         POSE  E12000.00      N27000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364032
+          POSS  E12000.00      N27000.00      U4500.00         POSE  E17000.00      N27000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364047
+          POSS  E17000.00      N27000.00      U4500.00         POSE  E24000.00      N27000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364062
+          POSS  E9500.00      N30000.00      U4500.00         POSE  E9500.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364080
+          POSS  E14500.00      N30000.00      U4500.00         POSE  E14500.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364144
+          POSS  E21690.00      N30000.00      U4500.00         POSE  E21690.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364204
+          POSS  E19310.00      N30000.00      U4500.00         POSE  E19310.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364230
+          POSS  E19310.00      N36000.00      U4500.00         POSE  E19310.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364267
+          POSS  E21690.00      N36000.00      U4500.00         POSE  E21690.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364403
+          POSS  E14500.00      N36000.00      U4500.00         POSE  E14500.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364418
+          POSS  E9500.00      N36000.00      U4500.00         POSE  E9500.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364657
+          POSS  E0.00      N41000.00      U4500.00         POSE  E7000.00      N41000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364679
+          POSS  E7000.00      N41000.00      U4500.00         POSE  E9500.00      N41000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364880
+          POSS  E3000.00      N30000.00      U4500.00         POSE  E3000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#364902
+          POSS  E3000.00      N36000.00      U4500.00         POSE  E3000.00      N41000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#365072
+          POSS  E4625.00      N41000.00      U4500.00         POSE  E4625.00      N44000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X450         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#365262
+          POSS  E5000.00      N36000.00      U4500.00         POSE  E5000.00      N41000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#365456
+          POSS  E0.00      N39900.00      U4500.00         POSE  E3000.00      N39900.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#365583
+          POSS  E18875.00      N0.00      U4500.00         POSE  E18875.00      N3000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X450         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#365934
+          POSS  E12000.00      N-2750.00      U4500.00         POSE  E12000.00      N0.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X500         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#366005
+          POSS  E12000.00      N-2750.00      U4500.00         POSE  E17000.00      N-2750.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X500         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#366031
+          POSS  E17000.00      N-2750.00      U4500.00         POSE  E17000.00      N-150.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X500         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#366281
+          POSS  E5000.00      N30000.00      U4500.00         POSE  E5000.00      N36000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367372
+          POSS  E7000.00      N24000.00      U8200.00         POSE  E7000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367400
+          POSS  E7000.00      N30000.00      U8200.00         POSE  E7000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367422
+          POSS  E7000.00      N36000.00      U8200.00         POSE  E7000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367448
+          POSS  E7000.00      N44000.00      U8200.00         POSE  E12000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367470
+          POSS  E12000.00      N44000.00      U8200.00         POSE  E17000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367492
+          POSS  E17000.00      N44000.00      U8200.00         POSE  E24000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367564
+          POSS  E7000.00      N24000.00      U8200.00         POSE  E12000.00      N24000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367588
+          POSS  E12000.00      N24000.00      U8200.00         POSE  E17000.00      N24000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367608
+          POSS  E17000.00      N24000.00      U8200.00         POSE  E24000.00      N24000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367632
+          POSS  E24000.00      N24000.00      U8200.00         POSE  E24000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367652
+          POSS  E24000.00      N30000.00      U8200.00         POSE  E24000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367674
+          POSS  E24000.00      N36000.00      U8200.00         POSE  E24000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367719
+          POSS  E12000.00      N24000.00      U8200.00         POSE  E12000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367743
+          POSS  E12000.00      N30000.00      U8200.00         POSE  E12000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367765
+          POSS  E12000.00      N36000.00      U8200.00         POSE  E12000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367791
+          POSS  E17000.00      N24000.00      U8200.00         POSE  E17000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367815
+          POSS  E17000.00      N30000.00      U8200.00         POSE  E17000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367837
+          POSS  E17000.00      N36000.00      U8200.00         POSE  E17000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367885
+          POSS  E7000.00      N36000.00      U8200.00         POSE  E12000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367907
+          POSS  E12000.00      N36000.00      U8200.00         POSE  E17000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367929
+          POSS  E17000.00      N36000.00      U8200.00         POSE  E24000.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367953
+          POSS  E7000.00      N30000.00      U8200.00         POSE  E12000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367975
+          POSS  E12000.00      N30000.00      U8200.00         POSE  E17000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#367993
+          POSS  E17000.00      N30000.00      U8200.00         POSE  E24000.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368174
+          POSS  E9500.00      N24000.00      U8200.00         POSE  E9500.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368191
+          POSS  E9500.00      N30000.00      U8200.00         POSE  E9500.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368206
+          POSS  E9500.00      N36000.00      U8200.00         POSE  E9500.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368222
+          POSS  E14500.00      N36000.00      U8200.00         POSE  E14500.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368239
+          POSS  E14500.00      N30000.00      U8200.00         POSE  E14500.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368254
+          POSS  E14500.00      N24000.00      U8200.00         POSE  E14500.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368318
+          POSS  E19310.00      N36000.00      U8200.00         POSE  E19310.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368367
+          POSS  E19310.00      N24000.00      U8200.00         POSE  E19310.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368389
+          POSS  E19310.00      N30000.00      U8200.00         POSE  E19310.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368430
+          POSS  E21690.00      N24000.00      U8200.00         POSE  E21690.00      N30000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368452
+          POSS  E21690.00      N30000.00      U8200.00         POSE  E21690.00      N36000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368472
+          POSS  E21690.00      N36000.00      U8200.00         POSE  E21690.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368563
+          POSS  E0.00      N36000.00      U8200.00         POSE  E0.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#368589
+          POSS  E0.00      N44000.00      U8200.00         POSE  E7000.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369209
+          POSS  E0.00      N41000.00      U8200.00         POSE  E7000.00      N41000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369322
+          POSS  E4115.00      N41000.00      U8200.00         POSE  E4115.00      N44000.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X450         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369547
+          POSS  E0.00      N3000.00      U9750.00         POSE  E7000.00      N3000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X500         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369565
+          POSS  E7000.00      N3000.00      U9750.00         POSE  E12000.00      N3000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X500         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369581
+          POSS  E12000.00      N3000.00      U9750.00         POSE  E17000.00      N3000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369596
+          POSS  E17000.00      N3000.00      U9750.00         POSE  E24000.00      N3000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369611
+          POSS  E0.00      N21000.00      U9750.00         POSE  E7000.00      N21000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369628
+          POSS  E7000.00      N21000.00      U9750.00         POSE  E12000.00      N21000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369643
+          POSS  E12000.00      N21000.00      U9750.00         POSE  E17000.00      N21000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369658
+          POSS  E17000.00      N21000.00      U9750.00         POSE  E24000.00      N21000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369673
+          POSS  E14500.00      N36000.00      U10950.00         POSE  E14500.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369690
+          POSS  E14500.00      N30000.00      U10950.00         POSE  E14500.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369722
+          POSS  E14500.00      N24000.00      U10950.00         POSE  E14500.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369855
+          POSS  E19310.00      N24000.00      U10950.00         POSE  E19310.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369878
+          POSS  E19310.00      N30000.00      U10950.00         POSE  E19310.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369898
+          POSS  E19310.00      N36000.00      U10950.00         POSE  E19310.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369965
+          POSS  E21690.00      N24000.00      U10950.00         POSE  E21690.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#369987
+          POSS  E21690.00      N30000.00      U10950.00         POSE  E21690.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#370009
+          POSS  E21690.00      N36000.00      U10950.00         POSE  E21690.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#370414
+          POSS  E9500.00      N24000.00      U10950.00         POSE  E9500.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#370436
+          POSS  E9500.00      N30000.00      U10950.00         POSE  E9500.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#370462
+          POSS  E9500.00      N36000.00      U10950.00         POSE  E9500.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#370681
+          POSS  E0.00      N41000.00      U10950.00         POSE  E7000.00      N41000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#370840
+          POSS  E2500.00      N36000.00      U10950.00         POSE  E2500.00      N41000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371008
+          POSS  E4115.00      N41000.00      U10950.00         POSE  E4115.00      N44000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X450         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371218
+          POSS  E2500.00      N24000.00      U10950.00         POSE  E2500.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371240
+          POSS  E2500.00      N30000.00      U10950.00         POSE  E2500.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371480
+          POSS  E5000.00      N24000.00      U10950.00         POSE  E5000.00      N30000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371502
+          POSS  E5000.00      N30000.00      U10950.00         POSE  E5000.00      N36000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371522
+          POSS  E5000.00      N36000.00      U10950.00         POSE  E5000.00      N41000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371729
+          POSS  E7000.00      N41000.00      U10950.00         POSE  E9500.00      N41000.00      U10950.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371850
+          POSS  E0.00      N15000.00      U9750.00         POSE  E7000.00      N15000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#371953
+          POSS  E12000.00      N12000.00      U9750.00         POSE  E12000.00      N18000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372163
+          POSS  E0.00      N9000.00      U9750.00         POSE  E7000.00      N9000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372201
+          POSS  E7000.00      N9000.00      U9750.00         POSE  E12000.00      N9000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372216
+          POSS  E12000.00      N9000.00      U9750.00         POSE  E17000.00      N9000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372231
+          POSS  E17000.00      N9000.00      U9750.00         POSE  E24000.00      N9000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372246
+          POSS  E7000.00      N15000.00      U9750.00         POSE  E12000.00      N15000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372261
+          POSS  E12000.00      N15000.00      U9750.00         POSE  E17000.00      N15000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372276
+          POSS  E17000.00      N15000.00      U9750.00         POSE  E24000.00      N15000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372497
+          POSS  E12000.00      N-2750.00      U9750.00         POSE  E12000.00      N-150.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X500         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372541
+          POSS  E17000.00      N-2750.00      U9750.00         POSE  E17000.00      N-150.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC300X500         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372581
+          POSS  E12000.00      N-2750.00      U9750.00         POSE  E17000.00      N-2750.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X500         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372677
+          POSS  E18875.00      N0.00      U9750.00         POSE  E18875.00      N3000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X450         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#372760
+          POSS  E10200.00      N12000.00      U9750.00         POSE  E10200.00      N15000.00      U9750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373910
+          POSS  E-70.00      N0.00      U13750.00         POSE  E-70.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373912
+          POSS  E-70.00      N6000.00      U13750.00         POSE  E-70.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373914
+          POSS  E-70.00      N12000.00      U13750.00         POSE  E-70.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373916
+          POSS  E-70.00      N18000.00      U13750.00         POSE  E-70.00      N24000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373918
+          POSS  E0.00      N-70.00      U13750.00         POSE  E7000.00      N-70.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373920
+          POSS  E7000.00      N-70.00      U13750.00         POSE  E12000.00      N-70.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373922
+          POSS  E12000.00      N-70.00      U13750.00         POSE  E17000.00      N-70.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373924
+          POSS  E17000.00      N-70.00      U13750.00         POSE  E24000.00      N-70.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373926
+          POSS  E7000.00      N0.00      U13750.00         POSE  E7000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373928
+          POSS  E7000.00      N6000.00      U13750.00         POSE  E7000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373930
+          POSS  E7000.00      N12000.00      U13750.00         POSE  E7000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373932
+          POSS  E7000.00      N18000.00      U13750.00         POSE  E7000.00      N24000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373934
+          POSS  E12000.00      N0.00      U13750.00         POSE  E12000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373936
+          POSS  E12000.00      N6000.00      U13750.00         POSE  E12000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373938
+          POSS  E17000.00      N0.00      U13750.00         POSE  E17000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373940
+          POSS  E17000.00      N6000.00      U13750.00         POSE  E17000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373942
+          POSS  E17000.00      N12000.00      U13750.00         POSE  E17000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373944
+          POSS  E17000.00      N18000.00      U13750.00         POSE  E17000.00      N24000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373946
+          POSS  E24070.00      N0.00      U13750.00         POSE  E24070.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373948
+          POSS  E24070.00      N6000.00      U13750.00         POSE  E24070.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373950
+          POSS  E24070.00      N12000.00      U13750.00         POSE  E24070.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373952
+          POSS  E24070.00      N18000.00      U13750.00         POSE  E24070.00      N24000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373954
+          POSS  E0.00      N6000.00      U13750.00         POSE  E7000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373956
+          POSS  E7000.00      N6000.00      U13750.00         POSE  E12000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373958
+          POSS  E12000.00      N6000.00      U13750.00         POSE  E17000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373960
+          POSS  E17000.00      N6000.00      U13750.00         POSE  E24000.00      N6000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373962
+          POSS  E0.00      N12000.00      U13750.00         POSE  E7000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373964
+          POSS  E7000.00      N12000.00      U13750.00         POSE  E12000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373966
+          POSS  E12000.00      N12000.00      U13750.00         POSE  E17000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373968
+          POSS  E17000.00      N12000.00      U13750.00         POSE  E24000.00      N12000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373970
+          POSS  E0.00      N18000.00      U13750.00         POSE  E7000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373972
+          POSS  E7000.00      N18000.00      U13750.00         POSE  E17000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373974
+          POSS  E17000.00      N18000.00      U13750.00         POSE  E24000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373976
+          POSS  E0.00      N23815.00      U13750.00         POSE  E7000.00      N23815.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373978
+          POSS  E7000.00      N23815.00      U13750.00         POSE  E12000.00      N23815.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373980
+          POSS  E12000.00      N23815.00      U13750.00         POSE  E17000.00      N23815.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373982
+          POSS  E17000.00      N23815.00      U13750.00         POSE  E24000.00      N23815.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373984
+          POSS  E12000.00      N18000.00      U13750.00         POSE  E12000.00      N24000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS FIX    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#373986
+          POSS  E12000.00      N12000.00      U13750.00         POSE  E12000.00      N18000.00      U13750.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374761
+          POSS  E-70.00      N24000.00      U15450.00         POSE  E-70.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374763
+          POSS  E-70.00      N30000.00      U15450.00         POSE  E-70.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374765
+          POSS  E-70.00      N36000.00      U15450.00         POSE  E-70.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374767
+          POSS  E7000.00      N24000.00      U15450.00         POSE  E7000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374769
+          POSS  E7000.00      N30000.00      U15450.00         POSE  E7000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374771
+          POSS  E7000.00      N36000.00      U15450.00         POSE  E7000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374773
+          POSS  E12000.00      N24000.00      U15450.00         POSE  E12000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374775
+          POSS  E12000.00      N30000.00      U15450.00         POSE  E12000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374777
+          POSS  E12000.00      N36000.00      U15450.00         POSE  E12000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374779
+          POSS  E17000.00      N24000.00      U15450.00         POSE  E17000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374781
+          POSS  E17000.00      N30000.00      U15450.00         POSE  E17000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374783
+          POSS  E17000.00      N36000.00      U15450.00         POSE  E17000.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374785
+          POSS  E24070.00      N24000.00      U15450.00         POSE  E24070.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374787
+          POSS  E24070.00      N30000.00      U15450.00         POSE  E24070.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374789
+          POSS  E24070.00      N36000.00      U15450.00         POSE  E24070.00      N44000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374791
+          POSS  E0.00      N23930.00      U15450.00         POSE  E7000.00      N23930.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374793
+          POSS  E7000.00      N23930.00      U15450.00         POSE  E12000.00      N23930.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374795
+          POSS  E12000.00      N23930.00      U15450.00         POSE  E17000.00      N23930.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374797
+          POSS  E17000.00      N23930.00      U15450.00         POSE  E24000.00      N23930.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  LTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374799
+          POSS  E0.00      N30000.00      U15450.00         POSE  E7000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374801
+          POSS  E7000.00      N30000.00      U15450.00         POSE  E12000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374803
+          POSS  E12000.00      N30000.00      U15450.00         POSE  E17000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374805
+          POSS  E17000.00      N30000.00      U15450.00         POSE  E24000.00      N30000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374807
+          POSS  E0.00      N36000.00      U15450.00         POSE  E7000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374809
+          POSS  E7000.00      N36000.00      U15450.00         POSE  E12000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374811
+          POSS  E12000.00      N36000.00      U15450.00         POSE  E17000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374813
+          POSS  E17000.00      N36000.00      U15450.00         POSE  E24000.00      N36000.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374815
+          POSS  E0.00      N44070.00      U15450.00         POSE  E7000.00      N44070.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374817
+          POSS  E7000.00      N44070.00      U15450.00         POSE  E12000.00      N44070.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374819
+          POSS  E12000.00      N44070.00      U15450.00         POSE  E17000.00      N44070.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#374821
+          POSS  E17000.00      N44070.00      U15450.00         POSE  E24000.00      N44070.00      U15450.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  RTOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#390694
+          POSS  E10200.00      N15000.00      U4500.00         POSE  E10200.00      N18000.00      U4500.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#396237
+          POSS  E9500.00      N36000.00      U0.00         POSE  E9500.00      N44000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /ADMIN/STL_COL_/#396280
+          POSS  E9500.00      N30000.00      U0.00         POSE  E9500.00      N36000.00      U0.00
+          SPRE  SPCO  /CTCV-SPEC/RC230X600         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+     END
+    END
+
+/ADMIN/MAINFRAME
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !pos = !!CE.pos
+  !pos.east = NINT(!pos.east)
+  !pos.north = NINT(!pos.north)
+  !!CE.pos = !pos
+enddo
+
+/ADMIN/MAINFRAME
+var !list COLL ALL(SCTN) with (func eq 'BEAM' or func eq 'BRACE') for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !gamma = !!CE.ori.gamma
+  -- less than 45 degree wrt n-axis
+  if(ABS(SIN(!gamma)) lt 0.7) then
+    drnstart n
+    drnend n
+  endif
+enddo
+

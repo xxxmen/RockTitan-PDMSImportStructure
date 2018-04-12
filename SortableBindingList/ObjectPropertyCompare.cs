@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Reflection;
 
-
 namespace SortableBindingList
 {
     class ObjectPropertyCompare<T> : System.Collections.Generic.IComparer<T>
@@ -24,10 +23,10 @@ namespace SortableBindingList
         #region IComparer<T>
 
         /// <summary>
-        /// 比较方法
+        /// 比較方法
         /// </summary>
-        /// <param name="x">相对属性x</param>
-        /// <param name="y">相对属性y</param>
+        /// <param name="x">相對屬性x</param>
+        /// <param name="y">相對屬性y</param>
         /// <returns></returns>
         public int Compare(T x, T y)
         {

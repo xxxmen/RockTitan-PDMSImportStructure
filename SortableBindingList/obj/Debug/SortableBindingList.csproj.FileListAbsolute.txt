@@ -1,0 +1,5 @@
+E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\bin\Debug\SortableBindingList.dll
+E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\bin\Debug\SortableBindingList.pdb
+E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.csproj.CoreCompileInputs.cache
+E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.dll
+E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.pdb

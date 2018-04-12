@@ -123,7 +123,7 @@ namespace PDMSImportStructure
                 if (item.Type != "")
                 {
                     string[] colstrArray = {
-                        string.Format("        NEW SCTN /{0}/STL_COL_{2}/#{1}", mainframePrefix, item.ID, item.Grid),
+                        string.Format("        NEW SCTN /{0}/STL_COL_{2}/#{1}", mainframePrefix, item.ID, item.Grid.Trim()),
                         string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", item.StartX.ToString("f2"), item.StartY.ToString("f2"), item.StartZ.ToString("f2"), item.EndX.ToString("f2"), item.EndY.ToString("f2"), item.EndZ.ToString("f2")),
                         string.Format("          SPRE  SPCO  /CTCV-SPEC/{0}         JUSL  {1}    BANG   {2}  FUNC  '{3}'  DESC  '{4}'", item.Section, item.JUSLINE, item.Bangle.ToString("f2"), item.Function, item.Grid),
                         string.Format("          CTYS {0}    CTYE {1}", item.ConnTypeS, item.ConnTypeE),
