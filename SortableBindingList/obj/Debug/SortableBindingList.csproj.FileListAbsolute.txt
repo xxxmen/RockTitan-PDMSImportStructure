@@ -3,3 +3,9 @@ E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\So
 E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.csproj.CoreCompileInputs.cache
 E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.dll
 E:\!!!!! R&D !!!!!\AVEVA PDMS\Program\PDMSImportStructure\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.pdb
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\SortableBindingList\bin\Debug\SortableBindingList.dll
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\SortableBindingList\bin\Debug\SortableBindingList.pdb
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.csprojResolveAssemblyReference.cache
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.csproj.CoreCompileInputs.cache
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.dll
+C:\Users\RockTitan\Desktop\C# Practice\PDMSImportStructure\SortableBindingList\obj\Debug\SortableBindingList.pdb

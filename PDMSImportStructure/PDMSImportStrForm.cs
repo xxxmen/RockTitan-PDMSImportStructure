@@ -92,23 +92,23 @@ namespace PDMSImportStructure
             //    //DataGridViewCell cell = dataGridView1.Rows[i - 1].Cells[0];
             //    //cell.Value = item.ID;
             //}
-            label2.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
+            MemberDatalabel.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
 
             int k = 1;
-            listBox3.Items.Clear();
+            SectionlistBox.Items.Clear();
             foreach (var item in ReadMDT.SectionList)
             {
-                listBox3.Items.Add(k++ + " " + item);
+                SectionlistBox.Items.Add(k++ + " " + item);
             }
-            label4.Text = "Number of used section : " + ReadMDT.SectionList.Count.ToString();
+            SectionListlabel.Text = "Number of used section : " + ReadMDT.SectionList.Count.ToString();
 
             int l = 1;
-            listBox4.Items.Clear();
+            MaterialGradelistBox.Items.Clear();
             foreach (var item in ReadMDT.MaterialGradeList)
             {
-                listBox4.Items.Add(l++ + " " + item);
+                MaterialGradelistBox.Items.Add(l++ + " " + item);
             }
-            label5.Text = "Number of used material grade : " + ReadMDT.MaterialGradeList.Count.ToString();
+            MaterialGradeListlabel.Text = "Number of used material grade : " + ReadMDT.MaterialGradeList.Count.ToString();
 
             //TODO
             //Form2 form2 = new Form2();

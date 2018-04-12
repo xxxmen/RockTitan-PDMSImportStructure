@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Numerics;
+
 namespace PDMSImportStructure
 {
     public class ConvertOrientationVector
     {
-        public static void OvtoBangle(double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, double OvX, double OvY, double OvZ, out double Bangle)
+        public static double OvtoBangle(double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, double OvX, double OvY, double OvZ)
         {
             double OvLength = Math.Sqrt(Math.Pow(OvX, 2) + Math.Pow(OvY, 2) + Math.Pow(OvZ, 2)); //應皆為1
-            Bangle = 0;
+            double Bangle = 0;
             
             if (StartZ == EndZ) //(X-Y)-Plane
             {
@@ -94,13 +96,13 @@ namespace PDMSImportStructure
             {
                 Bangle = 0;
             }
-
+            return Bangle;
         }
 
-        public static void OvtoBangleTest(double OvX, double OvY, double OvZ, out double Bangle)
+        public static double OvtoBangleTest(double OvX, double OvY, double OvZ)
         {
             //TODO:測試方法部分不正確
-            Bangle = 0;
+            double Bangle = 0;
 
             if ((OvX == 0 && OvY == 0 && OvZ != 0) || (OvX == 0 && OvY != 0 && OvZ == 0) || (OvX != 0 && OvY == 0 && OvZ == 0))
             {
@@ -118,6 +120,7 @@ namespace PDMSImportStructure
             {
                 Bangle = Math.Round(Math.Atan(OvX / OvY) * 180 / Math.PI, 2);
             }
+            return Bangle;
         }
 
     }
