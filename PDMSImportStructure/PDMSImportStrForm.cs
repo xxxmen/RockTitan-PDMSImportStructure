@@ -25,12 +25,22 @@ namespace PDMSImportStructure
         public static string MDTfileName = string.Empty;
         public static string MDTfileNameWOExt = string.Empty;
 
+        #region Events
+
         private void PDMSImportStrForm_Load(object sender, EventArgs e)
         {
             if (ReadMDT.PropertiesList.Count == 0)
             {
                 BtnViewData.Enabled = false;
                 BtnExport.Enabled = false;
+            }
+        }
+
+        private void filePathtextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoadData();
             }
         }
 
@@ -62,6 +72,28 @@ namespace PDMSImportStructure
         {
             GenerateMacro.GenerateMacrofile();
         }
+
+        private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FormTopMostcheckBox.Checked)
+            {
+                this.TopMost = true;
+            }
+            else
+            {
+                this.TopMost = false;
+            }
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+
+        #region Methods
 
         void LoadData()
         {
@@ -111,39 +143,6 @@ namespace PDMSImportStructure
                 objList.Add(item);
             }
             majorPropertiesDataGridView.DataSource = objList; //填入List資料
-
-            //以迴圈方式一筆一筆填入資料效能差, 已用上述替代
-            //foreach (var item in ReadMDT.PropertiesList)
-            //{
-            //    majorPropertiesDataGridView.Rows.Add(
-            //        item.countNo,
-            //        item.ID,
-            //        item.Section,
-            //        item.Material,
-            //        item.MaterialGrade,
-            //        item.MemberLength,
-            //        item.StartX,
-            //        item.StartY,
-            //        item.StartZ,
-            //        item.EndX,
-            //        item.EndY,
-            //        item.EndZ,
-            //        item.Type,
-            //        item.SP,
-            //        item.IT,
-            //        item.CP,
-            //        item.Reflect,
-            //        item.OvX,
-            //        item.OvY,
-            //        item.OvZ,
-            //        item.ReleaseS,
-            //        item.ReleaseE,
-            //        item.Grid
-            //        );
-            //    //dataGridView1.Rows.Add();
-            //    //DataGridViewCell cell = dataGridView1.Rows[i - 1].Cells[0];
-            //    //cell.Value = item.ID;
-            //}
             MemberDatalabel.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
 
             int k = 1;
@@ -166,23 +165,8 @@ namespace PDMSImportStructure
             //Form2 form2 = new Form2();
             //form2.Show();
         }
-        
-        
-        private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (FormTopMostcheckBox.Checked)
-            {
-                this.TopMost = true;
-            }
-            else
-            {
-                this.TopMost = false;
-            }
-        }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
+
     }
 }
