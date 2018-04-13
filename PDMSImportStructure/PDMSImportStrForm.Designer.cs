@@ -32,8 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDMSImportStrForm));
-            this.BtnViewData = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.BtnSendtoPDMS = new System.Windows.Forms.Button();
+            this.InputFilelabel = new System.Windows.Forms.Label();
             this.filePathtextBox = new System.Windows.Forms.TextBox();
             this.BtnSelectFile = new System.Windows.Forms.Button();
             this.SectionlistBox = new System.Windows.Forms.ListBox();
@@ -44,6 +44,15 @@
             this.BtnCloseForm1 = new System.Windows.Forms.Button();
             this.mainFormprogressBar = new System.Windows.Forms.ProgressBar();
             this.majorPropertiesDataGridView = new System.Windows.Forms.DataGridView();
+            this.Bangle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strCompHashCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnViewFile = new System.Windows.Forms.Button();
+            this.BtnExport = new System.Windows.Forms.Button();
+            this.MainDatagroupBox = new System.Windows.Forms.GroupBox();
+            this.SecListgroupBox = new System.Windows.Forms.GroupBox();
+            this.MatGradeListgroupBox = new System.Windows.Forms.GroupBox();
+            this.FormTopMostcheckBox = new System.Windows.Forms.CheckBox();
+            this.MembDataGridViewcheckBox = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +65,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bangle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,59 +75,54 @@
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strCompHashCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.BtnViewFile = new System.Windows.Forms.Button();
-            this.BtnExport = new System.Windows.Forms.Button();
-            this.MainDatagroupBox = new System.Windows.Forms.GroupBox();
-            this.SecListgroupBox = new System.Windows.Forms.GroupBox();
-            this.MatGradeListgroupBox = new System.Windows.Forms.GroupBox();
-            this.FormTopMostcheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.MainDatagroupBox.SuspendLayout();
             this.SecListgroupBox.SuspendLayout();
             this.MatGradeListgroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // BtnViewData
+            // BtnSendtoPDMS
             // 
-            this.BtnViewData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnViewData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnViewData.Location = new System.Drawing.Point(520, 477);
-            this.BtnViewData.Name = "BtnViewData";
-            this.BtnViewData.Size = new System.Drawing.Size(80, 28);
-            this.BtnViewData.TabIndex = 0;
-            this.BtnViewData.Text = "View Data";
-            this.BtnViewData.UseVisualStyleBackColor = true;
-            this.BtnViewData.Click += new System.EventHandler(this.BtnViewData_Click);
+            this.BtnSendtoPDMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSendtoPDMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSendtoPDMS.Location = new System.Drawing.Point(376, 250);
+            this.BtnSendtoPDMS.Name = "BtnSendtoPDMS";
+            this.BtnSendtoPDMS.Size = new System.Drawing.Size(80, 28);
+            this.BtnSendtoPDMS.TabIndex = 0;
+            this.BtnSendtoPDMS.Text = "Send";
+            this.BtnSendtoPDMS.UseVisualStyleBackColor = true;
+            this.BtnSendtoPDMS.Click += new System.EventHandler(this.BtnSendtoPDMS_Click);
             // 
-            // label1
+            // InputFilelabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Input File :";
+            this.InputFilelabel.AutoSize = true;
+            this.InputFilelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputFilelabel.Location = new System.Drawing.Point(9, 13);
+            this.InputFilelabel.Name = "InputFilelabel";
+            this.InputFilelabel.Size = new System.Drawing.Size(56, 13);
+            this.InputFilelabel.TabIndex = 1;
+            this.InputFilelabel.Text = "Input File :";
             // 
             // filePathtextBox
             // 
-            this.filePathtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.filePathtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePathtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filePathtextBox.Location = new System.Drawing.Point(71, 10);
             this.filePathtextBox.Name = "filePathtextBox";
-            this.filePathtextBox.Size = new System.Drawing.Size(513, 20);
+            this.filePathtextBox.Size = new System.Drawing.Size(288, 20);
             this.filePathtextBox.TabIndex = 2;
             this.filePathtextBox.Text = "TB-1.MDT";
             this.filePathtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filePathtextBox_KeyDown);
             // 
             // BtnSelectFile
             // 
+            this.BtnSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSelectFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSelectFile.Location = new System.Drawing.Point(590, 7);
+            this.BtnSelectFile.Location = new System.Drawing.Point(365, 8);
             this.BtnSelectFile.Name = "BtnSelectFile";
             this.BtnSelectFile.Size = new System.Drawing.Size(25, 23);
             this.BtnSelectFile.TabIndex = 5;
@@ -132,9 +135,9 @@
             this.SectionlistBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SectionlistBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.SectionlistBox.FormattingEnabled = true;
-            this.SectionlistBox.Location = new System.Drawing.Point(6, 18);
+            this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
             this.SectionlistBox.Name = "SectionlistBox";
-            this.SectionlistBox.Size = new System.Drawing.Size(190, 108);
+            this.SectionlistBox.Size = new System.Drawing.Size(190, 121);
             this.SectionlistBox.TabIndex = 6;
             // 
             // MaterialGradelistBox
@@ -142,9 +145,9 @@
             this.MaterialGradelistBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MaterialGradelistBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.MaterialGradelistBox.FormattingEnabled = true;
-            this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 18);
+            this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
             this.MaterialGradelistBox.Name = "MaterialGradelistBox";
-            this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 108);
+            this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 121);
             this.MaterialGradelistBox.TabIndex = 7;
             // 
             // MemberDatalabel
@@ -152,7 +155,7 @@
             this.MemberDatalabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MemberDatalabel.AutoSize = true;
             this.MemberDatalabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemberDatalabel.Location = new System.Drawing.Point(12, 298);
+            this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
             this.MemberDatalabel.Name = "MemberDatalabel";
             this.MemberDatalabel.Size = new System.Drawing.Size(10, 13);
             this.MemberDatalabel.TabIndex = 8;
@@ -163,7 +166,7 @@
             this.SectionListlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SectionListlabel.AutoSize = true;
             this.SectionListlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SectionListlabel.Location = new System.Drawing.Point(12, 462);
+            this.SectionListlabel.Location = new System.Drawing.Point(12, 231);
             this.SectionListlabel.Name = "SectionListlabel";
             this.SectionListlabel.Size = new System.Drawing.Size(10, 13);
             this.SectionListlabel.TabIndex = 10;
@@ -174,7 +177,7 @@
             this.MaterialGradeListlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MaterialGradeListlabel.AutoSize = true;
             this.MaterialGradeListlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaterialGradeListlabel.Location = new System.Drawing.Point(237, 462);
+            this.MaterialGradeListlabel.Location = new System.Drawing.Point(234, 231);
             this.MaterialGradeListlabel.Name = "MaterialGradeListlabel";
             this.MaterialGradeListlabel.Size = new System.Drawing.Size(10, 13);
             this.MaterialGradeListlabel.TabIndex = 11;
@@ -184,7 +187,7 @@
             // 
             this.BtnCloseForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCloseForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCloseForm1.Location = new System.Drawing.Point(692, 477);
+            this.BtnCloseForm1.Location = new System.Drawing.Point(462, 250);
             this.BtnCloseForm1.Name = "BtnCloseForm1";
             this.BtnCloseForm1.Size = new System.Drawing.Size(80, 28);
             this.BtnCloseForm1.TabIndex = 14;
@@ -194,10 +197,11 @@
             // 
             // mainFormprogressBar
             // 
-            this.mainFormprogressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.mainFormprogressBar.Location = new System.Drawing.Point(15, 477);
+            this.mainFormprogressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainFormprogressBar.Location = new System.Drawing.Point(12, 254);
             this.mainFormprogressBar.Name = "mainFormprogressBar";
-            this.mainFormprogressBar.Size = new System.Drawing.Size(450, 28);
+            this.mainFormprogressBar.Size = new System.Drawing.Size(260, 20);
             this.mainFormprogressBar.TabIndex = 15;
             // 
             // majorPropertiesDataGridView
@@ -257,8 +261,118 @@
             this.majorPropertiesDataGridView.Location = new System.Drawing.Point(6, 18);
             this.majorPropertiesDataGridView.Name = "majorPropertiesDataGridView";
             this.majorPropertiesDataGridView.ReadOnly = true;
-            this.majorPropertiesDataGridView.Size = new System.Drawing.Size(745, 236);
+            this.majorPropertiesDataGridView.Size = new System.Drawing.Size(518, 0);
             this.majorPropertiesDataGridView.TabIndex = 16;
+            // 
+            // Bangle
+            // 
+            this.Bangle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Bangle.DataPropertyName = "Bangle";
+            this.Bangle.FillWeight = 40F;
+            this.Bangle.HeaderText = "Bangle";
+            this.Bangle.MinimumWidth = 40;
+            this.Bangle.Name = "Bangle";
+            this.Bangle.ReadOnly = true;
+            this.Bangle.Width = 65;
+            // 
+            // strCompHashCode
+            // 
+            this.strCompHashCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.strCompHashCode.DataPropertyName = "strCompHashCode";
+            this.strCompHashCode.FillWeight = 50F;
+            this.strCompHashCode.HeaderText = "HashCode";
+            this.strCompHashCode.MinimumWidth = 50;
+            this.strCompHashCode.Name = "strCompHashCode";
+            this.strCompHashCode.ReadOnly = true;
+            this.strCompHashCode.Width = 82;
+            // 
+            // BtnViewFile
+            // 
+            this.BtnViewFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnViewFile.Location = new System.Drawing.Point(396, 8);
+            this.BtnViewFile.Name = "BtnViewFile";
+            this.BtnViewFile.Size = new System.Drawing.Size(65, 23);
+            this.BtnViewFile.TabIndex = 17;
+            this.BtnViewFile.Text = "Browse...";
+            this.BtnViewFile.UseVisualStyleBackColor = true;
+            this.BtnViewFile.Click += new System.EventHandler(this.BtnViewFile_Click);
+            // 
+            // BtnExport
+            // 
+            this.BtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExport.Location = new System.Drawing.Point(290, 250);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(80, 28);
+            this.BtnExport.TabIndex = 18;
+            this.BtnExport.Text = "Export";
+            this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
+            // 
+            // MainDatagroupBox
+            // 
+            this.MainDatagroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainDatagroupBox.Controls.Add(this.majorPropertiesDataGridView);
+            this.MainDatagroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainDatagroupBox.Location = new System.Drawing.Point(12, 59);
+            this.MainDatagroupBox.Name = "MainDatagroupBox";
+            this.MainDatagroupBox.Size = new System.Drawing.Size(530, 25);
+            this.MainDatagroupBox.TabIndex = 19;
+            this.MainDatagroupBox.TabStop = false;
+            this.MainDatagroupBox.Text = "Member Data";
+            this.MainDatagroupBox.Visible = false;
+            // 
+            // SecListgroupBox
+            // 
+            this.SecListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SecListgroupBox.Controls.Add(this.SectionlistBox);
+            this.SecListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
+            this.SecListgroupBox.Name = "SecListgroupBox";
+            this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
+            this.SecListgroupBox.TabIndex = 20;
+            this.SecListgroupBox.TabStop = false;
+            this.SecListgroupBox.Text = "Section List";
+            // 
+            // MatGradeListgroupBox
+            // 
+            this.MatGradeListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MatGradeListgroupBox.Controls.Add(this.MaterialGradelistBox);
+            this.MatGradeListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
+            this.MatGradeListgroupBox.Name = "MatGradeListgroupBox";
+            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
+            this.MatGradeListgroupBox.TabIndex = 21;
+            this.MatGradeListgroupBox.TabStop = false;
+            this.MatGradeListgroupBox.Text = "Material Grade List";
+            // 
+            // FormTopMostcheckBox
+            // 
+            this.FormTopMostcheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FormTopMostcheckBox.AutoSize = true;
+            this.FormTopMostcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormTopMostcheckBox.Location = new System.Drawing.Point(471, 12);
+            this.FormTopMostcheckBox.Name = "FormTopMostcheckBox";
+            this.FormTopMostcheckBox.Size = new System.Drawing.Size(71, 17);
+            this.FormTopMostcheckBox.TabIndex = 22;
+            this.FormTopMostcheckBox.Text = "Top Most";
+            this.FormTopMostcheckBox.UseVisualStyleBackColor = true;
+            this.FormTopMostcheckBox.CheckedChanged += new System.EventHandler(this.FormTopMostcheckBox_CheckedChanged);
+            // 
+            // MembDataGridViewcheckBox
+            // 
+            this.MembDataGridViewcheckBox.AutoSize = true;
+            this.MembDataGridViewcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MembDataGridViewcheckBox.Location = new System.Drawing.Point(12, 36);
+            this.MembDataGridViewcheckBox.Name = "MembDataGridViewcheckBox";
+            this.MembDataGridViewcheckBox.Size = new System.Drawing.Size(120, 17);
+            this.MembDataGridViewcheckBox.TabIndex = 23;
+            this.MembDataGridViewcheckBox.Text = "Show Member Data";
+            this.MembDataGridViewcheckBox.UseVisualStyleBackColor = true;
+            this.MembDataGridViewcheckBox.CheckedChanged += new System.EventHandler(this.MembDataGridViewcheckBox_CheckedChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -391,17 +505,6 @@
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 58;
             // 
-            // Bangle
-            // 
-            this.Bangle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Bangle.DataPropertyName = "Bangle";
-            this.Bangle.FillWeight = 40F;
-            this.Bangle.HeaderText = "Bangle";
-            this.Bangle.MinimumWidth = 40;
-            this.Bangle.Name = "Bangle";
-            this.Bangle.ReadOnly = true;
-            this.Bangle.Width = 65;
-            // 
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -512,100 +615,17 @@
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Width = 51;
             // 
-            // strCompHashCode
-            // 
-            this.strCompHashCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.strCompHashCode.DataPropertyName = "strCompHashCode";
-            this.strCompHashCode.FillWeight = 50F;
-            this.strCompHashCode.HeaderText = "HashCode";
-            this.strCompHashCode.MinimumWidth = 50;
-            this.strCompHashCode.Name = "strCompHashCode";
-            this.strCompHashCode.ReadOnly = true;
-            this.strCompHashCode.Width = 82;
-            // 
             // majorPropertiesBindingSource
             // 
             this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
-            // 
-            // BtnViewFile
-            // 
-            this.BtnViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnViewFile.Location = new System.Drawing.Point(621, 7);
-            this.BtnViewFile.Name = "BtnViewFile";
-            this.BtnViewFile.Size = new System.Drawing.Size(65, 23);
-            this.BtnViewFile.TabIndex = 17;
-            this.BtnViewFile.Text = "Browse...";
-            this.BtnViewFile.UseVisualStyleBackColor = true;
-            this.BtnViewFile.Click += new System.EventHandler(this.BtnViewFile_Click);
-            // 
-            // BtnExport
-            // 
-            this.BtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExport.Location = new System.Drawing.Point(606, 477);
-            this.BtnExport.Name = "BtnExport";
-            this.BtnExport.Size = new System.Drawing.Size(80, 28);
-            this.BtnExport.TabIndex = 18;
-            this.BtnExport.Text = "Export";
-            this.BtnExport.UseVisualStyleBackColor = true;
-            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
-            // 
-            // MainDatagroupBox
-            // 
-            this.MainDatagroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDatagroupBox.Controls.Add(this.majorPropertiesDataGridView);
-            this.MainDatagroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainDatagroupBox.Location = new System.Drawing.Point(15, 36);
-            this.MainDatagroupBox.Name = "MainDatagroupBox";
-            this.MainDatagroupBox.Size = new System.Drawing.Size(757, 259);
-            this.MainDatagroupBox.TabIndex = 19;
-            this.MainDatagroupBox.TabStop = false;
-            this.MainDatagroupBox.Text = "Member Data";
-            // 
-            // SecListgroupBox
-            // 
-            this.SecListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SecListgroupBox.Controls.Add(this.SectionlistBox);
-            this.SecListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SecListgroupBox.Location = new System.Drawing.Point(15, 324);
-            this.SecListgroupBox.Name = "SecListgroupBox";
-            this.SecListgroupBox.Size = new System.Drawing.Size(202, 135);
-            this.SecListgroupBox.TabIndex = 20;
-            this.SecListgroupBox.TabStop = false;
-            this.SecListgroupBox.Text = "Section List";
-            // 
-            // MatGradeListgroupBox
-            // 
-            this.MatGradeListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MatGradeListgroupBox.Controls.Add(this.MaterialGradelistBox);
-            this.MatGradeListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MatGradeListgroupBox.Location = new System.Drawing.Point(240, 324);
-            this.MatGradeListgroupBox.Name = "MatGradeListgroupBox";
-            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 135);
-            this.MatGradeListgroupBox.TabIndex = 21;
-            this.MatGradeListgroupBox.TabStop = false;
-            this.MatGradeListgroupBox.Text = "Material Grade List";
-            // 
-            // FormTopMostcheckBox
-            // 
-            this.FormTopMostcheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FormTopMostcheckBox.AutoSize = true;
-            this.FormTopMostcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormTopMostcheckBox.Location = new System.Drawing.Point(701, 12);
-            this.FormTopMostcheckBox.Name = "FormTopMostcheckBox";
-            this.FormTopMostcheckBox.Size = new System.Drawing.Size(71, 17);
-            this.FormTopMostcheckBox.TabIndex = 22;
-            this.FormTopMostcheckBox.Text = "Top Most";
-            this.FormTopMostcheckBox.UseVisualStyleBackColor = true;
-            this.FormTopMostcheckBox.CheckedChanged += new System.EventHandler(this.FormTopMostcheckBox_CheckedChanged);
             // 
             // PDMSImportStrForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 518);
+            this.ClientSize = new System.Drawing.Size(554, 291);
+            this.Controls.Add(this.MembDataGridViewcheckBox);
+            this.Controls.Add(this.MemberDatalabel);
             this.Controls.Add(this.FormTopMostcheckBox);
             this.Controls.Add(this.MatGradeListgroupBox);
             this.Controls.Add(this.SecListgroupBox);
@@ -616,23 +636,22 @@
             this.Controls.Add(this.BtnCloseForm1);
             this.Controls.Add(this.MaterialGradeListlabel);
             this.Controls.Add(this.SectionListlabel);
-            this.Controls.Add(this.MemberDatalabel);
             this.Controls.Add(this.BtnSelectFile);
             this.Controls.Add(this.filePathtextBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.BtnViewData);
+            this.Controls.Add(this.InputFilelabel);
+            this.Controls.Add(this.BtnSendtoPDMS);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.MinimumSize = new System.Drawing.Size(800, 557);
+            this.MinimumSize = new System.Drawing.Size(570, 330);
             this.Name = "PDMSImportStrForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDMS Import Structure V1.0";
             this.Load += new System.EventHandler(this.PDMSImportStrForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.MainDatagroupBox.ResumeLayout(false);
             this.SecListgroupBox.ResumeLayout(false);
             this.MatGradeListgroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -640,8 +659,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button BtnViewData;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnSendtoPDMS;
+        private System.Windows.Forms.Label InputFilelabel;
         private System.Windows.Forms.TextBox filePathtextBox;
         private System.Windows.Forms.Button BtnSelectFile;
         private System.Windows.Forms.ListBox SectionlistBox;
@@ -683,6 +702,7 @@
         private System.Windows.Forms.GroupBox SecListgroupBox;
         private System.Windows.Forms.GroupBox MatGradeListgroupBox;
         private System.Windows.Forms.CheckBox FormTopMostcheckBox;
+        private System.Windows.Forms.CheckBox MembDataGridViewcheckBox;
     }
 }
 
