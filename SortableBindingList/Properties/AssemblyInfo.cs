@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SortableBindingList")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Class library for DataGridView sortable binding list")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CTCI")]
+[assembly: AssemblyCompany("CTCI Corporation.")]
 [assembly: AssemblyProduct("SortableBindingList")]
-[assembly: AssemblyCopyright("Roger Yang Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2018 CTCI Corporation.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

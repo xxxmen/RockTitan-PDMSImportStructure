@@ -45,12 +45,43 @@ namespace PDMSImportStructure
 
             Message = string.Empty;
 
+            //check data
+            if (MDLData.Count == 0)
+            {
+                Message = string.Format("ERROR! MDLData is empty, please check all data and quantity.");
+                return;
+            }
+            else if (PhyMembData.Count == 0)
+            {
+                Message = string.Format("ERROR! PhyMembData is empty, please check all data and quantity.");
+                return;
+            }
+            else if (MDLData.Count != PhyMembData.Count)
+            {
+                Message = "ERROR! MDLData and PhyMembData count are not equal, please check member quantity.";
+                return;
+            }
+            else if (MatData.Count == 0)
+            {
+                Message = string.Format("ERROR! MatData is empty, please check all data and quantity.");
+                return;
+            }
+            else if (MatCodeData.Count == 0)
+            {
+                Message = string.Format("ERROR! MatCodeData is empty, please check all data and quantity.");
+                return;
+            }
+            else if (SectionData.Count == 0)
+            {
+                Message = string.Format("ERROR! SectionData is empty, please check all data and quantity.");
+                return;
+            }
+
             MatCodeList.Clear();
             foreach (Match match in MatCodeData)
             {
                 string MatCodeNo = match.Groups["MatCodeNo"].Value; //未使用, 目前用索引子查找, 非對照
                 string Material = match.Groups["Material"].Value;
-
                 MatCodeList.Add(Material);
             }
 
@@ -61,36 +92,16 @@ namespace PDMSImportStructure
                 string MatItemNo = match.Groups["MatItemNo"].Value; //未使用, 目前用索引子查找, 非對照
                 string MatCode = match.Groups["MatCode"].Value;
                 string MatGrade = match.Groups["MatGrade"].Value;
-
                 MaterialList.Add(MatCodeList[Convert.ToInt32(MatCode)].ToString());
                 MaterialGradeList.Add(MatGrade);
-
-                //string[,] ArrMat = new string[,] { { MatItemNo, MatCode, MatGrade } };
-                //string listBox3Text = (ArrMat[0, 0] + "  " + ArrMat[0, 1] + "  " + ArrMat[0, 2]);
             }
 
             SectionList.Clear();
             foreach (Match match in SectionData)
             {
-                //SectionList.Add(new SectionList
-                //{
-                //    SectionItemNo = match.Groups["SectionItemNo"].Value,
-                //    CompSection = match.Groups["compSection"].Value
-                //});
-
                 string SectionItemNo = match.Groups["SectionItemNo"].Value; //重複暫不使用, 未使用, 目前用索引子查找, 非對照
                 string CompSection = match.Groups["compSection"].Value; //比對Section使用
-
                 SectionList.Add(CompSection);
-
-                //string[,] ArrSecList = new string[,] { { SectionItemNo, CompSection } };
-                //string listBox5Text = (ArrSecList[0, 0] + "  " + ArrSecList[0, 1]);
-            }
-
-            if (MDLData.Count != PhyMembData.Count || MDLData.Count == 0 || PhyMembData.Count == 0)
-            {
-                Message = "Data count ERROR! Please check member quantity.";
-                return;
             }
 
             PropertiesList.Clear();
@@ -107,12 +118,12 @@ namespace PDMSImportStructure
                 double EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value);
                 double EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value);
                 double EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value);
-                string Grid = MDLData[i].Groups["Grid"].Value.Replace("\r\n", ""); //Replace去掉換行符號
+                string Grid = MDLData[i].Groups["Grid"].Value.Replace("\r\n", string.Empty); //Replace去掉換行符號
                 //Phy Memb Data properties
                 string CompID = PhyMembData[i].Groups["compID"].Value; //比對ID使用
                 string NodeS = PhyMembData[i].Groups["Node_Start"].Value; //重複暫不使用
                 string NodeE = PhyMembData[i].Groups["Node_End"].Value; //重複暫不使用
-                string Type = PhyMembData[i].Groups["TP"].Value;
+                string MembType = PhyMembData[i].Groups["TP"].Value;
                 string SP = PhyMembData[i].Groups["SP"].Value;
                 double IT = Convert.ToDouble(PhyMembData[i].Groups["IT"].Value); //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
                 string MAT = PhyMembData[i].Groups["MAT"].Value; //重複暫不使用
@@ -150,18 +161,18 @@ namespace PDMSImportStructure
                 
                 //Function (Type)
                 string Function = string.Empty;
-                if (Type == "C") { Function = "Column"; }
-                else if (Type == "S") { Function = "Slanted Column(Post)"; }
-                else if (Type == "GD") { Function = "Girder"; }
-                else if (Type == "JS") { Function = "Joist"; }
-                else if (Type == "B") { Function = "Beam"; }
-                else if (Type == "PL") { Function = "Purlin"; }
-                else if (Type == "HB") { Function = "Horizontal Bracing"; }
-                else if (Type == "VB") { Function = "Vertical Bracing"; }
+                if (MembType == "C") { Function = "Column"; }
+                else if (MembType == "S") { Function = "Slanted Column(Post)"; }
+                else if (MembType == "GD") { Function = "Girder"; }
+                else if (MembType == "JS") { Function = "Joist"; }
+                else if (MembType == "B") { Function = "Beam"; }
+                else if (MembType == "PL") { Function = "Purlin"; }
+                else if (MembType == "HB") { Function = "Horizontal Bracing"; }
+                else if (MembType == "VB") { Function = "Vertical Bracing"; }
                 else { Function = "Other"; }
 
                 //Beta Angle (Cross-Section Rotation)
-                double Bangle =ConvertOrientationVector.OvtoBangle(StartX, StartY, StartZ, EndX, EndY, EndZ, OvX, OvY, OvZ);
+                double Bangle = ConvertOrientationVector.OvtoBangle(StartX, StartY, StartZ, EndX, EndY, EndZ, OvX, OvY, OvZ);
                 //Reflect
                 //TODO: reflect為繞中心線翻轉, 非繞JUSLINE轉180
                 if (Reflect == "Y")
@@ -225,7 +236,7 @@ namespace PDMSImportStructure
                     CompID = CompID,
                     NodeS = NodeS,
                     NodeE = NodeE,
-                    Type = Type,
+                    MembType = MembType,
                     SP = SP,
                     IT = IT,
                     MAT = MAT,

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PDMSImportStructure")]
 [assembly: AssemblyDescription("Import structure member form MDT text file to PDMS macro")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CTCI")]
+[assembly: AssemblyCompany("CTCI Corporation.")]
 [assembly: AssemblyProduct("PDMSImportStructure")]
-[assembly: AssemblyCopyright("Roger Yang Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2018 CTCI Corporation.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

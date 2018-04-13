@@ -25,7 +25,7 @@ namespace PDMSImportStructure
         public string CompID { get; set; } //比對ID使用
         public string NodeS { get; set; } //重複暫不使用
         public string NodeE { get; set; } //重複暫不使用
-        public string Type { get; set; }
+        public string MembType { get; set; }
         public string SP { get; set; }
         public double IT { get; set; } //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
         public string MAT { get; set; } //重複暫不使用
@@ -59,7 +59,7 @@ namespace PDMSImportStructure
     //    public string CompID { get; set; } //比對ID使用
     //    public string NodeS { get; set; } //重複暫不使用
     //    public string NodeE { get; set; } //重複暫不使用
-    //    public string Type { get; set; }
+    //    public string MembType { get; set; }
     //    public string SP { get; set; }
     //    public double IT { get; set; } //將考慮直接填入轉角, 就不需轉換OvX, OvY, OvZ
     //    public string MAT { get; set; } //重複暫不使用
