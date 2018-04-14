@@ -16,7 +16,6 @@ namespace PDMSImportStructure
         public static List<string> MatCodeList = new List<string>();
         public static List<string> MaterialList = new List<string>();
         public static List<string> MaterialGradeList = new List<string>();
-        //public static List<SectionList> SectionList = new List<SectionList>();
         public static List<string> SectionList = new List<string>();
         public static List<MajorProperties> PropertiesList = new List<MajorProperties>(); //Main Data: All member data
 
@@ -30,7 +29,7 @@ namespace PDMSImportStructure
                 sr.Close();
             }
 
-            var patternMDTLengthUnit = @"Unit\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
+            var patternMDTLengthUnit = @"[UNITunit]+\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
             var MDTLengthUnitData = Regex.Match(MDTcontent, patternMDTLengthUnit);
 
             var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";

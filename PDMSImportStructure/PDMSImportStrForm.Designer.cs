@@ -660,7 +660,7 @@
             this.MinimumSize = new System.Drawing.Size(570, 330);
             this.Name = "PDMSImportStrForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PDMS Import Structure V1.0";
+            this.Text = "PDMS Import Structure";
             this.Load += new System.EventHandler(this.PDMSImportStrForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();

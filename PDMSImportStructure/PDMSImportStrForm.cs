@@ -24,7 +24,7 @@ namespace PDMSImportStructure
         public static string MDTfilePath = string.Empty;
         public static string MDTfileName = string.Empty;
         public static string MDTfileNameWOExt = string.Empty;
-        public static string MDTfilePathNameWOExt = string.Empty;
+        public static string MDTfilePathWNameWOExt = string.Empty;
 
         #region Events
 
@@ -84,6 +84,9 @@ namespace PDMSImportStructure
 
         void FormLoad()
         {
+            //顯示版本於Form title
+            this.Text = "PDMS Import Structure  V" + Application.ProductVersion;
+
             MemberDatalabel.Text = " ";
             SectionListlabel.Text = " ";
             MaterialGradeListlabel.Text = " ";
@@ -131,7 +134,7 @@ namespace PDMSImportStructure
                 MDTfilePath = Path.GetDirectoryName(MDTfile);
                 MDTfileName = Path.GetFileName(MDTfile);
                 MDTfileNameWOExt = Path.GetFileNameWithoutExtension(MDTfile);
-                MDTfilePathNameWOExt = MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt;
+                MDTfilePathWNameWOExt = MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt;
 
                 ReadMDT.ReadMDTfile(MDTfile, out string MDTMessage);
                 if (File.Exists(MDTfileNameWOExt + ".Grd"))
@@ -252,7 +255,7 @@ namespace PDMSImportStructure
         {
             GenerateMacro.GenerateMacrofile();
 
-            if (File.Exists(MDTfilePathNameWOExt + ".MAC") == true)
+            if (File.Exists(MDTfilePathWNameWOExt + ".MAC") == true)
             {
                 MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BtnSendtoPDMS.Enabled = true;
