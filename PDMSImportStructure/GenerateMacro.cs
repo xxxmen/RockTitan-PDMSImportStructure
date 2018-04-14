@@ -155,7 +155,7 @@ namespace PDMSImportStructure
             };
             string MACcontent = string.Join("\n", MACcontentArray);
 
-            using (StreamWriter sw = new StreamWriter(PDMSImportStrForm.MDTfilePath + ((PDMSImportStrForm.MDTfilePath == null) || (PDMSImportStrForm.MDTfilePath == string.Empty) ? string.Empty : @"\") + PDMSImportStrForm.MDTfileNameWOExt + ".MAC"))
+            using (StreamWriter sw = new StreamWriter(PDMSImportStrForm.MDTfilePathNameWOExt + ".MAC"))
             {
                 sw.WriteLine(prependString + MACcontent + appendString);
                 sw.Close();

@@ -158,9 +158,9 @@
             this.MemberDatalabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
             this.MemberDatalabel.Name = "MemberDatalabel";
-            this.MemberDatalabel.Size = new System.Drawing.Size(10, 13);
+            this.MemberDatalabel.Size = new System.Drawing.Size(110, 13);
             this.MemberDatalabel.TabIndex = 8;
-            this.MemberDatalabel.Text = " ";
+            this.MemberDatalabel.Text = "Number of members : ";
             // 
             // SectionListlabel
             // 
@@ -169,9 +169,9 @@
             this.SectionListlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SectionListlabel.Location = new System.Drawing.Point(12, 231);
             this.SectionListlabel.Name = "SectionListlabel";
-            this.SectionListlabel.Size = new System.Drawing.Size(10, 13);
+            this.SectionListlabel.Size = new System.Drawing.Size(133, 13);
             this.SectionListlabel.TabIndex = 10;
-            this.SectionListlabel.Text = " ";
+            this.SectionListlabel.Text = "Number of used sections : ";
             // 
             // MaterialGradeListlabel
             // 
@@ -180,9 +180,9 @@
             this.MaterialGradeListlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaterialGradeListlabel.Location = new System.Drawing.Point(234, 231);
             this.MaterialGradeListlabel.Name = "MaterialGradeListlabel";
-            this.MaterialGradeListlabel.Size = new System.Drawing.Size(10, 13);
+            this.MaterialGradeListlabel.Size = new System.Drawing.Size(160, 13);
             this.MaterialGradeListlabel.TabIndex = 11;
-            this.MaterialGradeListlabel.Text = " ";
+            this.MaterialGradeListlabel.Text = "Number of used material grade : ";
             // 
             // BtnCloseForm1
             // 
@@ -630,7 +630,7 @@
             this.LengthUnitlabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LengthUnitlabel.Size = new System.Drawing.Size(100, 13);
             this.LengthUnitlabel.TabIndex = 24;
-            this.LengthUnitlabel.Text = " ";
+            this.LengthUnitlabel.Text = "Length Unit : mm";
             this.LengthUnitlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PDMSImportStrForm

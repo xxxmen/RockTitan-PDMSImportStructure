@@ -24,6 +24,7 @@ namespace PDMSImportStructure
         public static string MDTfilePath = string.Empty;
         public static string MDTfileName = string.Empty;
         public static string MDTfileNameWOExt = string.Empty;
+        public static string MDTfilePathNameWOExt = string.Empty;
 
         #region Events
 
@@ -63,14 +64,7 @@ namespace PDMSImportStructure
 
         private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (FormTopMostcheckBox.Checked)
-            {
-                this.TopMost = true;
-            }
-            else
-            {
-                this.TopMost = false;
-            }
+            FormTopMostcheckBoxCheckedChanged();
         }
 
         private void MembDataGridViewcheckBox_CheckedChanged(object sender, EventArgs e)
@@ -90,6 +84,11 @@ namespace PDMSImportStructure
 
         void FormLoad()
         {
+            MemberDatalabel.Text = " ";
+            SectionListlabel.Text = " ";
+            MaterialGradeListlabel.Text = " ";
+            LengthUnitlabel.Text = " ";
+
             if (ReadMDT.PropertiesList.Count == 0)
             {
                 BtnSendtoPDMS.Enabled = false;
@@ -132,12 +131,22 @@ namespace PDMSImportStructure
                 MDTfilePath = Path.GetDirectoryName(MDTfile);
                 MDTfileName = Path.GetFileName(MDTfile);
                 MDTfileNameWOExt = Path.GetFileNameWithoutExtension(MDTfile);
+                MDTfilePathNameWOExt = MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt;
 
-                ReadMDT.ReadMDTfile(MDTfile, out string Message);
-
-                if (Message.ToUpper().Contains("ERROR"))
+                ReadMDT.ReadMDTfile(MDTfile, out string MDTMessage);
+                if (File.Exists(MDTfileNameWOExt + ".Grd"))
                 {
-                    MessageBox.Show(Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ReadGrd.ReadGrdfile(MDTfileNameWOExt + ".Grd", out string GrdMessage);
+                }
+                else
+                {
+                    MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //TODO
+                }
+
+                if (MDTMessage.ToUpper().Contains("ERROR"))
+                {
+                    MessageBox.Show(MDTMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             };
@@ -243,7 +252,7 @@ namespace PDMSImportStructure
         {
             GenerateMacro.GenerateMacrofile();
 
-            if (File.Exists(MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt + ".MAC") == true)
+            if (File.Exists(MDTfilePathNameWOExt + ".MAC") == true)
             {
                 MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BtnSendtoPDMS.Enabled = true;
@@ -255,6 +264,18 @@ namespace PDMSImportStructure
             //TODO
             MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             BtnSendtoPDMS.Enabled = false;
+        }
+
+        void FormTopMostcheckBoxCheckedChanged()
+        {
+            if (FormTopMostcheckBox.Checked)
+            {
+                this.TopMost = true;
+            }
+            else
+            {
+                this.TopMost = false;
+            }
         }
 
         #endregion

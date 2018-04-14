@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Collections.ObjectModel;
 
 namespace PDMSImportStructure
 {
@@ -23,32 +22,31 @@ namespace PDMSImportStructure
 
         public static void ReadMDTfile(string MDTfile, out string Message)
         {
-            string content = string.Empty;
+            Message = string.Empty;
+            string MDTcontent = string.Empty;
             using (StreamReader sr = new StreamReader(MDTfile))
             {
-                content = sr.ReadToEnd();
+                MDTcontent = sr.ReadToEnd();
                 sr.Close();
             }
 
             var patternMDTLengthUnit = @"Unit\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
-            var MDTLengthUnitData = Regex.Match(content, patternMDTLengthUnit);
+            var MDTLengthUnitData = Regex.Match(MDTcontent, patternMDTLengthUnit);
 
             var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
-            var MDLData = Regex.Matches(content, patternMDLData);
+            var MDLData = Regex.Matches(MDTcontent, patternMDLData);
 
             var patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)?";
-            var PhyMembData = Regex.Matches(content, patternPhyMembData);
+            var PhyMembData = Regex.Matches(MDTcontent, patternPhyMembData);
 
             var patternMatData = @"(?<MatItemNo>\d+)\s+\:\s+(?<MatCode>\d+)\s(?<MatGrade>[A-Za-z]*[0-9A-Za-z]*)[\r\n]"; //注意最後[\r\n]C#跳行符號
-            var MatData = Regex.Matches(content, patternMatData);
+            var MatData = Regex.Matches(MDTcontent, patternMatData);
 
             var patternMatCodeList = @"\s(?<MatCodeNo>\d+):(?<Material>[A-Za-z]+)[,)]";
-            var MatCodeData = Regex.Matches(content, patternMatCodeList);
+            var MatCodeData = Regex.Matches(MDTcontent, patternMatCodeList);
 
             var patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
-            var SectionData = Regex.Matches(content, patternSectionData);
-
-            Message = string.Empty;
+            var SectionData = Regex.Matches(MDTcontent, patternSectionData);
 
             //check data
             if (MDTLengthUnitData.Success)
