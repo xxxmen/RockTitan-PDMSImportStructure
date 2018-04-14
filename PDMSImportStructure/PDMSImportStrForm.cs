@@ -77,7 +77,7 @@ namespace PDMSImportStructure
         private void BtnSendtoPDMS_Click(object sender, EventArgs e)
         {
             //TODO
-            MessageBox.Show("Successful upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
@@ -100,6 +100,7 @@ namespace PDMSImportStructure
                 WriteDatatoDataGridView();
 
                 this.MinimumSize = new System.Drawing.Size(800, 600);
+                this.ClientSize = new System.Drawing.Size(784, 561);
 
                 this.MemberDatalabel.Location = new System.Drawing.Point(12, 357);
 
@@ -180,6 +181,7 @@ namespace PDMSImportStructure
                 {
                     WriteListtoListBox();
                     BtnExport.Enabled = true;
+                    MessageBox.Show("Successfully load all data.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
 

@@ -44,15 +44,6 @@
             this.BtnCloseForm1 = new System.Windows.Forms.Button();
             this.mainFormprogressBar = new System.Windows.Forms.ProgressBar();
             this.majorPropertiesDataGridView = new System.Windows.Forms.DataGridView();
-            this.Bangle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strCompHashCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnViewFile = new System.Windows.Forms.Button();
-            this.BtnExport = new System.Windows.Forms.Button();
-            this.MainDatagroupBox = new System.Windows.Forms.GroupBox();
-            this.SecListgroupBox = new System.Windows.Forms.GroupBox();
-            this.MatGradeListgroupBox = new System.Windows.Forms.GroupBox();
-            this.FormTopMostcheckBox = new System.Windows.Forms.CheckBox();
-            this.MembDataGridViewcheckBox = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +56,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bangle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,12 +67,20 @@
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strCompHashCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BtnViewFile = new System.Windows.Forms.Button();
+            this.BtnExport = new System.Windows.Forms.Button();
+            this.MainDatagroupBox = new System.Windows.Forms.GroupBox();
+            this.SecListgroupBox = new System.Windows.Forms.GroupBox();
+            this.MatGradeListgroupBox = new System.Windows.Forms.GroupBox();
+            this.FormTopMostcheckBox = new System.Windows.Forms.CheckBox();
+            this.MembDataGridViewcheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.MainDatagroupBox.SuspendLayout();
             this.SecListgroupBox.SuspendLayout();
             this.MatGradeListgroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSendtoPDMS
@@ -264,116 +264,6 @@
             this.majorPropertiesDataGridView.Size = new System.Drawing.Size(518, 0);
             this.majorPropertiesDataGridView.TabIndex = 16;
             // 
-            // Bangle
-            // 
-            this.Bangle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Bangle.DataPropertyName = "Bangle";
-            this.Bangle.FillWeight = 40F;
-            this.Bangle.HeaderText = "Bangle";
-            this.Bangle.MinimumWidth = 40;
-            this.Bangle.Name = "Bangle";
-            this.Bangle.ReadOnly = true;
-            this.Bangle.Width = 65;
-            // 
-            // strCompHashCode
-            // 
-            this.strCompHashCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.strCompHashCode.DataPropertyName = "strCompHashCode";
-            this.strCompHashCode.FillWeight = 50F;
-            this.strCompHashCode.HeaderText = "HashCode";
-            this.strCompHashCode.MinimumWidth = 50;
-            this.strCompHashCode.Name = "strCompHashCode";
-            this.strCompHashCode.ReadOnly = true;
-            this.strCompHashCode.Width = 82;
-            // 
-            // BtnViewFile
-            // 
-            this.BtnViewFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnViewFile.Location = new System.Drawing.Point(396, 8);
-            this.BtnViewFile.Name = "BtnViewFile";
-            this.BtnViewFile.Size = new System.Drawing.Size(65, 23);
-            this.BtnViewFile.TabIndex = 17;
-            this.BtnViewFile.Text = "Browse...";
-            this.BtnViewFile.UseVisualStyleBackColor = true;
-            this.BtnViewFile.Click += new System.EventHandler(this.BtnViewFile_Click);
-            // 
-            // BtnExport
-            // 
-            this.BtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExport.Location = new System.Drawing.Point(290, 250);
-            this.BtnExport.Name = "BtnExport";
-            this.BtnExport.Size = new System.Drawing.Size(80, 28);
-            this.BtnExport.TabIndex = 18;
-            this.BtnExport.Text = "Export";
-            this.BtnExport.UseVisualStyleBackColor = true;
-            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
-            // 
-            // MainDatagroupBox
-            // 
-            this.MainDatagroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDatagroupBox.Controls.Add(this.majorPropertiesDataGridView);
-            this.MainDatagroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainDatagroupBox.Location = new System.Drawing.Point(12, 59);
-            this.MainDatagroupBox.Name = "MainDatagroupBox";
-            this.MainDatagroupBox.Size = new System.Drawing.Size(530, 25);
-            this.MainDatagroupBox.TabIndex = 19;
-            this.MainDatagroupBox.TabStop = false;
-            this.MainDatagroupBox.Text = "Member Data";
-            this.MainDatagroupBox.Visible = false;
-            // 
-            // SecListgroupBox
-            // 
-            this.SecListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SecListgroupBox.Controls.Add(this.SectionlistBox);
-            this.SecListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
-            this.SecListgroupBox.Name = "SecListgroupBox";
-            this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
-            this.SecListgroupBox.TabIndex = 20;
-            this.SecListgroupBox.TabStop = false;
-            this.SecListgroupBox.Text = "Section List";
-            // 
-            // MatGradeListgroupBox
-            // 
-            this.MatGradeListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MatGradeListgroupBox.Controls.Add(this.MaterialGradelistBox);
-            this.MatGradeListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
-            this.MatGradeListgroupBox.Name = "MatGradeListgroupBox";
-            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
-            this.MatGradeListgroupBox.TabIndex = 21;
-            this.MatGradeListgroupBox.TabStop = false;
-            this.MatGradeListgroupBox.Text = "Material Grade List";
-            // 
-            // FormTopMostcheckBox
-            // 
-            this.FormTopMostcheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FormTopMostcheckBox.AutoSize = true;
-            this.FormTopMostcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormTopMostcheckBox.Location = new System.Drawing.Point(471, 12);
-            this.FormTopMostcheckBox.Name = "FormTopMostcheckBox";
-            this.FormTopMostcheckBox.Size = new System.Drawing.Size(71, 17);
-            this.FormTopMostcheckBox.TabIndex = 22;
-            this.FormTopMostcheckBox.Text = "Top Most";
-            this.FormTopMostcheckBox.UseVisualStyleBackColor = true;
-            this.FormTopMostcheckBox.CheckedChanged += new System.EventHandler(this.FormTopMostcheckBox_CheckedChanged);
-            // 
-            // MembDataGridViewcheckBox
-            // 
-            this.MembDataGridViewcheckBox.AutoSize = true;
-            this.MembDataGridViewcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MembDataGridViewcheckBox.Location = new System.Drawing.Point(12, 36);
-            this.MembDataGridViewcheckBox.Name = "MembDataGridViewcheckBox";
-            this.MembDataGridViewcheckBox.Size = new System.Drawing.Size(120, 17);
-            this.MembDataGridViewcheckBox.TabIndex = 23;
-            this.MembDataGridViewcheckBox.Text = "Show Member Data";
-            this.MembDataGridViewcheckBox.UseVisualStyleBackColor = true;
-            this.MembDataGridViewcheckBox.CheckedChanged += new System.EventHandler(this.MembDataGridViewcheckBox_CheckedChanged);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "countNo";
@@ -505,6 +395,17 @@
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 58;
             // 
+            // Bangle
+            // 
+            this.Bangle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Bangle.DataPropertyName = "Bangle";
+            this.Bangle.FillWeight = 40F;
+            this.Bangle.HeaderText = "Bangle";
+            this.Bangle.MinimumWidth = 40;
+            this.Bangle.Name = "Bangle";
+            this.Bangle.ReadOnly = true;
+            this.Bangle.Width = 65;
+            // 
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -615,9 +516,108 @@
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Width = 51;
             // 
+            // strCompHashCode
+            // 
+            this.strCompHashCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.strCompHashCode.DataPropertyName = "strCompHashCode";
+            this.strCompHashCode.FillWeight = 50F;
+            this.strCompHashCode.HeaderText = "HashCode";
+            this.strCompHashCode.MinimumWidth = 50;
+            this.strCompHashCode.Name = "strCompHashCode";
+            this.strCompHashCode.ReadOnly = true;
+            this.strCompHashCode.Width = 82;
+            // 
             // majorPropertiesBindingSource
             // 
             this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
+            // 
+            // BtnViewFile
+            // 
+            this.BtnViewFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnViewFile.Location = new System.Drawing.Point(396, 8);
+            this.BtnViewFile.Name = "BtnViewFile";
+            this.BtnViewFile.Size = new System.Drawing.Size(65, 23);
+            this.BtnViewFile.TabIndex = 17;
+            this.BtnViewFile.Text = "Browse...";
+            this.BtnViewFile.UseVisualStyleBackColor = true;
+            this.BtnViewFile.Click += new System.EventHandler(this.BtnViewFile_Click);
+            // 
+            // BtnExport
+            // 
+            this.BtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExport.Location = new System.Drawing.Point(290, 250);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(80, 28);
+            this.BtnExport.TabIndex = 18;
+            this.BtnExport.Text = "Export";
+            this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
+            // 
+            // MainDatagroupBox
+            // 
+            this.MainDatagroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainDatagroupBox.Controls.Add(this.majorPropertiesDataGridView);
+            this.MainDatagroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainDatagroupBox.Location = new System.Drawing.Point(12, 59);
+            this.MainDatagroupBox.Name = "MainDatagroupBox";
+            this.MainDatagroupBox.Size = new System.Drawing.Size(530, 25);
+            this.MainDatagroupBox.TabIndex = 19;
+            this.MainDatagroupBox.TabStop = false;
+            this.MainDatagroupBox.Text = "Member Data";
+            this.MainDatagroupBox.Visible = false;
+            // 
+            // SecListgroupBox
+            // 
+            this.SecListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SecListgroupBox.Controls.Add(this.SectionlistBox);
+            this.SecListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
+            this.SecListgroupBox.Name = "SecListgroupBox";
+            this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
+            this.SecListgroupBox.TabIndex = 20;
+            this.SecListgroupBox.TabStop = false;
+            this.SecListgroupBox.Text = "Section List";
+            // 
+            // MatGradeListgroupBox
+            // 
+            this.MatGradeListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MatGradeListgroupBox.Controls.Add(this.MaterialGradelistBox);
+            this.MatGradeListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
+            this.MatGradeListgroupBox.Name = "MatGradeListgroupBox";
+            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
+            this.MatGradeListgroupBox.TabIndex = 21;
+            this.MatGradeListgroupBox.TabStop = false;
+            this.MatGradeListgroupBox.Text = "Material Grade List";
+            // 
+            // FormTopMostcheckBox
+            // 
+            this.FormTopMostcheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FormTopMostcheckBox.AutoSize = true;
+            this.FormTopMostcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormTopMostcheckBox.Location = new System.Drawing.Point(471, 12);
+            this.FormTopMostcheckBox.Name = "FormTopMostcheckBox";
+            this.FormTopMostcheckBox.Size = new System.Drawing.Size(71, 17);
+            this.FormTopMostcheckBox.TabIndex = 22;
+            this.FormTopMostcheckBox.Text = "Top Most";
+            this.FormTopMostcheckBox.UseVisualStyleBackColor = true;
+            this.FormTopMostcheckBox.CheckedChanged += new System.EventHandler(this.FormTopMostcheckBox_CheckedChanged);
+            // 
+            // MembDataGridViewcheckBox
+            // 
+            this.MembDataGridViewcheckBox.AutoSize = true;
+            this.MembDataGridViewcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MembDataGridViewcheckBox.Location = new System.Drawing.Point(12, 36);
+            this.MembDataGridViewcheckBox.Name = "MembDataGridViewcheckBox";
+            this.MembDataGridViewcheckBox.Size = new System.Drawing.Size(120, 17);
+            this.MembDataGridViewcheckBox.TabIndex = 23;
+            this.MembDataGridViewcheckBox.Text = "Show Member Data";
+            this.MembDataGridViewcheckBox.UseVisualStyleBackColor = true;
+            this.MembDataGridViewcheckBox.CheckedChanged += new System.EventHandler(this.MembDataGridViewcheckBox_CheckedChanged);
             // 
             // PDMSImportStrForm
             // 
@@ -648,10 +648,10 @@
             this.Text = "PDMS Import Structure V1.0";
             this.Load += new System.EventHandler(this.PDMSImportStrForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.MainDatagroupBox.ResumeLayout(false);
             this.SecListgroupBox.ResumeLayout(false);
             this.MatGradeListgroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
