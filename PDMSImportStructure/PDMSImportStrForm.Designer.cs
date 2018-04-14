@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDMSImportStrForm));
             this.BtnSendtoPDMS = new System.Windows.Forms.Button();
             this.InputFilelabel = new System.Windows.Forms.Label();
-            this.filePathtextBox = new System.Windows.Forms.TextBox();
+            this.FilePathtextBox = new System.Windows.Forms.TextBox();
             this.BtnSelectFile = new System.Windows.Forms.Button();
             this.SectionlistBox = new System.Windows.Forms.ListBox();
             this.MaterialGradelistBox = new System.Windows.Forms.ListBox();
@@ -76,6 +76,7 @@
             this.MatGradeListgroupBox = new System.Windows.Forms.GroupBox();
             this.FormTopMostcheckBox = new System.Windows.Forms.CheckBox();
             this.MembDataGridViewcheckBox = new System.Windows.Forms.CheckBox();
+            this.LengthUnitlabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.MainDatagroupBox.SuspendLayout();
@@ -105,18 +106,18 @@
             this.InputFilelabel.TabIndex = 1;
             this.InputFilelabel.Text = "Input File :";
             // 
-            // filePathtextBox
+            // FilePathtextBox
             // 
-            this.filePathtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.FilePathtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePathtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filePathtextBox.Location = new System.Drawing.Point(71, 10);
-            this.filePathtextBox.Name = "filePathtextBox";
-            this.filePathtextBox.Size = new System.Drawing.Size(288, 20);
-            this.filePathtextBox.TabIndex = 2;
-            this.filePathtextBox.Text = "TB-1.MDT";
-            this.filePathtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filePathtextBox_KeyDown);
+            this.FilePathtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilePathtextBox.Location = new System.Drawing.Point(71, 10);
+            this.FilePathtextBox.Name = "FilePathtextBox";
+            this.FilePathtextBox.Size = new System.Drawing.Size(288, 20);
+            this.FilePathtextBox.TabIndex = 2;
+            this.FilePathtextBox.Text = "TB-1.MDT";
+            this.FilePathtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FilePathtextBox_KeyDown);
             // 
             // BtnSelectFile
             // 
@@ -619,11 +620,25 @@
             this.MembDataGridViewcheckBox.UseVisualStyleBackColor = true;
             this.MembDataGridViewcheckBox.CheckedChanged += new System.EventHandler(this.MembDataGridViewcheckBox_CheckedChanged);
             // 
+            // LengthUnitlabel
+            // 
+            this.LengthUnitlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LengthUnitlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LengthUnitlabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LengthUnitlabel.Location = new System.Drawing.Point(442, 43);
+            this.LengthUnitlabel.Name = "LengthUnitlabel";
+            this.LengthUnitlabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LengthUnitlabel.Size = new System.Drawing.Size(100, 13);
+            this.LengthUnitlabel.TabIndex = 24;
+            this.LengthUnitlabel.Text = " ";
+            this.LengthUnitlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // PDMSImportStrForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 291);
+            this.Controls.Add(this.LengthUnitlabel);
             this.Controls.Add(this.MembDataGridViewcheckBox);
             this.Controls.Add(this.MemberDatalabel);
             this.Controls.Add(this.FormTopMostcheckBox);
@@ -637,7 +652,7 @@
             this.Controls.Add(this.MaterialGradeListlabel);
             this.Controls.Add(this.SectionListlabel);
             this.Controls.Add(this.BtnSelectFile);
-            this.Controls.Add(this.filePathtextBox);
+            this.Controls.Add(this.FilePathtextBox);
             this.Controls.Add(this.InputFilelabel);
             this.Controls.Add(this.BtnSendtoPDMS);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -661,7 +676,7 @@
 
         private System.Windows.Forms.Button BtnSendtoPDMS;
         private System.Windows.Forms.Label InputFilelabel;
-        private System.Windows.Forms.TextBox filePathtextBox;
+        private System.Windows.Forms.TextBox FilePathtextBox;
         private System.Windows.Forms.Button BtnSelectFile;
         private System.Windows.Forms.ListBox SectionlistBox;
         private System.Windows.Forms.ListBox MaterialGradelistBox;
@@ -703,6 +718,7 @@
         private System.Windows.Forms.GroupBox MatGradeListgroupBox;
         private System.Windows.Forms.CheckBox FormTopMostcheckBox;
         private System.Windows.Forms.CheckBox MembDataGridViewcheckBox;
+        private System.Windows.Forms.Label LengthUnitlabel;
     }
 }
 

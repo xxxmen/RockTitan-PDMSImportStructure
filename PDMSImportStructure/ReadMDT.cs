@@ -12,6 +12,8 @@ namespace PDMSImportStructure
 {
     public class ReadMDT
     {
+        //TODO: MDT version, shift, rotate
+        public static string MDTLengthUnit = string.Empty;
         public static List<string> MatCodeList = new List<string>();
         public static List<string> MaterialList = new List<string>();
         public static List<string> MaterialGradeList = new List<string>();
@@ -27,6 +29,9 @@ namespace PDMSImportStructure
                 content = sr.ReadToEnd();
                 sr.Close();
             }
+
+            var patternMDTLengthUnit = @"Unit\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
+            var MDTLengthUnitData = Regex.Match(content, patternMDTLengthUnit);
 
             var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
             var MDLData = Regex.Matches(content, patternMDLData);
@@ -46,6 +51,16 @@ namespace PDMSImportStructure
             Message = string.Empty;
 
             //check data
+            if (MDTLengthUnitData.Success)
+            {
+                MDTLengthUnit = MDTLengthUnitData.Groups["MDTLengthUnit"].Value.ToLower();
+            }
+            else
+            {
+                Message = string.Format("ERROR! MDT file length unit is missing, please check your data.");
+                return;
+            }
+
             if (MDLData.Count == 0)
             {
                 Message = string.Format("ERROR! MDLData is empty, please check all data and quantity.");
@@ -76,6 +91,7 @@ namespace PDMSImportStructure
                 Message = string.Format("ERROR! SectionData is empty, please check all data and quantity.");
                 return;
             }
+
 
             MatCodeList.Clear();
             foreach (Match match in MatCodeData)
