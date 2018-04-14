@@ -29,11 +29,7 @@ namespace PDMSImportStructure
 
         private void PDMSImportStrForm_Load(object sender, EventArgs e)
         {
-            if (ReadMDT.PropertiesList.Count == 0)
-            {
-                BtnSendtoPDMS.Enabled = false;
-                BtnExport.Enabled = false;
-            }
+            FormLoad();
         }
 
         private void FilePathtextBox_KeyDown(object sender, KeyEventArgs e)
@@ -46,39 +42,23 @@ namespace PDMSImportStructure
 
         private void SelectFileBtn_Click(object sender, EventArgs e)
         {
-            //FolderBrowserDialog path = new FolderBrowserDialog();
-            //path.ShowDialog();
-            OpenFileDialog file = new OpenFileDialog
-            {
-                Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*"
-            };
-            file.ShowDialog();
-            this.FilePathtextBox.Text = file.FileName;
-
+            SelectFile();
             LoadData();
         }
 
         private void BtnViewFile_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", (FilePathtextBox.Text == null || FilePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(FilePathtextBox.Text));
+            ViewFile();
         }
         
         private void BtnExport_Click(object sender, EventArgs e)
         {
-            GenerateMacro.GenerateMacrofile();
-
-            if (File.Exists(MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt + ".MAC") == true)
-            {
-                MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BtnSendtoPDMS.Enabled = true;
-            }
+            Export();
         }
 
         private void BtnSendtoPDMS_Click(object sender, EventArgs e)
         {
-            //TODO
             Send();
-            MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
@@ -95,47 +75,7 @@ namespace PDMSImportStructure
 
         private void MembDataGridViewcheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //先後順序有學問!!
-            if (MembDataGridViewcheckBox.Checked)
-            {
-                WriteDatatoDataGridView();
-
-                this.MinimumSize = new System.Drawing.Size(800, 600);
-                this.ClientSize = new System.Drawing.Size(784, 561);
-
-                this.MemberDatalabel.Location = new System.Drawing.Point(12, 357);
-
-                this.SecListgroupBox.Size = new System.Drawing.Size(202, 117);
-                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 117);
-                this.SectionlistBox.Size = new System.Drawing.Size(190, 95);
-                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 95);
-
-                this.SecListgroupBox.Location = new System.Drawing.Point(12, 379);
-                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 379);
-                this.SectionlistBox.Location = new System.Drawing.Point(6, 15);
-                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 15);
-                
-                this.MainDatagroupBox.Visible = true;
-            }
-            else
-            {
-                this.MainDatagroupBox.Visible = false;
-
-                this.MinimumSize = new System.Drawing.Size(570, 330);
-                this.ClientSize = new System.Drawing.Size(554, 291);
-
-                this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
-
-                this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
-                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
-                this.SectionlistBox.Size = new System.Drawing.Size(190, 121);
-                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 121);
-
-                this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
-                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
-                this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
-                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
-            }
+            MembDataGridViewcheckBoxCheckedChanged();
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -147,6 +87,32 @@ namespace PDMSImportStructure
 
 
         #region Methods
+
+        void FormLoad()
+        {
+            if (ReadMDT.PropertiesList.Count == 0)
+            {
+                BtnSendtoPDMS.Enabled = false;
+                BtnExport.Enabled = false;
+            }
+        }
+
+        void SelectFile()
+        {
+            //FolderBrowserDialog path = new FolderBrowserDialog();
+            //path.ShowDialog();
+            OpenFileDialog file = new OpenFileDialog
+            {
+                Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*"
+            };
+            file.ShowDialog();
+            this.FilePathtextBox.Text = file.FileName;
+        }
+
+        void ViewFile()
+        {
+            System.Diagnostics.Process.Start("explorer.exe", (FilePathtextBox.Text == null || FilePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(FilePathtextBox.Text));
+        }
 
         void LoadData()
         {
@@ -228,15 +194,66 @@ namespace PDMSImportStructure
             majorPropertiesDataGridView.DataSource = objList; //填入List資料
         }
 
+        void MembDataGridViewcheckBoxCheckedChanged()
+        {
+            //先後順序有學問!!
+            if (MembDataGridViewcheckBox.Checked)
+            {
+                WriteDatatoDataGridView();
+
+                this.MinimumSize = new System.Drawing.Size(800, 600);
+                this.ClientSize = new System.Drawing.Size(784, 561);
+
+                this.MemberDatalabel.Location = new System.Drawing.Point(12, 357);
+
+                this.SecListgroupBox.Size = new System.Drawing.Size(202, 117);
+                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 117);
+                this.SectionlistBox.Size = new System.Drawing.Size(190, 95);
+                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 95);
+
+                this.SecListgroupBox.Location = new System.Drawing.Point(12, 379);
+                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 379);
+                this.SectionlistBox.Location = new System.Drawing.Point(6, 15);
+                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 15);
+
+                this.MainDatagroupBox.Visible = true;
+            }
+            else
+            {
+                this.MainDatagroupBox.Visible = false;
+
+                this.MinimumSize = new System.Drawing.Size(570, 330);
+                this.ClientSize = new System.Drawing.Size(554, 291);
+
+                this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
+
+                this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
+                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
+                this.SectionlistBox.Size = new System.Drawing.Size(190, 121);
+                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 121);
+
+                this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
+                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
+                this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
+                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
+            }
+        }
+
         void Export()
         {
             GenerateMacro.GenerateMacrofile();
+
+            if (File.Exists(MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt + ".MAC") == true)
+            {
+                MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BtnSendtoPDMS.Enabled = true;
+            }
         }
 
         void Send()
         {
             //TODO
-
+            MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             BtnSendtoPDMS.Enabled = false;
         }
 
