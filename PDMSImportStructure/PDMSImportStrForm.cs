@@ -36,7 +36,7 @@ namespace PDMSImportStructure
             }
         }
 
-        private void filePathtextBox_KeyDown(object sender, KeyEventArgs e)
+        private void FilePathtextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -53,14 +53,14 @@ namespace PDMSImportStructure
                 Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*"
             };
             file.ShowDialog();
-            this.filePathtextBox.Text = file.FileName;
+            this.FilePathtextBox.Text = file.FileName;
 
             LoadData();
         }
 
         private void BtnViewFile_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", (filePathtextBox.Text == null || filePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(filePathtextBox.Text));
+            System.Diagnostics.Process.Start("explorer.exe", (FilePathtextBox.Text == null || FilePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(FilePathtextBox.Text));
         }
         
         private void BtnExport_Click(object sender, EventArgs e)
@@ -77,6 +77,7 @@ namespace PDMSImportStructure
         private void BtnSendtoPDMS_Click(object sender, EventArgs e)
         {
             //TODO
+            Send();
             MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -156,7 +157,7 @@ namespace PDMSImportStructure
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += (sender_obj, obj) =>
             {
-                MDTfile = filePathtextBox.Text;
+                MDTfile = FilePathtextBox.Text;
                 if (File.Exists(MDTfile) != true | MDTfile.Contains(".MDT") != true)
                 {
                     MessageBox.Show("No MDT file selected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -180,6 +181,7 @@ namespace PDMSImportStructure
                 if (ReadMDT.PropertiesList.Count != 0)
                 {
                     WriteListtoListBox();
+                    LengthUnitlabel.Text = string.Format("Length Unit : {0}", ReadMDT.MDTLengthUnit);
                     BtnExport.Enabled = true;
                     MessageBox.Show("Successfully load all data.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -224,6 +226,18 @@ namespace PDMSImportStructure
                 objList.Add(item);
             }
             majorPropertiesDataGridView.DataSource = objList; //填入List資料
+        }
+
+        void Export()
+        {
+            GenerateMacro.GenerateMacrofile();
+        }
+
+        void Send()
+        {
+            //TODO
+
+            BtnSendtoPDMS.Enabled = false;
         }
 
         #endregion

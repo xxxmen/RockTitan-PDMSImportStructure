@@ -69,27 +69,32 @@ $*    steel_col_el                  300.000  :   18
                  PURP COLN
         NEW SCTN /TB-1/STL_COL_M3-MF/#433676
           POSS  E57500.00      N0.00      U13300.00         POSE  E57500.00      N0.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MF '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MF 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-ME/#433868
           POSS  E57500.00      N16000.00      U13300.00         POSE  E57500.00      N16000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-ME '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-ME 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MD/#433899
           POSS  E57500.00      N30000.00      U13300.00         POSE  E57500.00      N30000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MD '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MD 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MC/#433926
           POSS  E57500.00      N40000.00      U13300.00         POSE  E57500.00      N40000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MC '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MC 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MB/#433997
           POSS  E57500.00      N50000.00      U13300.00         POSE  E57500.00      N50000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MB '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MB 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_/#434026
@@ -99,32 +104,38 @@ $*    steel_col_el                  300.000  :   18
         END
         NEW SCTN /TB-1/STL_COL_M1-MF/#434082
           POSS  E29000.00      N0.00      U13300.00         POSE  E29000.00      N0.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MF '
+          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MF 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-ME/#434084
           POSS  E29000.00      N16000.00      U13300.00         POSE  E29000.00      N16000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-ME '
+          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-ME 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MD/#434086
           POSS  E29000.00      N30000.00      U18200.00         POSE  E29000.00      N30000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MD '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MD 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MC/#434088
           POSS  E29000.00      N40000.00      U13300.00         POSE  E29000.00      N40000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MC '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MC 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MB/#434090
           POSS  E29000.00      N50000.00      U13300.00         POSE  E29000.00      N50000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MB '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MB 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MA/#434092
           POSS  E29000.00      N61000.00      U13300.00         POSE  E29000.00      N61000.00      U21300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MA '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MA 
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_/#439984
@@ -249,22 +260,26 @@ $*    steel_col_el                  300.000  :   18
         END
         NEW SCTN /TB-1/STL_COL_M1.1-MD/#462650
           POSS  E15000.00      N30000.00      U600.00         POSE  E15000.00      N30000.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1-MD'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1-MD
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1.2-MF/#462701
           POSS  E0.00      N0.00      U600.00         POSE  E0.00      N0.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.2-MF'
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.2-MF
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1.2-MD/#462703
           POSS  E0.00      N30000.00      U600.00         POSE  E0.00      N30000.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.2-MD'
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.2-MD
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1.2-ME/#462767
           POSS  E0.00      N16000.00      U600.00         POSE  E0.00      N16000.00      U14466.90
-          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1.2-ME'
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1.2-ME
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_/#462818
@@ -679,22 +694,26 @@ $*    steel_col_el                  300.000  :   18
         END
         NEW SCTN /TB-1/STL_COL_M1a-MF/#497531
           POSS  E24200.00      N0.00      U600.00         POSE  E24200.00      N0.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1a-MF'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1a-MF
+'
           CTYS HING    CTYE HING
         END
         NEW SCTN /TB-1/STL_COL_M1a-MD/#497533
           POSS  E24200.00      N30000.00      U600.00         POSE  E24200.00      N30000.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1a-MD'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1a-MD
+'
           CTYS HING    CTYE HING
         END
         NEW SCTN /TB-1/STL_COL_M1.1a-MF/#497557
           POSS  E7500.00      N0.00      U600.00         POSE  E7500.00      N0.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1a-MF'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1a-MF
+'
           CTYS HING    CTYE HING
         END
         NEW SCTN /TB-1/STL_COL_M1.1a-MD/#497559
           POSS  E7500.00      N30000.00      U600.00         POSE  E7500.00      N30000.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1a-MD'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1a-MD
+'
           CTYS HING    CTYE HING
         END
         NEW SCTN /TB-1/STL_COL_/#497748
@@ -769,62 +788,74 @@ $*    steel_col_el                  300.000  :   18
         END
         NEW SCTN /TB-1/STL_COL_M3-MF/#532020
           POSS  E57500.00      N0.00      U600.00         POSE  E57500.00      N0.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MF '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MF 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-ME/#532022
           POSS  E57500.00      N16000.00      U600.00         POSE  E57500.00      N16000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-ME '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-ME 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MD/#532024
           POSS  E57500.00      N30000.00      U600.00         POSE  E57500.00      N30000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MD '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MD 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MC/#532026
           POSS  E57500.00      N40000.00      U600.00         POSE  E57500.00      N40000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MC '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MC 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MB/#532028
           POSS  E57500.00      N50000.00      U600.00         POSE  E57500.00      N50000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MB '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MB 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M3-MA/#532030
           POSS  E57500.00      N61000.00      U600.00         POSE  E57500.00      N61000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MA '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M3-MA 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MF/#532032
           POSS  E29000.00      N0.00      U600.00         POSE  E29000.00      N0.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MF '
+          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MF 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-ME/#532034
           POSS  E29000.00      N16000.00      U600.00         POSE  E29000.00      N16000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-ME '
+          SPRE  SPCO  /CTCV-SPEC/BH800X350X22X36         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-ME 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MD/#532036
           POSS  E29000.00      N30000.00      U600.00         POSE  E29000.00      N30000.00      U18200.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MD '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MD 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MC/#532038
           POSS  E29000.00      N40000.00      U600.00         POSE  E29000.00      N40000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MC '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MC 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MB/#532040
           POSS  E29000.00      N50000.00      U600.00         POSE  E29000.00      N50000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MB '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MB 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_M1-MA/#532152
           POSS  E29000.00      N61000.00      U600.00         POSE  E29000.00      N61000.00      U13300.00
-          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MA '
+          SPRE  SPCO  /CTCV-SPEC/BH700X300X22X40         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M1-MA 
+'
           CTYS HING    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_/#536067
@@ -1549,7 +1580,8 @@ $*    steel_col_el                  300.000  :   18
         END
         NEW SCTN /TB-1/STL_COL_M1.1-MF/#724736
           POSS  E15000.00      N0.00      U600.00         POSE  E15000.00      N0.00      U11700.00
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1-MF'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M1.1-MF
+'
           CTYS HING    CTYE HING
         END
         NEW SCTN /TB-1/STL_COL_/#750806
@@ -3094,7 +3126,8 @@ $*    steel_col_el                  300.000  :   18
         END
         NEW SCTN /TB-1/STL_COL_M1.1-ME/#806794
           POSS  E15000.00      N16000.00      U325.00         POSE  E15000.00      N16000.00      U14298.70
-          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'M1.1-ME'
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'M1.1-ME
+'
           CTYS FIX    CTYE FIX
         END
         NEW SCTN /TB-1/STL_COL_/#807952
