@@ -25,6 +25,7 @@ namespace PDMSImportStructure
         public static string MDTfileName = string.Empty;
         public static string MDTfileNameWOExt = string.Empty;
         public static string MDTfilePathWNameWOExt = string.Empty;
+        public static bool GrdFileExists = false;
 
         #region Events
 
@@ -136,20 +137,34 @@ namespace PDMSImportStructure
                 MDTfileNameWOExt = Path.GetFileNameWithoutExtension(MDTfile);
                 MDTfilePathWNameWOExt = MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt;
 
-                ReadMDT.ReadMDTfile(MDTfile, out string MDTMessage);
-                if (File.Exists(MDTfileNameWOExt + ".Grd"))
+                //先讀Grd file, 再讀MDT file, 如果Grd file不存在, 則在執行ReadMDT.ReadMDTfile時依member data自動產生(call方法)
+                string GrdMessage = string.Empty;
+                if (File.Exists(MDTfilePathWNameWOExt + ".Grd"))
                 {
-                    ReadGrd.ReadGrdfile(MDTfileNameWOExt + ".Grd", out string GrdMessage);
+                    GrdFileExists = true;
+                    ReadGrd.ReadGrdfile(MDTfilePathWNameWOExt + ".Grd", out GrdMessage);
                 }
                 else
                 {
-                    MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    GrdFileExists = false;
+                    var result = MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically.", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Cancel)
+                    {
+                        return;
+                    }
                     //TODO
                 }
+
+                ReadMDT.ReadMDTfile(MDTfile, out string MDTMessage);
 
                 if (MDTMessage.ToUpper().Contains("ERROR"))
                 {
                     MessageBox.Show(MDTMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (GrdMessage.ToUpper().Contains("ERROR"))
+                {
+                    MessageBox.Show(GrdMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             };

@@ -57,18 +57,18 @@ namespace PDMSImportStructure
     public struct GridXProperties
     {
         public string XGridName { get; set; }
-        public double Xposition { get; set; }
+        public double XGridPosition { get; set; }
     }
 
     public struct GridYProperties
     {
         public string YGridName { get; set; }
-        public double Yposition { get; set; }
+        public double YGridPosition { get; set; }
     }
 
     public struct GridZProperties
     {
         public string ZGridName { get; set; }
-        public double Zelevation { get; set; }
+        public double ZGridElevation { get; set; }
     }
 }

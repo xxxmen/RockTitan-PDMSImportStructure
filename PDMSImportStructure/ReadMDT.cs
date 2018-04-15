@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace PDMSImportStructure
 {
-    public class ReadMDT
+    public class ReadMDT : ReadGrd
     {
         //TODO: MDT version, shift, rotate
         public static string MDTLengthUnit = string.Empty;
@@ -55,6 +55,11 @@ namespace PDMSImportStructure
             else
             {
                 Message = string.Format("ERROR! MDT file length unit is missing, please check your data.");
+                return;
+            }
+            if ((PDMSImportStrForm.GrdFileExists == true) && (GrdLengthUnit != MDTLengthUnit))
+            {
+                Message = string.Format("ERROR! The length unit is different between MDT file and Grd file, please check your data.");
                 return;
             }
 
@@ -176,12 +181,12 @@ namespace PDMSImportStructure
                 string Function = string.Empty;
                 if (MembType == "C") { Function = "Column"; }
                 else if (MembType == "S") { Function = "Slanted Column(Post)"; }
+                else if (MembType == "VB") { Function = "Vertical Bracing"; }
                 else if (MembType == "GD") { Function = "Girder"; }
                 else if (MembType == "JS") { Function = "Joist"; }
                 else if (MembType == "B") { Function = "Beam"; }
                 else if (MembType == "PL") { Function = "Purlin"; }
                 else if (MembType == "HB") { Function = "Horizontal Bracing"; }
-                else if (MembType == "VB") { Function = "Vertical Bracing"; }
                 else { Function = "Other"; }
 
                 //Beta Angle (Cross-Section Rotation)
@@ -204,6 +209,36 @@ namespace PDMSImportStructure
                 }
                 //Bangle四捨五入至小數兩位
                 Bangle = Math.Round(Bangle, 2);
+
+                //當Grd file不存在時將每一筆member資料建立grid line
+                if (PDMSImportStrForm.GrdFileExists == false)
+                {
+                    //因為在迴圈中, 只有第一個迴圈需要把List清除
+                    if (i == 0)
+                    {
+                        GridXPropertiesList.Clear();
+                        GridYPropertiesList.Clear();
+                        GridZPropertiesList.Clear();
+                    }
+                    //叫用自動生成Grid方法
+                    AutoGenGrd(StartX, StartY, StartZ, EndX, EndY, EndZ, MembType);
+
+                    //當迴圈做最後一次時將List移除重複及排序
+                    //TODO:應該在進入迴圈前就先移除重複及排序
+                    //if (i == MDLData.Count - 1)
+                    //{
+                    //    GridXPropertiesList = RemoveDuplicatesSortList(GridXPropertiesList);
+                    //}
+                }
+
+                //TODO: 如何找出於List中相減取絕對值之最小值的項目
+                string XGridName = string.Empty;
+                double XGridPosition = Math.Min(StartX, EndX);
+                string YGridName = string.Empty;
+                double YGridPosition = Math.Min(StartY, EndY);
+                string ZGridName = string.Empty;
+                double ZGridElevation = Math.Min(StartZ, EndZ);
+                
 
                 //TODO:未確認完整
                 //將所有PDMS桿件屬性轉為字串並組合後轉為HashCode, 用於比對是否需更新
