@@ -28,6 +28,7 @@ namespace PDMSImportStructure
         public static bool GrdFileExists = false;
         public static string OutputMacroFileExt = ".MAC"; //設定輸出macro的副檔名, 可考慮為".PDM" / ".MAC"
 
+
         #region Events
 
         private void PDMSImportStrForm_Load(object sender, EventArgs e)
