@@ -24,17 +24,84 @@ namespace PDMSImportStructure
         public static string MDTfilePath = string.Empty;
         public static string MDTfileName = string.Empty;
         public static string MDTfileNameWOExt = string.Empty;
+        public static string MDTfilePathWNameWOExt = string.Empty;
+        public static bool GrdFileExists = false;
+        public static string OutputMacroFileExt = ".MAC"; //設定輸出macro的副檔名, 可考慮為".PDM" / ".MAC"
+
+        #region Events
 
         private void PDMSImportStrForm_Load(object sender, EventArgs e)
         {
-            if (ReadMDT.PropertiesList.Count == 0)
+            FormLoad();
+        }
+
+        private void FilePathtextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                BtnViewData.Enabled = false;
-                BtnExport.Enabled = false;
+                LoadData();
             }
         }
 
         private void SelectFileBtn_Click(object sender, EventArgs e)
+        {
+            SelectFile();
+            LoadData();
+        }
+
+        private void BtnViewFile_Click(object sender, EventArgs e)
+        {
+            ViewFile();
+        }
+        
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            Export();
+        }
+
+        private void BtnSendtoPDMS_Click(object sender, EventArgs e)
+        {
+            Send();
+        }
+
+        private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            FormTopMostcheckBoxCheckedChanged();
+        }
+
+        private void MembDataGridViewcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            MembDataGridViewcheckBoxCheckedChanged();
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        void FormLoad()
+        {
+            //顯示版本於Form title
+            this.Text = "PDMS Import Structure  V" + Application.ProductVersion;
+
+            MemberDatalabel.Text = " ";
+            SectionListlabel.Text = " ";
+            MaterialGradeListlabel.Text = " ";
+            LengthUnitlabel.Text = " ";
+
+            if (ReadMDT.MainPropertiesList.Count == 0)
+            {
+                BtnSendtoPDMS.Enabled = false;
+                BtnExport.Enabled = false;
+            }
+        }
+
+        void SelectFile()
         {
             //FolderBrowserDialog path = new FolderBrowserDialog();
             //path.ShowDialog();
@@ -43,33 +110,24 @@ namespace PDMSImportStructure
                 Filter = "MDT files (*.MDT)|*.MDT|All files (*.*)|*.*"
             };
             file.ShowDialog();
-            this.filePathtextBox.Text = file.FileName;
-
-            LoadData();
+            this.FilePathtextBox.Text = file.FileName;
         }
 
-        private void BtnViewFile_Click(object sender, EventArgs e)
+        void ViewFile()
         {
-            System.Diagnostics.Process.Start("explorer.exe", (filePathtextBox.Text == null || filePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(filePathtextBox.Text));
-        }
-
-        private void BtnViewData_Click(object sender, EventArgs e)
-        {
-            WriteDatatoUI();
-        }
-
-        private void BtnExport_Click(object sender, EventArgs e)
-        {
-            GenerateMacro.GenerateMacrofile();
+            System.Diagnostics.Process.Start("explorer.exe", (FilePathtextBox.Text == null || FilePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(FilePathtextBox.Text));
         }
 
         void LoadData()
         {
+            BtnExport.Enabled = false;
+            BtnSendtoPDMS.Enabled = false;
+
             //背景執行
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += (sender_obj, obj) =>
             {
-                MDTfile = filePathtextBox.Text;
+                MDTfile = FilePathtextBox.Text;
                 if (File.Exists(MDTfile) != true | MDTfile.Contains(".MDT") != true)
                 {
                     MessageBox.Show("No MDT file selected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -78,73 +136,57 @@ namespace PDMSImportStructure
                 MDTfilePath = Path.GetDirectoryName(MDTfile);
                 MDTfileName = Path.GetFileName(MDTfile);
                 MDTfileNameWOExt = Path.GetFileNameWithoutExtension(MDTfile);
+                MDTfilePathWNameWOExt = MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt;
 
-                ReadMDT.ReadMDTfile(MDTfile, out string Message);
-
-                if (Message.ToUpper().Contains("ERROR"))
+                //先讀Grd file, 再讀MDT file, 如果Grd file不存在, 則在執行ReadMDT.ReadMDTfile時依member data自動產生(call方法)
+                string GrdMessage = string.Empty;
+                if (File.Exists(MDTfilePathWNameWOExt + ".Grd"))
                 {
-                    MessageBox.Show(Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    GrdFileExists = true;
+                    ReadGrd.ReadGrdfile(MDTfilePathWNameWOExt + ".Grd", out GrdMessage);
+                }
+                else
+                {
+                    GrdFileExists = false;
+                    var result = MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically. Do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+                    //TODO
+                }
+
+                ReadMDT.ReadMDTfile(MDTfile, out string MDTMessage);
+
+                if (MDTMessage.ToUpper().Contains("ERROR"))
+                {
+                    MessageBox.Show(MDTMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (GrdMessage.ToUpper().Contains("ERROR"))
+                {
+                    MessageBox.Show(GrdMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             };
 
             bw.RunWorkerCompleted += (sender_obj, obj) =>
             {
-                if (ReadMDT.PropertiesList.Count != 0)
+                if (ReadMDT.MainPropertiesList.Count != 0)
                 {
-                    BtnViewData.Enabled = true;
+                    WriteListtoListBox();
+                    LengthUnitlabel.Text = string.Format("Length Unit : {0}", ReadMDT.MDTLengthUnit);
                     BtnExport.Enabled = true;
+                    MessageBox.Show("Successfully load all data.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
 
             bw.RunWorkerAsync();
         }
 
-        void WriteDatatoUI()
+        void WriteListtoListBox()
         {
-            majorPropertiesDataGridView.DataSource = null; //清除前一次DataGridView中資料
-
-            //為了解決無法排序問題, 重做BindingCollection物件
-            BindingCollection<MajorProperties> objList = new BindingCollection<MajorProperties>();
-            foreach (MajorProperties item in ReadMDT.PropertiesList)
-            {
-                objList.Add(item);
-            }
-            majorPropertiesDataGridView.DataSource = objList; //填入List資料
-
-            //以迴圈方式一筆一筆填入資料效能差, 已用上述替代
-            //foreach (var item in ReadMDT.PropertiesList)
-            //{
-            //    majorPropertiesDataGridView.Rows.Add(
-            //        item.countNo,
-            //        item.ID,
-            //        item.Section,
-            //        item.Material,
-            //        item.MaterialGrade,
-            //        item.MemberLength,
-            //        item.StartX,
-            //        item.StartY,
-            //        item.StartZ,
-            //        item.EndX,
-            //        item.EndY,
-            //        item.EndZ,
-            //        item.Type,
-            //        item.SP,
-            //        item.IT,
-            //        item.CP,
-            //        item.Reflect,
-            //        item.OvX,
-            //        item.OvY,
-            //        item.OvZ,
-            //        item.ReleaseS,
-            //        item.ReleaseE,
-            //        item.Grid
-            //        );
-            //    //dataGridView1.Rows.Add();
-            //    //DataGridViewCell cell = dataGridView1.Rows[i - 1].Cells[0];
-            //    //cell.Value = item.ID;
-            //}
-            MemberDatalabel.Text = "Number of member : " + ReadMDT.PropertiesList.Count.ToString();
+            MemberDatalabel.Text = "Number of members : " + ReadMDT.MainPropertiesList.Count.ToString();
 
             int k = 1;
             SectionlistBox.Items.Clear();
@@ -152,7 +194,7 @@ namespace PDMSImportStructure
             {
                 SectionlistBox.Items.Add(k++ + " " + item);
             }
-            SectionListlabel.Text = "Number of used section : " + ReadMDT.SectionList.Count.ToString();
+            SectionListlabel.Text = "Number of used sections : " + ReadMDT.SectionList.Count.ToString();
 
             int l = 1;
             MaterialGradelistBox.Items.Clear();
@@ -166,9 +208,84 @@ namespace PDMSImportStructure
             //Form2 form2 = new Form2();
             //form2.Show();
         }
-        
-        
-        private void FormTopMostcheckBox_CheckedChanged(object sender, EventArgs e)
+
+        void WriteDatatoDataGridView()
+        {
+            majorPropertiesDataGridView.DataSource = null; //清除前一次DataGridView中資料
+
+            //為了解決無法排序問題, 重做BindingCollection物件
+            BindingCollection<MajorProperties> objList = new BindingCollection<MajorProperties>();
+            foreach (MajorProperties item in ReadMDT.MainPropertiesList)
+            {
+                objList.Add(item);
+            }
+            majorPropertiesDataGridView.DataSource = objList; //填入List資料
+        }
+
+        void MembDataGridViewcheckBoxCheckedChanged()
+        {
+            //先後順序有學問!!
+            if (MembDataGridViewcheckBox.Checked)
+            {
+                WriteDatatoDataGridView();
+
+                this.MinimumSize = new System.Drawing.Size(800, 600);
+                this.ClientSize = new System.Drawing.Size(784, 561);
+
+                this.MemberDatalabel.Location = new System.Drawing.Point(12, 357);
+
+                this.SecListgroupBox.Size = new System.Drawing.Size(202, 117);
+                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 117);
+                this.SectionlistBox.Size = new System.Drawing.Size(190, 95);
+                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 95);
+
+                this.SecListgroupBox.Location = new System.Drawing.Point(12, 379);
+                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 379);
+                this.SectionlistBox.Location = new System.Drawing.Point(6, 15);
+                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 15);
+
+                this.MainDatagroupBox.Visible = true;
+            }
+            else
+            {
+                this.MainDatagroupBox.Visible = false;
+
+                this.MinimumSize = new System.Drawing.Size(570, 330);
+                this.ClientSize = new System.Drawing.Size(554, 291);
+
+                this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
+
+                this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
+                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
+                this.SectionlistBox.Size = new System.Drawing.Size(190, 121);
+                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 121);
+
+                this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
+                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
+                this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
+                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
+            }
+        }
+
+        void Export()
+        {
+            GenerateMacro.GenerateMacrofile();
+
+            if (File.Exists(MDTfilePathWNameWOExt + OutputMacroFileExt) == true)
+            {
+                MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BtnSendtoPDMS.Enabled = true;
+            }
+        }
+
+        void Send()
+        {
+            //TODO
+            MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BtnSendtoPDMS.Enabled = false;
+        }
+
+        void FormTopMostcheckBoxCheckedChanged()
         {
             if (FormTopMostcheckBox.Checked)
             {
@@ -180,9 +297,8 @@ namespace PDMSImportStructure
             }
         }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
+
+
     }
 }

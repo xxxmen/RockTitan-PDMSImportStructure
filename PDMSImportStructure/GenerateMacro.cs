@@ -118,7 +118,7 @@ namespace PDMSImportStructure
             //string signature = string.Format("\ndesc \'REVIT_UID:{0}_STR-{2} OWNER:{1}\'\n", mainframePrefix, this.context.client.user.ID, partNo);
 
             string MACcontentCOLMemb = string.Empty;
-            foreach (var item in ReadMDT.PropertiesList)
+            foreach (var item in ReadMDT.MainPropertiesList)
             {
                 if (item.MembType != "")
                 {
@@ -155,7 +155,7 @@ namespace PDMSImportStructure
             };
             string MACcontent = string.Join("\n", MACcontentArray);
 
-            using (StreamWriter sw = new StreamWriter(PDMSImportStrForm.MDTfilePath + ((PDMSImportStrForm.MDTfilePath == null) || (PDMSImportStrForm.MDTfilePath == string.Empty) ? string.Empty : @"\") + PDMSImportStrForm.MDTfileNameWOExt + ".MAC"))
+            using (StreamWriter sw = new StreamWriter(PDMSImportStrForm.MDTfilePathWNameWOExt + PDMSImportStrForm.OutputMacroFileExt))
             {
                 sw.WriteLine(prependString + MACcontent + appendString);
                 sw.Close();
