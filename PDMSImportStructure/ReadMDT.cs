@@ -11,13 +11,19 @@ namespace PDMSImportStructure
 {
     public class ReadMDT : ReadGrd
     {
+        //TODO: TEST for debug
+        public static List<double> TxList = new List<double>();
+        public static List<double> TyList = new List<double>();
+        public static List<double> TzList = new List<double>();
+
+
         //TODO: MDT version, shift, rotate
         public static string MDTLengthUnit = string.Empty;
         public static List<string> MatCodeList = new List<string>();
         public static List<string> MaterialList = new List<string>();
         public static List<string> MaterialGradeList = new List<string>();
         public static List<string> SectionList = new List<string>();
-        public static List<MajorProperties> PropertiesList = new List<MajorProperties>(); //Main Data: All member data
+        public static List<MajorProperties> MainPropertiesList = new List<MajorProperties>(); //Main Data: All member data
 
         public static void ReadMDTfile(string MDTfile, out string Message)
         {
@@ -122,7 +128,31 @@ namespace PDMSImportStructure
                 SectionList.Add(CompSection);
             }
 
-            PropertiesList.Clear();
+            //當Grd file不存在時將每一筆member資料建立grid line
+            if (PDMSImportStrForm.GrdFileExists == false)
+            {
+                GridXPropertiesList.Clear();
+                GridYPropertiesList.Clear();
+                GridZPropertiesList.Clear();
+
+                for (int i = 0; i < MDLData.Count; i++)
+                {
+                    double StartX = Convert.ToDouble(MDLData[i].Groups["Start_X"].Value);
+                    double StartY = Convert.ToDouble(MDLData[i].Groups["Start_Y"].Value);
+                    double StartZ = Convert.ToDouble(MDLData[i].Groups["Start_Z"].Value);
+                    double EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value);
+                    double EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value);
+                    double EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value);
+                    string MembType = PhyMembData[i].Groups["TP"].Value;
+
+                    //叫用自動生成Grid方法, 將資料存入GridXPropertiesList, GridYPropertiesList, GridZPropertiesList
+                    AutoGenGrd(StartX, StartY, StartZ, EndX, EndY, EndZ, MembType);
+                }
+                //TODO: 移除重複及排序
+                RemoveDuplicatesSortList();
+            }
+
+            MainPropertiesList.Clear();
             for (int i = 0; i < MDLData.Count; i++)
             {
                 int countNo = i + 1;
@@ -136,7 +166,7 @@ namespace PDMSImportStructure
                 double EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value);
                 double EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value);
                 double EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value);
-                string Grid = MDLData[i].Groups["Grid"].Value.Replace("\r\n", string.Empty); //Replace去掉換行符號
+                string Grid = MDLData[i].Groups["Grid"].Value.Replace("\r\n", string.Empty).Replace("\n", string.Empty); //Replace去掉換行符號
                 //Phy Memb Data properties
                 string CompID = PhyMembData[i].Groups["compID"].Value; //比對ID使用
                 string NodeS = PhyMembData[i].Groups["Node_Start"].Value; //重複暫不使用
@@ -210,35 +240,26 @@ namespace PDMSImportStructure
                 //Bangle四捨五入至小數兩位
                 Bangle = Math.Round(Bangle, 2);
 
-                //當Grd file不存在時將每一筆member資料建立grid line
-                if (PDMSImportStrForm.GrdFileExists == false)
-                {
-                    //因為在迴圈中, 只有第一個迴圈需要把List清除
-                    if (i == 0)
-                    {
-                        GridXPropertiesList.Clear();
-                        GridYPropertiesList.Clear();
-                        GridZPropertiesList.Clear();
-                    }
-                    //叫用自動生成Grid方法
-                    AutoGenGrd(StartX, StartY, StartZ, EndX, EndY, EndZ, MembType);
+                //TODO: 填入X, Y, Z Grid屬性, 找出於List中相減取絕對值之最小值的項目
+                double MinX = Math.Min(StartX, EndX);
+                double MinY = Math.Min(StartY, EndY);
+                double MinZ = Math.Min(StartZ, EndZ);
 
-                    //當迴圈做最後一次時將List移除重複及排序
-                    //TODO:應該在進入迴圈前就先移除重複及排序
-                    //if (i == MDLData.Count - 1)
-                    //{
-                    //    GridXPropertiesList = RemoveDuplicatesSortList(GridXPropertiesList);
-                    //}
-                }
+                double XGridPosition = GridXPropertiesList.Min(value => Math.Abs(Convert.ToDouble(value.XGridPosition) - MinX));
+                string XGridName = "X" + XGridPosition.ToString("f2");
+                double YGridPosition = GridYPropertiesList.Min(value => Math.Abs(Convert.ToDouble(value.YGridPosition) - MinY));
+                string YGridName = "Y" + YGridPosition.ToString("f2");
+                double ZGridElevation = GridZPropertiesList.Min(value => Math.Abs(Convert.ToDouble(value.ZGridElevation) - MinZ));
+                string ZGridName = "EL" + ZGridElevation.ToString("f2");
 
-                //TODO: 如何找出於List中相減取絕對值之最小值的項目
-                string XGridName = string.Empty;
-                double XGridPosition = Math.Min(StartX, EndX);
-                string YGridName = string.Empty;
-                double YGridPosition = Math.Min(StartY, EndY);
-                string ZGridName = string.Empty;
-                double ZGridElevation = Math.Min(StartZ, EndZ);
-                
+                //TODO: TEST for debug
+                double Tx = GridXPropertiesList.Min(value => value.XGridPosition);
+                double Ty = GridYPropertiesList.Min(value => value.YGridPosition);
+                double Tz = GridZPropertiesList.Min(value => value.ZGridElevation);
+                TxList.Add(Tx);
+                TyList.Add(Ty);
+                TzList.Add(Tz);
+
 
                 //TODO:未確認完整
                 //將所有PDMS桿件屬性轉為字串並組合後轉為HashCode, 用於比對是否需更新
@@ -266,7 +287,7 @@ namespace PDMSImportStructure
                 }
 
                 //將資料寫入List
-                PropertiesList.Add(new MajorProperties
+                MainPropertiesList.Add(new MajorProperties
                 {
                     countNo = countNo,
                     //
@@ -310,6 +331,12 @@ namespace PDMSImportStructure
                     JUSLINE = JUSLINE,
                     Function = Function,
                     Bangle = Bangle,
+                    XGridName = XGridName,
+                    XGridPosition = XGridPosition,
+                    YGridName = YGridName,
+                    YGridPosition = YGridPosition,
+                    ZGridName = ZGridName,
+                    ZGridElevation = ZGridElevation,
                     strCompHashCode = strCompHashCode
                 });
             }

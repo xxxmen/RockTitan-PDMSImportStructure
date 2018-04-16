@@ -26,6 +26,8 @@ namespace PDMSImportStructure
         public static string MDTfileNameWOExt = string.Empty;
         public static string MDTfilePathWNameWOExt = string.Empty;
         public static bool GrdFileExists = false;
+        public static string OutputMacroFileExt = ".MAC"; //設定輸出macro的副檔名, 可考慮為".PDM" / ".MAC"
+
 
         #region Events
 
@@ -93,7 +95,7 @@ namespace PDMSImportStructure
             MaterialGradeListlabel.Text = " ";
             LengthUnitlabel.Text = " ";
 
-            if (ReadMDT.PropertiesList.Count == 0)
+            if (ReadMDT.MainPropertiesList.Count == 0)
             {
                 BtnSendtoPDMS.Enabled = false;
                 BtnExport.Enabled = false;
@@ -147,8 +149,8 @@ namespace PDMSImportStructure
                 else
                 {
                     GrdFileExists = false;
-                    var result = MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically.", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (result == DialogResult.Cancel)
+                    var result = MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically. Do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.No)
                     {
                         return;
                     }
@@ -171,7 +173,7 @@ namespace PDMSImportStructure
 
             bw.RunWorkerCompleted += (sender_obj, obj) =>
             {
-                if (ReadMDT.PropertiesList.Count != 0)
+                if (ReadMDT.MainPropertiesList.Count != 0)
                 {
                     WriteListtoListBox();
                     LengthUnitlabel.Text = string.Format("Length Unit : {0}", ReadMDT.MDTLengthUnit);
@@ -185,7 +187,7 @@ namespace PDMSImportStructure
 
         void WriteListtoListBox()
         {
-            MemberDatalabel.Text = "Number of members : " + ReadMDT.PropertiesList.Count.ToString();
+            MemberDatalabel.Text = "Number of members : " + ReadMDT.MainPropertiesList.Count.ToString();
 
             int k = 1;
             SectionlistBox.Items.Clear();
@@ -214,7 +216,7 @@ namespace PDMSImportStructure
 
             //為了解決無法排序問題, 重做BindingCollection物件
             BindingCollection<MajorProperties> objList = new BindingCollection<MajorProperties>();
-            foreach (MajorProperties item in ReadMDT.PropertiesList)
+            foreach (MajorProperties item in ReadMDT.MainPropertiesList)
             {
                 objList.Add(item);
             }
@@ -270,7 +272,7 @@ namespace PDMSImportStructure
         {
             GenerateMacro.GenerateMacrofile();
 
-            if (File.Exists(MDTfilePathWNameWOExt + ".MAC") == true)
+            if (File.Exists(MDTfilePathWNameWOExt + OutputMacroFileExt) == true)
             {
                 MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BtnSendtoPDMS.Enabled = true;

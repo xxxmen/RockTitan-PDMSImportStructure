@@ -1,0 +1,1969 @@
+
+mm dist
+var !list COLL ALL  with ( NAME EQ '/PR-11/MAINFRAME' ) for $!!CE
+!size = !list.size()
+if(!size eq 1) then
+/PR-11/MAINFRAME
+!cename = !!CE.Name
+  var !list COLL ALL(FITT) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete FITT
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete SCTN
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(SBFR) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete SBFR
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(FRMW) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete FRMW
+enddo
+!list.clear()
+savework
+$!cename
+var !list COLL ALL(STRU) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+!ele = !list[!index]
+$!ele
+delete STRU
+enddo
+!list.clear()
+savework
+$!cename
+delete ZONE
+savework
+endif
+NEW ZONE  /PR-11/MAINFRAME
+    PURP STL
+$*    steel_col_el                  300.000  :   18
+      NEW STRU  /PR-11/STL_FRAME/EL300.000
+                 PURP CSTL
+      NEW FRMW  /PR-11/S_EL300.000/ELEVIEW
+                 PURP SELE
+      NEW SBFR  /PR-11/S_EL300.000/COLUMN
+                 PURP COLN
+        NEW SCTN /PR-11/STL_COL_G-I/#511631
+          POSS  E10670.00      N18230.00      U300.00         POSE  E10670.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'G-I   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_H-I/#511916
+          POSS  E10670.00      N24230.00      U300.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'H-I   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_G-12/#512023
+          POSS  E4230.00      N18230.00      U300.00         POSE  E4230.00      N18230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'G-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_H-12/#512025
+          POSS  E4230.00      N24230.00      U300.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'H-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_G-11/#512046
+          POSS  E-5470.00      N18230.00      U300.00         POSE  E-5470.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'G-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_H-11/#512048
+          POSS  E-5470.00      N24230.00      U300.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'H-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_J-12/#512357
+          POSS  E4230.00      N31480.00      U300.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'J-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_J-11/#512359
+          POSS  E-5470.00      N31480.00      U300.00         POSE  E-5470.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'J-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_K-12/#512383
+          POSS  E4230.00      N38730.00      U300.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'K-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_K-11/#512385
+          POSS  E-5470.00      N38730.00      U300.00         POSE  E-5470.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'K-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_L-12/#512407
+          POSS  E4230.00      N47630.00      U300.00         POSE  E4230.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'L-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_L-11/#512409
+          POSS  E-5470.00      N47630.00      U300.00         POSE  E-5470.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'L-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_M-12/#512478
+          POSS  E4230.00      N53630.00      U300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_M-11/#512480
+          POSS  E-5470.00      N53630.00      U300.00         POSE  E-5470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_L-13/#512584
+          POSS  E12930.00      N47630.00      U300.00         POSE  E12930.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'L-13  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_M-13/#512586
+          POSS  E12930.00      N53630.00      U300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   180.00  FUNC  'Column'  DESC  'M-13  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#513392
+          POSS  E10670.00      N18230.00      U6000.00         POSE  E10670.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513421
+          POSS  E4230.00      N18230.00      U6000.00         POSE  E4230.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513460
+          POSS  E-5470.00      N18230.00      U6000.00         POSE  E-5470.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513631
+          POSS  E-5470.00      N18230.00      U6000.00         POSE  E30.00      N18230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513661
+          POSS  E-5470.00      N24230.00      U6000.00         POSE  E4230.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513688
+          POSS  E-5470.00      N31480.00      U6000.00         POSE  E4230.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513720
+          POSS  E-5470.00      N38730.00      U6000.00         POSE  E4230.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513751
+          POSS  E-5470.00      N47630.00      U6000.00         POSE  E4230.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#513783
+          POSS  E-5470.00      N53630.00      U6000.00         POSE  E4230.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514007
+          POSS  E20.00      N18230.00      U6000.00         POSE  E20.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514029
+          POSS  E120.00      N24230.00      U6000.00         POSE  E120.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514049
+          POSS  E120.00      N31480.00      U6000.00         POSE  E120.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514068
+          POSS  E120.00      N38730.00      U6000.00         POSE  E120.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514092
+          POSS  E120.00      N47630.00      U6000.00         POSE  E120.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514138
+          POSS  E-5470.00      N24230.00      U6000.00         POSE  E-5470.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514175
+          POSS  E4230.00      N24230.00      U6000.00         POSE  E4230.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514200
+          POSS  E-5470.00      N31480.00      U6000.00         POSE  E-5470.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514221
+          POSS  E-5470.00      N38730.00      U6000.00         POSE  E-5470.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514260
+          POSS  E4230.00      N31480.00      U6000.00         POSE  E4230.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514281
+          POSS  E4230.00      N38730.00      U6000.00         POSE  E4230.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514315
+          POSS  E-5470.00      N47630.00      U6000.00         POSE  E-5470.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514341
+          POSS  E4230.00      N47630.00      U6000.00         POSE  E4230.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514412
+          POSS  E-5470.00      N21230.00      U6000.00         POSE  E20.00      N21230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514440
+          POSS  E20.00      N21230.00      U6000.00         POSE  E4230.00      N21230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514976
+          POSS  E-5470.00      N21130.00      U5875.00         POSE  E-97.00      N18230.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#514993
+          POSS  E161.00      N18230.00      U5875.00         POSE  E4230.00      N21130.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515011
+          POSS  E4230.00      N21330.00      U5875.00         POSE  E196.00      N24230.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515279
+          POSS  E120.00      N24230.00      U5875.00         POSE  E-5470.00      N27755.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515298
+          POSS  E-5470.00      N27955.00      U5875.00         POSE  E120.00      N31480.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515434
+          POSS  E120.00      N36230.00      U6000.00         POSE  E4230.00      N36230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515436
+          POSS  E120.00      N33980.00      U6000.00         POSE  E4230.00      N33980.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515444
+          POSS  E120.00      N31480.00      U5875.00         POSE  E-5470.00      N35005.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515446
+          POSS  E-5470.00      N35208.00      U5875.00         POSE  E120.00      N38730.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515618
+          POSS  E120.00      N41730.00      U6000.00         POSE  E4230.00      N41730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515654
+          POSS  E120.00      N44630.00      U6000.00         POSE  E4230.00      N44630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515901
+          POSS  E120.00      N47630.00      U5875.00         POSE  E-5470.00      N43280.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#515917
+          POSS  E-5470.00      N43080.00      U5875.00         POSE  E120.00      N38730.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#516834
+          POSS  E4230.00      N24230.00      U6000.00         POSE  E10670.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#516869
+          POSS  E30.00      N18230.00      U6000.00         POSE  E10670.00      N18230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#516945
+          POSS  E4230.00      N53630.00      U6000.00         POSE  E12930.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#516974
+          POSS  E4230.00      N47630.00      U6000.00         POSE  E12930.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517091
+          POSS  E12930.00      N53630.00      U6000.00         POSE  E12930.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517390
+          POSS  E10670.00      N18230.00      U9000.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517425
+          POSS  E4230.00      N18230.00      U9000.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517447
+          POSS  E-5470.00      N18230.00      U9000.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517520
+          POSS  E10670.00      N24230.00      U9000.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517567
+          POSS  E10670.00      N18230.00      U9000.00         POSE  E30.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517658
+          POSS  E30.00      N18230.00      U9000.00         POSE  E-5470.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517682
+          POSS  E4230.00      N24230.00      U9000.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#517933
+          POSS  E10670.00      N18230.00      U9000.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#518161
+          POSS  E1930.00      N18230.00      U9000.00         POSE  E1930.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#518189
+          POSS  E30.00      N18230.00      U9000.00         POSE  E30.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#518608
+          POSS  E4230.00      N24230.00      U9000.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#518938
+          POSS  E120.00      N24230.00      U9000.00         POSE  E120.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519009
+          POSS  E-5470.00      N31480.00      U9000.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519137
+          POSS  E120.00      N29080.00      U9000.00         POSE  E4230.00      N29080.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519181
+          POSS  E120.00      N26630.00      U9000.00         POSE  E4230.00      N26630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519278
+          POSS  E4230.00      N31480.00      U9000.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519280
+          POSS  E120.00      N31480.00      U9000.00         POSE  E120.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519284
+          POSS  E120.00      N36330.00      U9000.00         POSE  E4230.00      N36330.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519288
+          POSS  E120.00      N33880.00      U9000.00         POSE  E4230.00      N33880.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519352
+          POSS  E120.00      N38730.00      U9000.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519628
+          POSS  E4230.00      N38730.00      U9000.00         POSE  E4230.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519654
+          POSS  E-5470.00      N47630.00      U9000.00         POSE  E4230.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X82         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#519881
+          POSS  E120.00      N38730.00      U9000.00         POSE  E120.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X82         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520000
+          POSS  E120.00      N40730.00      U9000.00         POSE  E4230.00      N40730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520038
+          POSS  E120.00      N42730.00      U9000.00         POSE  E4230.00      N42730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520072
+          POSS  E120.00      N44630.00      U9000.00         POSE  E4230.00      N44630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520281
+          POSS  E-5470.00      N47630.00      U9000.00         POSE  E-5470.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520467
+          POSS  E-5470.00      N53630.00      U9000.00         POSE  E4230.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520496
+          POSS  E4230.00      N47630.00      U9000.00         POSE  E4230.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520689
+          POSS  E120.00      N47630.00      U9000.00         POSE  E120.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X127X39         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#520883
+          POSS  E2175.00      N47630.00      U9000.00         POSE  E2175.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#521285
+          POSS  E12930.00      N47630.00      U9000.00         POSE  E12930.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#534058
+          POSS  E2074.80      N53630.00      U8875.00         POSE  E120.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#534094
+          POSS  E2075.00      N47630.00      U8875.00         POSE  E120.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#534125
+          POSS  E2274.70      N53630.00      U8875.00         POSE  E4230.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#534127
+          POSS  E2275.00      N47630.00      U8875.00         POSE  E4230.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#534839
+          POSS  E-5470.00      N50630.00      U8875.00         POSE  E20.00      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#534841
+          POSS  E-380.00      N47630.00      U8875.00         POSE  E-5470.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536217
+          POSS  E4230.00      N47630.00      U8200.00         POSE  E12930.00      N47630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536219
+          POSS  E4230.00      N53630.00      U8200.00         POSE  E12930.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X71         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536221
+          POSS  E8680.00      N47771.30      U8200.00         POSE  E8680.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536223
+          POSS  E12930.00      N47630.00      U8200.00         POSE  E12930.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536225
+          POSS  E8680.00      N50630.00      U8200.00         POSE  E12930.00      N50630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536430
+          POSS  E8470.00      N53630.00      U6000.00         POSE  E8470.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536643
+          POSS  E2175.00      N47630.00      U6000.00         POSE  E2175.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#536900
+          POSS  E6350.00      N47630.00      U6000.00         POSE  E6350.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537065
+          POSS  E120.00      N50645.30      U5875.00         POSE  E2135.20      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537090
+          POSS  E120.00      N50645.30      U5875.00         POSE  E2134.40      N47630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537123
+          POSS  E4230.00      N50630.00      U5875.00         POSE  E2218.70      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537125
+          POSS  E4230.00      N50630.00      U5875.00         POSE  E2215.30      N47630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537306
+          POSS  E6309.40      N53630.00      U5875.00         POSE  E4230.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537402
+          POSS  E6307.40      N47630.00      U5875.00         POSE  E4230.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537442
+          POSS  E8470.00      N50630.00      U5875.00         POSE  E6390.60      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537462
+          POSS  E6392.60      N47630.00      U5875.00         POSE  E8470.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#537913
+          POSS  E120.00      N47630.00      U6000.00         POSE  E120.00      N47630.00      U8467.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_J-S6/#538056
+          POSS  E120.00      N31480.00      U6000.00         POSE  E120.00      N31480.00      U8594.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'J-S6  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#538163
+          POSS  E120.00      N47630.00      U7500.00         POSE  E4230.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#538249
+          POSS  E120.00      N38730.00      U7500.00         POSE  E4230.00      N38730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#538282
+          POSS  E120.00      N31480.00      U7500.00         POSE  E4230.00      N31480.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#539558
+          POSS  E120.00      N27855.00      U6000.00         POSE  E4230.00      N27855.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#539642
+          POSS  E120.00      N29667.50      U6000.00         POSE  E4230.00      N29667.50      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#540243
+          POSS  E-5470.00      N24230.00      U2594.00         POSE  E-2755.80      N24230.00      U5491.80
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#540585
+          POSS  E-5470.00      N31480.00      U2594.00         POSE  E-2816.50      N31480.00      U5369.70
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#540618
+          POSS  E-5197.50      N38730.00      U2866.50         POSE  E-2767.90      N38730.00      U5468.50
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#540620
+          POSS  E3958.90      N38730.00      U2865.10         POSE  E1502.70      N38730.00      U5497.10
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#544547
+          POSS  E-5470.00      N38730.00      U-850.00         POSE  E4230.00      N38730.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#544818
+          POSS  E-5470.00      N47630.00      U-850.00         POSE  E4230.00      N47630.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#544835
+          POSS  E-5470.00      N53630.00      U-850.00         POSE  E4230.00      N53630.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#545004
+          POSS  E12930.00      N47630.00      U-850.00         POSE  E12930.00      N53630.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#561423
+          POSS  E-5470.00      N27855.00      U6000.00         POSE  E120.00      N27855.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#561557
+          POSS  E-5470.00      N35105.00      U6000.00         POSE  E120.00      N35105.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#561583
+          POSS  E-5470.00      N43180.00      U6000.00         POSE  E120.00      N43180.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#562288
+          POSS  E-5470.00      N53630.00      U2656.50         POSE  E-2630.00      N53630.00      U5496.50
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#565495
+          POSS  E4230.00      N47630.00      U7500.00         POSE  E4230.00      N53630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#565654
+          POSS  E4230.00      N53630.00      U6800.00         POSE  E12930.00      N53630.00      U6800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#565886
+          POSS  E4230.00      N29180.00      U8875.00         POSE  E120.00      N31480.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#565890
+          POSS  E4230.00      N28980.00      U8875.00         POSE  E120.00      N26630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#565894
+          POSS  E156.60      N24230.00      U8875.00         POSE  E4230.00      N26630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#566433
+          POSS  E-5470.00      N24230.00      U-850.00         POSE  E-5470.00      N31480.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#566435
+          POSS  E4230.00      N24230.00      U-850.00         POSE  E4230.00      N31480.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#566913
+          POSS  E4230.00      N40830.00      U8875.00         POSE  E120.00      N42630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#566917
+          POSS  E4230.00      N40630.00      U8875.00         POSE  E120.00      N38730.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#566976
+          POSS  E4230.00      N45630.00      U8875.00         POSE  E120.00      N47630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#566980
+          POSS  E4230.00      N44530.00      U8875.00         POSE  E120.00      N42830.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#567503
+          POSS  E-5470.00      N39001.00      U6167.90         POSE  E-5470.00      N40937.40      U7473.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#567526
+          POSS  E-5470.00      N47414.70      U6133.40         POSE  E-5470.00      N45593.60      U7361.60
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#567758
+          POSS  E-5470.00      N38730.00      U-850.00         POSE  E-5470.00      N47630.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#567760
+          POSS  E4230.00      N38730.00      U-850.00         POSE  E4230.00      N47630.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#567942
+          POSS  E120.00      N38730.00      U7500.00         POSE  E120.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#567981
+          POSS  E4230.00      N38730.00      U7500.00         POSE  E4230.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#568212
+          POSS  E120.00      N31480.00      U7500.00         POSE  E120.00      N38730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#568246
+          POSS  E4230.00      N31480.00      U7500.00         POSE  E4230.00      N38730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#568641
+          POSS  E120.00      N44630.00      U7500.00         POSE  E4230.00      N44630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#568684
+          POSS  E120.00      N41730.00      U7500.00         POSE  E4230.00      N41730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#568875
+          POSS  E120.00      N36230.00      U7500.00         POSE  E4230.00      N36230.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#568900
+          POSS  E120.00      N33980.00      U7500.00         POSE  E4230.00      N33980.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#569078
+          POSS  E120.00      N26005.00      U6000.00         POSE  E4230.00      N26005.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#569281
+          POSS  E120.00      N26005.00      U7500.00         POSE  E4230.00      N26005.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#570329
+          POSS  E120.00      N24230.00      U7500.00         POSE  E120.00      N31480.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#570393
+          POSS  E120.00      N29667.50      U7500.00         POSE  E4230.00      N29667.50      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#570417
+          POSS  E120.00      N27855.00      U7500.00         POSE  E4230.00      N27855.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#571193
+          POSS  E120.00      N24230.00      U6000.00         POSE  E120.00      N24230.00      U8695.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#571429
+          POSS  E4230.00      N31480.00      U7500.00         POSE  E4230.00      N24230.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#571559
+          POSS  E120.00      N24230.00      U7500.00         POSE  E4230.00      N24230.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#571911
+          POSS  E4230.00      N25730.00      U8874.50         POSE  E4230.00      N24230.00      U7371.50
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#571932
+          POSS  E4230.00      N31480.00      U7371.50         POSE  E4230.00      N29980.00      U8874.50
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#571956
+          POSS  E4230.00      N25755.00      U7371.50         POSE  E4230.00      N24230.00      U5771.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#571980
+          POSS  E4230.00      N31480.00      U5771.00         POSE  E4230.00      N29980.00      U7371.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#572529
+          POSS  E4230.00      N38730.00      U7371.50         POSE  E4230.00      N40233.00      U8771.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#572555
+          POSS  E4230.00      N40278.00      U7371.50         POSE  E4230.00      N38730.00      U5872.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#572572
+          POSS  E4230.00      N46130.00      U8771.00         POSE  E4230.00      N47630.00      U7374.50
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#572589
+          POSS  E4230.00      N47630.00      U5823.50         POSE  E4230.00      N46130.00      U7371.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#573914
+          POSS  E-5470.00      N38730.00      U3244.00         POSE  E-5470.00      N41117.50      U5582.80
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#574212
+          POSS  E4230.00      N38730.00      U3244.00         POSE  E4230.00      N41177.30      U5691.30
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#574686
+          POSS  E4230.00      N24230.00      U3094.00         POSE  E4230.00      N26429.60      U5449.40
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#575019
+          POSS  E-5470.00      N24230.00      U3244.00         POSE  E-5470.00      N26629.90      U5584.40
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_G-21/#576096
+          POSS  E30.00      N18230.00      U300.00         POSE  E30.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'G-21  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_H-21/#576126
+          POSS  E30.00      N24230.00      U300.00         POSE  E30.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'H-21  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#576416
+          POSS  E-5470.00      N18230.00      U-850.00         POSE  E30.00      N18230.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#576445
+          POSS  E30.00      N18230.00      U-850.00         POSE  E4230.00      N18230.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#576534
+          POSS  E30.00      N24230.00      U-850.00         POSE  E4230.00      N24230.00      U-850.00
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#577812
+          POSS  E0.00      N18230.00      U1680.00         POSE  E4230.00      N18230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#577814
+          POSS  E0.00      N18230.00      U700.00         POSE  E4230.00      N18230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#577971
+          POSS  E0.00      N24230.00      U1680.00         POSE  E4230.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#577973
+          POSS  E0.00      N24230.00      U700.00         POSE  E4230.00      N24230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#578351
+          POSS  E30.00      N18230.00      U1680.00         POSE  E30.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#578373
+          POSS  E4230.00      N18230.00      U1680.00         POSE  E4230.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#581079
+          POSS  E30.00      N21230.00      U1680.00         POSE  E4230.00      N21230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#581126
+          POSS  E30.00      N18230.00      U700.00         POSE  E30.00      N24230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#581160
+          POSS  E4230.00      N18230.00      U700.00         POSE  E4230.00      N24230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#581216
+          POSS  E30.00      N21230.00      U700.00         POSE  E4230.00      N21230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#621176
+          POSS  E12930.00      N51630.00      U6000.00         POSE  E8470.00      N51630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#621419
+          POSS  E6230.00      N53630.00      U8200.00         POSE  E6230.00      N47630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#622571
+          POSS  E4230.00      N53630.00      U9000.00         POSE  E12930.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#622609
+          POSS  E4230.00      N47630.00      U9000.00         POSE  E12930.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#633180
+          POSS  E5730.00      N53630.00      U9000.00         POSE  E5730.00      N56030.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#641891
+          POSS  E4230.00      N53630.00      U4300.00         POSE  E4230.00      N56030.00      U4300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#657513
+          POSS  E4230.00      N53843.40      U1872.10         POSE  E4230.00      N55913.20      U3941.90
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#657916
+          POSS  E5726.10      N53824.50      U7162.00         POSE  E5726.10      N55567.30      U8632.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#669976
+          POSS  E10670.00      N18203.90      U-1400.10         POSE  E10670.00      N24203.90      U-1400.10
+          SPRE  SPCO  /CTCV-SPEC/RC400X650         JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#705021
+          POSS  E12930.00      N47630.00      U2594.00         POSE  E12930.00      N50337.60      U5441.50
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#705196
+          POSS  E12930.00      N53630.00      U2594.00         POSE  E12930.00      N50953.40      U5408.90
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#750506
+          POSS  E-5470.00      N47630.00      U2594.00         POSE  E-2837.00      N47630.00      U5417.50
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#750583
+          POSS  E4230.00      N47630.00      U2594.00         POSE  E1610.20      N47630.00      U5403.40
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#752030
+          POSS  E4230.00      N53630.00      U2645.00         POSE  E1330.90      N53630.00      U5544.10
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#752912
+          POSS  E4230.00      N24230.00      U2594.00         POSE  E1489.20      N24230.00      U5520.20
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#753270
+          POSS  E4230.00      N31480.00      U2594.00         POSE  E1548.90      N31480.00      U5398.70
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#753593
+          POSS  E-5470.00      N31480.00      U3244.00         POSE  E-5470.00      N29239.10      U5439.10
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#753866
+          POSS  E-5470.00      N47630.00      U3244.00         POSE  E-5470.00      N45186.90      U5637.30
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#754208
+          POSS  E4230.00      N31480.00      U3094.00         POSE  E4230.00      N29256.20      U5475.30
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#754532
+          POSS  E4230.00      N47630.00      U3244.00         POSE  E4230.00      N45182.70      U5691.30
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#757131
+          POSS  E3030.00      N18230.00      U6000.00         POSE  E3030.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#757600
+          POSS  E5350.00      N18230.00      U6000.00         POSE  E5350.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#757627
+          POSS  E7670.00      N18230.00      U6000.00         POSE  E7670.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#758110
+          POSS  E2766.10      N18230.00      U6186.70         POSE  E301.50      N18230.00      U8469.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#758544
+          POSS  E5144.40      N18230.00      U6177.90         POSE  E3295.10      N18230.00      U8381.80
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#758703
+          POSS  E8135.80      N18230.00      U6375.50         POSE  E10430.60      N18230.00      U8511.80
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#758706
+          POSS  E5614.70      N18230.00      U6248.40         POSE  E7517.90      N18230.00      U8508.90
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#758912
+          POSS  E1930.00      N20230.00      U9000.00         POSE  E4230.00      N20230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#759041
+          POSS  E1930.00      N22230.00      U9000.00         POSE  E4230.00      N22230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#759350
+          POSS  E120.00      N45630.00      U9000.00         POSE  E4230.00      N45630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#760916
+          POSS  E4230.00      N47630.00      U13300.00         POSE  E12930.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#760981
+          POSS  E4230.00      N53630.00      U13300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761074
+          POSS  E4230.00      N47630.00      U13300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761125
+          POSS  E12930.00      N47630.00      U13300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761386
+          POSS  E-5470.00      N47630.00      U13300.00         POSE  E4230.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761417
+          POSS  E-5470.00      N53630.00      U13300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761469
+          POSS  E-5470.00      N47630.00      U13300.00         POSE  E-5470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761574
+          POSS  E11430.00      N47630.00      U13300.00         POSE  E11430.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761737
+          POSS  E8630.00      N47630.00      U13300.00         POSE  E8630.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761783
+          POSS  E6730.00      N47630.00      U13300.00         POSE  E6730.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761829
+          POSS  E4930.00      N47630.00      U13300.00         POSE  E4930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#761926
+          POSS  E8630.00      N50930.00      U13300.00         POSE  E11430.00      N50930.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#762047
+          POSS  E2730.00      N47630.00      U13300.00         POSE  E2730.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#762182
+          POSS  E2730.00      N49630.00      U13300.00         POSE  E4230.00      N49630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#762235
+          POSS  E2730.00      N51430.00      U13300.00         POSE  E4230.00      N51430.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#762608
+          POSS  E2730.00      N47630.00      U9000.00         POSE  E2730.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#762667
+          POSS  E2730.00      N47630.00      U10700.00         POSE  E4230.00      N47630.00      U10700.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#762741
+          POSS  E2730.00      N47630.00      U11800.00         POSE  E4230.00      N47630.00      U11800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#777665
+          POSS  E-1470.00      N47630.00      U13300.00         POSE  E-1470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#778807
+          POSS  E-5470.00      N53630.00      U13300.00         POSE  E-5470.00      N54830.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#780228
+          POSS  E-5470.00      N54706.70      U12797.50         POSE  E-5470.00      N53630.00      U11843.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#780436
+          POSS  E-5470.00      N48930.00      U13300.00         POSE  E-1470.00      N48930.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#780559
+          POSS  E-5470.00      N50230.00      U13300.00         POSE  E-1470.00      N50230.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#780645
+          POSS  E-5470.00      N51430.00      U13300.00         POSE  E-1470.00      N51430.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#781086
+          POSS  E-2850.00      N52607.00      U13300.00         POSE  E-2850.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#781298
+          POSS  E-2302.80      N52607.00      U13300.00         POSE  E-2302.80      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#781578
+          POSS  E-5470.00      N52607.00      U13300.00         POSE  E-1470.00      N52607.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#785355
+          POSS  E5730.00      N56030.00      U8875.00         POSE  E8130.00      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#790068
+          POSS  E-5470.00      N47630.00      U9000.00         POSE  E-5470.00      N50630.00      U13049.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   90.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#790593
+          POSS  E-5521.00      N50630.00      U13049.00         POSE  E-5470.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#791315
+          POSS  E-5470.00      N41280.00      U7800.00         POSE  E-5470.00      N41280.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#792161
+          POSS  E120.00      N41280.00      U9000.00         POSE  E120.00      N41280.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#792228
+          POSS  E-5470.00      N41280.00      U13300.00         POSE  E120.00      N41280.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#792951
+          POSS  E-5470.00      N31980.00      U6000.00         POSE  E-5470.00      N31980.00      U12000.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#793260
+          POSS  E120.00      N31980.00      U9000.00         POSE  E120.00      N31980.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#793418
+          POSS  E-5470.00      N31980.00      U10300.00         POSE  E120.00      N31980.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#793913
+          POSS  E-5470.00      N24730.00      U6000.00         POSE  E-5470.00      N24730.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#793915
+          POSS  E120.00      N24730.00      U9000.00         POSE  E120.00      N24730.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#793917
+          POSS  E-5470.00      N24730.00      U10300.00         POSE  E120.00      N24730.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#793919
+          POSS  E-5470.00      N24948.10      U9908.30         POSE  E-5470.00      N27726.10      U6162.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#793921
+          POSS  E120.00      N24871.40      U9966.20         POSE  E120.00      N25762.40      U9075.30
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#794113
+          POSS  E-4220.00      N18230.00      U9000.00         POSE  E-4220.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#794450
+          POSS  E4730.00      N18230.00      U9000.00         POSE  E4730.00      N18230.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   180.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#794759
+          POSS  E4730.00      N24230.00      U9000.00         POSE  E4730.00      N24230.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   180.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#794793
+          POSS  E4730.00      N18230.00      U10300.00         POSE  E4730.00      N24230.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#794904
+          POSS  E5939.70      N18230.00      U9118.30         POSE  E4905.80      N18230.00      U10152.20
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#794987
+          POSS  E5892.90      N24230.00      U9165.10         POSE  E4935.50      N24230.00      U10122.50
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#795190
+          POSS  E-5470.00      N31818.50      U10016.20         POSE  E-5470.00      N28069.10      U6205.80
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#795263
+          POSS  E116.10      N31852.00      U9972.00         POSE  E116.10      N31017.60      U9137.60
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#797079
+          POSS  E2730.00      N53630.00      U13175.00         POSE  E-1470.00      N50630.00      U13175.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#797118
+          POSS  E2730.00      N47630.00      U13175.00         POSE  E-1470.00      N50630.00      U13175.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#819901
+          POSS  E120.00      N50630.00      U6000.00         POSE  E120.00      N50630.00      U8647.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#819903
+          POSS  E120.00      N50630.00      U7500.00         POSE  E4230.00      N50630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#819954
+          POSS  E120.00      N50630.00      U7500.00         POSE  E120.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#820205
+          POSS  E7130.00      N47630.00      U7500.00         POSE  E7130.00      N53630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#820435
+          POSS  E7130.00      N47630.00      U7246.00         POSE  E7130.00      N47630.00      U7845.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#820619
+          POSS  E7130.00      N53630.00      U7246.00         POSE  E7130.00      N53630.00      U7984.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#821338
+          POSS  E-2470.00      N52607.00      U13300.00         POSE  E-2470.00      N51430.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#826098
+          POSS  E-4270.00      N53630.00      U12975.00         POSE  E-5470.00      N54830.00      U12975.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#893835
+          POSS  E-1720.00      N53630.00      U6000.00         POSE  E-1720.00      N56085.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#928404
+          POSS  E5730.00      N53630.00      U6787.20         POSE  E5730.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   0.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#932226
+          POSS  E4230.00      N47630.00      U11800.00         POSE  E4230.00      N53630.00      U11800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#975315
+          POSS  E-5470.00      N38730.00      U7800.00         POSE  E120.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#975967
+          POSS  E120.00      N38730.00      U6000.00         POSE  E120.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#976243
+          POSS  E-5470.00      N38730.00      U7800.00         POSE  E-5470.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#976346
+          POSS  E-5470.00      N47630.00      U7800.00         POSE  E120.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#976577
+          POSS  E-5470.00      N33380.00      U6000.00         POSE  E-5470.00      N33380.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#976671
+          POSS  E-5470.00      N33380.00      U7800.00         POSE  E120.00      N33380.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#976807
+          POSS  E-5470.00      N33376.10      U7800.00         POSE  E-5470.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#976931
+          POSS  E-5470.00      N34350.10      U7800.00         POSE  E-7080.00      N34350.10      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#977698
+          POSS  E120.00      N38730.00      U7800.00         POSE  E120.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#977752
+          POSS  E120.00      N31480.00      U7800.00         POSE  E120.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#977896
+          POSS  E-5470.00      N38730.00      U7800.00         POSE  E-7080.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#977957
+          POSS  E-5470.00      N47630.00      U7800.00         POSE  E-7080.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#978003
+          POSS  E-7080.00      N34350.10      U7800.00         POSE  E-7080.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#978026
+          POSS  E-7080.00      N38730.00      U7800.00         POSE  E-7080.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#978302
+          POSS  E-5470.00      N34350.00      U7800.00         POSE  E-3370.00      N34350.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#978460
+          POSS  E-5470.00      N37730.00      U7800.00         POSE  E-3370.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#979210
+          POSS  E-5070.00      N34350.00      U7800.00         POSE  E-5070.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#979501
+          POSS  E-3370.00      N33380.00      U7800.00         POSE  E-3370.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#979598
+          POSS  E-5070.00      N37260.00      U7800.00         POSE  E-3370.00      N37260.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#979980
+          POSS  E-5070.00      N35555.00      U7800.00         POSE  E-3370.00      N35555.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980196
+          POSS  E-3370.00      N35680.00      U7800.00         POSE  E120.00      N35680.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980402
+          POSS  E-2040.00      N34346.10      U7800.00         POSE  E-2040.00      N35680.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980496
+          POSS  E-3370.00      N36705.00      U7800.00         POSE  E-1720.00      N36705.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980755
+          POSS  E-5470.00      N40030.00      U7800.00         POSE  E-3620.00      N40030.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980797
+          POSS  E-5470.00      N41330.00      U7800.00         POSE  E-3620.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980879
+          POSS  E-5470.00      N42630.00      U7800.00         POSE  E-3620.00      N42630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980883
+          POSS  E-5470.00      N43930.00      U7800.00         POSE  E-3620.00      N43930.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980887
+          POSS  E-5470.00      N45230.00      U7800.00         POSE  E-3620.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#980907
+          POSS  E-5470.00      N46530.00      U7800.00         POSE  E-3620.00      N46530.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#981019
+          POSS  E-7080.00      N43180.00      U7800.00         POSE  E-5470.00      N43180.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#981088
+          POSS  E-5470.00      N45830.00      U7600.00         POSE  E-7080.00      N47630.00      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#981181
+          POSS  E-5470.00      N40530.00      U7600.00         POSE  E-7080.00      N38730.00      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#981393
+          POSS  E-7080.00      N36540.00      U7800.00         POSE  E-5470.00      N36540.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#981430
+          POSS  E-5470.00      N36540.00      U7600.00         POSE  E-7080.00      N38730.00      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#981841
+          POSS  E-1720.00      N54830.00      U6000.00         POSE  E-6770.00      N54830.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#982053
+          POSS  E-5470.00      N53630.00      U6000.00         POSE  E-6770.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#982159
+          POSS  E-5470.00      N53630.00      U6000.00         POSE  E-5470.00      N54830.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#982211
+          POSS  E-6770.00      N53630.00      U6000.00         POSE  E-6770.00      N54830.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#982637
+          POSS  E-4270.00      N53630.00      U5875.00         POSE  E-5470.00      N54830.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#982892
+          POSS  E-1720.00      N54830.00      U5875.00         POSE  E-2920.00      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#984498
+          POSS  E-5470.00      N41280.00      U13300.00         POSE  E-5470.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#984529
+          POSS  E120.00      N41280.00      U13300.00         POSE  E120.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#985501
+          POSS  E-6270.00      N34350.10      U7800.00         POSE  E-6270.00      N36540.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#985567
+          POSS  E-6270.00      N36540.00      U7800.00         POSE  E-6270.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#985757
+          POSS  E-6270.00      N38730.00      U7800.00         POSE  E-6270.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#985777
+          POSS  E-6270.00      N45230.00      U7800.00         POSE  E-6270.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#986310
+          POSS  E-5711.30      N38730.00      U6284.30         POSE  E-6871.00      N38730.00      U7444.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#986524
+          POSS  E-5763.60      N47616.70      U6280.50         POSE  E-6894.90      N47630.00      U7411.90
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#986859
+          POSS  E-5665.90      N53630.00      U4744.90         POSE  E-6599.90      N53630.00      U5678.90
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#987421
+          POSS  E-5470.00      N53800.50      U4992.50         POSE  E-5470.00      N54536.40      U5721.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#988470
+          POSS  E-5470.00      N38730.00      U4600.00         POSE  E-6670.00      N38730.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1006884
+          POSS  E-5470.00      N34350.00      U6000.00         POSE  E-5470.00      N34350.00      U7546.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#1006988
+          POSS  E-5711.30      N34346.10      U6284.30         POSE  E-6871.00      N34346.10      U7444.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1007173
+          POSS  E-5470.00      N31480.00      U4600.00         POSE  E-5470.00      N38730.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1024604
+          POSS  E-5470.00      N31480.00      U4600.00         POSE  E-6670.00      N31480.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1024667
+          POSS  E-6670.00      N31480.00      U4600.00         POSE  E-6670.00      N38730.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1024854
+          POSS  E-5470.00      N37530.00      U4600.00         POSE  E-6670.00      N37530.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1025257
+          POSS  E-5736.00      N31480.00      U3409.00         POSE  E-6627.00      N31480.00      U4300.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1025573
+          POSS  E-5670.00      N38730.00      U3343.00         POSE  E-6623.40      N38730.00      U4296.40
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1025695
+          POSS  E-5470.00      N34505.00      U4600.00         POSE  E-6670.00      N34505.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1025824
+          POSS  E-5470.00      N36330.00      U4475.00         POSE  E-6670.00      N37530.00      U4475.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1025898
+          POSS  E-5470.00      N32680.00      U4475.00         POSE  E-6670.00      N31480.00      U4475.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1026352
+          POSS  E-5470.00      N36540.00      U7600.00         POSE  E-7080.00      N34350.10      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6         JUSL  NAT    BANG   180.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1027947
+          POSS  E-5470.00      N45230.00      U7800.00         POSE  E-7080.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1027989
+          POSS  E-5470.00      N41330.00      U7800.00         POSE  E-7080.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028129
+          POSS  E-6270.00      N41330.00      U7800.00         POSE  E-6270.00      N43180.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028149
+          POSS  E-6270.00      N43180.00      U7800.00         POSE  E-6270.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028647
+          POSS  E-1720.00      N33380.00      U7800.00         POSE  E-1720.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028843
+          POSS  E-3370.00      N34346.10      U7800.00         POSE  E-1720.00      N34346.10      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028866
+          POSS  E-1720.00      N34346.10      U7800.00         POSE  E120.00      N34346.10      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028946
+          POSS  E-3370.00      N37730.00      U7800.00         POSE  E-1720.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1028965
+          POSS  E-1720.00      N37730.00      U7800.00         POSE  E120.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1029044
+          POSS  E-1720.00      N36705.00      U7800.00         POSE  E120.00      N36705.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1029962
+          POSS  E12757.90      N53630.00      U6901.90         POSE  E10985.20      N53630.00      U7951.30
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10         JUSL  NA    BANG   180.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036157
+          POSS  E-3620.00      N38730.00      U7800.00         POSE  E-3620.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036225
+          POSS  E-1730.00      N38730.00      U7800.00         POSE  E-1730.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036491
+          POSS  E-1730.00      N40030.00      U7800.00         POSE  E120.00      N40030.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036493
+          POSS  E-1730.00      N41330.00      U7800.00         POSE  E120.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036495
+          POSS  E-1730.00      N42630.00      U7800.00         POSE  E120.00      N42630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036497
+          POSS  E-1730.00      N43930.00      U7800.00         POSE  E120.00      N43930.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036499
+          POSS  E-1730.00      N45230.00      U7800.00         POSE  E120.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036501
+          POSS  E-1730.00      N46530.00      U7800.00         POSE  E120.00      N46530.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036551
+          POSS  E-3620.00      N46530.00      U7800.00         POSE  E-1730.00      N46530.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036581
+          POSS  E-3620.00      N45230.00      U7800.00         POSE  E-1730.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036602
+          POSS  E-3620.00      N43930.00      U7800.00         POSE  E-1730.00      N43930.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036623
+          POSS  E-3620.00      N42630.00      U7800.00         POSE  E-1730.00      N42630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036654
+          POSS  E-3620.00      N41330.00      U7800.00         POSE  E-1730.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1036685
+          POSS  E-3620.00      N40030.00      U7800.00         POSE  E-1730.00      N40030.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_M-20180208/#1063522
+          POSS  E-1720.00      N53630.00      U9000.00         POSE  E-1720.00      N53630.00      U12944.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30         JUSL  NA    BANG   0.00  FUNC  'Column'  DESC  'M-20180208'
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#1063877
+          POSS  E-1720.00      N53630.00      U9000.00         POSE  E-1720.00      N56030.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1063940
+          POSS  E-1720.00      N56030.00      U8875.00         POSE  E-4120.00      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN /PR-11/STL_COL_/#1064129
+          POSS  E-1720.00      N56030.00      U6000.00         POSE  E-1720.00      N56030.00      U8746.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23         JUSL  NA    BANG   0.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN /PR-11/STL_COL_/#1064951
+          POSS  E-1720.00      N55901.00      U9129.00         POSE  E-1720.00      N53850.40      U11179.60
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13         JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+     END
+    END
+
+/PR-11/MAINFRAME
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !pos = !!CE.pos
+  !pos.east = NINT(!pos.east)
+  !pos.north = NINT(!pos.north)
+  !!CE.pos = !pos
+enddo
+
+/PR-11/MAINFRAME
+var !list COLL ALL(SCTN) with (func eq 'BEAM' or func eq 'BRACE') for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !gamma = !!CE.ori.gamma
+  -- less than 45 degree wrt n-axis
+  if(ABS(SIN(!gamma)) lt 0.7) then
+    drnstart n
+    drnend n
+  endif
+enddo
+

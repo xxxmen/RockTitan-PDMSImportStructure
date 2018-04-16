@@ -51,6 +51,12 @@ namespace PDMSImportStructure
         public string JUSLINE { get; set; }
         public string Function { get; set; }
         public double Bangle { get; set; }
+        public string XGridName { get; set; }
+        public double XGridPosition { get; set; }
+        public string YGridName { get; set; }
+        public double YGridPosition { get; set; }
+        public string ZGridName { get; set; }
+        public double ZGridElevation { get; set; }
         public int strCompHashCode { get; set; }
     }
 

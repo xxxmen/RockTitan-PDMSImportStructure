@@ -99,11 +99,11 @@ namespace PDMSImportStructure
         public static void AutoGenGrd(double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, string MembType)
         {
             string XGridName = string.Empty;
-            double XGridPosition = 0.0;
+            double XGridPosition;
             string YGridName = string.Empty;
-            double YGridPosition = 0.0;
+            double YGridPosition;
             string ZGridName = string.Empty;
-            double ZGridElevation = 0.0;
+            double ZGridElevation;
 
             if (MembType == "C") //主column需建立X柱線, Y柱線, 底層Grid
             {
@@ -128,11 +128,17 @@ namespace PDMSImportStructure
             //Purlin及其他皆不需建立Grid
         }
 
-        //public static List<GridXProperties> RemoveDuplicatesSortList(List<GridXProperties> List)
-        //{
-        //    List.Sort();
+        public static void RemoveDuplicatesSortList()
+        {
+            //依Grid值由小到大排序
+            GridXPropertiesList.Sort((i, j) => { return i.XGridPosition.CompareTo(j.XGridPosition); });
+            GridYPropertiesList.Sort((i, j) => { return i.YGridPosition.CompareTo(j.YGridPosition); });
+            GridZPropertiesList.Sort((i, j) => { return i.ZGridElevation.CompareTo(j.ZGridElevation); });
 
-        //    return List;
-        //}
+            //使用Distinct移除重複項目, 也可用lambda
+            GridXPropertiesList = GridXPropertiesList.Distinct().ToList();
+            GridYPropertiesList = GridYPropertiesList.Distinct().ToList();
+            GridZPropertiesList = GridZPropertiesList.Distinct().ToList();
+        }
     }
 }
