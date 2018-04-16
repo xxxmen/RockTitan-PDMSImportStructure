@@ -11,12 +11,6 @@ namespace PDMSImportStructure
 {
     public class ReadMDT : ReadGrd
     {
-        //TODO: TEST for debug
-        public static List<double> TxList = new List<double>();
-        public static List<double> TyList = new List<double>();
-        public static List<double> TzList = new List<double>();
-
-
         //TODO: MDT version, shift, rotate
         public static string MDTLengthUnit = string.Empty;
         public static List<string> MatCodeList = new List<string>();
@@ -148,9 +142,10 @@ namespace PDMSImportStructure
                     //叫用自動生成Grid方法, 將資料存入GridXPropertiesList, GridYPropertiesList, GridZPropertiesList
                     AutoGenGrd(StartX, StartY, StartZ, EndX, EndY, EndZ, MembType);
                 }
-                //TODO: 移除重複及排序
-                RemoveDuplicatesSortList();
             }
+
+            //排序並移除重複
+            RemoveDuplicatesSortList();
 
             MainPropertiesList.Clear();
             for (int i = 0; i < MDLData.Count; i++)
@@ -241,25 +236,52 @@ namespace PDMSImportStructure
                 Bangle = Math.Round(Bangle, 2);
 
                 //TODO: 填入X, Y, Z Grid屬性, 找出於List中相減取絕對值之最小值的項目
-                double MinX = Math.Min(StartX, EndX);
-                double MinY = Math.Min(StartY, EndY);
-                double MinZ = Math.Min(StartZ, EndZ);
+                List<double> XGridAbsSubtractionList = new List<double>();
+                List<double> YGridAbsSubtractionList = new List<double>();
+                List<double> ZGridAbsSubtractionList = new List<double>();
+                foreach (var item in GridXPropertiesList) { XGridAbsSubtractionList.Add(Math.Abs(item.XGridPosition - Math.Min(StartX, EndX))); }
+                foreach (var item in GridYPropertiesList) { YGridAbsSubtractionList.Add(Math.Abs(item.YGridPosition - Math.Min(StartY, EndY))); }
+                foreach (var item in GridZPropertiesList) { ZGridAbsSubtractionList.Add(Math.Abs(item.ZGridElevation - Math.Min(StartZ, EndZ))); }
+                int XGridPositionIndex = XGridAbsSubtractionList.IndexOf(XGridAbsSubtractionList.Min());
+                int YGridPositionIndex = YGridAbsSubtractionList.IndexOf(YGridAbsSubtractionList.Min());
+                int ZGridPositionIndex = ZGridAbsSubtractionList.IndexOf(ZGridAbsSubtractionList.Min());
+                string XGridName = string.Empty;
+                string XGridPosition = string.Empty;
+                string YGridName = string.Empty;
+                string YGridPosition = string.Empty;
+                string ZGridName = string.Empty;
+                string ZGridElevation = string.Empty;
 
-                double XGridPosition = GridXPropertiesList.Min(value => Math.Abs(Convert.ToDouble(value.XGridPosition) - MinX));
-                string XGridName = "X" + XGridPosition.ToString("f2");
-                double YGridPosition = GridYPropertiesList.Min(value => Math.Abs(Convert.ToDouble(value.YGridPosition) - MinY));
-                string YGridName = "Y" + YGridPosition.ToString("f2");
-                double ZGridElevation = GridZPropertiesList.Min(value => Math.Abs(Convert.ToDouble(value.ZGridElevation) - MinZ));
-                string ZGridName = "EL" + ZGridElevation.ToString("f2");
 
-                //TODO: TEST for debug
-                double Tx = GridXPropertiesList.Min(value => value.XGridPosition);
-                double Ty = GridYPropertiesList.Min(value => value.YGridPosition);
-                double Tz = GridZPropertiesList.Min(value => value.ZGridElevation);
-                TxList.Add(Tx);
-                TyList.Add(Ty);
-                TzList.Add(Tz);
+                if (MembType == "C") //主column需加入X柱線, Y柱線, 底層Grid
+                {
+                    XGridPosition = GridXPropertiesList[XGridPositionIndex].XGridPosition.ToString("f2");
+                    YGridPosition = GridYPropertiesList[YGridPositionIndex].YGridPosition.ToString("f2");
+                    ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
+                    if (PDMSImportStrForm.GrdFileExists == true)
+                    {
+                        XGridName = GridXPropertiesList[XGridPositionIndex].XGridName;
+                        YGridName = GridYPropertiesList[YGridPositionIndex].YGridName;
+                    }
+                    else
+                    {
+                        XGridName = "X" + XGridPosition;
+                        YGridName = "Y" + YGridPosition;
 
+                    }
+                    ZGridName = "EL" + ZGridElevation;
+                }
+                else if (MembType == "S" || MembType == "VB" || MembType == "GD" || MembType == "JS" || MembType == "B" || MembType == "HB") //Post, Vertical Bracing, Girder, Joist, Beam, Horizontal Bracing 只需加入高程Grid
+                {
+                    ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
+                    ZGridName = "EL" + ZGridElevation;
+                }
+                else //Purlin及其他只需加入高程Grid
+                {
+                    ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
+                    ZGridName = "EL" + ZGridElevation;
+                }
+                //
 
                 //TODO:未確認完整
                 //將所有PDMS桿件屬性轉為字串並組合後轉為HashCode, 用於比對是否需更新
@@ -267,7 +289,8 @@ namespace PDMSImportStructure
                     + EndX.ToString() + EndY.ToString() + EndZ.ToString() + Grid 
                     + Reflect + OvX.ToString() + OvY.ToString() + OvZ.ToString() 
                     + Section + Material + MaterialGrade + ConnTypeS + ConnTypeE 
-                    + JUSLINE + Function + Bangle.ToString()).GetHashCode();
+                    + JUSLINE + Function + Bangle.ToString() + XGridName + XGridPosition 
+                    + YGridName + YGridPosition + ZGridName + ZGridElevation).GetHashCode();
 
                 //check data
                 if (ID != CompID)

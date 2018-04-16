@@ -95,11 +95,8 @@ namespace PDMSImportStructure
             MaterialGradeListlabel.Text = " ";
             LengthUnitlabel.Text = " ";
 
-            if (ReadMDT.MainPropertiesList.Count == 0)
-            {
-                BtnSendtoPDMS.Enabled = false;
-                BtnExport.Enabled = false;
-            }
+            BtnSendtoPDMS.Enabled = false;
+            BtnExport.Enabled = false;
         }
 
         void SelectFile()
@@ -175,6 +172,10 @@ namespace PDMSImportStructure
             {
                 if (ReadMDT.MainPropertiesList.Count != 0)
                 {
+                    if (MembDataGridViewcheckBox.Checked)
+                    {
+                        WriteDatatoDataGridView();
+                    }
                     WriteListtoListBox();
                     LengthUnitlabel.Text = string.Format("Length Unit : {0}", ReadMDT.MDTLengthUnit);
                     BtnExport.Enabled = true;
@@ -210,26 +211,11 @@ namespace PDMSImportStructure
             //form2.Show();
         }
 
-        void WriteDatatoDataGridView()
-        {
-            majorPropertiesDataGridView.DataSource = null; //清除前一次DataGridView中資料
-
-            //為了解決無法排序問題, 重做BindingCollection物件
-            BindingCollection<MajorProperties> objList = new BindingCollection<MajorProperties>();
-            foreach (MajorProperties item in ReadMDT.MainPropertiesList)
-            {
-                objList.Add(item);
-            }
-            majorPropertiesDataGridView.DataSource = objList; //填入List資料
-        }
-
         void MembDataGridViewcheckBoxCheckedChanged()
         {
             //先後順序有學問!!
             if (MembDataGridViewcheckBox.Checked)
             {
-                WriteDatatoDataGridView();
-
                 this.MinimumSize = new System.Drawing.Size(800, 600);
                 this.ClientSize = new System.Drawing.Size(784, 561);
 
@@ -246,6 +232,8 @@ namespace PDMSImportStructure
                 this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 15);
 
                 this.MainDatagroupBox.Visible = true;
+
+                WriteDatatoDataGridView();
             }
             else
             {
@@ -266,6 +254,19 @@ namespace PDMSImportStructure
                 this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
                 this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
             }
+        }
+
+        void WriteDatatoDataGridView()
+        {
+            majorPropertiesDataGridView.DataSource = null; //清除前一次DataGridView中資料
+
+            //為了解決無法排序問題, 重做BindingCollection物件
+            BindingCollection<MajorProperties> objList = new BindingCollection<MajorProperties>();
+            foreach (MajorProperties item in ReadMDT.MainPropertiesList)
+            {
+                objList.Add(item);
+            }
+            majorPropertiesDataGridView.DataSource = objList; //填入List資料
         }
 
         void Export()
