@@ -11,8 +11,8 @@ namespace PDMSImportStructure
 {
     public class ReadMDT : ReadGrd
     {
-        //TODO: MDT version, shift, rotate
-        public static string MDTLengthUnit = string.Empty;
+        //TODO: shift, rotate
+        public static string MDTLengthUnit = "mm"; //預設長度單位為公制"mm", 如不同會依MDT輸出為主
         public static List<string> MatCodeList = new List<string>();
         public static List<string> MaterialList = new List<string>();
         public static List<string> MaterialGradeList = new List<string>();
@@ -28,6 +28,20 @@ namespace PDMSImportStructure
                 MDTcontent = sr.ReadToEnd();
                 sr.Close();
             }
+
+            var patternMDTVersion = @"\*MDT\s+V(?<MDTVersion>[0-9]+\.[0-9]+)\s+\(from\s+(?<BIMsoftware>[A-Za-z0-9]+)\)";
+            var MDTVersionData = Regex.Match(MDTcontent, patternMDTVersion);
+            string MDTVersion = MDTVersionData.Groups["MDTVersion"].Value;
+            string[] VersionSeparator = { "." };
+            string[] MDTVersionSpiltArray = MDTVersion.Split(VersionSeparator, StringSplitOptions.RemoveEmptyEntries);
+            string MainMDTVersion = MDTVersionSpiltArray[0];
+            string SubMDTVersion = MDTVersionSpiltArray[1];
+            string BIMsoftware = MDTVersionData.Groups["BIMsoftware"].Value.ToUpper();
+            string supMDTVersion = "3.**"; //此程式可支援之MDT版本
+            string[] supMDTVersionSpiltArray = supMDTVersion.Split(VersionSeparator, StringSplitOptions.RemoveEmptyEntries);
+            string supMainMDTVersion = supMDTVersionSpiltArray[0];
+            string supSubMDTVersion = supMDTVersionSpiltArray[1];
+            string supBIMsoftware = "Revit".ToUpper(); //此程式可支援之BIM software
 
             var patternMDTLengthUnit = @"[UNITunit]+\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
             var MDTLengthUnitData = Regex.Match(MDTcontent, patternMDTLengthUnit);
@@ -48,6 +62,14 @@ namespace PDMSImportStructure
             var SectionData = Regex.Matches(MDTcontent, patternSectionData);
 
             //check data
+            if (MainMDTVersion != supMainMDTVersion) //檢查MDT主版本
+            {
+                Message += string.Format("Warning! MDT version is not V{0}, please make sure data format is fine.\n", supMDTVersion);
+            }
+            if (BIMsoftware != supBIMsoftware)
+            {
+                Message += string.Format("Warning! MDT is not from {0}.", supBIMsoftware);
+            }
             if (MDTLengthUnitData.Success)
             {
                 MDTLengthUnit = MDTLengthUnitData.Groups["MDTLengthUnit"].Value.ToLower();
@@ -186,6 +208,13 @@ namespace PDMSImportStructure
                 string Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
                 string MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
                 double MemberLength = Math.Round(Math.Sqrt(Math.Pow(EndX - StartX, 2) + Math.Pow(EndY - StartY, 2) + Math.Pow(EndZ - StartZ, 2)), 2);
+                string DRNStart = "E"; //PDMS預設值為"E"
+                string DRNEnd = "E"; //PDMS預設值為"E"
+                if (StartY == EndY)
+                {
+                    DRNStart = "N";
+                    DRNEnd = "N";
+                }
                 string ConnTypeS = "HING";
                 if (ReleaseS == "------") { ConnTypeS = "FIX"; } else if (ReleaseS == "RRRRRR") { ConnTypeS = "FREE"; }
                 string ConnTypeE = "HING";
@@ -199,6 +228,14 @@ namespace PDMSImportStructure
                 //修正RegularExpressions Pattern讀取斷面名稱頭資料限制
                 if (SectionHeader == "L2X") { SectionHeader = "L"; }
                 else if (SectionHeader == "WT2X") { SectionHeader = "WT"; }
+                //部分斷面需要寬/深
+                string SectionWidth = string.Empty;
+                string SectionDepth = string.Empty;
+                if (SectionHeader == "RC")
+                {
+                    SectionWidth = MatSection.Groups["T1"].Value;
+                    SectionDepth = MatSection.Groups["T2"].Value;
+                }
                 //JUSLINE / JUSL - Justification Line
                 string JUSLINE = CompareCardinalPoint.GetJustificationLine(SectionHeader, CP, out string SectionType);
                 
@@ -235,7 +272,7 @@ namespace PDMSImportStructure
                 //Bangle四捨五入至小數兩位
                 Bangle = Math.Round(Bangle, 2);
 
-                //TODO: 填入X, Y, Z Grid屬性, 找出於List中相減取絕對值之最小值的項目
+                //填入X, Y, Z Grid屬性, 找出於List中相減取絕對值之最小值的項目
                 List<double> XGridAbsSubtractionList = new List<double>();
                 List<double> YGridAbsSubtractionList = new List<double>();
                 List<double> ZGridAbsSubtractionList = new List<double>();
@@ -251,19 +288,27 @@ namespace PDMSImportStructure
                 string YGridPosition = string.Empty;
                 string ZGridName = string.Empty;
                 string ZGridElevation = string.Empty;
-
-
                 if (MembType == "C") //主column需加入X柱線, Y柱線, 底層Grid
                 {
                     XGridPosition = GridXPropertiesList[XGridPositionIndex].XGridPosition.ToString("f2");
                     YGridPosition = GridYPropertiesList[YGridPositionIndex].YGridPosition.ToString("f2");
                     ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
-                    if (PDMSImportStrForm.GrdFileExists == true)
+                    if (PDMSImportStrForm.GrdFileExists == true) //當Grd檔存在時, 使用Grd讀出之柱線名稱
                     {
                         XGridName = GridXPropertiesList[XGridPositionIndex].XGridName;
                         YGridName = GridYPropertiesList[YGridPositionIndex].YGridName;
                     }
-                    else
+                    else if (Grid != string.Empty) //當Grd檔不存在時, 使用MDT讀出之柱線名稱, 並將"-"左右分為X向及Y向
+                    {
+                        string[] separator = { "-" };
+                        string[] SpiltStringGrid = Grid.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                        if (SpiltStringGrid.Length == 2)
+                        {
+                            XGridName = SpiltStringGrid[0];
+                            YGridName = SpiltStringGrid[1];
+                        }
+                    }
+                    else //當上述名稱都不滿足時, 填入方向加上實際位置
                     {
                         XGridName = "X" + XGridPosition;
                         YGridName = "Y" + YGridPosition;
@@ -348,8 +393,13 @@ namespace PDMSImportStructure
                     Material = Material,
                     MaterialGrade = MaterialGrade,
                     MemberLength = MemberLength,
+                    DRNStart = DRNStart,
+                    DRNEnd = DRNEnd,
                     ConnTypeS = ConnTypeS,
                     ConnTypeE = ConnTypeE,
+                    SectionHeader = SectionHeader,
+                    SectionWidth = SectionWidth,
+                    SectionDepth = SectionDepth,
                     SectionType = SectionType,
                     JUSLINE = JUSLINE,
                     Function = Function,

@@ -1,4 +1,4 @@
-*MDT V3.01 (from Revit)
+*MDT V4.01 (from Revit)
 !SHIFT           0.0         0.0         0.0
 !ROTATE           0.0
 !Node Data (  556), Unit : mm
@@ -905,7 +905,8 @@
 !Material Data for SP3D (  2 )
 ! MAT ( 0:Steel, 1:Concrete, 2:Aluminum, 3:Plastic, 4:Timber, 5:Others)
 !Item   MAT Grade
-
+    1 :   1 C35
+    2 :   0 STEEL
 
 
 !Section Data for SP3D ( 27 )

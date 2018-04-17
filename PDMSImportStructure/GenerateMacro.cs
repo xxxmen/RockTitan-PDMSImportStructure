@@ -77,7 +77,14 @@ namespace PDMSImportStructure
                       "savework"
             };
 
-            string prependString = string.Format("\nmm dist\nvar !list COLL ALL  with ( NAME EQ \'{0}\' ) for $!!CE\n!size = !list.size()\nif(!size eq 1) then\n{0}\n{1}\nendif\n", targetName, string.Join("\n", deleteStringArray));
+            string prependString = string.Format("\n{0} dist\n" +
+                "var !list COLL ALL  with ( NAME EQ \'{1}\' ) for $!!CE\n" +
+                "!size = !list.size()\n" +
+                "if(!size eq 1) then\n" +
+                "{1}\n" +
+                "{2}\n" +
+                "endif\n",
+                ReadMDT.MDTLengthUnit, targetName, string.Join("\n", deleteStringArray));
             // 加入appendString: 將結構位置於PDMS內截尾至整數(by NINT)
             string[] roundArray = {
                                     string.Format("\n{0}", targetName),
@@ -110,6 +117,8 @@ namespace PDMSImportStructure
                                    };
             string appendString = string.Join("\n", roundArray);
             appendString += string.Join("\n", drnfixArray);
+
+
             // TODO: set project base info
             //context.UpdateProjectBase();
             //string ori = string.Format("\nori Y is N{0}W wrt world\n", context.ProjectBase.Item4);
@@ -117,19 +126,23 @@ namespace PDMSImportStructure
             //string projectBaseInfo = ori + pos;
             //string signature = string.Format("\ndesc \'REVIT_UID:{0}_STR-{2} OWNER:{1}\'\n", mainframePrefix, this.context.client.user.ID, partNo);
 
-            string MACcontentCOLMemb = string.Empty;
+
+            foreach (var item in ReadGrd.GridZPropertiesList)
+            {
+                string[] STRU = {
+                    string.Format("      NEW STRU  /{0}/STL_FRAME/{1}", mainframePrefix, item.ZGridName),
+                    string.Format("                 PURP CSTL"),
+                };
+            }
+
+
+            string MACcontentRCMemb = string.Empty;
             foreach (var item in ReadMDT.MainPropertiesList)
             {
-                if (item.MembType != "")
+                if (item.SectionHeader == "RC")
                 {
-                    string[] colstrArray = {
-                        string.Format("        NEW SCTN /{0}/STL_COL_{2}/#{1}", mainframePrefix, item.ID, item.Grid.Trim()), //不可包含空白字元, 總字元數不能超過50
-                        string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", item.StartX.ToString("f2"), item.StartY.ToString("f2"), item.StartZ.ToString("f2"), item.EndX.ToString("f2"), item.EndY.ToString("f2"), item.EndZ.ToString("f2")),
-                        string.Format("          SPRE  SPCO  /CTCV-SPEC/{0}         JUSL  {1}    BANG   {2}  FUNC  '{3}'  DESC  '{4}'", item.Section, item.JUSLINE, item.Bangle.ToString("f2"), item.Function, item.Grid),
-                        string.Format("          CTYS {0}    CTYE {1}", item.ConnTypeS, item.ConnTypeE),
-                        "        END\n"
-                    };
-                    MACcontentCOLMemb += string.Join("\n", colstrArray);
+                    string[] strArrayMACcontentRCMemb = MacRCMemb(mainframePrefix, item.ID, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.SectionWidth, item.SectionDepth, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                    MACcontentRCMemb += string.Join("\n", strArrayMACcontentRCMemb);
                 }
             }
 
@@ -141,7 +154,7 @@ namespace PDMSImportStructure
                 "                 PURP SELE",
                 "      NEW SBFR  /PR-11/S_EL300.000/COLUMN",
                 "                 PURP COLN",
-                MACcontentCOLMemb + "      END",
+                MACcontentRCMemb + "      END",
                 "     END",
                 "    END\n"
             };
@@ -150,6 +163,7 @@ namespace PDMSImportStructure
 
             string[] MACcontentArray = {
                 string.Format("NEW ZONE  /{0}/MAINFRAME", mainframePrefix),
+                //sprojectBaseInfo + signature,
                 "    PURP STL",
                 MACcontentCOL
             };
@@ -162,5 +176,33 @@ namespace PDMSImportStructure
             }
         }
 
+
+
+        static string[] MacRCMemb(string mainframePrefix, string ID, string Grid, string DRNStart, string DRNEnd, double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, string SectionWidth, string SectionDepth, string JUSLINE, double Bangle, string Function, string ConnTypeS, string ConnTypeE)
+        {
+            string[] strArrayMACcontentRC = {
+                        string.Format("        NEW SCTN  /{0}/STL_COL_{2}/#{1}", mainframePrefix, ID, Grid.Trim()), //不可包含空白字元, 總字元數不能超過50
+                        string.Format("          DRNSTART {0}  DRNEND {1} ", DRNStart, DRNEnd),
+                        string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", StartX.ToString("f2"), StartY.ToString("f2"), StartZ.ToString("f2"), EndX.ToString("f2"), EndY.ToString("f2"), EndZ.ToString("f2")),
+                        string.Format("          SPRE /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP {0}   {1}", SectionDepth, SectionWidth),
+                        string.Format("            JUSL  {0}    BANG   {1}  FUNC  '{2}'  DESC  '{3}'", JUSLINE, Bangle.ToString("f2"), Function, Grid),
+                        string.Format("          CTYS {0}    CTYE {1}", ConnTypeS, ConnTypeE),
+                        "        END\n"
+            };
+            return strArrayMACcontentRC;
+        }
+
+        static string[] MacSteelMemb(string mainframePrefix, string ID, string Grid, string DRNStart, string DRNEnd, double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, string Section, string JUSLINE, double Bangle, string Function, string ConnTypeS, string ConnTypeE)
+        {
+            string[] strArrayMACcontentSteel = {
+                        string.Format("        NEW SCTN  /{0}/STL_COL_{2}/#{1}", mainframePrefix, ID, Grid.Trim()), //不可包含空白字元, 總字元數不能超過50
+                        string.Format("          DRNSTART {0}  DRNEND {1} ", DRNStart, DRNEnd),
+                        string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", StartX.ToString("f2"), StartY.ToString("f2"), StartZ.ToString("f2"), EndX.ToString("f2"), EndY.ToString("f2"), EndZ.ToString("f2")),
+                        string.Format("          SPRE  SPCO  /CTCV-SPEC/{0}         JUSL  {1}    BANG   {2}  FUNC  '{3}'  DESC  '{4}'", Section, JUSLINE, Bangle.ToString("f2"), Function, Grid),
+                        string.Format("          CTYS {0}    CTYE {1}", ConnTypeS, ConnTypeE),
+                        "        END\n"
+            };
+            return strArrayMACcontentSteel;
+        }
     }
 }

@@ -45,8 +45,13 @@ namespace PDMSImportStructure
         public string Material { get; set; }
         public string MaterialGrade { get; set; }
         public double MemberLength { get; set; }
+        public string DRNStart { get; set; }
+        public string DRNEnd { get; set; }
         public string ConnTypeS { get; set; }
         public string ConnTypeE { get; set; }
+        public string SectionHeader { get; set; }
+        public string SectionWidth { get; set; }
+        public string SectionDepth { get; set; }
         public string SectionType { get; set; }
         public string JUSLINE { get; set; }
         public string Function { get; set; }

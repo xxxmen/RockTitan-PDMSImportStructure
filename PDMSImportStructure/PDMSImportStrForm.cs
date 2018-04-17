@@ -26,6 +26,8 @@ namespace PDMSImportStructure
         public static string MDTfileNameWOExt = string.Empty;
         public static string MDTfilePathWNameWOExt = string.Empty;
         public static bool GrdFileExists = false;
+        public static string InputMembFileExt = ".MDT"; //設定輸入member的副檔名
+        public static string InputGridFileExt = ".Grd"; //設定輸入Grid的副檔名
         public static string OutputMacroFileExt = ".MAC"; //設定輸出macro的副檔名, 可考慮為".PDM" / ".MAC"
 
 
@@ -113,7 +115,7 @@ namespace PDMSImportStructure
 
         void ViewFile()
         {
-            System.Diagnostics.Process.Start("explorer.exe", (FilePathtextBox.Text == null || FilePathtextBox.Text == string.Empty) ? @".MDT" : Path.GetDirectoryName(FilePathtextBox.Text));
+            System.Diagnostics.Process.Start("explorer.exe", (FilePathtextBox.Text == null || FilePathtextBox.Text == string.Empty) ? @InputMembFileExt : Path.GetDirectoryName(FilePathtextBox.Text));
         }
 
         void LoadData()
@@ -121,56 +123,71 @@ namespace PDMSImportStructure
             BtnExport.Enabled = false;
             BtnSendtoPDMS.Enabled = false;
 
-            //背景執行
-            BackgroundWorker bw = new BackgroundWorker();
+            MDTfile = FilePathtextBox.Text;
+            if (MDTfile == string.Empty)
+            {
+                return;
+            }
+            else if (File.Exists(MDTfile) != true || MDTfile.Contains(InputMembFileExt) != true)
+            {
+                MessageBox.Show("No MDT file selected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string MDTMessage = string.Empty;
+            string GrdMessage = string.Empty;
+            var MsgBoxresult = DialogResult.Yes;
+
+        //背景執行
+        BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += (sender_obj, obj) =>
             {
-                MDTfile = FilePathtextBox.Text;
-                if (File.Exists(MDTfile) != true | MDTfile.Contains(".MDT") != true)
-                {
-                    MessageBox.Show("No MDT file selected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
                 MDTfilePath = Path.GetDirectoryName(MDTfile);
                 MDTfileName = Path.GetFileName(MDTfile);
                 MDTfileNameWOExt = Path.GetFileNameWithoutExtension(MDTfile);
                 MDTfilePathWNameWOExt = MDTfilePath + ((MDTfilePath == null) || (MDTfilePath == string.Empty) ? string.Empty : @"\") + MDTfileNameWOExt;
 
-                //先讀Grd file, 再讀MDT file, 如果Grd file不存在, 則在執行ReadMDT.ReadMDTfile時依member data自動產生(call方法)
-                string GrdMessage = string.Empty;
-                if (File.Exists(MDTfilePathWNameWOExt + ".Grd"))
+                //先讀Grd file, 再讀MDT file, 如果Grd file不存在, 則在執行ReadMDT.ReadMDTfile時依member data自動產生
+                if (File.Exists(MDTfilePathWNameWOExt + InputGridFileExt))
                 {
                     GrdFileExists = true;
-                    ReadGrd.ReadGrdfile(MDTfilePathWNameWOExt + ".Grd", out GrdMessage);
+                    ReadGrd.ReadGrdfile(MDTfilePathWNameWOExt + InputGridFileExt, out GrdMessage);
                 }
                 else
                 {
                     GrdFileExists = false;
-                    var result = MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically. Do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.No)
+                    MsgBoxresult = MessageBox.Show("Warning! Grd file is not exist, the program will generate grid lines automatically. Do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (MsgBoxresult == DialogResult.No)
                     {
-                        return;
+                        return; //因使用BackgroundWorker, return仍會做RunWorkerCompleted, 故寫於RunWorkerCompleted中判別式
                     }
-                    //TODO
                 }
 
-                ReadMDT.ReadMDTfile(MDTfile, out string MDTMessage);
+                ReadMDT.ReadMDTfile(MDTfile, out MDTMessage);
 
                 if (MDTMessage.ToUpper().Contains("ERROR"))
                 {
                     MessageBox.Show(MDTMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    return; //因使用BackgroundWorker, return仍會做RunWorkerCompleted, 故寫於RunWorkerCompleted中判別式
                 }
                 else if (GrdMessage.ToUpper().Contains("ERROR"))
                 {
                     MessageBox.Show(GrdMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    return; //因使用BackgroundWorker, return仍會做RunWorkerCompleted, 故寫於RunWorkerCompleted中判別式
+                }
+                if (MDTMessage.ToUpper().Contains("WARNING"))
+                {
+                    MsgBoxresult = MessageBox.Show(MDTMessage, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (MsgBoxresult == DialogResult.No)
+                    {
+                        return; //因使用BackgroundWorker, return仍會做RunWorkerCompleted, 故寫於RunWorkerCompleted中判別式
+                    }
                 }
             };
-
+            
             bw.RunWorkerCompleted += (sender_obj, obj) =>
             {
-                if (ReadMDT.MainPropertiesList.Count != 0)
+                if ((ReadMDT.MainPropertiesList.Count != 0) && (MDTMessage.ToUpper().Contains("ERROR") != true) && (GrdMessage.ToUpper().Contains("ERROR") != true) && (MsgBoxresult != DialogResult.No)) //因使用BackgroundWorker, return仍會做RunWorkerCompleted, 故寫於RunWorkerCompleted中判別式
                 {
                     if (MembDataGridViewcheckBox.Checked)
                     {
@@ -206,7 +223,6 @@ namespace PDMSImportStructure
             }
             MaterialGradeListlabel.Text = "Number of used material grade : " + ReadMDT.MaterialGradeList.Count.ToString();
 
-            //TODO
             //Form2 form2 = new Form2();
             //form2.Show();
         }
@@ -284,7 +300,7 @@ namespace PDMSImportStructure
         {
             //TODO
             MessageBox.Show("Successfully upload to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            BtnSendtoPDMS.Enabled = false;
+            BtnSendtoPDMS.Enabled = false; //避免重複送出, 需重新Export才能再送出
         }
 
         void FormTopMostcheckBoxCheckedChanged()
@@ -299,8 +315,13 @@ namespace PDMSImportStructure
             }
         }
 
-        #endregion
+        void GoToEnd()
+        {
+            return;
+        }
 
+
+        #endregion
 
     }
 }
