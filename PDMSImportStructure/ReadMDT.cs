@@ -19,6 +19,8 @@ namespace PDMSImportStructure
         public static List<string> SectionList = new List<string>();
         public static List<MajorProperties> MainPropertiesList = new List<MajorProperties>(); //Main Data: All member data
 
+        public static List<int> CountList = new List<int>();
+
         public static void ReadMDTfile(string MDTfile, out string Message)
         {
             Message = string.Empty;
@@ -404,15 +406,35 @@ namespace PDMSImportStructure
                     JUSLINE = JUSLINE,
                     Function = Function,
                     Bangle = Bangle,
-                    XGridName = XGridName,
-                    XGridPosition = XGridPosition,
-                    YGridName = YGridName,
-                    YGridPosition = YGridPosition,
-                    ZGridName = ZGridName,
-                    ZGridElevation = ZGridElevation,
+                    XcorGridName = XGridName,
+                    XcorGridPosition = XGridPosition,
+                    YcorGridName = YGridName,
+                    YcorGridPosition = YGridPosition,
+                    ZcorGridName = ZGridName,
+                    ZcorGridElevation = ZGridElevation,
                     strCompHashCode = strCompHashCode
                 });
             }
+        }
+
+        public static void CountGrid()
+        {
+            int Count = 1;
+            for (int i = 0; i < MainPropertiesList.Count; i++)
+            {
+                for (int j = 0; j < GridZPropertiesList.Count; j++)
+                {
+                    if (Convert.ToDouble(MainPropertiesList[i].ZcorGridElevation) == GridZPropertiesList[j].ZGridElevation)
+                    {
+                        if ( MainPropertiesList[i].MembType == "C" || MainPropertiesList[i].MembType == "S")
+                        {
+                            CountList.Add(new List<string> ());
+                        }
+                        
+                    }
+                }
+            }
+
         }
     }
 }

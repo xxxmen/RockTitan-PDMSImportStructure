@@ -12,6 +12,7 @@ namespace PDMSImportStructure
     {
         public static void GenerateMacrofile()
         {
+            ReadMDT.CountGrid();
             //TODO
             string mainframePrefix = PDMSImportStrForm.MDTfileNameWOExt; //node.name.Split('/').LastOrDefault();
             if (mainframePrefix == null)
