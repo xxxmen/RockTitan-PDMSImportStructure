@@ -89,6 +89,8 @@ namespace PDMSImportStructure
 
         void FormLoad()
         {
+            SmallWindowParam();
+
             //顯示版本於Form title
             this.Text = "PDMS Import Structure  V" + Application.ProductVersion;
 
@@ -229,46 +231,14 @@ namespace PDMSImportStructure
 
         void MembDataGridViewcheckBoxCheckedChanged()
         {
-            //先後順序有學問!!
             if (MembDataGridViewcheckBox.Checked)
             {
-                this.MinimumSize = new System.Drawing.Size(800, 600);
-                this.ClientSize = new System.Drawing.Size(784, 561);
-
-                this.MemberDatalabel.Location = new System.Drawing.Point(12, 357);
-
-                this.SecListgroupBox.Size = new System.Drawing.Size(202, 117);
-                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 117);
-                this.SectionlistBox.Size = new System.Drawing.Size(190, 95);
-                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 95);
-
-                this.SecListgroupBox.Location = new System.Drawing.Point(12, 379);
-                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 379);
-                this.SectionlistBox.Location = new System.Drawing.Point(6, 15);
-                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 15);
-
-                this.MainDatagroupBox.Visible = true;
-
+                BigWindowParam();
                 WriteDatatoDataGridView();
             }
             else
             {
-                this.MainDatagroupBox.Visible = false;
-
-                this.MinimumSize = new System.Drawing.Size(570, 330);
-                this.ClientSize = new System.Drawing.Size(554, 291);
-
-                this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
-
-                this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
-                this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
-                this.SectionlistBox.Size = new System.Drawing.Size(190, 121);
-                this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 121);
-
-                this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
-                this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
-                this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
-                this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
+                SmallWindowParam();
             }
         }
 
@@ -315,11 +285,51 @@ namespace PDMSImportStructure
             }
         }
 
-        void GoToEnd()
+        void SmallWindowParam()
         {
-            return;
+            //先後順序有學問!!
+            this.MainDatagroupBox.Visible = false;
+
+            this.MinimumSize = new System.Drawing.Size(570, 330);
+            this.ClientSize = new System.Drawing.Size(554, 291);
+
+            this.MemberDatalabel.Location = new System.Drawing.Point(12, 57);
+
+            this.SecListgroupBox.Size = new System.Drawing.Size(202, 145);
+            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 145);
+            this.SectionlistBox.Size = new System.Drawing.Size(190, 121);
+            this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 121);
+
+            this.SecListgroupBox.Location = new System.Drawing.Point(12, 83);
+            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 83);
+            this.SectionlistBox.Location = new System.Drawing.Point(6, 17);
+            this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 17);
         }
 
+        void BigWindowParam()
+        {
+            //先後順序有學問!!
+            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
+
+            this.MemberDatalabel.Location = new System.Drawing.Point(15, 335);
+            this.SectionListlabel.Location = new System.Drawing.Point(12, 496);
+            this.MaterialGradeListlabel.Location = new System.Drawing.Point(234, 496);
+            
+            this.SecListgroupBox.Size = new System.Drawing.Size(202, 133);
+            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 133);
+            this.SectionlistBox.Size = new System.Drawing.Size(190, 108);
+            this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 108);
+            
+            this.SecListgroupBox.Location = new System.Drawing.Point(12, 360);
+            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 360);
+            this.SectionlistBox.Location = new System.Drawing.Point(6, 20);
+            this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 20);
+
+            this.MainDatagroupBox.Location = new System.Drawing.Point(12, 64);
+            this.MainDatagroupBox.Size = new System.Drawing.Size(760, 268);
+            this.MainDatagroupBox.Visible = true;
+        }
 
         #endregion
 

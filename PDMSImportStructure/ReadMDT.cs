@@ -19,8 +19,6 @@ namespace PDMSImportStructure
         public static List<string> SectionList = new List<string>();
         public static List<MajorProperties> MainPropertiesList = new List<MajorProperties>(); //Main Data: All member data
 
-        public static List<int> CountList = new List<int>();
-
         public static void ReadMDTfile(string MDTfile, out string Message)
         {
             Message = string.Empty;
@@ -284,21 +282,21 @@ namespace PDMSImportStructure
                 int XGridPositionIndex = XGridAbsSubtractionList.IndexOf(XGridAbsSubtractionList.Min());
                 int YGridPositionIndex = YGridAbsSubtractionList.IndexOf(YGridAbsSubtractionList.Min());
                 int ZGridPositionIndex = ZGridAbsSubtractionList.IndexOf(ZGridAbsSubtractionList.Min());
-                string XGridName = string.Empty;
-                string XGridPosition = string.Empty;
-                string YGridName = string.Empty;
-                string YGridPosition = string.Empty;
-                string ZGridName = string.Empty;
-                string ZGridElevation = string.Empty;
+                string XcorGridName = string.Empty;
+                string XcorGridPosition = string.Empty;
+                string YcorGridName = string.Empty;
+                string YcorGridPosition = string.Empty;
+                string ZcorGridName = string.Empty;
+                string ZcorGridElevation = string.Empty;
                 if (MembType == "C") //主column需加入X柱線, Y柱線, 底層Grid
                 {
-                    XGridPosition = GridXPropertiesList[XGridPositionIndex].XGridPosition.ToString("f2");
-                    YGridPosition = GridYPropertiesList[YGridPositionIndex].YGridPosition.ToString("f2");
-                    ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
+                    XcorGridPosition = GridXPropertiesList[XGridPositionIndex].XGridPosition.ToString("f2");
+                    YcorGridPosition = GridYPropertiesList[YGridPositionIndex].YGridPosition.ToString("f2");
+                    ZcorGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
                     if (PDMSImportStrForm.GrdFileExists == true) //當Grd檔存在時, 使用Grd讀出之柱線名稱
                     {
-                        XGridName = GridXPropertiesList[XGridPositionIndex].XGridName;
-                        YGridName = GridYPropertiesList[YGridPositionIndex].YGridName;
+                        XcorGridName = GridXPropertiesList[XGridPositionIndex].XGridName;
+                        YcorGridName = GridYPropertiesList[YGridPositionIndex].YGridName;
                     }
                     else if (Grid != string.Empty) //當Grd檔不存在時, 使用MDT讀出之柱線名稱, 並將"-"左右分為X向及Y向
                     {
@@ -306,27 +304,27 @@ namespace PDMSImportStructure
                         string[] SpiltStringGrid = Grid.Split(separator, StringSplitOptions.RemoveEmptyEntries);
                         if (SpiltStringGrid.Length == 2)
                         {
-                            XGridName = SpiltStringGrid[0];
-                            YGridName = SpiltStringGrid[1];
+                            XcorGridName = SpiltStringGrid[0];
+                            YcorGridName = SpiltStringGrid[1];
                         }
                     }
                     else //當上述名稱都不滿足時, 填入方向加上實際位置
                     {
-                        XGridName = "X" + XGridPosition;
-                        YGridName = "Y" + YGridPosition;
+                        XcorGridName = "X" + XcorGridPosition;
+                        YcorGridName = "Y" + YcorGridPosition;
 
                     }
-                    ZGridName = "EL" + ZGridElevation;
+                    ZcorGridName = "EL" + ZcorGridElevation;
                 }
                 else if (MembType == "S" || MembType == "VB" || MembType == "GD" || MembType == "JS" || MembType == "B" || MembType == "HB") //Post, Vertical Bracing, Girder, Joist, Beam, Horizontal Bracing 只需加入高程Grid
                 {
-                    ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
-                    ZGridName = "EL" + ZGridElevation;
+                    ZcorGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
+                    ZcorGridName = "EL" + ZcorGridElevation;
                 }
                 else //Purlin及其他只需加入高程Grid
                 {
-                    ZGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
-                    ZGridName = "EL" + ZGridElevation;
+                    ZcorGridElevation = GridZPropertiesList[ZGridPositionIndex].ZGridElevation.ToString("f2");
+                    ZcorGridName = "EL" + ZcorGridElevation;
                 }
                 //
 
@@ -336,8 +334,8 @@ namespace PDMSImportStructure
                     + EndX.ToString() + EndY.ToString() + EndZ.ToString() + Grid 
                     + Reflect + OvX.ToString() + OvY.ToString() + OvZ.ToString() 
                     + Section + Material + MaterialGrade + ConnTypeS + ConnTypeE 
-                    + JUSLINE + Function + Bangle.ToString() + XGridName + XGridPosition 
-                    + YGridName + YGridPosition + ZGridName + ZGridElevation).GetHashCode();
+                    + JUSLINE + Function + Bangle.ToString() + XcorGridName + XcorGridPosition 
+                    + YcorGridName + YcorGridPosition + ZcorGridName + ZcorGridElevation).GetHashCode();
 
                 //check data
                 if (ID != CompID)
@@ -406,35 +404,15 @@ namespace PDMSImportStructure
                     JUSLINE = JUSLINE,
                     Function = Function,
                     Bangle = Bangle,
-                    XcorGridName = XGridName,
-                    XcorGridPosition = XGridPosition,
-                    YcorGridName = YGridName,
-                    YcorGridPosition = YGridPosition,
-                    ZcorGridName = ZGridName,
-                    ZcorGridElevation = ZGridElevation,
+                    XcorGridName = XcorGridName,
+                    XcorGridPosition = XcorGridPosition,
+                    YcorGridName = YcorGridName,
+                    YcorGridPosition = YcorGridPosition,
+                    ZcorGridName = ZcorGridName,
+                    ZcorGridElevation = ZcorGridElevation,
                     strCompHashCode = strCompHashCode
                 });
             }
-        }
-
-        public static void CountGrid()
-        {
-            int Count = 1;
-            for (int i = 0; i < MainPropertiesList.Count; i++)
-            {
-                for (int j = 0; j < GridZPropertiesList.Count; j++)
-                {
-                    if (Convert.ToDouble(MainPropertiesList[i].ZcorGridElevation) == GridZPropertiesList[j].ZGridElevation)
-                    {
-                        if ( MainPropertiesList[i].MembType == "C" || MainPropertiesList[i].MembType == "S")
-                        {
-                            CountList.Add(new List<string> ());
-                        }
-                        
-                    }
-                }
-            }
-
         }
     }
 }
