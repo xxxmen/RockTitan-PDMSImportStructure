@@ -83,14 +83,9 @@ namespace PDMSImportStructure
             GridZPropertiesList.Clear();
             for (int k = 0; k < GridZData.Count; k++)
             {
-                string ZGridName = GridZData[k].Groups["ZGridName"].Value.Trim(); //去掉名稱中所有空白
                 double ZGridElevation = Convert.ToDouble(GridZData[k].Groups["ZGridElevation"].Value);
-
-                //check data
-                if (ZGridName == string.Empty)
-                {
-                    ZGridName = (k + 1).ToString();
-                }
+                //string ZGridName = GridZData[k].Groups["ZGridName"].Value.Trim();
+                string ZGridName = "EL" + ZGridElevation.ToString("f2"); //必需使用EL***.**為名稱
 
                 GridZPropertiesList.Add(new GridZProperties { ZGridName = ZGridName, ZGridElevation = ZGridElevation });
             }

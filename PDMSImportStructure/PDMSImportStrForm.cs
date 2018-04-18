@@ -257,13 +257,24 @@ namespace PDMSImportStructure
 
         void Export()
         {
-            GenerateMacro.GenerateMacrofile();
-
-            if (File.Exists(MDTfilePathWNameWOExt + OutputMacroFileExt) == true)
+            BtnExport.Enabled = false;
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += (sender_obj, obj) =>
             {
-                MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BtnSendtoPDMS.Enabled = true;
-            }
+                GenerateMacro.GenerateMacrofile();
+            };
+
+            bw.RunWorkerCompleted += (sender_obj, obj) =>
+            {
+                if (File.Exists(MDTfilePathWNameWOExt + OutputMacroFileExt) == true)
+                {
+                    MessageBox.Show("Completed export macro file. Please send to PDMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BtnExport.Enabled = true;
+                    BtnSendtoPDMS.Enabled = true;
+                }
+            };
+
+            bw.RunWorkerAsync();
         }
 
         void Send()

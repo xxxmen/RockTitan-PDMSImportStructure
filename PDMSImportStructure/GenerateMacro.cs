@@ -18,6 +18,7 @@ namespace PDMSImportStructure
             PrepareGridZList();
             //TODO
             string mainframePrefix = PDMSImportStrForm.MDTfileNameWOExt; //node.name.Split('/').LastOrDefault();
+            mainframePrefix = mainframePrefix.Trim(); //不可含空白
             if (mainframePrefix == null)
                 return;
             string targetName = string.Format("/{0}/MAINFRAME", mainframePrefix);
@@ -144,130 +145,154 @@ namespace PDMSImportStructure
                         {
                             if ((inlistitem == subitem.ZGridName + "C") || (inlistitem == subitem.ZGridName + "S"))
                             {
+                                string MACcontentRCMemb = string.Empty;
+                                string MACcontentSteelMemb = string.Empty;
+                                foreach (var item in ReadMDT.MainPropertiesList)
+                                {
+                                    if ((inlistitem == item.ZcorGridName + item.MembType))
+                                    {
+                                        if (item.SectionHeader == "RC")
+                                        {
+                                            string[] strArrayMACcontentRCMemb = MacRCMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.SectionWidth, item.SectionDepth, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentRCMemb += string.Join("\n", strArrayMACcontentRCMemb);
+                                        }
+                                        else
+                                        {
+                                            string[] strArrayMACcontentSteelMemb = MacSteelMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.Section, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentSteelMemb += string.Join("\n", strArrayMACcontentSteelMemb);
+                                        }
+                                    }
+                                }
+
                                 string[] strArrayFRMW = {
-                                    string.Format("    NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, subitem.ZGridName),
-                                    string.Format("        PURP SELE"),
-                                    string.Format("      NEW SBFR  /{0}/S_{1}/COLUMN", mainframePrefix, subitem.ZGridName),
-                                    string.Format("          PURP COLN"),
-                                    string.Format("      END"),
-                                    string.Format("    END"),
-                                };
+                                        string.Format("    NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, subitem.ZGridName),
+                                        string.Format("        PURP SELE"),
+                                        string.Format("      NEW SBFR  /{0}/S_{1}/COLUMN", mainframePrefix, subitem.ZGridName),
+                                        string.Format("          PURP COLN"),
+                                        MACcontentRCMemb + MACcontentSteelMemb + string.Format("      END"),
+                                        string.Format("    END"),
+                                    };
                                 FRMW += string.Join("\n", strArrayFRMW);
                             }
                             else if (inlistitem == subitem.ZGridName + "VB")
                             {
+                                string MACcontentRCMemb = string.Empty;
+                                string MACcontentSteelMemb = string.Empty;
+                                foreach (var item in ReadMDT.MainPropertiesList)
+                                {
+                                    if ((inlistitem == item.ZcorGridName + item.MembType))
+                                    {
+                                        if (item.SectionHeader == "RC")
+                                        {
+                                            string[] strArrayMACcontentRCMemb = MacRCMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.SectionWidth, item.SectionDepth, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentRCMemb += string.Join("\n", strArrayMACcontentRCMemb);
+                                        }
+                                        else
+                                        {
+                                            string[] strArrayMACcontentSteelMemb = MacSteelMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.Section, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentSteelMemb += string.Join("\n", strArrayMACcontentSteelMemb);
+                                        }
+                                    }
+                                }
+
                                 string[] strArrayFRMW = {
-                                    string.Format("    NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, subitem.ZGridName),
-                                    string.Format("        PURP SELE"),
-                                    string.Format("      NEW SBFR  /{0}/S_{1}/VBRACE", mainframePrefix, subitem.ZGridName),
-                                    string.Format("          PURP BRAC"),
-                                    string.Format("      END"),
-                                    string.Format("    END"),
-                                };
+                                        string.Format("    NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, subitem.ZGridName),
+                                        string.Format("        PURP SELE"),
+                                        string.Format("      NEW SBFR  /{0}/S_{1}/VBRACE", mainframePrefix, subitem.ZGridName),
+                                        string.Format("          PURP BRAC"),
+                                        MACcontentRCMemb + MACcontentSteelMemb + string.Format("      END"),
+                                        string.Format("    END"),
+                                    };
                                 FRMW += string.Join("\n", strArrayFRMW);
                             }
                             else if ((inlistitem == subitem.ZGridName + "GD") || (inlistitem == subitem.ZGridName + "JS") || (inlistitem == subitem.ZGridName + "B") || (inlistitem == subitem.ZGridName + "PL"))
                             {
+                                string MACcontentRCMemb = string.Empty;
+                                string MACcontentSteelMemb = string.Empty;
+                                foreach (var item in ReadMDT.MainPropertiesList)
+                                {
+                                    if ((inlistitem == item.ZcorGridName + item.MembType))
+                                    {
+                                        if (item.SectionHeader == "RC")
+                                        {
+                                            string[] strArrayMACcontentRCMemb = MacRCMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.SectionWidth, item.SectionDepth, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentRCMemb += string.Join("\n", strArrayMACcontentRCMemb);
+                                        }
+                                        else
+                                        {
+                                            string[] strArrayMACcontentSteelMemb = MacSteelMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.Section, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentSteelMemb += string.Join("\n", strArrayMACcontentSteelMemb);
+                                        }
+                                    }
+                                }
+
                                 string[] strArrayFRMW = {
-                                    string.Format("    NEW FRMW  /{0}/S_{1}/PLANVIEW", mainframePrefix, subitem.ZGridName),
-                                    string.Format("        PURP SELE"),
-                                    string.Format("      NEW SBFR  /{0}/S_{1}/BEAM", mainframePrefix, subitem.ZGridName),
-                                    string.Format("          PURP BEAM"),
-                                    string.Format("      END"),
-                                    string.Format("    END"),
-                                };
+                                        string.Format("    NEW FRMW  /{0}/S_{1}/PLANVIEW", mainframePrefix, subitem.ZGridName),
+                                        string.Format("        PURP SELE"),
+                                        string.Format("      NEW SBFR  /{0}/S_{1}/BEAM", mainframePrefix, subitem.ZGridName),
+                                        string.Format("          PURP BEAM"),
+                                        MACcontentRCMemb + MACcontentSteelMemb + string.Format("      END"),
+                                        string.Format("    END"),
+                                    };
                                 FRMW += string.Join("\n", strArrayFRMW);
                             }
                             else if (inlistitem == subitem.ZGridName + "HB")
                             {
+                                string MACcontentRCMemb = string.Empty;
+                                string MACcontentSteelMemb = string.Empty;
+                                foreach (var item in ReadMDT.MainPropertiesList)
+                                {
+                                    if ((inlistitem == item.ZcorGridName + item.MembType))
+                                    {
+                                        if (item.SectionHeader == "RC")
+                                        {
+                                            string[] strArrayMACcontentRCMemb = MacRCMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.SectionWidth, item.SectionDepth, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentRCMemb += string.Join("\n", strArrayMACcontentRCMemb);
+                                        }
+                                        else
+                                        {
+                                            string[] strArrayMACcontentSteelMemb = MacSteelMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.Section, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                            MACcontentSteelMemb += string.Join("\n", strArrayMACcontentSteelMemb);
+                                        }
+                                    }
+                                }
+
                                 string[] strArrayFRMW = {
-                                    string.Format("    NEW FRMW  /{0}/S_{1}/PLANVIEW", mainframePrefix, subitem.ZGridName),
-                                    string.Format("        PURP SELE"),
-                                    string.Format("      NEW SBFR  /{0}/S_{1}/HBRACE", mainframePrefix, subitem.ZGridName),
-                                    string.Format("          PURP BRAC"),
-                                    string.Format("      END"),
-                                    string.Format("    END"),
-                                };
+                                        string.Format("    NEW FRMW  /{0}/S_{1}/PLANVIEW", mainframePrefix, subitem.ZGridName),
+                                        string.Format("        PURP SELE"),
+                                        string.Format("      NEW SBFR  /{0}/S_{1}/HBRACE", mainframePrefix, subitem.ZGridName),
+                                        string.Format("          PURP BRAC"),
+                                        MACcontentRCMemb + MACcontentSteelMemb + string.Format("      END"),
+                                        string.Format("    END"),
+                                    };
                                 FRMW += string.Join("\n", strArrayFRMW);
                             }
                         }
                     }
                 }
 
-
-                //string FRMW = string.Empty;
-                //foreach (var outlistitem in GridMembList)
-                //{
-                //    foreach (var inlistitem in outlistitem)
-                //    {
-                //        if ((inlistitem.GridZEL == item.ZGridName) && (outlistitem.Count != 0))
-                //        {
-                //            if (inlistitem.MembType == "C" || inlistitem.MembType == "S" || inlistitem.MembType == "VB")
-                //            {
-                //                string[] strArrayFRMW = {
-                //                string.Format("        NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, item.ZGridName),
-                //                string.Format("                   PURP SELE\n")
-                //                };
-                //                FRMW += string.Join("\n", strArrayFRMW);
-                //            }
-                //            else if (inlistitem.MembType == "GD" || inlistitem.MembType == "JS" || inlistitem.MembType == "B" || inlistitem.MembType == "HB" || inlistitem.MembType == "PL")
-                //            {
-                //                string[] strArrayFRMW = {
-                //                string.Format("        NEW FRMW  /{0}/S_{1}/PLANVIEW", mainframePrefix, item.ZGridName),
-                //                string.Format("                   PURP SELE\n")
-                //                };
-                //                FRMW += string.Join("\n", strArrayFRMW);
-                //            }
-                //        }
-                //    }
-                //}
-
                 string[] strArraySTRU = {
-                    string.Format("  NEW STRU  /{0}/STL_FRAME/{1}", mainframePrefix, subitem.ZGridName),
-                    string.Format("      PURP CSTL"),
-                    FRMW,
-                    "  END\n"
-                };
+                        string.Format("  NEW STRU  /{0}/STL_FRAME/{1}", mainframePrefix, subitem.ZGridName),
+                        string.Format("      PURP CSTL"),
+                        FRMW,
+                        "  END\n"
+                    };
                 STRU += string.Join("\n", strArraySTRU);
             }
-
-
-
-            string MACcontentRCMemb = string.Empty;
-            string MACcontentSteelMemb = string.Empty;
-            foreach (var item in ReadMDT.MainPropertiesList)
-            {
-                if (item.SectionHeader == "RC")
-                {
-                    string[] strArrayMACcontentRCMemb = MacRCMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.SectionWidth, item.SectionDepth, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
-                    MACcontentRCMemb += string.Join("\n", strArrayMACcontentRCMemb);
-                }
-                else
-                {
-                    string[] strArrayMACcontentSteelMemb = MacSteelMemb(mainframePrefix, item.ID, item.strCompHashCode, item.Grid, item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ, item.Section, item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
-                    MACcontentSteelMemb += string.Join("\n", strArrayMACcontentSteelMemb);
-                }
-            }
-
-            string[] MACcontentCOLArray = {
-                STRU + MACcontentRCMemb + MACcontentSteelMemb + "      END",
-                "     END",
-                "    END\n"
-            };
-            string MACcontentCOL = string.Join("\n", MACcontentCOLArray);
-
 
             string[] MACcontentArray = {
                 string.Format("NEW ZONE  /{0}/MAINFRAME", mainframePrefix),
                 //sprojectBaseInfo + signature,
                 "    PURP STL",
-                MACcontentCOL
+                STRU
             };
             string MACcontent = string.Join("\n", MACcontentArray);
 
+            string OutputMAC = prependString + MACcontent + appendString;
+
             using (StreamWriter sw = new StreamWriter(PDMSImportStrForm.MDTfilePathWNameWOExt + PDMSImportStrForm.OutputMacroFileExt))
             {
-                sw.WriteLine(prependString + MACcontent + appendString);
+                sw.WriteLine(OutputMAC);
                 sw.Close();
             }
         }
@@ -309,12 +334,18 @@ namespace PDMSImportStructure
 
         static string[] MacRCMemb(string mainframePrefix, string ID, int strCompHashCode, string Grid, string DRNStart, string DRNEnd, double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, string SectionWidth, string SectionDepth, string JUSLINE, double Bangle, string Function, string ConnTypeS, string ConnTypeE)
         {
+            string strNewSCTN = string.Format("/{0}/RC_{1}/#{2}_({3})", mainframePrefix, Grid.Trim(), ID, strCompHashCode); //不可包含空白字元, 總字元數不能超過50
+            if (strNewSCTN.Length >= 50) 
+            {
+                strNewSCTN = string.Format("/{0}/RC/#{1}_({2})", mainframePrefix, ID, strCompHashCode);
+            }
+
             string[] strArrayMACcontentRC = {
-                        string.Format("        NEW SCTN  /{0}/STL_COL_{1}/#{2}_({3})", mainframePrefix, Grid.Trim(), ID, strCompHashCode), //不可包含空白字元, 總字元數不能超過50
-                        string.Format("          DRNSTART {0}  DRNEND {1} ", DRNStart, DRNEnd),
+                        string.Format("        NEW SCTN  {0}", strNewSCTN), 
+                        string.Format("          DRNSTART {0}  DRNEND {1}", DRNStart, DRNEnd),
                         string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", StartX.ToString("f2"), StartY.ToString("f2"), StartZ.ToString("f2"), EndX.ToString("f2"), EndY.ToString("f2"), EndZ.ToString("f2")),
                         string.Format("          SPRE /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP {0}   {1}", SectionDepth, SectionWidth),
-                        string.Format("            JUSL  {0}    BANG   {1}  FUNC  '{2}'  DESC  '{3}'", JUSLINE, Bangle.ToString("f2"), Function, Grid),
+                        string.Format("          JUSL  {0}    BANG   {1}  FUNC  '{2}'  DESC  '{3}'", JUSLINE, Bangle.ToString("f2"), Function, Grid),
                         string.Format("          CTYS {0}    CTYE {1}", ConnTypeS, ConnTypeE),
                         "        END\n"
             };
@@ -323,9 +354,15 @@ namespace PDMSImportStructure
 
         static string[] MacSteelMemb(string mainframePrefix, string ID, int strCompHashCode, string Grid, string DRNStart, string DRNEnd, double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, string Section, string JUSLINE, double Bangle, string Function, string ConnTypeS, string ConnTypeE)
         {
+            string strNewSCTN = string.Format("/{0}/STL_{1}/#{2}_({3})", mainframePrefix, Grid.Trim(), ID, strCompHashCode); //不可包含空白字元, 總字元數不能超過50
+            if (strNewSCTN.Length >= 50)
+            {
+                strNewSCTN = string.Format("/{0}/STL/#{1}_({2})", mainframePrefix, ID, strCompHashCode);
+            }
+
             string[] strArrayMACcontentSteel = {
-                        string.Format("        NEW SCTN  /{0}/STL_COL__{1}/#{2}_({3})", mainframePrefix, Grid.Trim(), ID, strCompHashCode), //不可包含空白字元, 總字元數不能超過50
-                        string.Format("          DRNSTART {0}  DRNEND {1} ", DRNStart, DRNEnd),
+                        string.Format("        NEW SCTN  {0}", strNewSCTN),
+                        string.Format("          DRNSTART {0}  DRNEND {1}", DRNStart, DRNEnd),
                         string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", StartX.ToString("f2"), StartY.ToString("f2"), StartZ.ToString("f2"), EndX.ToString("f2"), EndY.ToString("f2"), EndZ.ToString("f2")),
                         string.Format("          SPRE  SPCO  /CTCV-SPEC/{0}         JUSL  {1}    BANG   {2}  FUNC  '{3}'  DESC  '{4}'", Section, JUSLINE, Bangle.ToString("f2"), Function, Grid),
                         string.Format("          CTYS {0}    CTYE {1}", ConnTypeS, ConnTypeE),
