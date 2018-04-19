@@ -14,6 +14,7 @@ namespace PDMSImportStructure
         static List<List<string>> PlanViewElevationViewList = new List<List<string>>();
         static List<List<string>> ColVBBeamHBList = new List<List<string>>();
         static List<List<string>> PlanElevationMembTypeList = new List<List<string>>();
+        public static string OutputMAC = string.Empty;
 
         public static void GenerateMacrofile()
         {
@@ -148,18 +149,18 @@ namespace PDMSImportStructure
                             if (PEVinlistitem == gridZitem.ZGridName + "ELEVIEW")
                             {
                                 string SBFR = string.Empty;
-                                foreach (var PEMoutlistitem in PlanElevationMembTypeList)
+                                foreach (var CVBHoutlistitem in ColVBBeamHBList)
                                 {
-                                    foreach (var PEMinlistitem in PEMoutlistitem)
+                                    foreach (var CVBHinlistitem in CVBHoutlistitem)
                                     {
-                                        if (PEMoutlistitem.Count != 0)
+                                        if (CVBHoutlistitem.Count != 0)
                                         {
-                                            if ((PEMinlistitem == gridZitem.ZGridName + "C") || (PEMinlistitem == gridZitem.ZGridName + "S"))
+                                            if (CVBHinlistitem == gridZitem.ZGridName + "COLUMN")
                                             {
                                                 string MACMemb = string.Empty;
                                                 foreach (var mainitem in ReadMDT.MainPropertiesList)
                                                 {
-                                                    if ((PEMinlistitem == mainitem.ZcorGridName + mainitem.MembType))
+                                                    if ((gridZitem.ZGridName == mainitem.ZcorGridName) && (mainitem.MembType == "C" || mainitem.MembType == "S"))
                                                     {
                                                         MACMemb += MACmembersMethod(mainframePrefix, mainitem.ID, mainitem.strCompHashCode, mainitem.Grid,
                                                             mainitem.DRNStart, mainitem.DRNEnd, mainitem.StartX, mainitem.StartY, mainitem.StartZ, mainitem.EndX, mainitem.EndY, mainitem.EndZ,
@@ -175,17 +176,17 @@ namespace PDMSImportStructure
                                                 };
                                                 SBFR += string.Join("\n", strArraySBFR);
                                             }
-                                            else if (PEMinlistitem == gridZitem.ZGridName + "VB")
+                                            else if (CVBHinlistitem == gridZitem.ZGridName + "VBRACE")
                                             {
                                                 string MACMemb = string.Empty;
-                                                foreach (var item in ReadMDT.MainPropertiesList)
+                                                foreach (var mainitem in ReadMDT.MainPropertiesList)
                                                 {
-                                                    if ((PEMinlistitem == item.ZcorGridName + item.MembType))
+                                                    if ((gridZitem.ZGridName == mainitem.ZcorGridName) && (mainitem.MembType == "VB"))
                                                     {
-                                                        MACMemb += MACmembersMethod(mainframePrefix, item.ID, item.strCompHashCode, item.Grid,
-                                                            item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ,
-                                                            item.SectionHeader, item.Section, item.SectionWidth, item.SectionDepth,
-                                                            item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                                        MACMemb += MACmembersMethod(mainframePrefix, mainitem.ID, mainitem.strCompHashCode, mainitem.Grid,
+                                                            mainitem.DRNStart, mainitem.DRNEnd, mainitem.StartX, mainitem.StartY, mainitem.StartZ, mainitem.EndX, mainitem.EndY, mainitem.EndZ,
+                                                            mainitem.SectionHeader, mainitem.Section, mainitem.SectionWidth, mainitem.SectionDepth,
+                                                            mainitem.JUSLINE, mainitem.Bangle, mainitem.Function, mainitem.ConnTypeS, mainitem.ConnTypeE);
                                                     }
                                                 }
 
@@ -210,23 +211,23 @@ namespace PDMSImportStructure
                             else if (PEVinlistitem == gridZitem.ZGridName + "PLANVIEW")
                             {
                                 string SBFR = string.Empty;
-                                foreach (var PEMoutlistitem in PlanElevationMembTypeList)
+                                foreach (var CVBHoutlistitem in ColVBBeamHBList)
                                 {
-                                    foreach (var PEMinlistitem in PEMoutlistitem)
+                                    foreach (var CVBHinlistitem in CVBHoutlistitem)
                                     {
-                                        if (PEMoutlistitem.Count != 0)
+                                        if (CVBHoutlistitem.Count != 0)
                                         {
-                                            if ((PEMinlistitem == gridZitem.ZGridName + "GD") || (PEMinlistitem == gridZitem.ZGridName + "JS") || (PEMinlistitem == gridZitem.ZGridName + "B") || (PEMinlistitem == gridZitem.ZGridName + "PL"))
+                                            if (CVBHinlistitem == gridZitem.ZGridName + "BEAM")
                                             {
                                                 string MACMemb = string.Empty;
-                                                foreach (var item in ReadMDT.MainPropertiesList)
+                                                foreach (var mainitem in ReadMDT.MainPropertiesList)
                                                 {
-                                                    if ((PEMinlistitem == item.ZcorGridName + item.MembType))
+                                                    if ((gridZitem.ZGridName == mainitem.ZcorGridName) && (mainitem.MembType == "GD" || mainitem.MembType == "JS" || mainitem.MembType == "B" || mainitem.MembType == "PL"))
                                                     {
-                                                        MACMemb += MACmembersMethod(mainframePrefix, item.ID, item.strCompHashCode, item.Grid,
-                                                            item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ,
-                                                            item.SectionHeader, item.Section, item.SectionWidth, item.SectionDepth,
-                                                            item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                                        MACMemb += MACmembersMethod(mainframePrefix, mainitem.ID, mainitem.strCompHashCode, mainitem.Grid,
+                                                            mainitem.DRNStart, mainitem.DRNEnd, mainitem.StartX, mainitem.StartY, mainitem.StartZ, mainitem.EndX, mainitem.EndY, mainitem.EndZ,
+                                                            mainitem.SectionHeader, mainitem.Section, mainitem.SectionWidth, mainitem.SectionDepth,
+                                                            mainitem.JUSLINE, mainitem.Bangle, mainitem.Function, mainitem.ConnTypeS, mainitem.ConnTypeE);
                                                     }
                                                 }
 
@@ -237,17 +238,17 @@ namespace PDMSImportStructure
                                                 };
                                                 SBFR += string.Join("\n", strArraySBFR);
                                             }
-                                            else if (PEMinlistitem == gridZitem.ZGridName + "HB")
+                                            else if (CVBHinlistitem == gridZitem.ZGridName + "HBRACE")
                                             {
                                                 string MACMemb = string.Empty;
-                                                foreach (var item in ReadMDT.MainPropertiesList)
+                                                foreach (var mainitem in ReadMDT.MainPropertiesList)
                                                 {
-                                                    if ((PEMinlistitem == item.ZcorGridName + item.MembType))
+                                                    if ((gridZitem.ZGridName == mainitem.ZcorGridName) && (mainitem.MembType == "HB"))
                                                     {
-                                                        MACMemb += MACmembersMethod(mainframePrefix, item.ID, item.strCompHashCode, item.Grid,
-                                                            item.DRNStart, item.DRNEnd, item.StartX, item.StartY, item.StartZ, item.EndX, item.EndY, item.EndZ,
-                                                            item.SectionHeader, item.Section, item.SectionWidth, item.SectionDepth,
-                                                            item.JUSLINE, item.Bangle, item.Function, item.ConnTypeS, item.ConnTypeE);
+                                                        MACMemb += MACmembersMethod(mainframePrefix, mainitem.ID, mainitem.strCompHashCode, mainitem.Grid,
+                                                            mainitem.DRNStart, mainitem.DRNEnd, mainitem.StartX, mainitem.StartY, mainitem.StartZ, mainitem.EndX, mainitem.EndY, mainitem.EndZ,
+                                                            mainitem.SectionHeader, mainitem.Section, mainitem.SectionWidth, mainitem.SectionDepth,
+                                                            mainitem.JUSLINE, mainitem.Bangle, mainitem.Function, mainitem.ConnTypeS, mainitem.ConnTypeE);
                                                     }
                                                 }
 
@@ -282,15 +283,16 @@ namespace PDMSImportStructure
                 STRU += string.Join("\n", strArraySTRU);
             }
 
-            string[] MACcontentArray = {
+            string[] strArrayMACcontentMembers = {
                 string.Format("NEW ZONE  /{0}/MAINFRAME", mainframePrefix),
                 //sprojectBaseInfo + signature,
                 "    PURP STL",
-                STRU
+                STRU + "END\n"
             };
-            string MACcontent = string.Join("\n", MACcontentArray);
+            string MACcontentMembers = string.Join("\n", strArrayMACcontentMembers);
 
-            string OutputMAC = prependString + MACcontent + appendString;
+            OutputMAC = string.Empty;
+            OutputMAC = prependString + MACcontentMembers + appendString;
 
             using (StreamWriter sw = new StreamWriter(PDMSImportStrForm.MDTfilePathWNameWOExt + PDMSImportStrForm.OutputMacroFileExt))
             {
