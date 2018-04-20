@@ -28,61 +28,61 @@ namespace PDMSImportStructure
             string sitename = string.Empty; //node.name;
             string partNo = "01";
 
-            // fix the delete string for safe deletion
+            // fix the delete string for safe deletion, 修正11.6版bug, 將由底向上完整清除, 現12.1版已不需要
             string[] deleteStringArray = {
-                      "!cename = !!CE.Name",
-                      "  var !list COLL ALL(FITT) for $!!CE",
-                      "!size = !list.size()",
-                      "do !index from 1 to !size",
-                        "!ele = !list[!index]",
-                        "$!ele",
-                        "delete FITT",
-                      "enddo",
-                      "!list.clear()",
-                      "savework",
-                      "$!cename",
-                      "var !list COLL ALL(SCTN) for $!!CE",
-                      "!size = !list.size()",
-                      "do !index from 1 to !size",
-                        "!ele = !list[!index]",
-                        "$!ele",
-                        "delete SCTN",
-                      "enddo",
-                      "!list.clear()",
-                      "savework",
-                      "$!cename",
-                      "var !list COLL ALL(SBFR) for $!!CE",
-                      "!size = !list.size()",
-                      "do !index from 1 to !size",
-                        "!ele = !list[!index]",
-                        "$!ele",
-                        "delete SBFR",
-                      "enddo",
-                      "!list.clear()",
-                      "savework",
-                      "$!cename",
-                      "var !list COLL ALL(FRMW) for $!!CE",
-                      "!size = !list.size()",
-                      "do !index from 1 to !size",
-                        "!ele = !list[!index]",
-                        "$!ele",
-                        "delete FRMW",
-                      "enddo",
-                      "!list.clear()",
-                      "savework",
-                      "$!cename",
-                      "var !list COLL ALL(STRU) for $!!CE",
-                      "!size = !list.size()",
-                      "do !index from 1 to !size",
-                        "!ele = !list[!index]",
-                        "$!ele",
-                        "delete STRU",
-                      "enddo",
-                      "!list.clear()",
-                      "savework",
-                      "$!cename",
-                      "delete ZONE",
-                      "savework"
+                      //"!cename = !!CE.Name",
+                      //"  var !list COLL ALL(FITT) for $!!CE",
+                      //"!size = !list.size()",
+                      //"do !index from 1 to !size",
+                      //  "!ele = !list[!index]",
+                      //  "$!ele",
+                      //  "delete FITT",
+                      //"enddo",
+                      //"!list.clear()",
+                      //"savework",
+                      //"$!cename",
+                      //"var !list COLL ALL(SCTN) for $!!CE",
+                      //"!size = !list.size()",
+                      //"do !index from 1 to !size",
+                      //  "!ele = !list[!index]",
+                      //  "$!ele",
+                      //  "delete SCTN",
+                      //"enddo",
+                      //"!list.clear()",
+                      //"savework",
+                      //"$!cename",
+                      //"var !list COLL ALL(SBFR) for $!!CE",
+                      //"!size = !list.size()",
+                      //"do !index from 1 to !size",
+                      //  "!ele = !list[!index]",
+                      //  "$!ele",
+                      //  "delete SBFR",
+                      //"enddo",
+                      //"!list.clear()",
+                      //"savework",
+                      //"$!cename",
+                      //"var !list COLL ALL(FRMW) for $!!CE",
+                      //"!size = !list.size()",
+                      //"do !index from 1 to !size",
+                      //  "!ele = !list[!index]",
+                      //  "$!ele",
+                      //  "delete FRMW",
+                      //"enddo",
+                      //"!list.clear()",
+                      //"savework",
+                      //"$!cename",
+                      //"var !list COLL ALL(STRU) for $!!CE",
+                      //"!size = !list.size()",
+                      //"do !index from 1 to !size",
+                      //  "!ele = !list[!index]",
+                      //  "$!ele",
+                      //  "delete STRU",
+                      //"enddo",
+                      //"!list.clear()",
+                      //"savework",
+                      //"$!cename",
+                      //"delete ZONE",
+                      //"savework"
             };
 
             string prependString = string.Format("\n{0} dist\n" +
@@ -191,9 +191,9 @@ namespace PDMSImportStructure
                                                 }
 
                                                 string[] strArraySBFR = {
-                                                string.Format("      NEW SBFR  /{0}/S_{1}/VBRACE", mainframePrefix, gridZitem.ZGridName),
-                                                string.Format("          PURP BRAC"),
-                                                MACMemb + string.Format("      END\n")
+                                                    string.Format("      NEW SBFR  /{0}/S_{1}/VBRACE", mainframePrefix, gridZitem.ZGridName),
+                                                    string.Format("          PURP BRAC"),
+                                                    MACMemb + string.Format("      END\n")
                                                 };
                                                 SBFR += string.Join("\n", strArraySBFR);
                                             }
@@ -202,10 +202,10 @@ namespace PDMSImportStructure
                                 }
 
                                 string[] strArrayFRMW = {
-                                                string.Format("    NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, gridZitem.ZGridName),
-                                                string.Format("        PURP SELE"),
-                                                SBFR + string.Format("    END"),
-                                            };
+                                    string.Format("    NEW FRMW  /{0}/S_{1}/ELEVIEW", mainframePrefix, gridZitem.ZGridName),
+                                    string.Format("        PURP SELE"),
+                                    SBFR + string.Format("    END\n"),
+                                };
                                 FRMW += string.Join("\n", strArrayFRMW);
                             }
                             else if (PEVinlistitem == gridZitem.ZGridName + "PLANVIEW")
@@ -266,7 +266,7 @@ namespace PDMSImportStructure
                                 string[] strArrayFRMW = {
                                     string.Format("    NEW FRMW  /{0}/S_{1}/PLANVIEW", mainframePrefix, gridZitem.ZGridName),
                                     string.Format("        PURP SELE"),
-                                    SBFR + string.Format("    END"),
+                                    SBFR + string.Format("    END\n"),
                                 };
                                 FRMW += string.Join("\n", strArrayFRMW);
                             }

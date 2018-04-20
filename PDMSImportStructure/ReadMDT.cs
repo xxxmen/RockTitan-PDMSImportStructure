@@ -177,12 +177,12 @@ namespace PDMSImportStructure
                 string ID = MDLData[i].Groups["ID"].Value;
                 string MaterialCode = MDLData[i].Groups["MT"].Value;
                 string SectionCode = MDLData[i].Groups["SEC"].Value;
-                double StartX = Convert.ToDouble(MDLData[i].Groups["Start_X"].Value);
-                double StartY = Convert.ToDouble(MDLData[i].Groups["Start_Y"].Value);
-                double StartZ = Convert.ToDouble(MDLData[i].Groups["Start_Z"].Value);
-                double EndX = Convert.ToDouble(MDLData[i].Groups["End_X"].Value);
-                double EndY = Convert.ToDouble(MDLData[i].Groups["End_Y"].Value);
-                double EndZ = Convert.ToDouble(MDLData[i].Groups["End_Z"].Value);
+                double StartX = Math.Round(Convert.ToDouble(MDLData[i].Groups["Start_X"].Value), 2);
+                double StartY = Math.Round(Convert.ToDouble(MDLData[i].Groups["Start_Y"].Value), 2);
+                double StartZ = Math.Round(Convert.ToDouble(MDLData[i].Groups["Start_Z"].Value), 2);
+                double EndX = Math.Round(Convert.ToDouble(MDLData[i].Groups["End_X"].Value), 2);
+                double EndY = Math.Round(Convert.ToDouble(MDLData[i].Groups["End_Y"].Value), 2);
+                double EndZ = Math.Round(Convert.ToDouble(MDLData[i].Groups["End_Z"].Value), 2);
                 string Grid = MDLData[i].Groups["Grid"].Value.Replace("\r\n", string.Empty).Replace("\n", string.Empty); //Replace去掉換行符號
                 //Phy Memb Data properties
                 string CompID = PhyMembData[i].Groups["compID"].Value; //比對ID使用
@@ -190,18 +190,18 @@ namespace PDMSImportStructure
                 string NodeE = PhyMembData[i].Groups["Node_End"].Value; //重複暫不使用
                 string MembType = PhyMembData[i].Groups["TP"].Value;
                 string SP = PhyMembData[i].Groups["SP"].Value;
-                double IT = Convert.ToDouble(PhyMembData[i].Groups["IT"].Value); //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
+                double IT = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["IT"].Value), 2); //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
                 string MAT = PhyMembData[i].Groups["MAT"].Value; //重複暫不使用
                 string CP = PhyMembData[i].Groups["CP"].Value; // 1~10
                 string Reflect = PhyMembData[i].Groups["Reflect"].Value; // Y/N
-                double OvX = Convert.ToDouble(PhyMembData[i].Groups["OvX"].Value);
-                double OvY = Convert.ToDouble(PhyMembData[i].Groups["OvY"].Value);
-                double OvZ = Convert.ToDouble(PhyMembData[i].Groups["OvZ"].Value);
+                double OvX = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["OvX"].Value), 2);
+                double OvY = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["OvY"].Value), 2);
+                double OvZ = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["OvZ"].Value), 2);
                 string ReleaseS = PhyMembData[i].Groups["Release_Start"].Value;
                 string ReleaseSNo = PhyMembData[i].Groups["Release_Start_NO"].Value;
                 string ReleaseE = PhyMembData[i].Groups["Release_End"].Value;
                 string ReleaseENo = PhyMembData[i].Groups["Release_End_NO"].Value;
-                double SR = Convert.ToDouble(PhyMembData[i].Groups["SR"].Value); //stress ratio; no use for PDMS
+                double SR = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["SR"].Value), 2); //stress ratio; no use for PDMS
                 string Section = PhyMembData[i].Groups["Section"].Value;
                 //additional properties
                 string CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1]; //比對Section使用
@@ -250,24 +250,36 @@ namespace PDMSImportStructure
                 else if (MembType == "PL") { Function = "Purlin"; }
                 else if (MembType == "HB") { Function = "Horizontal Bracing"; }
                 else { Function = "Other"; }
+                
+                //Reflect, 為繞中心線翻轉, 非繞JUSLINE轉180
+                if (Reflect == "Y")
+                {
+                    double StartXTemp = StartX;
+                    double StartYTemp = StartY;
+                    double StartZTemp = StartZ;
+                    double EndXTemp = EndX;
+                    double EndYTemp = EndY;
+                    double EndZTemp = EndZ;
+                    //將頭尾顛倒
+                    StartX = EndXTemp;
+                    StartY = EndYTemp;
+                    StartZ = EndZTemp;
+                    EndX = StartXTemp;
+                    EndY = StartYTemp;
+                    EndZ = StartZTemp;
+                }
 
                 //Beta Angle (Cross-Section Rotation)
                 double Bangle = ConvertOrientationVector.OvtoBangle(StartX, StartY, StartZ, EndX, EndY, EndZ, OvX, OvY, OvZ);
-                //Reflect
-                //TODO: reflect為繞中心線翻轉, 非繞JUSLINE轉180
-                if (Reflect == "Y")
-                {
-                    if (Bangle >= 180) { Bangle = Bangle - 180; }
-                    else if (Bangle < -180) { Bangle = Bangle + 180; }
-                }
                 //PDMS Bangel range +180 ~ -180
+                int BangleDivQuotient = Convert.ToInt32(Math.Round(Math.Abs(Bangle / 360)));
                 if (Bangle > 180)
                 {
-                    Bangle = Bangle - 360;
+                    Bangle = Bangle - BangleDivQuotient * 360;
                 }
                 else if (Bangle < -180)
                 {
-                    Bangle = Bangle + 360;
+                    Bangle = Bangle + BangleDivQuotient * 360;
                 }
                 //Bangle四捨五入至小數兩位
                 Bangle = Math.Round(Bangle, 2);

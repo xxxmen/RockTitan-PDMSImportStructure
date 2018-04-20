@@ -14,6 +14,114 @@ namespace PDMSImportStructure
         {
             double OvLength = Math.Sqrt(Math.Pow(OvX, 2) + Math.Pow(OvY, 2) + Math.Pow(OvZ, 2)); //應皆為1
             double Bangle = 0;
+
+            if (StartZ == EndZ) //(X-Y)-Plane
+            {
+                Bangle = Math.Acos(OvZ / OvLength) * 360 / Math.PI;
+
+                if (StartY == EndY) //Beam along X-axis
+                {
+                    if (EndX > StartX)
+                    {
+                        if (OvY > 0) { Bangle = 360 - Bangle; }
+                        else if (OvY < 0) { Bangle = 360 - Bangle; }
+                    }
+                }
+                else if (StartX == EndX) //Beam along Y-axis
+                {
+                    if (EndY > StartY)
+                    {
+                        if (OvX > 0) { Bangle = 360 - Bangle; }
+                        else if (OvX < 0) { Bangle = 360 - Bangle; }
+                    }
+                }
+                else //horizontal brace, skew beam
+                {
+                    if (EndY > StartY)
+                    {
+                        if (OvX > 0) { Bangle = 360 - Bangle; }
+                        else if (OvX < 0) { Bangle = 360 - Bangle; }
+                    }
+                }
+            }
+            else if (StartX == EndX) //(Y-Z)-Plane
+            {
+                Bangle = Math.Acos(OvX / OvLength) * 360 / Math.PI;
+
+                if (StartY == EndY) //Beam along Z-axis
+                {
+                    if (EndZ > StartZ)
+                    {
+                        if (OvY >= 0) { Bangle = Bangle - 90; }
+                        else { Bangle = 270 - Bangle; }
+                    }
+                    else
+                    {
+                        Bangle = Math.Acos(-OvX / OvLength) * 360 / Math.PI;
+
+                        if (OvY >= 0) { Bangle = Bangle - 90; }
+                        else { Bangle = 270 - Bangle; }
+                    }
+                }
+                else //vertical bracing not check
+                {
+                    if (EndY > StartY)
+                    {
+                        if (OvZ >= 0) { Bangle = 270 + Math.Acos(-OvX / OvLength) * 360 / Math.PI; }
+                        else { Bangle = 90 + Bangle; }
+                    }
+                    else
+                    {
+                        if (OvZ >= 0) { Bangle = 270 + Bangle; }
+                        else { Bangle = 90 + Math.Acos(-OvX / OvLength) * 360 / Math.PI; }
+                    }
+                }
+            }
+            else if (StartY == EndY) //(X-Z)-Plane , vertical bracing not check
+            {
+                Bangle = Math.Acos(OvY / OvLength) * 360 / Math.PI;
+
+                if (StartZ == EndZ) //Beam along X-axis
+                {
+                    if (EndX > StartX)
+                    {
+                        if (OvZ >= 0) { Bangle = 270 - Bangle; }
+                        else { Bangle = Bangle - 90; }
+                    }
+                    else
+                    {
+                        Bangle = Math.Acos(-OvX / OvLength) * 360 / Math.PI;
+
+                        if (OvZ >= 0) { Bangle = 270 - Bangle; }
+                        else { Bangle = Bangle - 90; }
+                    }
+                }
+                else
+                {
+                    if (EndX > StartX)
+                    {
+                        if (OvZ >= 0) { Bangle = 270 + Bangle; }
+                        else { Bangle = 90 + Math.Acos(-OvY / OvLength) * 360 / Math.PI; }
+                    }
+                    else
+                    {
+                        if (OvZ >= 0) { Bangle = 270 + Math.Acos(-OvY / OvLength) * 360 / Math.PI; }
+                        else { Bangle = 90 + Bangle; }
+                    }
+                }
+            }
+            else
+            {
+                Bangle = 0;
+            }
+            return Bangle;
+        }
+
+
+        public static double OvtoBangleFromOldFortran(double StartX, double StartY, double StartZ, double EndX, double EndY, double EndZ, double OvX, double OvY, double OvZ)
+        {
+            double OvLength = Math.Sqrt(Math.Pow(OvX, 2) + Math.Pow(OvY, 2) + Math.Pow(OvZ, 2)); //應皆為1
+            double Bangle = 0;
             
             if (StartZ == EndZ) //(X-Y)-Plane
             {

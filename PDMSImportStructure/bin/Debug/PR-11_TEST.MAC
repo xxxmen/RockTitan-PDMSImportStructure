@@ -1,0 +1,2996 @@
+
+mm dist
+var !list COLL ALL  with ( NAME EQ '/PR-11_TEST/MAINFRAME' ) for $!!CE
+!size = !list.size()
+if(!size eq 1) then
+/PR-11_TEST/MAINFRAME
+
+endif
+NEW ZONE  /PR-11_TEST/MAINFRAME
+    PURP STL
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL-2850.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL-2050.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL-1500.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL-1500.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL-1500.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/RC_/#544547_(1634881358)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N38730.00      U-850.00         POSE  E4230.00      N38730.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#544818_(859686567)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U-850.00         POSE  E4230.00      N47630.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#544835_(1831894688)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U-850.00         POSE  E4230.00      N53630.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#545004_(-1178845224)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N47630.00      U-850.00         POSE  E12930.00      N53630.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#566433_(1130056894)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N24230.00      U-850.00         POSE  E-5470.00      N31480.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#566435_(-717615113)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N24230.00      U-850.00         POSE  E4230.00      N31480.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#567758_(1149779576)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N38730.00      U-850.00         POSE  E-5470.00      N47630.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#567760_(-809232705)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N38730.00      U-850.00         POSE  E4230.00      N47630.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#576416_(-1237619543)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N18230.00      U-850.00         POSE  E30.00      N18230.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#576445_(493330254)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N18230.00      U-850.00         POSE  E4230.00      N18230.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#576534_(-985621221)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N24230.00      U-850.00         POSE  E4230.00      N24230.00      U-850.00
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/RC_/#669976_(-708097697)
+          DRNSTART E  DRNEND E
+          POSS  E10670.00      N18203.90      U-1400.10         POSE  E10670.00      N24203.90      U-1400.10
+          SPRE  SPCO  /CONCRETE-BEAMS-SPEC/Rectangular_Profile DESP 650  400
+          JUSL  TOS    BANG   0.00  FUNC  'Beam'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL0.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL300.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL300.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL300.00/COLUMN
+          PURP COLN
+        NEW SCTN  /PR-11_TEST/ST_G-I/#511631_(-350417309)
+          DRNSTART N  DRNEND N
+          POSS  E10670.00      N18230.00      U300.00         POSE  E10670.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'G-I   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_H-I/#511916_(329293012)
+          DRNSTART N  DRNEND N
+          POSS  E10670.00      N24230.00      U300.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'H-I   '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_G-12/#512023_(2061022094)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N18230.00      U300.00         POSE  E4230.00      N18230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'G-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_H-12/#512025_(-1913033147)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N24230.00      U300.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'H-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_G-11/#512046_(-929166137)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N18230.00      U300.00         POSE  E-5470.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'G-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_H-11/#512048_(-1380598104)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N24230.00      U300.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'H-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_J-12/#512357_(366790508)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N31480.00      U300.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'J-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_J-11/#512359_(1700769088)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31480.00      U300.00         POSE  E-5470.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'J-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_K-12/#512383_(398406148)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N38730.00      U300.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'K-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_K-11/#512385_(470308443)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N38730.00      U300.00         POSE  E-5470.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'K-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_L-12/#512407_(-1318003632)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N47630.00      U300.00         POSE  E4230.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC356X368X202   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'L-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_L-11/#512409_(-1390147966)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U300.00         POSE  E-5470.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'L-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_M-12/#512478_(1705235547)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC305X305X158   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'M-12  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_M-11/#512480_(2065138962)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U300.00         POSE  E-5470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'M-11  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_L-13/#512584_(-1612639016)
+          DRNSTART N  DRNEND N
+          POSS  E12930.00      N47630.00      U300.00         POSE  E12930.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'L-13  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_M-13/#512586_(-711189935)
+          DRNSTART N  DRNEND N
+          POSS  E12930.00      N53630.00      U300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M-13  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_G-21/#576096_(-1043637200)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N18230.00      U300.00         POSE  E30.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC254X254X73   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'G-21  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_H-21/#576126_(-265913152)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N24230.00      U300.00         POSE  E30.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'H-21  '
+          CTYS FIX    CTYE FIX
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL300.38
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL700.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL700.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL700.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#577814_(1450553303)
+          DRNSTART N  DRNEND N
+          POSS  E0.00      N18230.00      U700.00         POSE  E4230.00      N18230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#577973_(1380681505)
+          DRNSTART N  DRNEND N
+          POSS  E0.00      N24230.00      U700.00         POSE  E4230.00      N24230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#581126_(-1078315305)
+          DRNSTART E  DRNEND E
+          POSS  E30.00      N18230.00      U700.00         POSE  E30.00      N24230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#581160_(-916264850)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N18230.00      U700.00         POSE  E4230.00      N24230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#581216_(1040904692)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N21230.00      U700.00         POSE  E4230.00      N21230.00      U700.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL1300.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL1680.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL1680.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL1680.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#577812_(140832650)
+          DRNSTART N  DRNEND N
+          POSS  E0.00      N18230.00      U1680.00         POSE  E4230.00      N18230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#577971_(-648603193)
+          DRNSTART N  DRNEND N
+          POSS  E0.00      N24230.00      U1680.00         POSE  E4230.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#578351_(-2081295740)
+          DRNSTART E  DRNEND E
+          POSS  E30.00      N18230.00      U1680.00         POSE  E30.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#578373_(346587393)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N18230.00      U1680.00         POSE  E4230.00      N24230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#581079_(312133813)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N21230.00      U1680.00         POSE  E4230.00      N21230.00      U1680.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL1680.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL1680.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#657513_(2084185821)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N53843.40      U1872.10         POSE  E4230.00      N55913.20      U3941.90
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL3000.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL3000.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL3000.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#540243_(-1756524664)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N24230.00      U2594.00         POSE  E-2755.80      N24230.00      U5491.80
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#540585_(605155060)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31480.00      U2594.00         POSE  E-2816.50      N31480.00      U5369.70
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#540618_(1391964410)
+          DRNSTART N  DRNEND N
+          POSS  E-5197.50      N38730.00      U2866.50         POSE  E-2767.90      N38730.00      U5468.50
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#540620_(-163284024)
+          DRNSTART N  DRNEND N
+          POSS  E1502.70      N38730.00      U5497.10         POSE  E3958.90      N38730.00      U2865.10
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#562288_(-1925909057)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U2656.50         POSE  E-2630.00      N53630.00      U5496.50
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#573914_(879847211)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N38730.00      U3244.00         POSE  E-5470.00      N41117.50      U5582.80
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#574212_(-292092910)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N38730.00      U3244.00         POSE  E4230.00      N41177.30      U5691.30
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#574686_(2059905034)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N24230.00      U3094.00         POSE  E4230.00      N26429.60      U5449.40
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#575019_(-1284175395)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N24230.00      U3244.00         POSE  E-5470.00      N26629.90      U5584.40
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#705021_(835543645)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N47630.00      U2594.00         POSE  E12930.00      N50337.60      U5441.50
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#705196_(-2143900968)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N50953.40      U5408.90         POSE  E12930.00      N53630.00      U2594.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#750506_(1463848521)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U2594.00         POSE  E-2837.00      N47630.00      U5417.50
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#750583_(868981616)
+          DRNSTART N  DRNEND N
+          POSS  E1610.20      N47630.00      U5403.40         POSE  E4230.00      N47630.00      U2594.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#752030_(38543582)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U2645.00         POSE  E1330.90      N53630.00      U5544.10
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#752912_(1162970486)
+          DRNSTART N  DRNEND N
+          POSS  E1489.20      N24230.00      U5520.20         POSE  E4230.00      N24230.00      U2594.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#753270_(-1044064064)
+          DRNSTART N  DRNEND N
+          POSS  E1548.90      N31480.00      U5398.70         POSE  E4230.00      N31480.00      U2594.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#753593_(1612544719)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N29239.10      U5439.10         POSE  E-5470.00      N31480.00      U3244.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#753866_(912440299)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N45186.90      U5637.30         POSE  E-5470.00      N47630.00      U3244.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#754208_(-2102440036)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N29256.20      U5475.30         POSE  E4230.00      N31480.00      U3094.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#754532_(749000719)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N45182.70      U5691.30         POSE  E4230.00      N47630.00      U3244.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1025257_(1502902170)
+          DRNSTART N  DRNEND N
+          POSS  E-5736.00      N31480.00      U3409.00         POSE  E-6627.00      N31480.00      U4300.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1025573_(-1805815582)
+          DRNSTART N  DRNEND N
+          POSS  E-5670.00      N38730.00      U3343.00         POSE  E-6623.40      N38730.00      U4296.40
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL4300.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL4300.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL4300.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#641891_(574115807)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N53630.00      U4300.00         POSE  E4230.00      N56030.00      U4300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL4325.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL4600.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL4600.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL4600.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#986859_(1391492286)
+          DRNSTART N  DRNEND N
+          POSS  E-5665.90      N53630.00      U4744.90         POSE  E-6599.90      N53630.00      U5678.90
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#987421_(-1141968041)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N53800.50      U4992.50         POSE  E-5470.00      N54536.40      U5721.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL4600.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL4600.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#988470_(-1368164810)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N38730.00      U4600.00         POSE  E-6670.00      N38730.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1007173_(-123640806)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N31480.00      U4600.00         POSE  E-5470.00      N38730.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1024604_(647451081)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31480.00      U4600.00         POSE  E-6670.00      N31480.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1024667_(-1498136099)
+          DRNSTART E  DRNEND E
+          POSS  E-6670.00      N31480.00      U4600.00         POSE  E-6670.00      N38730.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1024854_(988759512)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N37530.00      U4600.00         POSE  E-6670.00      N37530.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1025695_(-983117753)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N34505.00      U4600.00         POSE  E-6670.00      N34505.00      U4600.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL4600.00/HBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#1025824_(1567084314)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N36330.00      U4475.00         POSE  E-6670.00      N37530.00      U4475.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1025898_(-1411769491)
+          DRNSTART E  DRNEND E
+          POSS  E-6670.00      N31480.00      U4475.00         POSE  E-5470.00      N32680.00      U4475.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL5700.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL5700.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL5700.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#571956_(-1080563129)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N25755.00      U7371.50         POSE  E4230.00      N24230.00      U5771.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#571980_(-1747368651)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N31480.00      U5771.00         POSE  E4230.00      N29980.00      U7371.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#572589_(-1496257866)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N47630.00      U5823.50         POSE  E4230.00      N46130.00      U7371.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL6000.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL6000.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL6000.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#513392_(1132391313)
+          DRNSTART E  DRNEND E
+          POSS  E10670.00      N18230.00      U6000.00         POSE  E10670.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513421_(1049225662)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N18230.00      U6000.00         POSE  E4230.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513460_(-1844742864)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N18230.00      U6000.00         POSE  E-5470.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513631_(-1083512051)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N18230.00      U6000.00         POSE  E30.00      N18230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513661_(-211481548)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N24230.00      U6000.00         POSE  E4230.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513688_(-519693963)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31480.00      U6000.00         POSE  E4230.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X101   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513720_(-1044634744)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N38730.00      U6000.00         POSE  E4230.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513751_(1611671752)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U6000.00         POSE  E4230.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#513783_(-1325703036)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U6000.00         POSE  E4230.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514007_(-1950574706)
+          DRNSTART E  DRNEND E
+          POSS  E20.00      N18230.00      U6000.00         POSE  E20.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514029_(-32919411)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N24230.00      U6000.00         POSE  E120.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514049_(2088858224)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N31480.00      U6000.00         POSE  E120.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514068_(-1409233355)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N38730.00      U6000.00         POSE  E120.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514092_(409307815)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N47630.00      U6000.00         POSE  E120.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514138_(-436042294)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N24230.00      U6000.00         POSE  E-5470.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514175_(2033705191)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N24230.00      U6000.00         POSE  E4230.00      N31480.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514200_(-969483258)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N31480.00      U6000.00         POSE  E-5470.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514221_(1566520632)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N38730.00      U6000.00         POSE  E-5470.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514260_(-1474898208)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N31480.00      U6000.00         POSE  E4230.00      N38730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514281_(-1783681174)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N38730.00      U6000.00         POSE  E4230.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514315_(882266375)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N47630.00      U6000.00         POSE  E-5470.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514341_(-1037510817)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N47630.00      U6000.00         POSE  E4230.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514412_(472968661)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N21230.00      U6000.00         POSE  E20.00      N21230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514440_(-816849199)
+          DRNSTART N  DRNEND N
+          POSS  E20.00      N21230.00      U6000.00         POSE  E4230.00      N21230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515434_(-774576349)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N36230.00      U6000.00         POSE  E4230.00      N36230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515436_(-1164718979)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N33980.00      U6000.00         POSE  E4230.00      N33980.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515618_(-1479294780)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N41730.00      U6000.00         POSE  E4230.00      N41730.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515654_(541369621)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N44630.00      U6000.00         POSE  E4230.00      N44630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#516834_(-1942611126)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N24230.00      U6000.00         POSE  E10670.00      N24230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#516869_(-1036285525)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N18230.00      U6000.00         POSE  E10670.00      N18230.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#516945_(-1550353163)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U6000.00         POSE  E12930.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#516974_(-1497523686)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N47630.00      U6000.00         POSE  E12930.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517091_(1560178860)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N53630.00      U6000.00         POSE  E12930.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#536430_(-385038504)
+          DRNSTART E  DRNEND E
+          POSS  E8470.00      N53630.00      U6000.00         POSE  E8470.00      N47630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#536643_(-65972308)
+          DRNSTART E  DRNEND E
+          POSS  E2175.00      N47630.00      U6000.00         POSE  E2175.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#536900_(-946659395)
+          DRNSTART E  DRNEND E
+          POSS  E6350.00      N47630.00      U6000.00         POSE  E6350.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#539558_(330249462)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N27855.00      U6000.00         POSE  E4230.00      N27855.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#539642_(-20086738)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N29667.50      U6000.00         POSE  E4230.00      N29667.50      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#561423_(-775232481)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N27855.00      U6000.00         POSE  E120.00      N27855.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#561557_(212699700)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N35105.00      U6000.00         POSE  E120.00      N35105.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#561583_(-1558415761)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N43180.00      U6000.00         POSE  E120.00      N43180.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#569078_(1425556833)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N26005.00      U6000.00         POSE  E4230.00      N26005.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#621176_(-293547274)
+          DRNSTART N  DRNEND N
+          POSS  E12930.00      N51630.00      U6000.00         POSE  E8470.00      N51630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#893835_(-570150076)
+          DRNSTART E  DRNEND E
+          POSS  E-1720.00      N53630.00      U6000.00         POSE  E-1720.00      N56085.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#981841_(1498443366)
+          DRNSTART N  DRNEND N
+          POSS  E-1720.00      N54830.00      U6000.00         POSE  E-6770.00      N54830.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#982053_(-1945598479)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U6000.00         POSE  E-6770.00      N53630.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#982159_(-885233784)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N53630.00      U6000.00         POSE  E-5470.00      N54830.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#982211_(1683962972)
+          DRNSTART E  DRNEND E
+          POSS  E-6770.00      N53630.00      U6000.00         POSE  E-6770.00      N54830.00      U6000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL6000.00/HBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#514976_(-76281244)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N21130.00      U5875.00         POSE  E-97.00      N18230.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#514993_(845432841)
+          DRNSTART E  DRNEND E
+          POSS  E161.00      N18230.00      U5875.00         POSE  E4230.00      N21130.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515011_(1270481349)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N21330.00      U5875.00         POSE  E196.00      N24230.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515279_(-288425726)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N24230.00      U5875.00         POSE  E-5470.00      N27755.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515298_(498442776)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N27955.00      U5875.00         POSE  E120.00      N31480.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515444_(-2098611779)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N31480.00      U5875.00         POSE  E-5470.00      N35005.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515446_(-392640066)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N35208.00      U5875.00         POSE  E120.00      N38730.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515901_(-1160589698)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N47630.00      U5875.00         POSE  E-5470.00      N43280.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#515917_(-223926110)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N43080.00      U5875.00         POSE  E120.00      N38730.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537065_(-352155658)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N50645.30      U5875.00         POSE  E2135.20      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537090_(-617268299)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N50645.30      U5875.00         POSE  E2134.40      N47630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537123_(1850738063)
+          DRNSTART E  DRNEND E
+          POSS  E2218.70      N53630.00      U5875.00         POSE  E4230.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537125_(-1441298649)
+          DRNSTART E  DRNEND E
+          POSS  E2215.30      N47630.00      U5875.00         POSE  E4230.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537306_(-124492356)
+          DRNSTART E  DRNEND E
+          POSS  E6309.40      N53630.00      U5875.00         POSE  E4230.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537402_(-1022615846)
+          DRNSTART E  DRNEND E
+          POSS  E6307.40      N47630.00      U5875.00         POSE  E4230.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537442_(-1604572314)
+          DRNSTART E  DRNEND E
+          POSS  E8470.00      N50630.00      U5875.00         POSE  E6390.60      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#537462_(1765746134)
+          DRNSTART E  DRNEND E
+          POSS  E6392.60      N47630.00      U5875.00         POSE  E8470.00      N50630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#982637_(-1364796300)
+          DRNSTART E  DRNEND E
+          POSS  E-4270.00      N53630.00      U5875.00         POSE  E-5470.00      N54830.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#982892_(1959786149)
+          DRNSTART E  DRNEND E
+          POSS  E-1720.00      N54830.00      U5875.00         POSE  E-2920.00      N53630.00      U5875.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL6000.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL6000.00/COLUMN
+          PURP COLN
+        NEW SCTN  /PR-11_TEST/ST_/#537913_(1707942710)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N47630.00      U6000.00         POSE  E120.00      N47630.00      U8467.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_J-S6/#538056_(-1803632615)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N31480.00      U6000.00         POSE  E120.00      N31480.00      U8594.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Column'  DESC  'J-S6  '
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#571193_(-393227626)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N24230.00      U6000.00         POSE  E120.00      N24230.00      U8695.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#757131_(1398429777)
+          DRNSTART N  DRNEND N
+          POSS  E3030.00      N18230.00      U6000.00         POSE  E3030.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#757600_(1079386057)
+          DRNSTART N  DRNEND N
+          POSS  E5350.00      N18230.00      U6000.00         POSE  E5350.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#757627_(-694656007)
+          DRNSTART N  DRNEND N
+          POSS  E7670.00      N18230.00      U6000.00         POSE  E7670.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#792951_(-1332888174)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31980.00      U6000.00         POSE  E-5470.00      N31980.00      U12000.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#793913_(1509291640)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N24730.00      U6000.00         POSE  E-5470.00      N24730.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#819901_(-374884160)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N50630.00      U6000.00         POSE  E120.00      N50630.00      U8647.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#975967_(458649425)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N38730.00      U6000.00         POSE  E120.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#976577_(943992100)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N33380.00      U6000.00         POSE  E-5470.00      N33380.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1006884_(1640176887)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N34350.00      U6000.00         POSE  E-5470.00      N34350.00      U7546.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1064129_(-217310839)
+          DRNSTART N  DRNEND N
+          POSS  E-1720.00      N56030.00      U6000.00         POSE  E-1720.00      N56030.00      U8746.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL6000.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#572555_(-1806614791)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N40278.00      U7371.50         POSE  E4230.00      N38730.00      U5872.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL6025.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL6025.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL6025.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#567503_(1007306044)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N39001.00      U6167.90         POSE  E-5470.00      N40937.40      U7473.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#567526_(-56809152)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N47414.70      U6133.40         POSE  E-5470.00      N45593.60      U7361.60
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#758110_(1713635925)
+          DRNSTART N  DRNEND N
+          POSS  E2766.10      N18230.00      U6186.70         POSE  E301.50      N18230.00      U8469.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#758544_(-362816302)
+          DRNSTART N  DRNEND N
+          POSS  E5144.40      N18230.00      U6177.90         POSE  E3295.10      N18230.00      U8381.80
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#758706_(1258367789)
+          DRNSTART N  DRNEND N
+          POSS  E7517.90      N18230.00      U8508.90         POSE  E5614.70      N18230.00      U6248.40
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#793919_(-1186105378)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N24948.10      U9908.30         POSE  E-5470.00      N27726.10      U6162.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#795190_(-947636647)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N28069.10      U6205.80         POSE  E-5470.00      N31818.50      U10016.20
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#986310_(1299022112)
+          DRNSTART N  DRNEND N
+          POSS  E-5711.30      N38730.00      U6284.30         POSE  E-6871.00      N38730.00      U7444.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#986524_(-2008005862)
+          DRNSTART E  DRNEND E
+          POSS  E-5763.60      N47616.70      U6280.50         POSE  E-6894.90      N47630.00      U7411.90
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1006988_(1951987210)
+          DRNSTART N  DRNEND N
+          POSS  E-5711.30      N34346.10      U6284.30         POSE  E-6871.00      N34346.10      U7444.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL6700.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL6700.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL6700.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#758703_(581404011)
+          DRNSTART N  DRNEND N
+          POSS  E10430.60      N18230.00      U8511.80         POSE  E8135.80      N18230.00      U6375.50
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL6800.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL6800.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL6800.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#565654_(-1627468784)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U6800.00         POSE  E12930.00      N53630.00      U6800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL6800.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL6800.00/COLUMN
+          PURP COLN
+        NEW SCTN  /PR-11_TEST/ST_/#928404_(-796279034)
+          DRNSTART N  DRNEND N
+          POSS  E5730.00      N53630.00      U6787.20         POSE  E5730.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL7000.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL7000.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL7000.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#657916_(-543739982)
+          DRNSTART E  DRNEND E
+          POSS  E5726.10      N53824.50      U7162.00         POSE  E5726.10      N55567.30      U8632.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1029962_(-1331264829)
+          DRNSTART N  DRNEND N
+          POSS  E12757.90      N53630.00      U6901.90         POSE  E10985.20      N53630.00      U7951.30
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL7000.00/COLUMN
+          PURP COLN
+        NEW SCTN  /PR-11_TEST/ST_/#820435_(-2102632110)
+          DRNSTART N  DRNEND N
+          POSS  E7130.00      N47630.00      U7246.00         POSE  E7130.00      N47630.00      U7845.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#820619_(323066465)
+          DRNSTART N  DRNEND N
+          POSS  E7130.00      N53630.00      U7246.00         POSE  E7130.00      N53630.00      U7984.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL7500.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL7500.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL7500.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#538163_(-298820886)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N47630.00      U7500.00         POSE  E4230.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#538249_(1604980874)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N38730.00      U7500.00         POSE  E4230.00      N38730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#538282_(-139124923)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N31480.00      U7500.00         POSE  E4230.00      N31480.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#565495_(-1674891780)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N47630.00      U7500.00         POSE  E4230.00      N53630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#567942_(567126877)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N38730.00      U7500.00         POSE  E120.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#567981_(-1602286412)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N38730.00      U7500.00         POSE  E4230.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#568212_(-1485080107)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N31480.00      U7500.00         POSE  E120.00      N38730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#568246_(1222904244)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N31480.00      U7500.00         POSE  E4230.00      N38730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#568641_(57187343)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N44630.00      U7500.00         POSE  E4230.00      N44630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#568684_(739003887)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N41730.00      U7500.00         POSE  E4230.00      N41730.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#568875_(-697497841)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N36230.00      U7500.00         POSE  E4230.00      N36230.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#568900_(1823076567)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N33980.00      U7500.00         POSE  E4230.00      N33980.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#569281_(179454938)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N26005.00      U7500.00         POSE  E4230.00      N26005.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#570329_(-2120664604)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N24230.00      U7500.00         POSE  E120.00      N31480.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#570393_(-1431389358)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N29667.50      U7500.00         POSE  E4230.00      N29667.50      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#570417_(-75352747)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N27855.00      U7500.00         POSE  E4230.00      N27855.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#571429_(-82465583)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N31480.00      U7500.00         POSE  E4230.00      N24230.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#571559_(-1886421873)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N24230.00      U7500.00         POSE  E4230.00      N24230.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#819903_(709355870)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N50630.00      U7500.00         POSE  E4230.00      N50630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#819954_(-1449464431)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N50630.00      U7500.00         POSE  E120.00      N47630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#820205_(1693317498)
+          DRNSTART E  DRNEND E
+          POSS  E7130.00      N47630.00      U7500.00         POSE  E7130.00      N53630.00      U7500.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL7500.00/HBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#981088_(-1831416523)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N45830.00      U7600.00         POSE  E-7080.00      N47630.00      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#981181_(1961896765)
+          DRNSTART E  DRNEND E
+          POSS  E-7080.00      N38730.00      U7600.00         POSE  E-5470.00      N40530.00      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#981430_(1971211002)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N36540.00      U7600.00         POSE  E-7080.00      N38730.00      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1026352_(720437978)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N36540.00      U7600.00         POSE  E-7080.00      N34350.10      U7600.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL7500.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL7500.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#571911_(72007605)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N25730.00      U8874.50         POSE  E4230.00      N24230.00      U7371.50
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#571932_(268033954)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N31480.00      U7371.50         POSE  E4230.00      N29980.00      U8874.50
+          SPRE  SPCO  /CTCV-SPEC/L100X100X10   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#572529_(-203892091)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N38730.00      U7371.50         POSE  E4230.00      N40233.00      U8771.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#572572_(1114615277)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N46130.00      U8771.00         POSE  E4230.00      N47630.00      U7374.50
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL7800.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL7800.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL7800.00/COLUMN
+          PURP COLN
+        NEW SCTN  /PR-11_TEST/ST_/#791315_(-1259756305)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N41280.00      U7800.00         POSE  E-5470.00      N41280.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL7800.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL7800.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#975315_(187435745)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N38730.00      U7800.00         POSE  E120.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#976243_(838998372)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N38730.00      U7800.00         POSE  E-5470.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#976346_(539868668)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U7800.00         POSE  E120.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#976671_(-162337211)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N33380.00      U7800.00         POSE  E120.00      N33380.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#976807_(406433614)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N33376.10      U7800.00         POSE  E-5470.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#976931_(1786611209)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N34350.10      U7800.00         POSE  E-7080.00      N34350.10      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#977698_(1358711265)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N38730.00      U7800.00         POSE  E120.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#977752_(-1675480707)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N31480.00      U7800.00         POSE  E120.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#977896_(400498074)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N38730.00      U7800.00         POSE  E-7080.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#977957_(-206629366)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U7800.00         POSE  E-7080.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#978003_(19052119)
+          DRNSTART E  DRNEND E
+          POSS  E-7080.00      N34350.10      U7800.00         POSE  E-7080.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#978026_(1050940002)
+          DRNSTART E  DRNEND E
+          POSS  E-7080.00      N38730.00      U7800.00         POSE  E-7080.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#978302_(1123303275)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N34350.00      U7800.00         POSE  E-3370.00      N34350.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#978460_(-153327616)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N37730.00      U7800.00         POSE  E-3370.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#979210_(1534111455)
+          DRNSTART E  DRNEND E
+          POSS  E-5070.00      N34350.00      U7800.00         POSE  E-5070.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#979501_(779918656)
+          DRNSTART E  DRNEND E
+          POSS  E-3370.00      N33380.00      U7800.00         POSE  E-3370.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#979598_(-1352998396)
+          DRNSTART N  DRNEND N
+          POSS  E-5070.00      N37260.00      U7800.00         POSE  E-3370.00      N37260.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#979980_(-1462760419)
+          DRNSTART N  DRNEND N
+          POSS  E-5070.00      N35555.00      U7800.00         POSE  E-3370.00      N35555.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980196_(1207784494)
+          DRNSTART N  DRNEND N
+          POSS  E-3370.00      N35680.00      U7800.00         POSE  E120.00      N35680.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980402_(-6636260)
+          DRNSTART E  DRNEND E
+          POSS  E-2040.00      N34346.10      U7800.00         POSE  E-2040.00      N35680.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980496_(-991841501)
+          DRNSTART N  DRNEND N
+          POSS  E-3370.00      N36705.00      U7800.00         POSE  E-1720.00      N36705.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X102X25   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980755_(-1716651379)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N40030.00      U7800.00         POSE  E-3620.00      N40030.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980797_(1184879261)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N41330.00      U7800.00         POSE  E-3620.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980879_(-1976127045)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N42630.00      U7800.00         POSE  E-3620.00      N42630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980883_(-1804172223)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N43930.00      U7800.00         POSE  E-3620.00      N43930.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980887_(345585870)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N45230.00      U7800.00         POSE  E-3620.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#980907_(1234650032)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N46530.00      U7800.00         POSE  E-3620.00      N46530.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#981019_(1988003289)
+          DRNSTART N  DRNEND N
+          POSS  E-7080.00      N43180.00      U7800.00         POSE  E-5470.00      N43180.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#981393_(1217361635)
+          DRNSTART N  DRNEND N
+          POSS  E-7080.00      N36540.00      U7800.00         POSE  E-5470.00      N36540.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#985501_(2060834428)
+          DRNSTART E  DRNEND E
+          POSS  E-6270.00      N34350.10      U7800.00         POSE  E-6270.00      N36540.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#985567_(290606576)
+          DRNSTART E  DRNEND E
+          POSS  E-6270.00      N36540.00      U7800.00         POSE  E-6270.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#985757_(855094406)
+          DRNSTART E  DRNEND E
+          POSS  E-6270.00      N38730.00      U7800.00         POSE  E-6270.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#985777_(-2089920836)
+          DRNSTART E  DRNEND E
+          POSS  E-6270.00      N45230.00      U7800.00         POSE  E-6270.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1027947_(-1055156343)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N45230.00      U7800.00         POSE  E-7080.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1027989_(-990541983)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N41330.00      U7800.00         POSE  E-7080.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028129_(-1987294924)
+          DRNSTART E  DRNEND E
+          POSS  E-6270.00      N41330.00      U7800.00         POSE  E-6270.00      N43180.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028149_(-26712180)
+          DRNSTART E  DRNEND E
+          POSS  E-6270.00      N43180.00      U7800.00         POSE  E-6270.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028647_(461708565)
+          DRNSTART E  DRNEND E
+          POSS  E-1720.00      N33380.00      U7800.00         POSE  E-1720.00      N38730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028843_(-483630852)
+          DRNSTART N  DRNEND N
+          POSS  E-3370.00      N34346.10      U7800.00         POSE  E-1720.00      N34346.10      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028866_(1518903527)
+          DRNSTART N  DRNEND N
+          POSS  E-1720.00      N34346.10      U7800.00         POSE  E120.00      N34346.10      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028946_(-1520685006)
+          DRNSTART N  DRNEND N
+          POSS  E-3370.00      N37730.00      U7800.00         POSE  E-1720.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1028965_(-1991579565)
+          DRNSTART N  DRNEND N
+          POSS  E-1720.00      N37730.00      U7800.00         POSE  E120.00      N37730.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1029044_(-1507647636)
+          DRNSTART N  DRNEND N
+          POSS  E-1720.00      N36705.00      U7800.00         POSE  E120.00      N36705.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036157_(-1502791074)
+          DRNSTART E  DRNEND E
+          POSS  E-3620.00      N38730.00      U7800.00         POSE  E-3620.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036225_(320868711)
+          DRNSTART E  DRNEND E
+          POSS  E-1730.00      N38730.00      U7800.00         POSE  E-1730.00      N47630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036491_(572631491)
+          DRNSTART N  DRNEND N
+          POSS  E-1730.00      N40030.00      U7800.00         POSE  E120.00      N40030.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036493_(-1556134795)
+          DRNSTART N  DRNEND N
+          POSS  E-1730.00      N41330.00      U7800.00         POSE  E120.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036495_(584693747)
+          DRNSTART N  DRNEND N
+          POSS  E-1730.00      N42630.00      U7800.00         POSE  E120.00      N42630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036497_(-190834930)
+          DRNSTART N  DRNEND N
+          POSS  E-1730.00      N43930.00      U7800.00         POSE  E120.00      N43930.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036499_(-1984421946)
+          DRNSTART N  DRNEND N
+          POSS  E-1730.00      N45230.00      U7800.00         POSE  E120.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036501_(-536743141)
+          DRNSTART N  DRNEND N
+          POSS  E-1730.00      N46530.00      U7800.00         POSE  E120.00      N46530.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036551_(-1487652347)
+          DRNSTART N  DRNEND N
+          POSS  E-3620.00      N46530.00      U7800.00         POSE  E-1730.00      N46530.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036581_(-288855404)
+          DRNSTART N  DRNEND N
+          POSS  E-3620.00      N45230.00      U7800.00         POSE  E-1730.00      N45230.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036602_(838766262)
+          DRNSTART N  DRNEND N
+          POSS  E-3620.00      N43930.00      U7800.00         POSE  E-1730.00      N43930.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036623_(-2046354501)
+          DRNSTART N  DRNEND N
+          POSS  E-3620.00      N42630.00      U7800.00         POSE  E-1730.00      N42630.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036654_(-1419894763)
+          DRNSTART N  DRNEND N
+          POSS  E-3620.00      N41330.00      U7800.00         POSE  E-1730.00      N41330.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1036685_(-268706586)
+          DRNSTART N  DRNEND N
+          POSS  E-3620.00      N40030.00      U7800.00         POSE  E-1730.00      N40030.00      U7800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL7825.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL8000.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL8200.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL8200.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL8200.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#536217_(-1974542638)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N47630.00      U8200.00         POSE  E12930.00      N47630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#536219_(531847821)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U8200.00         POSE  E12930.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X71   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#536221_(1780930536)
+          DRNSTART E  DRNEND E
+          POSS  E8680.00      N47771.30      U8200.00         POSE  E8680.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#536223_(726877753)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N47630.00      U8200.00         POSE  E12930.00      N53630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#621419_(-1113731119)
+          DRNSTART E  DRNEND E
+          POSS  E6230.00      N53630.00      U8200.00         POSE  E6230.00      N47630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL8200.00/HBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#536225_(1191339259)
+          DRNSTART N  DRNEND N
+          POSS  E8680.00      N50630.00      U8200.00         POSE  E12930.00      N50630.00      U8200.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL9000.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL9000.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL9000.00/HBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#517390_(-1827215355)
+          DRNSTART E  DRNEND E
+          POSS  E10670.00      N18230.00      U9000.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#534058_(-523739037)
+          DRNSTART E  DRNEND E
+          POSS  E2074.80      N53630.00      U8875.00         POSE  E120.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#534094_(268798104)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N50630.00      U8875.00         POSE  E2075.00      N47630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#534125_(735885586)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N50630.00      U8875.00         POSE  E2274.70      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#534127_(-826289355)
+          DRNSTART E  DRNEND E
+          POSS  E2275.00      N47630.00      U8875.00         POSE  E4230.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/L90X90X7   
+          JUSL  NAT    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#534839_(2074433912)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N50630.00      U8875.00         POSE  E20.00      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#534841_(688021835)
+          DRNSTART E  DRNEND E
+          POSS  E-380.00      N47630.00      U8875.00         POSE  E-5470.00      N50630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT146X127X22   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#565886_(-677617752)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N29180.00      U8875.00         POSE  E120.00      N31480.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#565890_(1854996429)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N28980.00      U8875.00         POSE  E120.00      N26630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#565894_(1278091656)
+          DRNSTART E  DRNEND E
+          POSS  E156.60      N24230.00      U8875.00         POSE  E4230.00      N26630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#566913_(882176844)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N40830.00      U8875.00         POSE  E120.00      N42630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#566917_(-1549729892)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N38730.00      U8875.00         POSE  E4230.00      N40630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#566976_(1617118531)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N45630.00      U8875.00         POSE  E120.00      N47630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#566980_(51764424)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N42830.00      U8875.00         POSE  E4230.00      N44530.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#785355_(-1839536236)
+          DRNSTART E  DRNEND E
+          POSS  E5730.00      N56030.00      U8875.00         POSE  E8130.00      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Horizontal Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL9000.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#517425_(-1743297028)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N18230.00      U9000.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517447_(1353768025)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N18230.00      U9000.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517520_(-2042182956)
+          DRNSTART N  DRNEND N
+          POSS  E10670.00      N24230.00      U9000.00         POSE  E4230.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517567_(891600513)
+          DRNSTART N  DRNEND N
+          POSS  E10670.00      N18230.00      U9000.00         POSE  E30.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517658_(-1367819726)
+          DRNSTART N  DRNEND N
+          POSS  E30.00      N18230.00      U9000.00         POSE  E-5470.00      N18230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517682_(-1709714184)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N24230.00      U9000.00         POSE  E-5470.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#517933_(-37982427)
+          DRNSTART E  DRNEND E
+          POSS  E10670.00      N18230.00      U9000.00         POSE  E10670.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#518161_(1845348700)
+          DRNSTART E  DRNEND E
+          POSS  E1930.00      N18230.00      U9000.00         POSE  E1930.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#518189_(819565112)
+          DRNSTART E  DRNEND E
+          POSS  E30.00      N18230.00      U9000.00         POSE  E30.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#518608_(-1614096694)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N24230.00      U9000.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#518938_(1499840868)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N24230.00      U9000.00         POSE  E120.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519009_(1207626324)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31480.00      U9000.00         POSE  E4230.00      N31480.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519137_(322727017)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N29080.00      U9000.00         POSE  E4230.00      N29080.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519181_(483468616)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N26630.00      U9000.00         POSE  E4230.00      N26630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519278_(-1133910182)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N31480.00      U9000.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519280_(-935214441)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N31480.00      U9000.00         POSE  E120.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519284_(912058363)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N36330.00      U9000.00         POSE  E4230.00      N36330.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519288_(-1151558861)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N33880.00      U9000.00         POSE  E4230.00      N33880.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519352_(573829418)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N38730.00      U9000.00         POSE  E4230.00      N38730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X37   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519628_(-532916408)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N38730.00      U9000.00         POSE  E4230.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519654_(-1075190749)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U9000.00         POSE  E4230.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X82   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#519881_(612953403)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N38730.00      U9000.00         POSE  E120.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB533X210X82   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520000_(-1755029940)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N40730.00      U9000.00         POSE  E4230.00      N40730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520038_(-1377607654)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N42730.00      U9000.00         POSE  E4230.00      N42730.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520072_(-1623073388)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N44630.00      U9000.00         POSE  E4230.00      N44630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520281_(-789148008)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N47630.00      U9000.00         POSE  E-5470.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520496_(1426510956)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N47630.00      U9000.00         POSE  E4230.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520689_(1808083800)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N47630.00      U9000.00         POSE  E120.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X127X39   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#520883_(-1175524414)
+          DRNSTART E  DRNEND E
+          POSS  E2175.00      N47630.00      U9000.00         POSE  E2175.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#521285_(-2145134987)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N47630.00      U9000.00         POSE  E12930.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#622571_(1155487635)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U9000.00         POSE  E12930.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#622609_(1670144421)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N47630.00      U9000.00         POSE  E12930.00      N47630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#633180_(-233661708)
+          DRNSTART E  DRNEND E
+          POSS  E5730.00      N53630.00      U9000.00         POSE  E5730.00      N56030.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X102X33   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#758912_(-32125823)
+          DRNSTART N  DRNEND N
+          POSS  E1930.00      N20230.00      U9000.00         POSE  E4230.00      N20230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#759041_(-505304261)
+          DRNSTART N  DRNEND N
+          POSS  E1930.00      N22230.00      U9000.00         POSE  E4230.00      N22230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#759350_(-546178474)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N45630.00      U9000.00         POSE  E4230.00      N45630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#790068_(1351769717)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N47630.00      U9000.00         POSE  E-5470.00      N50630.00      U13049.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   -90.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#794113_(253487539)
+          DRNSTART E  DRNEND E
+          POSS  E-4220.00      N18230.00      U9000.00         POSE  E-4220.00      N24230.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1063877_(1142898022)
+          DRNSTART E  DRNEND E
+          POSS  E-1720.00      N53630.00      U9000.00         POSE  E-1720.00      N56030.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1063940_(-667509596)
+          DRNSTART E  DRNEND E
+          POSS  E-1720.00      N56030.00      U8875.00         POSE  E-4120.00      N53630.00      U8875.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1101370_(1968889910)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U9000.00         POSE  E4230.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Joist'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL9000.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL9000.00/COLUMN
+          PURP COLN
+        NEW SCTN  /PR-11_TEST/ST_/#762608_(-1924454779)
+          DRNSTART N  DRNEND N
+          POSS  E2730.00      N47630.00      U9000.00         POSE  E2730.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X23   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#792161_(2092281318)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N41280.00      U9000.00         POSE  E120.00      N41280.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#793260_(2044770975)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N31980.00      U9000.00         POSE  E120.00      N31980.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#793915_(2123144709)
+          DRNSTART N  DRNEND N
+          POSS  E120.00      N24730.00      U9000.00         POSE  E120.00      N24730.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   -90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#794450_(2083566012)
+          DRNSTART N  DRNEND N
+          POSS  E4730.00      N18230.00      U9000.00         POSE  E4730.00      N18230.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#794759_(192391457)
+          DRNSTART N  DRNEND N
+          POSS  E4730.00      N24230.00      U9000.00         POSE  E4730.00      N24230.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UC203X203X52   
+          JUSL  NA    BANG   90.00  FUNC  'Slanted Column(Post)'  DESC  ''
+          CTYS FIX    CTYE FIX
+        END
+        NEW SCTN  /PR-11_TEST/ST_M-20180208/#1063522_(-811603823)
+          DRNSTART N  DRNEND N
+          POSS  E-1720.00      N53630.00      U9000.00         POSE  E-1720.00      N53630.00      U12944.00
+          SPRE  SPCO  /CTCV-SPEC/UC152X152X30   
+          JUSL  NA    BANG   90.00  FUNC  'Column'  DESC  'M-20180208'
+          CTYS FIX    CTYE FIX
+        END
+      END
+      NEW SBFR  /PR-11_TEST/S_EL9000.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#790593_(1819221316)
+          DRNSTART E  DRNEND E
+          POSS  E-5521.00      N50630.00      U13049.00         POSE  E-5470.00      N53630.00      U9000.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   0.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL9025.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL9025.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL9025.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#793921_(2018681474)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N24871.40      U9966.20         POSE  E120.00      N25762.40      U9075.30
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#794904_(-1818979186)
+          DRNSTART N  DRNEND N
+          POSS  E5939.70      N18230.00      U9118.30         POSE  E4905.80      N18230.00      U10152.20
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#794987_(-1353063816)
+          DRNSTART N  DRNEND N
+          POSS  E5892.90      N24230.00      U9165.10         POSE  E4935.50      N24230.00      U10122.50
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#795263_(416434864)
+          DRNSTART E  DRNEND E
+          POSS  E116.10      N31017.60      U9137.60         POSE  E116.10      N31852.00      U9972.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#1064951_(315635275)
+          DRNSTART E  DRNEND E
+          POSS  E-1720.00      N55901.00      U9129.00         POSE  E-1720.00      N53850.40      U11179.60
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL9700.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL10300.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL10300.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL10300.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#793418_(-726483819)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N31980.00      U10300.00         POSE  E120.00      N31980.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#793917_(2061815705)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N24730.00      U10300.00         POSE  E120.00      N24730.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#794793_(258700385)
+          DRNSTART E  DRNEND E
+          POSS  E4730.00      N18230.00      U10300.00         POSE  E4730.00      N24230.00      U10300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL10700.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL10700.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL10700.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#762667_(1155404446)
+          DRNSTART N  DRNEND N
+          POSS  E2730.00      N47630.00      U10700.00         POSE  E4230.00      N47630.00      U10700.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL11800.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL11800.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL11800.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#762741_(-1051862515)
+          DRNSTART N  DRNEND N
+          POSS  E2730.00      N47630.00      U11800.00         POSE  E4230.00      N47630.00      U11800.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#932226_(2011849661)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N47630.00      U11800.00         POSE  E4230.00      N53630.00      U11800.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+    NEW FRMW  /PR-11_TEST/S_EL11800.00/ELEVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL11800.00/VBRACE
+          PURP BRAC
+        NEW SCTN  /PR-11_TEST/ST_/#780228_(1855133252)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N54706.70      U12797.50         POSE  E-5470.00      N53630.00      U11843.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NA    BANG   -90.00  FUNC  'Vertical Bracing'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL12300.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL13300.00
+      PURP CSTL
+    NEW FRMW  /PR-11_TEST/S_EL13300.00/PLANVIEW
+        PURP SELE
+      NEW SBFR  /PR-11_TEST/S_EL13300.00/BEAM
+          PURP BEAM
+        NEW SCTN  /PR-11_TEST/ST_/#760916_(754668515)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N47630.00      U13300.00         POSE  E12930.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#760981_(1181317062)
+          DRNSTART N  DRNEND N
+          POSS  E4230.00      N53630.00      U13300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X152X67   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761074_(804147852)
+          DRNSTART E  DRNEND E
+          POSS  E4230.00      N47630.00      U13300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761125_(-771190906)
+          DRNSTART E  DRNEND E
+          POSS  E12930.00      N47630.00      U13300.00         POSE  E12930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761386_(1150952975)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N47630.00      U13300.00         POSE  E4230.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761417_(-590959879)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N53630.00      U13300.00         POSE  E4230.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB356X171X51   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761469_(-1616975754)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N47630.00      U13300.00         POSE  E-5470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761574_(383677263)
+          DRNSTART E  DRNEND E
+          POSS  E11430.00      N47630.00      U13300.00         POSE  E11430.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761737_(681804620)
+          DRNSTART E  DRNEND E
+          POSS  E8630.00      N47630.00      U13300.00         POSE  E8630.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761783_(1234919867)
+          DRNSTART E  DRNEND E
+          POSS  E6730.00      N47630.00      U13300.00         POSE  E6730.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761829_(-1548280158)
+          DRNSTART E  DRNEND E
+          POSS  E4930.00      N47630.00      U13300.00         POSE  E4930.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB457X191X74   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#761926_(-93496459)
+          DRNSTART N  DRNEND N
+          POSS  E8630.00      N50930.00      U13300.00         POSE  E11430.00      N50930.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#762047_(1649719651)
+          DRNSTART E  DRNEND E
+          POSS  E2730.00      N47630.00      U13300.00         POSE  E2730.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#762182_(1757619823)
+          DRNSTART N  DRNEND N
+          POSS  E2730.00      N49630.00      U13300.00         POSE  E4230.00      N49630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#762235_(-1649119628)
+          DRNSTART N  DRNEND N
+          POSS  E2730.00      N51430.00      U13300.00         POSE  E4230.00      N51430.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#777665_(-1294650640)
+          DRNSTART E  DRNEND E
+          POSS  E-1470.00      N47630.00      U13300.00         POSE  E-1470.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#778807_(-779395430)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N53630.00      U13300.00         POSE  E-5470.00      N54830.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB406X178X60   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#780436_(-621379103)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N48930.00      U13300.00         POSE  E-1470.00      N48930.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#780559_(1599191111)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N50230.00      U13300.00         POSE  E-1470.00      N50230.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#780645_(1358822866)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N51430.00      U13300.00         POSE  E-1470.00      N51430.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB203X102X23   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#781086_(1843110343)
+          DRNSTART E  DRNEND E
+          POSS  E-2850.00      N52607.00      U13300.00         POSE  E-2850.00      N53630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#781298_(-1789459659)
+          DRNSTART E  DRNEND E
+          POSS  E-2302.80      N53630.00      U13300.00         POSE  E-2302.80      N52607.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#781578_(1273587842)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N52607.00      U13300.00         POSE  E-1470.00      N52607.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#792228_(851377287)
+          DRNSTART N  DRNEND N
+          POSS  E-5470.00      N41280.00      U13300.00         POSE  E120.00      N41280.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB305X165X46   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#797079_(1622987515)
+          DRNSTART E  DRNEND E
+          POSS  E2730.00      N53630.00      U13175.00         POSE  E-1470.00      N50630.00      U13175.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#797118_(-78917628)
+          DRNSTART E  DRNEND E
+          POSS  E2730.00      N47630.00      U13175.00         POSE  E-1470.00      N50630.00      U13175.00
+          SPRE  SPCO  /CTCV-SPEC/UBT133X102X13   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#821338_(1627686387)
+          DRNSTART E  DRNEND E
+          POSS  E-2470.00      N52607.00      U13300.00         POSE  E-2470.00      N51430.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB178X102X19   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#826098_(289997195)
+          DRNSTART E  DRNEND E
+          POSS  E-4270.00      N53630.00      U12975.00         POSE  E-5470.00      N54830.00      U12975.00
+          SPRE  SPCO  /CTCV-SPEC/L75X75X6   
+          JUSL  NAT    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#984498_(-1953663566)
+          DRNSTART E  DRNEND E
+          POSS  E-5470.00      N41280.00      U13300.00         POSE  E-5470.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+        NEW SCTN  /PR-11_TEST/ST_/#984529_(1479509905)
+          DRNSTART E  DRNEND E
+          POSS  E120.00      N41280.00      U13300.00         POSE  E120.00      N47630.00      U13300.00
+          SPRE  SPCO  /CTCV-SPEC/UB254X146X31   
+          JUSL  TOS    BANG   0.00  FUNC  'Girder'  DESC  ''
+          CTYS HING    CTYE HING
+        END
+      END
+    END
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL13325.00
+      PURP CSTL
+
+  END
+  NEW STRU  /PR-11_TEST/STL_FRAME/EL14400.00
+      PURP CSTL
+
+  END
+END
+
+/PR-11_TEST/MAINFRAME
+var !list COLL ALL(SCTN) for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !pos = !!CE.pos
+  !pos.east = NINT(!pos.east)
+  !pos.north = NINT(!pos.north)
+  !!CE.pos = !pos
+enddo
+
+/PR-11_TEST/MAINFRAME
+var !list COLL ALL(SCTN) with (func eq 'BEAM' or func eq 'BRACE') for $!!CE
+!size = !list.size()
+do !index from 1 to !size
+  !ele = !list[!index]
+  $!ele
+  !gamma = !!CE.ori.gamma
+  -- less than 45 degree wrt n-axis
+  if(ABS(SIN(!gamma)) lt 0.7) then
+    drnstart n
+    drnend n
+  endif
+enddo
+

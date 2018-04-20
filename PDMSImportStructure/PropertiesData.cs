@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PDMSImportStructure
 {
-    public struct MajorProperties
+    public class MajorProperties
     {
         public int countNo { get; set; }
         //MDL Data properties
@@ -65,6 +65,7 @@ namespace PDMSImportStructure
         public int strCompHashCode { get; set; }
     }
 
+    // C# class(類別)是參考型別, struct(結構)是實值型別, 此處需使用struct
     public struct GridXProperties
     {
         public string XGridName { get; set; }

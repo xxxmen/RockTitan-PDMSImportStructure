@@ -88,62 +88,119 @@ namespace PDMSImportStructure
             string JUSLINE = string.Empty;
             if (SectionType == "H" || SectionType == "BH" || SectionType == "T") //Generic Type: BEAM, TEE
             {
-                if (CP == "1") { JUSLINE = "LBOS"; }
+                // 原先CP對應位置
+                //if (CP == "1") { JUSLINE = "LBOS"; }
+                //else if (CP == "2") { JUSLINE = "BOS"; }
+                //else if (CP == "3") { JUSLINE = "RBOS"; }
+                //else if (CP == "4") { JUSLINE = "NALO"; }
+                //else if (CP == "5") { JUSLINE = "NA"; }
+                //else if (CP == "6") { JUSLINE = "NARO"; }
+                //else if (CP == "7") { JUSLINE = "LTOS"; }
+                //else if (CP == "8") { JUSLINE = "TOS"; }
+                //else if (CP == "9") { JUSLINE = "RTOS"; }
+                //else if (CP == "10") { JUSLINE = "NA"; }
+                //else { JUSLINE = "NA"; }
+
+                // 修正PDMS定義方向與Revit相反, 左右顛倒
+                if (CP == "1") { JUSLINE = "RBOS"; }
                 else if (CP == "2") { JUSLINE = "BOS"; }
-                else if (CP == "3") { JUSLINE = "RBOS"; }
-                else if (CP == "4") { JUSLINE = "NALO"; }
+                else if (CP == "3") { JUSLINE = "LBOS"; }
+                else if (CP == "4") { JUSLINE = "NARO"; }
                 else if (CP == "5") { JUSLINE = "NA"; }
-                else if (CP == "6") { JUSLINE = "NARO"; }
-                else if (CP == "7") { JUSLINE = "LTOS"; }
+                else if (CP == "6") { JUSLINE = "NALO"; }
+                else if (CP == "7") { JUSLINE = "RTOS"; }
                 else if (CP == "8") { JUSLINE = "TOS"; }
-                else if (CP == "9") { JUSLINE = "RTOS"; }
+                else if (CP == "9") { JUSLINE = "LTOS"; }
                 else if (CP == "10") { JUSLINE = "NA"; }
                 else { JUSLINE = "NA"; }
             }
             else if (SectionType == "XH") //Generic Type: BEAM, TEE
             {
-                if (CP == "1") { JUSLINE = "LBOS"; }
+                // 原先CP對應位置
+                //if (CP == "1") { JUSLINE = "LBOS"; }
+                //else if (CP == "2") { JUSLINE = "BOS"; }
+                //else if (CP == "3") { JUSLINE = "RBOS"; }
+                //else if (CP == "4") { JUSLINE = "NALO"; }
+                //else if (CP == "5") { JUSLINE = "NA"; }
+                //else if (CP == "6") { JUSLINE = "NARO"; }
+                //else if (CP == "7") { JUSLINE = "LTOS"; }
+                //else if (CP == "8") { JUSLINE = "TOS"; }
+                //else if (CP == "9") { JUSLINE = "RTOS"; }
+                //else if (CP == "10") { JUSLINE = "NA"; }
+                //else { JUSLINE = "NA"; }
+
+                // 修正PDMS定義方向與Revit相反, 左右顛倒
+                if (CP == "1") { JUSLINE = "RBOS"; }
                 else if (CP == "2") { JUSLINE = "BOS"; }
-                else if (CP == "3") { JUSLINE = "RBOS"; }
-                else if (CP == "4") { JUSLINE = "NALO"; }
+                else if (CP == "3") { JUSLINE = "LBOS"; }
+                else if (CP == "4") { JUSLINE = "NARO"; }
                 else if (CP == "5") { JUSLINE = "NA"; }
-                else if (CP == "6") { JUSLINE = "NARO"; }
-                else if (CP == "7") { JUSLINE = "LTOS"; }
+                else if (CP == "6") { JUSLINE = "NALO"; }
+                else if (CP == "7") { JUSLINE = "RTOS"; }
                 else if (CP == "8") { JUSLINE = "TOS"; }
-                else if (CP == "9") { JUSLINE = "RTOS"; }
+                else if (CP == "9") { JUSLINE = "LTOS"; }
                 else if (CP == "10") { JUSLINE = "NA"; }
                 else { JUSLINE = "NA"; }
             }
             else if (SectionType == "2T") //Generic Type: BEAM, TEE
             {
-                if (CP == "1") { JUSLINE = "LBOS"; }
+                // 原先CP對應位置
+                //if (CP == "1") { JUSLINE = "LBOS"; }
+                //else if (CP == "2") { JUSLINE = "BOS"; }
+                //else if (CP == "3") { JUSLINE = "RBOS"; }
+                //else if (CP == "4") { JUSLINE = "NALO"; }
+                //else if (CP == "5") { JUSLINE = "NA"; }
+                //else if (CP == "6") { JUSLINE = "NARO"; }
+                //else if (CP == "7") { JUSLINE = "LTOS"; }
+                //else if (CP == "8") { JUSLINE = "TOS"; }
+                //else if (CP == "9") { JUSLINE = "RTOS"; }
+                //else if (CP == "10") { JUSLINE = "NA"; }
+                //else { JUSLINE = "NA"; }
+
+                // 修正PDMS定義方向與Revit相反, 左右顛倒
+                if (CP == "1") { JUSLINE = "RBOS"; }
                 else if (CP == "2") { JUSLINE = "BOS"; }
-                else if (CP == "3") { JUSLINE = "RBOS"; }
-                else if (CP == "4") { JUSLINE = "NALO"; }
+                else if (CP == "3") { JUSLINE = "LBOS"; }
+                else if (CP == "4") { JUSLINE = "NARO"; }
                 else if (CP == "5") { JUSLINE = "NA"; }
-                else if (CP == "6") { JUSLINE = "NARO"; }
-                else if (CP == "7") { JUSLINE = "LTOS"; }
+                else if (CP == "6") { JUSLINE = "NALO"; }
+                else if (CP == "7") { JUSLINE = "RTOS"; }
                 else if (CP == "8") { JUSLINE = "TOS"; }
-                else if (CP == "9") { JUSLINE = "RTOS"; }
+                else if (CP == "9") { JUSLINE = "LTOS"; }
                 else if (CP == "10") { JUSLINE = "NA"; }
                 else { JUSLINE = "NA"; }
             }
             else if (SectionType == "RC-BOX-FB-SB") //Generic Type: BOX
             {
-                if (CP == "1") { JUSLINE = "LBOS"; }
+                // 原先CP對應位置
+                //if (CP == "1") { JUSLINE = "LBOS"; }
+                //else if (CP == "2") { JUSLINE = "BOS"; }
+                //else if (CP == "3") { JUSLINE = "RBOS"; }
+                //else if (CP == "4") { JUSLINE = "LEFT"; }
+                //else if (CP == "5") { JUSLINE = "NA"; }
+                //else if (CP == "6") { JUSLINE = "RIGH"; }
+                //else if (CP == "7") { JUSLINE = "LTOS"; }
+                //else if (CP == "8") { JUSLINE = "TOS"; }
+                //else if (CP == "9") { JUSLINE = "RTOS"; }
+                //else if (CP == "10") { JUSLINE = "NA"; }
+                //else { JUSLINE = "NA"; }
+
+                // 修正PDMS定義方向與Revit相反, 左右顛倒
+                if (CP == "1") { JUSLINE = "RBOS"; }
                 else if (CP == "2") { JUSLINE = "BOS"; }
-                else if (CP == "3") { JUSLINE = "RBOS"; }
-                else if (CP == "4") { JUSLINE = "LEFT"; }
+                else if (CP == "3") { JUSLINE = "LBOS"; }
+                else if (CP == "4") { JUSLINE = "RIGH"; }
                 else if (CP == "5") { JUSLINE = "NA"; }
-                else if (CP == "6") { JUSLINE = "RIGH"; }
-                else if (CP == "7") { JUSLINE = "LTOS"; }
+                else if (CP == "6") { JUSLINE = "LEFT"; }
+                else if (CP == "7") { JUSLINE = "RTOS"; }
                 else if (CP == "8") { JUSLINE = "TOS"; }
-                else if (CP == "9") { JUSLINE = "RTOS"; }
+                else if (CP == "9") { JUSLINE = "LTOS"; }
                 else if (CP == "10") { JUSLINE = "NA"; }
                 else { JUSLINE = "NA"; }
             }
-            else if (SectionType == "C") //Generic Type: BSC, DINU //TODO:很亂待確認
+            else if (SectionType == "C") //Generic Type: BSC, DINU 
             {
+                //TODO:很亂待確認
                 if (CP == "1") { JUSLINE = "LBOC"; }
                 else if (CP == "2") { JUSLINE = "BOC"; }
                 else if (CP == "3") { JUSLINE = "RBOC"; }
@@ -169,8 +226,9 @@ namespace PDMSImportStructure
                 //else if (CP == "10") { JUSLINE = "NA"; }
                 //else { JUSLINE = "NA"; }
             }
-            else if (SectionType == "L") //Generic Type: ANG //TODO:很亂待確認
+            else if (SectionType == "L") //Generic Type: ANG 
             {
+                //TODO:很亂待確認
                 if (CP == "1") { JUSLINE = "TOAX"; }
                 else if (CP == "2") { JUSLINE = "NAT"; }
                 else if (CP == "3") { JUSLINE = "RTTA"; }
@@ -210,8 +268,9 @@ namespace PDMSImportStructure
                 else if (CP == "10") { JUSLINE = "NA"; }
                 else { JUSLINE = "NA"; }
             }
-            else if (SectionType == "2C") //Generic Type: BSC, DINU (4, 5, 6對NA) //TODO:很亂待確認
+            else if (SectionType == "2C") //Generic Type: BSC, DINU (4, 5, 6對NA) 
             {
+                //TODO:很亂待確認
                 if (CP == "1") { JUSLINE = "LBOC"; }
                 else if (CP == "2") { JUSLINE = "BOC"; }
                 else if (CP == "3") { JUSLINE = "RBOC"; }
@@ -224,8 +283,9 @@ namespace PDMSImportStructure
                 else if (CP == "10") { JUSLINE = "NA"; }
                 else { JUSLINE = "NA"; }
             }
-            else if (SectionType == "2L") //Generic Type: ANG //TODO:很亂待確認
+            else if (SectionType == "2L") //Generic Type: ANG 
             {
+                //TODO:很亂待確認
                 if (CP == "1") { JUSLINE = "RTTA"; }
                 else if (CP == "2") { JUSLINE = "NAT"; }
                 else if (CP == "3") { JUSLINE = "TOAY"; }

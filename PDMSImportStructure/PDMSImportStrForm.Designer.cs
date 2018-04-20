@@ -52,7 +52,6 @@
             this.FormTopMostcheckBox = new System.Windows.Forms.CheckBox();
             this.MembDataGridViewcheckBox = new System.Windows.Forms.CheckBox();
             this.LengthUnitlabel = new System.Windows.Forms.Label();
-            this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,6 +103,7 @@
             this.ZcorGridNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZcorGridElevationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strCompHashCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).BeginInit();
             this.MainDatagroupBox.SuspendLayout();
             this.SecListgroupBox.SuspendLayout();
@@ -143,7 +143,7 @@
             this.FilePathtextBox.Name = "FilePathtextBox";
             this.FilePathtextBox.Size = new System.Drawing.Size(518, 20);
             this.FilePathtextBox.TabIndex = 2;
-            this.FilePathtextBox.Text = "PR-11.MDT";
+            this.FilePathtextBox.Text = "PR-11_TEST.MDT";
             this.FilePathtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FilePathtextBox_KeyDown);
             // 
             // BtnSelectFile
@@ -419,10 +419,6 @@
             this.LengthUnitlabel.TabIndex = 24;
             this.LengthUnitlabel.Text = "Length Unit : mm";
             this.LengthUnitlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // majorPropertiesBindingSource
-            // 
-            this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
             // 
             // countNoDataGridViewTextBoxColumn
             // 
@@ -998,6 +994,10 @@
             this.strCompHashCodeDataGridViewTextBoxColumn.ReadOnly = true;
             this.strCompHashCodeDataGridViewTextBoxColumn.Visible = false;
             this.strCompHashCodeDataGridViewTextBoxColumn.Width = 82;
+            // 
+            // majorPropertiesBindingSource
+            // 
+            this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
             // 
             // PDMSImportStrForm
             // 
