@@ -398,9 +398,9 @@ namespace PDMSImportStructure
             string[] strArrayMACMemb = {
                         string.Format("        NEW SCTN  {0}", strNewSCTN),
                         string.Format("          DRNSTART {0}  DRNEND {1}", DRNStart, DRNEnd),
-                        string.Format("          POSS  E{0}      N{1}      U{2}         POSE  E{3}      N{4}      U{5}", StartX.ToString("f2"), StartY.ToString("f2"), StartZ.ToString("f2"), EndX.ToString("f2"), EndY.ToString("f2"), EndZ.ToString("f2")),
-                        string.Format("          SPRE  SPCO  /{0}/{1} {2}  {3}", (SectionHeader == "RC" ? "CONCRETE-BEAMS-SPEC" : "CTCV-SPEC"), (SectionHeader == "RC" ? "Rectangular_Profile DESP" : Section), (SectionHeader == "RC" ? SectionDepth : string.Empty), (SectionHeader == "RC" ? SectionWidth : string.Empty)),
-                        string.Format("          JUSL  {0}    BANG   {1}  FUNC  '{2}'  DESC  '{3}'", JUSLINE, Bangle.ToString("f2"), Function, Grid),
+                        string.Format("          POSS  E{0}  N{1}  U{2}    POSE  E{3}  N{4}  U{5}", StartX.ToString("f2"), StartY.ToString("f2"), StartZ.ToString("f2"), EndX.ToString("f2"), EndY.ToString("f2"), EndZ.ToString("f2")),
+                        string.Format("          SPRE  SPCO  /{0}/{1} {2} {3}", (SectionHeader == "RC" ? "CONCRETE-BEAMS-SPEC" : "CTCV-SPEC"), (SectionHeader == "RC" ? "Rectangular_Profile DESP" : Section), (SectionHeader == "RC" ? SectionDepth : string.Empty), (SectionHeader == "RC" ? SectionWidth : string.Empty)),
+                        string.Format("          JUSL  {0}    BANG  {1}    FUNC  '{2}'    DESC  '{3}'", JUSLINE, Bangle.ToString("f2"), Function, Grid),
                         string.Format("          CTYS {0}    CTYE {1}", ConnTypeS, ConnTypeE),
                         "        END\n"
             };
@@ -411,7 +411,7 @@ namespace PDMSImportStructure
         static string[] CENameCheck(string mainframePrefix, string ID, int strCompHashCode, string Grid)
         {
             string[] strArrayCENameCheck = {
-                string.Format("if(!!ce.name eq '/{0}/STL_COL__{1}/#{2}_({3})') then", mainframePrefix, Grid.Trim(), ID, strCompHashCode),
+                string.Format("if(!!ce.name eq '/{0}/STL_COL_{1}/#{2}_({3})') then", mainframePrefix, Grid.Trim(), ID, strCompHashCode),
                 "",
                 "else",
                 "delete SCTN",
