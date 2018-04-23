@@ -44,6 +44,7 @@
             this.BtnCloseForm1 = new System.Windows.Forms.Button();
             this.mainFormprogressBar = new System.Windows.Forms.ProgressBar();
             this.majorPropertiesDataGridView = new System.Windows.Forms.DataGridView();
+            this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BtnViewFile = new System.Windows.Forms.Button();
             this.BtnExport = new System.Windows.Forms.Button();
             this.MainDatagroupBox = new System.Windows.Forms.GroupBox();
@@ -102,22 +103,22 @@
             this.YcorGridPositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZcorGridNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZcorGridElevationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhaseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strCompHashCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.majorPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.MainDatagroupBox.SuspendLayout();
             this.SecListgroupBox.SuspendLayout();
             this.MatGradeListgroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSendtoPDMS
             // 
             this.BtnSendtoPDMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSendtoPDMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSendtoPDMS.Location = new System.Drawing.Point(606, 517);
+            this.BtnSendtoPDMS.Location = new System.Drawing.Point(606, 477);
             this.BtnSendtoPDMS.Name = "BtnSendtoPDMS";
-            this.BtnSendtoPDMS.Size = new System.Drawing.Size(80, 30);
+            this.BtnSendtoPDMS.Size = new System.Drawing.Size(80, 28);
             this.BtnSendtoPDMS.TabIndex = 0;
             this.BtnSendtoPDMS.Text = "Send";
             this.BtnSendtoPDMS.UseVisualStyleBackColor = true;
@@ -127,7 +128,7 @@
             // 
             this.InputFilelabel.AutoSize = true;
             this.InputFilelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputFilelabel.Location = new System.Drawing.Point(9, 14);
+            this.InputFilelabel.Location = new System.Drawing.Point(9, 13);
             this.InputFilelabel.Name = "InputFilelabel";
             this.InputFilelabel.Size = new System.Drawing.Size(56, 13);
             this.InputFilelabel.TabIndex = 1;
@@ -139,7 +140,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FilePathtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilePathtextBox.Location = new System.Drawing.Point(71, 11);
+            this.FilePathtextBox.Location = new System.Drawing.Point(71, 10);
             this.FilePathtextBox.Name = "FilePathtextBox";
             this.FilePathtextBox.Size = new System.Drawing.Size(518, 20);
             this.FilePathtextBox.TabIndex = 2;
@@ -150,9 +151,9 @@
             // 
             this.BtnSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSelectFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSelectFile.Location = new System.Drawing.Point(595, 9);
+            this.BtnSelectFile.Location = new System.Drawing.Point(595, 8);
             this.BtnSelectFile.Name = "BtnSelectFile";
-            this.BtnSelectFile.Size = new System.Drawing.Size(25, 25);
+            this.BtnSelectFile.Size = new System.Drawing.Size(25, 23);
             this.BtnSelectFile.TabIndex = 5;
             this.BtnSelectFile.Text = "...";
             this.BtnSelectFile.UseVisualStyleBackColor = true;
@@ -163,9 +164,9 @@
             this.SectionlistBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SectionlistBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.SectionlistBox.FormattingEnabled = true;
-            this.SectionlistBox.Location = new System.Drawing.Point(6, 20);
+            this.SectionlistBox.Location = new System.Drawing.Point(6, 18);
             this.SectionlistBox.Name = "SectionlistBox";
-            this.SectionlistBox.Size = new System.Drawing.Size(190, 108);
+            this.SectionlistBox.Size = new System.Drawing.Size(190, 95);
             this.SectionlistBox.TabIndex = 6;
             // 
             // MaterialGradelistBox
@@ -173,9 +174,9 @@
             this.MaterialGradelistBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MaterialGradelistBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.MaterialGradelistBox.FormattingEnabled = true;
-            this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 20);
+            this.MaterialGradelistBox.Location = new System.Drawing.Point(6, 18);
             this.MaterialGradelistBox.Name = "MaterialGradelistBox";
-            this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 108);
+            this.MaterialGradelistBox.Size = new System.Drawing.Size(190, 95);
             this.MaterialGradelistBox.TabIndex = 7;
             // 
             // MemberDatalabel
@@ -183,7 +184,7 @@
             this.MemberDatalabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MemberDatalabel.AutoSize = true;
             this.MemberDatalabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemberDatalabel.Location = new System.Drawing.Point(15, 335);
+            this.MemberDatalabel.Location = new System.Drawing.Point(15, 309);
             this.MemberDatalabel.Name = "MemberDatalabel";
             this.MemberDatalabel.Size = new System.Drawing.Size(110, 13);
             this.MemberDatalabel.TabIndex = 8;
@@ -194,7 +195,7 @@
             this.SectionListlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SectionListlabel.AutoSize = true;
             this.SectionListlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SectionListlabel.Location = new System.Drawing.Point(12, 496);
+            this.SectionListlabel.Location = new System.Drawing.Point(12, 458);
             this.SectionListlabel.Name = "SectionListlabel";
             this.SectionListlabel.Size = new System.Drawing.Size(133, 13);
             this.SectionListlabel.TabIndex = 10;
@@ -205,7 +206,7 @@
             this.MaterialGradeListlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MaterialGradeListlabel.AutoSize = true;
             this.MaterialGradeListlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaterialGradeListlabel.Location = new System.Drawing.Point(234, 496);
+            this.MaterialGradeListlabel.Location = new System.Drawing.Point(234, 458);
             this.MaterialGradeListlabel.Name = "MaterialGradeListlabel";
             this.MaterialGradeListlabel.Size = new System.Drawing.Size(160, 13);
             this.MaterialGradeListlabel.TabIndex = 11;
@@ -215,9 +216,9 @@
             // 
             this.BtnCloseForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCloseForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCloseForm1.Location = new System.Drawing.Point(692, 517);
+            this.BtnCloseForm1.Location = new System.Drawing.Point(692, 477);
             this.BtnCloseForm1.Name = "BtnCloseForm1";
-            this.BtnCloseForm1.Size = new System.Drawing.Size(80, 30);
+            this.BtnCloseForm1.Size = new System.Drawing.Size(80, 28);
             this.BtnCloseForm1.TabIndex = 14;
             this.BtnCloseForm1.Text = "Close";
             this.BtnCloseForm1.UseVisualStyleBackColor = true;
@@ -227,9 +228,9 @@
             // 
             this.mainFormprogressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainFormprogressBar.Location = new System.Drawing.Point(12, 521);
+            this.mainFormprogressBar.Location = new System.Drawing.Point(12, 481);
             this.mainFormprogressBar.Name = "mainFormprogressBar";
-            this.mainFormprogressBar.Size = new System.Drawing.Size(490, 22);
+            this.mainFormprogressBar.Size = new System.Drawing.Size(490, 20);
             this.mainFormprogressBar.TabIndex = 15;
             // 
             // majorPropertiesDataGridView
@@ -303,6 +304,7 @@
             this.YcorGridPositionDataGridViewTextBoxColumn,
             this.ZcorGridNameDataGridViewTextBoxColumn,
             this.ZcorGridElevationDataGridViewTextBoxColumn,
+            this.PhaseDataGridViewTextBoxColumn,
             this.strCompHashCodeDataGridViewTextBoxColumn});
             this.majorPropertiesDataGridView.DataSource = this.majorPropertiesBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -313,19 +315,23 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.majorPropertiesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.majorPropertiesDataGridView.Location = new System.Drawing.Point(6, 20);
+            this.majorPropertiesDataGridView.Location = new System.Drawing.Point(6, 18);
             this.majorPropertiesDataGridView.Name = "majorPropertiesDataGridView";
             this.majorPropertiesDataGridView.ReadOnly = true;
-            this.majorPropertiesDataGridView.Size = new System.Drawing.Size(748, 241);
+            this.majorPropertiesDataGridView.Size = new System.Drawing.Size(748, 222);
             this.majorPropertiesDataGridView.TabIndex = 16;
+            // 
+            // majorPropertiesBindingSource
+            // 
+            this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
             // 
             // BtnViewFile
             // 
             this.BtnViewFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnViewFile.Location = new System.Drawing.Point(626, 9);
+            this.BtnViewFile.Location = new System.Drawing.Point(626, 8);
             this.BtnViewFile.Name = "BtnViewFile";
-            this.BtnViewFile.Size = new System.Drawing.Size(65, 25);
+            this.BtnViewFile.Size = new System.Drawing.Size(65, 23);
             this.BtnViewFile.TabIndex = 17;
             this.BtnViewFile.Text = "Browse...";
             this.BtnViewFile.UseVisualStyleBackColor = true;
@@ -335,9 +341,9 @@
             // 
             this.BtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExport.Location = new System.Drawing.Point(520, 517);
+            this.BtnExport.Location = new System.Drawing.Point(520, 477);
             this.BtnExport.Name = "BtnExport";
-            this.BtnExport.Size = new System.Drawing.Size(80, 30);
+            this.BtnExport.Size = new System.Drawing.Size(80, 28);
             this.BtnExport.TabIndex = 18;
             this.BtnExport.Text = "Export";
             this.BtnExport.UseVisualStyleBackColor = true;
@@ -350,9 +356,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MainDatagroupBox.Controls.Add(this.majorPropertiesDataGridView);
             this.MainDatagroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainDatagroupBox.Location = new System.Drawing.Point(12, 64);
+            this.MainDatagroupBox.Location = new System.Drawing.Point(12, 59);
             this.MainDatagroupBox.Name = "MainDatagroupBox";
-            this.MainDatagroupBox.Size = new System.Drawing.Size(760, 268);
+            this.MainDatagroupBox.Size = new System.Drawing.Size(760, 247);
             this.MainDatagroupBox.TabIndex = 19;
             this.MainDatagroupBox.TabStop = false;
             this.MainDatagroupBox.Text = "Member Data";
@@ -363,9 +369,9 @@
             this.SecListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SecListgroupBox.Controls.Add(this.SectionlistBox);
             this.SecListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SecListgroupBox.Location = new System.Drawing.Point(12, 360);
+            this.SecListgroupBox.Location = new System.Drawing.Point(12, 332);
             this.SecListgroupBox.Name = "SecListgroupBox";
-            this.SecListgroupBox.Size = new System.Drawing.Size(202, 133);
+            this.SecListgroupBox.Size = new System.Drawing.Size(202, 123);
             this.SecListgroupBox.TabIndex = 20;
             this.SecListgroupBox.TabStop = false;
             this.SecListgroupBox.Text = "Section List";
@@ -375,9 +381,9 @@
             this.MatGradeListgroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MatGradeListgroupBox.Controls.Add(this.MaterialGradelistBox);
             this.MatGradeListgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 360);
+            this.MatGradeListgroupBox.Location = new System.Drawing.Point(237, 332);
             this.MatGradeListgroupBox.Name = "MatGradeListgroupBox";
-            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 133);
+            this.MatGradeListgroupBox.Size = new System.Drawing.Size(202, 123);
             this.MatGradeListgroupBox.TabIndex = 21;
             this.MatGradeListgroupBox.TabStop = false;
             this.MatGradeListgroupBox.Text = "Material Grade List";
@@ -387,7 +393,7 @@
             this.FormTopMostcheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FormTopMostcheckBox.AutoSize = true;
             this.FormTopMostcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormTopMostcheckBox.Location = new System.Drawing.Point(701, 13);
+            this.FormTopMostcheckBox.Location = new System.Drawing.Point(701, 12);
             this.FormTopMostcheckBox.Name = "FormTopMostcheckBox";
             this.FormTopMostcheckBox.Size = new System.Drawing.Size(71, 17);
             this.FormTopMostcheckBox.TabIndex = 22;
@@ -399,7 +405,7 @@
             // 
             this.MembDataGridViewcheckBox.AutoSize = true;
             this.MembDataGridViewcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MembDataGridViewcheckBox.Location = new System.Drawing.Point(12, 39);
+            this.MembDataGridViewcheckBox.Location = new System.Drawing.Point(12, 36);
             this.MembDataGridViewcheckBox.Name = "MembDataGridViewcheckBox";
             this.MembDataGridViewcheckBox.Size = new System.Drawing.Size(120, 17);
             this.MembDataGridViewcheckBox.TabIndex = 23;
@@ -412,10 +418,10 @@
             this.LengthUnitlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LengthUnitlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LengthUnitlabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.LengthUnitlabel.Location = new System.Drawing.Point(672, 47);
+            this.LengthUnitlabel.Location = new System.Drawing.Point(672, 43);
             this.LengthUnitlabel.Name = "LengthUnitlabel";
             this.LengthUnitlabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LengthUnitlabel.Size = new System.Drawing.Size(100, 14);
+            this.LengthUnitlabel.Size = new System.Drawing.Size(100, 13);
             this.LengthUnitlabel.TabIndex = 24;
             this.LengthUnitlabel.Text = "Length Unit : mm";
             this.LengthUnitlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -983,6 +989,17 @@
             this.ZcorGridElevationDataGridViewTextBoxColumn.ReadOnly = true;
             this.ZcorGridElevationDataGridViewTextBoxColumn.Width = 102;
             // 
+            // Phase
+            // 
+            this.PhaseDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PhaseDataGridViewTextBoxColumn.DataPropertyName = "Phase";
+            this.PhaseDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.PhaseDataGridViewTextBoxColumn.HeaderText = "Phase";
+            this.PhaseDataGridViewTextBoxColumn.MinimumWidth = 30;
+            this.PhaseDataGridViewTextBoxColumn.Name = "PhaseDataGridViewTextBoxColumn";
+            this.PhaseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.PhaseDataGridViewTextBoxColumn.Width = 62;
+            // 
             // strCompHashCodeDataGridViewTextBoxColumn
             // 
             this.strCompHashCodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -995,15 +1012,11 @@
             this.strCompHashCodeDataGridViewTextBoxColumn.Visible = false;
             this.strCompHashCodeDataGridViewTextBoxColumn.Width = 82;
             // 
-            // majorPropertiesBindingSource
-            // 
-            this.majorPropertiesBindingSource.DataSource = typeof(PDMSImportStructure.MajorProperties);
-            // 
             // PDMSImportStrForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 518);
             this.Controls.Add(this.LengthUnitlabel);
             this.Controls.Add(this.MembDataGridViewcheckBox);
             this.Controls.Add(this.MemberDatalabel);
@@ -1023,16 +1036,16 @@
             this.Controls.Add(this.BtnSendtoPDMS);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 557);
             this.Name = "PDMSImportStrForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDMS Import Structure";
             this.Load += new System.EventHandler(this.PDMSImportStrForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.MainDatagroupBox.ResumeLayout(false);
             this.SecListgroupBox.ResumeLayout(false);
             this.MatGradeListgroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.majorPropertiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1111,6 +1124,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn YcorGridPositionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZcorGridNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZcorGridElevationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhaseDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn strCompHashCodeDataGridViewTextBoxColumn;
     }
 }

@@ -13,11 +13,11 @@ namespace PDMSImportStructure
     {
         //TODO: shift, rotate
         public static string MDTLengthUnit = "mm"; //預設長度單位為公制"mm", 如不同會依MDT輸出為主
-        public static List<string> PhaseList = new List<string>();
         public static List<string> MatCodeList = new List<string>();
         public static List<string> MaterialList = new List<string>();
         public static List<string> MaterialGradeList = new List<string>();
         public static List<string> SectionList = new List<string>();
+        public static List<string> PhaseList = new List<string>();
         public static List<MajorProperties> MainPropertiesList = new List<MajorProperties>(); //Main Data: All member data
 
         public static void ReadMDTfile(string MDTfile, out string Message)
@@ -46,42 +46,45 @@ namespace PDMSImportStructure
             int supMainMDTVersion = Convert.ToInt32(supMDTVersionSpiltArray[0]);
             int supSubMDTVersion = Convert.ToInt32(supMDTVersionSpiltArray[1]);
             string supBIMsoftware = "Revit".ToUpper(); //此程式可支援之BIM software
-
-            var patternMDTLengthUnit = @"[UNITunit]+\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
-            var MDTLengthUnitData = Regex.Match(MDTcontent, patternMDTLengthUnit);
-
+            
             //TODO: Phase Data尚未改好
+            var patternMDTLengthUnit = @"[UNITunit]+\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
             var patternMDLData = string.Empty;
             var patternPhyMembData = string.Empty;
+            var patternSectionData = string.Empty;
+            var patternPhaseData = string.Empty;
+
             if (MainMDTVersion >= 4)
             {
                 patternMDLData = @"(?<ID>\d*)\s+:\s+(?<PH>\d+)\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
+                patternPhaseData = @"(?<PhaseItemNo>\d+)\s+\:\s+(?<Phase>[A-Za-z\s]+)(:?[\r\n])";
             }
             else
             {
                 patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
             }
-            var MDLData = Regex.Matches(MDTcontent, patternMDLData);
 
-            var patternMatData = @"(?<MatItemNo>\d+)\s+\:\s+(?<MatCode>\d+)\s(?<MatGrade>[A-Za-z]*[0-9A-Za-z]*)[\r\n]"; //注意最後[\r\n]C#跳行符號
-            var MatData = Regex.Matches(MDTcontent, patternMatData);
-
-            var patternMatCodeList = @"\s(?<MatCodeNo>\d+):(?<Material>[A-Za-z]+)[,)]";
-            var MatCodeData = Regex.Matches(MDTcontent, patternMatCodeList);
-
-            var patternSectionData = string.Empty;
-            if ((MainMDTVersion >= 3) && (strMDTVersion != "3.00"))
+            if (MDTVersion >= 3.01)
             {
-                patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<SHP>[A-Z]+)\s+(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
                 patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*(?<Angle>-?\d+.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)?";
+                patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<SHP>[A-Z]+)\s+(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
             }
             else
             {
-                patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
                 patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)?";
+                patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
             }
+
+            var patternMatData = @"(?<MatItemNo>\d+)\s+\:\s+(?<MatCode>\d+)\s(?<MatGrade>[A-Za-z]*[0-9A-Za-z]*)[\r\n]"; //注意最後[\r\n]C#跳行符號
+            var patternMatCodeList = @"\s(?<MatCodeNo>\d+):(?<Material>[A-Za-z]+)[,)]";
+
+            var MDTLengthUnitData = Regex.Match(MDTcontent, patternMDTLengthUnit);
+            var MDLData = Regex.Matches(MDTcontent, patternMDLData);
+            var MatData = Regex.Matches(MDTcontent, patternMatData);
+            var MatCodeData = Regex.Matches(MDTcontent, patternMatCodeList);
             var PhyMembData = Regex.Matches(MDTcontent, patternPhyMembData);
             var SectionData = Regex.Matches(MDTcontent, patternSectionData);
+            var PhaseData = Regex.Matches(MDTcontent, patternPhaseData);
 
             //check data
             if (MainMDTVersion != supMainMDTVersion) //檢查MDT主版本
@@ -166,6 +169,17 @@ namespace PDMSImportStructure
                 SectionList.Add(CompSection);
             }
 
+            PhaseList.Clear();
+            if (MainMDTVersion >= 4)
+            {
+                foreach (Match match in PhaseData)
+                {
+                    string PhaseItemNo = match.Groups["PhaseItemNo"].Value;
+                    string Phase = match.Groups["Phase"].Value;
+                    PhaseList.Add(Phase);
+                }
+            }
+
             //當Grd file不存在時將每一筆member資料建立grid line
             if (PDMSImportStrForm.GrdFileExists == false)
             {
@@ -197,6 +211,7 @@ namespace PDMSImportStructure
                 int countNo = i + 1;
                 //MDL Data properties
                 string ID = MDLData[i].Groups["ID"].Value;
+                string PhaseCode = MDLData[i].Groups["PH"].Value;
                 string MaterialCode = MDLData[i].Groups["MT"].Value;
                 string SectionCode = MDLData[i].Groups["SEC"].Value;
                 double StartX = Math.Round(Convert.ToDouble(MDLData[i].Groups["Start_X"].Value), 2);
@@ -226,6 +241,9 @@ namespace PDMSImportStructure
                 double SR = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["SR"].Value), 2); //stress ratio; no use for PDMS
                 string Section = PhyMembData[i].Groups["Section"].Value;
                 //additional properties
+                string Phase = string.Empty;
+                if (MainMDTVersion >= 4)
+                { Phase = PhaseList[Convert.ToInt32(MDLData[i].Groups["PH"].Value) - 1].Trim(); }
                 string CompSection = SectionList[Convert.ToInt32(MDLData[i].Groups["SEC"].Value) - 1]; //比對Section使用
                 string Material = MaterialList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
                 string MaterialGrade = MaterialGradeList[Convert.ToInt32(MDLData[i].Groups["MT"].Value) - 1];
@@ -431,6 +449,7 @@ namespace PDMSImportStructure
                     SR = SR,
                     Section = Section,
                     //
+                    Phase = Phase,
                     CompSection = CompSection,
                     Material = Material,
                     MaterialGrade = MaterialGrade,

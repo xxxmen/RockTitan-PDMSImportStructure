@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using SortableBindingList;
 
 namespace PDMSImportStructure
@@ -92,7 +94,16 @@ namespace PDMSImportStructure
             SmallWindowParam();
 
             //顯示版本於Form title
-            this.Text = "PDMS Import Structure  V" + Application.ProductVersion;
+            string IPaddress = string.Empty;
+            IPHostEntry iphostentry = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ipAddress in iphostentry.AddressList)
+            {
+                if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    IPaddress = ipAddress.ToString();
+                }
+            }
+            this.Text = string.Format(@"PDMS Import Structure  V{0}  ({1}\{2} @{3} {4})", Application.ProductVersion , Environment.UserDomainName, Environment.UserName , Environment.MachineName, IPaddress);
 
             MemberDatalabel.Text = " ";
             SectionListlabel.Text = " ";

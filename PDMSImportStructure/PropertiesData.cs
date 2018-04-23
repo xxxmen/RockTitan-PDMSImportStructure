@@ -12,6 +12,7 @@ namespace PDMSImportStructure
         //MDL Data properties
         public string ID { get; set; }
         //public string ID { get { return ID; } set { ID = value; } }
+        public string PhaseCode { get; set; }
         public string MaterialCode { get; set; }
         public string SectionCode { get; set; }
         public double StartX { get; set; }
@@ -42,6 +43,7 @@ namespace PDMSImportStructure
         public string Section { get; set; }
         //additional properties
         public string CompSection { get; set; } //比對Section使用
+        public string Phase { get; set; }
         public string Material { get; set; }
         public string MaterialGrade { get; set; }
         public double MemberLength { get; set; }
