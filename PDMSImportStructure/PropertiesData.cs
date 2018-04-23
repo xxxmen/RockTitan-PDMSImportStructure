@@ -27,7 +27,7 @@ namespace PDMSImportStructure
         public string NodeE { get; set; } //重複暫不使用
         public string MembType { get; set; }
         public string SP { get; set; }
-        public double IT { get; set; } //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
+        public double IT { get; set; }
         public string MAT { get; set; } //重複暫不使用
         public string CP { get; set; } // 1~10
         public string Reflect { get; set; } // Y/N

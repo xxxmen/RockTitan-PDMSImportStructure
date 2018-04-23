@@ -13,6 +13,7 @@ namespace PDMSImportStructure
     {
         //TODO: shift, rotate
         public static string MDTLengthUnit = "mm"; //預設長度單位為公制"mm", 如不同會依MDT輸出為主
+        public static List<string> PhaseList = new List<string>();
         public static List<string> MatCodeList = new List<string>();
         public static List<string> MaterialList = new List<string>();
         public static List<string> MaterialGradeList = new List<string>();
@@ -31,26 +32,36 @@ namespace PDMSImportStructure
 
             var patternMDTVersion = @"\*MDT\s+V(?<MDTVersion>[0-9]+\.[0-9]+)\s+\(from\s+(?<BIMsoftware>[A-Za-z0-9]+)\)";
             var MDTVersionData = Regex.Match(MDTcontent, patternMDTVersion);
-            string MDTVersion = MDTVersionData.Groups["MDTVersion"].Value;
+            string strMDTVersion = MDTVersionData.Groups["MDTVersion"].Value;
+            double MDTVersion = Convert.ToDouble(strMDTVersion);
             string[] VersionSeparator = { "." };
-            string[] MDTVersionSpiltArray = MDTVersion.Split(VersionSeparator, StringSplitOptions.RemoveEmptyEntries);
-            string MainMDTVersion = MDTVersionSpiltArray[0];
-            string SubMDTVersion = MDTVersionSpiltArray[1];
+            //string[] MDTVersionSpiltArray = strMDTVersion.Split(VersionSeparator, StringSplitOptions.RemoveEmptyEntries);
+            //string MainMDTVersion = MDTVersionSpiltArray[0];
+            //string SubMDTVersion = MDTVersionSpiltArray[1];
+            int MainMDTVersion = Convert.ToInt32(Math.Truncate(MDTVersion));
+            int SubMDTVersion = Convert.ToInt32(Math.IEEERemainder(MDTVersion, MainMDTVersion));
             string BIMsoftware = MDTVersionData.Groups["BIMsoftware"].Value.ToUpper();
-            string supMDTVersion = "3.**"; //此程式可支援之MDT版本
+            string supMDTVersion = "4.00"; //此程式可支援之MDT版本, 目前可支援3.00 ~ 4.00
             string[] supMDTVersionSpiltArray = supMDTVersion.Split(VersionSeparator, StringSplitOptions.RemoveEmptyEntries);
-            string supMainMDTVersion = supMDTVersionSpiltArray[0];
-            string supSubMDTVersion = supMDTVersionSpiltArray[1];
+            int supMainMDTVersion = Convert.ToInt32(supMDTVersionSpiltArray[0]);
+            int supSubMDTVersion = Convert.ToInt32(supMDTVersionSpiltArray[1]);
             string supBIMsoftware = "Revit".ToUpper(); //此程式可支援之BIM software
 
             var patternMDTLengthUnit = @"[UNITunit]+\s+\:\s+(?<MDTLengthUnit>[A-Za-z]+)";
             var MDTLengthUnitData = Regex.Match(MDTcontent, patternMDTLengthUnit);
 
-            var patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
+            //TODO: Phase Data尚未改好
+            var patternMDLData = string.Empty;
+            var patternPhyMembData = string.Empty;
+            if (MainMDTVersion >= 4)
+            {
+                patternMDLData = @"(?<ID>\d*)\s+:\s+(?<PH>\d+)\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
+            }
+            else
+            {
+                patternMDLData = @"(?<ID>\d*)\s+:\s+(?<MT>\d+)\s+(?<SEC>\d+)\s+(?<Start_X>-?\d+.\d*)\s+(?<Start_Y>-?\d+.\d*)\s+(?<Start_Z>-?\d+.\d*)\s+(?<End_X>-?\d+.\d*)\s+(?<End_Y>-?\d+.\d*)\s+(?<End_Z>-?\d+.\d*)\s+(?<Grid>[\w\s.]*-[\w\s.]*\n)?";
+            }
             var MDLData = Regex.Matches(MDTcontent, patternMDLData);
-
-            var patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)?";
-            var PhyMembData = Regex.Matches(MDTcontent, patternPhyMembData);
 
             var patternMatData = @"(?<MatItemNo>\d+)\s+\:\s+(?<MatCode>\d+)\s(?<MatGrade>[A-Za-z]*[0-9A-Za-z]*)[\r\n]"; //注意最後[\r\n]C#跳行符號
             var MatData = Regex.Matches(MDTcontent, patternMatData);
@@ -58,7 +69,18 @@ namespace PDMSImportStructure
             var patternMatCodeList = @"\s(?<MatCodeNo>\d+):(?<Material>[A-Za-z]+)[,)]";
             var MatCodeData = Regex.Matches(MDTcontent, patternMatCodeList);
 
-            var patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
+            var patternSectionData = string.Empty;
+            if ((MainMDTVersion >= 3) && (strMDTVersion != "3.00"))
+            {
+                patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<SHP>[A-Z]+)\s+(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
+                patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*(?<Angle>-?\d+.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)?";
+            }
+            else
+            {
+                patternSectionData = @"(?<SectionItemNo>\d+)\s:\s(?<compSection>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)";
+                patternPhyMembData = @"(?<compID>\d*)\s+:\s+(?<Node_Start>\d*),?\s+(?<Node_End>\d*)\s+(?<TP>[A-Z]+)\s+(?<SP>[A-Z]+)\s+(?<IT>\d+.\d+)\s+(?<MAT>[A-Z]+)+\s+(?<CP>\d+)\s+(?<Reflect>[YN])\s+\[\s*(?<OvX>-?\d.\d+)\s+(?<OvY>-?\d.\d+)\s+(?<OvZ>-?\d.\d+)\s*\]\s+\[(?<Release_Start>[-R]+)\s+(?<Release_Start_NO>\d+)\s*\]\s+\[(?<Release_End>[-R]+)\s+(?<Release_End_NO>\d+)\s*\]\s(?<SR>\d+.\d+)\s+(?<Section>[A-Z]*_*\d*[A-Z]+\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*[Xx*]?\d*[.\/]?\d*)?";
+            }
+            var PhyMembData = Regex.Matches(MDTcontent, patternPhyMembData);
             var SectionData = Regex.Matches(MDTcontent, patternSectionData);
 
             //check data
@@ -190,7 +212,7 @@ namespace PDMSImportStructure
                 string NodeE = PhyMembData[i].Groups["Node_End"].Value; //重複暫不使用
                 string MembType = PhyMembData[i].Groups["TP"].Value;
                 string SP = PhyMembData[i].Groups["SP"].Value;
-                double IT = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["IT"].Value), 2); //將考慮直接填入轉角; 就不需轉換OvX; OvY; OvZ
+                double IT = Math.Round(Convert.ToDouble(PhyMembData[i].Groups["IT"].Value), 2);
                 string MAT = PhyMembData[i].Groups["MAT"].Value; //重複暫不使用
                 string CP = PhyMembData[i].Groups["CP"].Value; // 1~10
                 string Reflect = PhyMembData[i].Groups["Reflect"].Value; // Y/N
@@ -269,8 +291,16 @@ namespace PDMSImportStructure
                     EndZ = StartZTemp;
                 }
 
-                //Beta Angle (Cross-Section Rotation)
-                double Bangle = ConvertOrientationVector.OvtoBangle(StartX, StartY, StartZ, EndX, EndY, EndZ, OvX, OvY, OvZ);
+                //Beta Angle (Cross-Section Rotation)  MDT V3.01版之後直接填入Angle,不需轉換OvX; OvY; OvZ
+                double Bangle = 0.0;
+                if (MDTVersion < 3.01)
+                {
+                    Bangle = ConvertOrientationVector.OvtoBangle(StartX, StartY, StartZ, EndX, EndY, EndZ, OvX, OvY, OvZ);
+                }
+                else
+                {
+                    Bangle = Convert.ToDouble(PhyMembData[i].Groups["Angle"].Value);
+                }
                 //PDMS Bangel range +180 ~ -180
                 int BangleDivQuotient = Convert.ToInt32(Math.Round(Math.Abs(Bangle / 360)));
                 if (Bangle > 180)
